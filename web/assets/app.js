@@ -328,6 +328,8 @@
     var L = S.letter[sys + sec];
     if (!L || !letters[L]) L = S.letter[sys + sec] = avail[0];
     var f = S.idxF.toLowerCase().trim();
+    var go = S.go && S.go.sec === sec ? S.go : null;
+    if (go) { f = ''; L = S.letter[sys + sec] = (go.t.replace(/^[^A-Za-z]+/, '')[0] || L).toUpperCase(); if (!letters[L]) { S.go = null; S.idxF = go.t; $('idxf').value = go.t; return renderAlpha(); } }
     $('letters').innerHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(function (ch) {
       return '<button type="button" data-act="letter" data-l="' + ch + '" aria-pressed="' + (!f && L === ch) + '"' + (letters[ch] ? '' : ' disabled') + '>' + ch + '</button>';
     }).join('');
@@ -342,10 +344,11 @@
     }
     var rows = [];
     want.forEach(function (x) { rows = rows.concat(IDXL[idxKey(sys, sec, x)]); });
-    var toks = fToks(f), sel = treeSelect(rows, toks, function () { return true; });
+    var toks = fToks(f), sel = go ? resolveSee(rows, go.t) : treeSelect(rows, toks, function () { return true; });
+    if (go && !sel) { S.go = null; S.idxF = go.t; $('idxf').value = go.t; return renderAlpha(); }
     if (!sel.show.length) return '<div class="empty"><b>ไม่พบคำในดัชนีที่ตรงกับ “' + esc(S.idxF) + '”</b><p>ลองพิมพ์คำภาษาอังกฤษ เช่น fever หรือ appendectomy พิมพ์หลายคำได้ เช่น fever typhoid</p></div>';
     var d = DB[sys], lastL = '', cut = sel.show.length > MAX_ROWS;
-    var h = '<div class="list-head"><h2>' + esc(m.sections[sec]) + (f ? '' : ' · อักษร ' + esc(L)) + '</h2><span>' + countLabel(sel) + '</span></div><div class="box">';
+    var h = (go ? goBar(sel) : '') + '<div class="list-head"><h2>' + esc(m.sections[sec]) + (f || go ? '' : ' · อักษร ' + esc(L)) + '</h2><span>' + countLabel(sel) + '</span></div><div class="box">';
     sel.show.slice(0, MAX_ROWS).forEach(function (i) {
       var e = rows[i];
       if (f && e.letter !== lastL) { h += '<div class="ix-head">' + esc(e.letter) + '</div>'; lastL = e.letter; }
@@ -359,7 +362,7 @@
       var c1 = stripMark(e[2]), ok = c1 && d.byCode[c1];
       var codes = (e[2] ? esc(e[2]) : '') + (e[3] ? ' ' + esc(e[3]) : '');
       var tm = (e[4] ? '<span class="tmk" title="รหัสดัดแปลงของไทย">#</span>' : '') + (e.ov ? '<span class="tag tag-ov" title="เพิ่มโดยผู้ดูแลระบบ">เพิ่ม</span> ' : '');
-      if (ok) h += '<button type="button" class="' + cls + '" style="padding-left: ' + pad + 'px" data-act="sel" data-sys="' + sys + '" data-code="' + esc(c1) + '" aria-current="' + (S.sel[sys] === c1) + '"><span>' + tm + hl(label, toks) + '</span><span class="code">' + codes + '</span></button>';
+      if (ok) h += '<div role="button" tabindex="0" class="' + cls + '" style="padding-left: ' + pad + 'px" data-act="sel" data-sys="' + sys + '" data-code="' + esc(c1) + '" aria-current="' + (S.sel[sys] === c1) + '"><span>' + tm + seeLinks(label, toks) + '</span><span class="code">' + codes + '</span></div>';
       else h += '<div class="' + cls + '" style="padding-left: ' + pad + 'px"><span>' + tm + seeLinks(label, toks) + '</span>' + (codes ? '<span class="code na">' + codes + '</span>' : '') + '</div>';
     });
     h += '</div>';
@@ -387,11 +390,73 @@
     return { show: show, hit: hit, n: n, filtered: toks.length > 0 };
   }
   function countLabel(sel) { return sel.filtered ? 'ตรง ' + sel.n.toLocaleString('th-TH') + ' รายการ' : sel.show.length.toLocaleString('th-TH') + ' รายการ'; }
-  // "– see Allergy, drug" / "(see also Dermatitis)" become links that filter the current index or table
+  // ---------- following "see" / "see also" references ----------
+  // The text after "see" names a lead term and its subterms, e.g. "Tuberculosis, joint" = lead term Tuberculosis,
+  // subterm joint. resolveSee finds that entry and returns only it: its parent terms, the entry and everything under it.
+  function seeNorm(t) {
+    return String(t || '').toLowerCase().replace(/\s*[–-]\s*see\b.*$/, '').replace(/\([^)]*\)/g, ' ')
+      .replace(/\bnec\b/g, ' ').replace(/\s+/g, ' ').replace(/\s+,/g, ',').replace(/[\s,]+$/, '').trim();
+  }
+  function seeStarts(text, want) { return text === want || text.indexOf(want + ',') === 0 || text.indexOf(want + ' ') === 0; }
+  function resolveSee(rows, target) {
+    var comps = seeNorm(target).split(/\s*,\s*/).filter(Boolean);
+    if (!comps.length) return null;
+    var best = null;
+    rows.forEach(function (r, i) {
+      if (r[0] !== 0 || best) return;
+      var lead = seeNorm(r[1]);
+      if (!seeStarts(lead, comps[0])) return;
+      // the lead term may itself contain commas ("Allergy, allergic"); use up the components it spells out
+      var parts = lead.split(/\s*,\s*/), k = 1;
+      while (k < comps.length && parts[k] === comps[k]) k++;
+      var path = [i], at = i, lvl = 0, ok = true;
+      while (k < comps.length && ok) {
+        ok = false;
+        // children of rows[at] at level lvl+1; longest run of components that names one of them wins, exact names first
+        for (var n = comps.length - k; n >= 1 && !ok; n--) {
+          var want = comps.slice(k, k + n).join(', ');
+          // pass 0 exact name, 1 name followed by more words, 2 bare prefix (words run together in the PDF, e.g. "glandor duct")
+          for (var pass = 0; pass < 3 && !ok; pass++) {
+            for (var j = at + 1; j < rows.length && rows[j][0] > lvl; j++) {
+              if (rows[j][0] !== lvl + 1) continue;
+              var t = seeNorm(rows[j][1]);
+              if (pass === 0 ? t === want : pass === 1 ? seeStarts(t, want) : t.indexOf(want) === 0) { path.push(j); at = j; lvl++; k += n; ok = true; break; }
+            }
+          }
+        }
+      }
+      if (ok) best = path;
+    });
+    if (!best) return null;
+    var end = best[best.length - 1], show = best.slice(), hit = {};
+    hit[end] = true;
+    for (var j = end + 1; j < rows.length && rows[j][0] > rows[end][0]; j++) show.push(j);
+    return { show: show, hit: hit, n: show.length - best.length + 1, filtered: true, crumbs: best.map(function (i) { return rows[i][1].replace(/\s*\(.*$/, '').replace(/\s*[–-]\s*see\b.*$/, ''); }) };
+  }
+  function goBar(sel) {
+    return '<div class="gobar"><span>ไปตาม see: <b>' + sel.crumbs.map(esc).join(' › ') + '</b></span><button type="button" class="chip" data-act="goclear">แสดงทั้งอักษร</button></div>';
+  }
+  // where a reference leads: "Table of drugs…" → drugs table; "Neoplasm, <site>, <behaviour>" outside the
+  // neoplasm table → that table at the site; otherwise the index section that is open now
+  function seeTarget(t) {
+    t = String(t || '').trim();
+    if (/^table of drugs/i.test(t)) return { sec: 'T:drugs', t: '' };
+    var m = /^neoplasm(?:,\s*(.*))?$/i.exec(t);
+    if (m) {
+      var site = (m[1] || '').split(/\s*,\s*/).filter(function (w) { return !/^(malignant|benign|in situ|uncertain behaviou?r|secondary|primary|by site|unspecified)$/i.test(w); }).join(', ');
+      return { sec: 'T:neoplasm', t: site ? 'Neoplasm, ' + site : '' };
+    }
+    return { sec: null, t: t };
+  }
+  // every "see X" / "see also X" in a line becomes a link (not "see condition", which names no entry)
   function seeLinks(label, toks) {
-    var m = /^(.*?\bsee(?: also)? )([A-Z][^()]*?)(\)?)$/.exec(label);
-    if (!m) return hl(label, toks);
-    return hl(m[1], toks) + '<a href="#" class="seeref" data-act="seeref" data-f="' + esc(m[2]) + '">' + hl(m[2], toks) + '</a>' + esc(m[3]);
+    var re = /\bsee(?: also)? ([A-Z][^()–]*?)(?=\s*(?:\)|–|$))/g, out = '', last = 0, m;
+    while ((m = re.exec(label))) {
+      var a = m.index + m[0].length - m[1].length;
+      out += hl(label.slice(last, a), toks) + '<a href="#" class="seeref" data-act="seeref" data-f="' + esc(m[1]) + '">' + hl(m[1], toks) + '</a>';
+      last = a + m[1].length;
+    }
+    return out + hl(label.slice(last), toks);
   }
 
   // ---------- ICD-O morphology of neoplasms ----------
@@ -513,8 +578,10 @@
       return '<button type="button" data-act="letter" data-l="' + ch + '" aria-pressed="' + (!f && L === ch) + '"' + (avail[ch] ? '' : ' disabled') + '>' + ch + '</button>';
     }).join('') : '';
     // which rows to show: matches plus their parent terms, or one letter (same rules as the alphabetical index)
-    var toks = fToks(f);
-    var sel = treeSelect(rows, toks, function (r) { return !lettersOn || r.letter === L || (name === 'neoplasm' && r[0] === 0); });
+    var toks = fToks(f), go = S.go && S.go.sec === 'T:' + name ? S.go : null;
+    var sel = go && resolveSee(rows, go.t);
+    if (go && !sel) { S.go = null; S.idxF = f = go.t; $('idxf').value = go.t; toks = fToks(f); go = null; }
+    if (!sel) sel = treeSelect(rows, toks, function (r) { return !lettersOn || r.letter === L || (name === 'neoplasm' && r[0] === 0); });
     var show = sel.show;
     var intro = '';
     if (name === 'drugs') intro = '<div class="tbl-intro"><p><b>พิษจากยาหรือสารเคมี:</b> ลงรหัสพิษ (T36–T65) เป็นการวินิจฉัย คู่กับรหัสสาเหตุภายนอกตามเจตนา คือ อุบัติเหตุ (X40–X49) ทำร้ายตนเอง (X60–X69) หรือไม่ทราบเจตนา (Y10–Y19) และลงรหัสอาการที่เกิดขึ้นเพิ่ม</p><p><b>ผลไม่พึงประสงค์จากยาที่ใช้ถูกต้องตามขนาด:</b> ลงรหัสอาการหรือภาวะที่เกิด เช่น ผื่น คู่กับรหัสในคอลัมน์สุดท้าย (Y40–Y59) ไม่ใช้รหัส T</p><p>รหัส X40–X49 และ X60–X69 ต้องเติมหลักสถานที่เกิดเหตุ (.-)</p></div>';
@@ -527,7 +594,7 @@
     }
     if (!show.length) return intro + '<div class="empty"><b>ไม่พบรายการที่ตรงกับ “' + esc(S.idxF) + '”</b><p>ลองพิมพ์ชื่อสามัญทางยาหรือชื่อตำแหน่งภาษาอังกฤษ พิมพ์หลายคำได้ เช่น lung lower lobe</p></div>';
     var ncol = T.cols.length, cut = show.length > MAX_ROWS;
-    var h = intro + '<div class="list-head"><h2>' + esc(T.title) + (f ? '' : lettersOn ? ' · อักษร ' + esc(L) : '') + '</h2><span>' + countLabel(sel) + '</span></div>';
+    var h = intro + (go ? goBar(sel) : '') + '<div class="list-head"><h2>' + esc(T.title) + (f || go ? '' : lettersOn ? ' · อักษร ' + esc(L) : '') + '</h2><span>' + countLabel(sel) + '</span></div>';
     h += '<div class="tbl-wrap"><table class="itbl"><thead><tr><th scope="col">' + (name === 'drugs' ? 'สาร' : name === 'neoplasm' ? 'ตำแหน่ง' : name === 'transport' ? 'ผู้บาดเจ็บ / คู่กรณี →' : 'ภาวะแทรกซ้อน') + '</th>' +
       T.cols.map(function (c) { return '<th scope="col">' + esc(c.th) + '<small>' + esc(c.en) + (c.range ? ' · ' + esc(c.range) : '') + '</small></th>'; }).join('') + '</tr></thead><tbody>';
     show.slice(0, MAX_ROWS).forEach(function (i) {
@@ -888,7 +955,7 @@
       if (S.view === 'search') $('q').focus();
     } else if (act === 'sys') {
       var ns = b.getAttribute('data-sys');
-      if (ns !== S.sys) { S.sys = ns; S.pane = 'list'; renderAll(); }
+      if (ns !== S.sys) { S.sys = ns; S.pane = 'list'; S.go = null; renderAll(); }
     } else if (act === 'sel') {
       ev.preventDefault();
       select(b.getAttribute('data-sys'), b.getAttribute('data-code'));
@@ -896,9 +963,9 @@
       S.q = b.getAttribute('data-q'); S.abbrPick = {}; S.pane = 'list'; renderAll();
     } else if (act === 'letter') {
       var sk = S.sec[S.sys].indexOf('T:') === 0 ? S.sec[S.sys] : S.sys + S.sec[S.sys];
-      S.letter[sk] = b.getAttribute('data-l'); S.idxF = ''; $('idxf').value = ''; renderList();
+      S.letter[sk] = b.getAttribute('data-l'); S.idxF = ''; $('idxf').value = ''; S.go = null; renderList();
     } else if (act === 'opentable') {
-      S.sys = 'icd10'; S.view = 'index'; S.imode = 'alpha'; S.sec.icd10 = 'T:' + b.getAttribute('data-t'); S.pane = 'list';
+      S.sys = 'icd10'; S.view = 'index'; S.imode = 'alpha'; S.sec.icd10 = 'T:' + b.getAttribute('data-t'); S.pane = 'list'; S.go = null;
       S.idxF = b.getAttribute('data-f') || ''; $('idxf').value = S.idxF;
       setHash('index'); renderAll(); window.scrollTo(0, 0);
     } else if (act === 'abbr') {
@@ -908,13 +975,19 @@
       renderList();
     } else if (act === 'seeref') {
       ev.preventDefault();
-      S.idxF = b.getAttribute('data-f'); $('idxf').value = S.idxF; renderList(); window.scrollTo(0, 0);
+      ev.stopPropagation();
+      var tg = seeTarget(b.getAttribute('data-f')), cur = S.sec[S.sys];
+      if (tg.sec && S.sys === 'icd10') cur = S.sec.icd10 = tg.sec;
+      S.go = tg.t ? { sec: cur, t: tg.t } : null;
+      S.idxF = ''; $('idxf').value = ''; renderAll(); window.scrollTo(0, 0);
+    } else if (act === 'goclear') {
+      S.go = null; renderList();
     } else if (act === 'abtype') {
       S.abType = b.getAttribute('data-c'); renderList();
     } else if (act === 'isec') {
-      S.sec[S.sys] = b.getAttribute('data-s'); renderAll();
+      S.sec[S.sys] = b.getAttribute('data-s'); S.go = null; renderAll();
     } else if (act === 'imode') {
-      S.imode = b.getAttribute('data-m');
+      S.imode = b.getAttribute('data-m'); S.go = null;
       if (S.imode === 'tree') { var d = DB[S.sys], x = S.sel[S.sys] && d.byCode[S.sel[S.sys]]; if (x && d.blockMap[x.b]) { S.openCh[S.sys + d.blockMap[x.b].ch] = true; S.openBl[S.sys + x.b] = true; } }
       renderAll();
     } else if (act === 'tch') {
@@ -951,12 +1024,13 @@
   });
   $('qClear').addEventListener('click', function () { S.q = ''; $('q').value = ''; renderChrome(); renderList(); $('q').focus(); });
   var fT;
-  $('idxf').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(fT); fT = setTimeout(function () { S.idxF = v; renderList(); }, 200); });
+  $('idxf').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(fT); fT = setTimeout(function () { S.idxF = v; S.go = null; renderList(); }, 200); });
   var gT;
   $('gq').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(gT); gT = setTimeout(function () { S.gq = v; renderGuide(); }, 160); });
   $('list').addEventListener('keydown', function (e) {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.getAttribute('role') === 'button') { e.preventDefault(); e.target.click(); return; }
     if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
-    var items = Array.prototype.slice.call(document.querySelectorAll('#list button.res, #list button.ix-row, #list button.tr-code'));
+    var items = Array.prototype.slice.call(document.querySelectorAll('#list button.res, #list button.ix-row, #list .ix-row[role="button"], #list button.tr-code'));
     var i = items.indexOf(document.activeElement);
     if (i === -1) return;
     e.preventDefault();
