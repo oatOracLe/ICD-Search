@@ -399,11 +399,12 @@
   }
   function seeStarts(text, want) { return text === want || text.indexOf(want + ',') === 0 || text.indexOf(want + ' ') === 0; }
   function resolveSee(rows, target) {
-    var comps = seeNorm(target).split(/\s*,\s*/).filter(Boolean);
+    // "by site" / "by region" … tell the coder to pick the site under the entry; they name no subterm themselves
+    var comps = seeNorm(target).split(/\s*,\s*/).filter(function (c) { return c && !/^by \w+$/.test(c); });
     if (!comps.length) return null;
-    var best = null;
+    var best = null, bestK = 0;
     rows.forEach(function (r, i) {
-      if (r[0] !== 0 || best) return;
+      if (r[0] !== 0 || (best && bestK === comps.length)) return;
       var lead = seeNorm(r[1]);
       if (!seeStarts(lead, comps[0])) return;
       // the lead term may itself contain commas ("Allergy, allergic"); use up the components it spells out
@@ -425,16 +426,20 @@
           }
         }
       }
-      if (ok) best = path;
+      // keep the lead term that gets furthest; a partial match still lands on the deepest entry found
+      if (!best || k > bestK) { best = path; bestK = k; }
     });
     if (!best) return null;
     var end = best[best.length - 1], show = best.slice(), hit = {};
     hit[end] = true;
     for (var j = end + 1; j < rows.length && rows[j][0] > rows[end][0]; j++) show.push(j);
-    return { show: show, hit: hit, n: show.length - best.length + 1, filtered: true, crumbs: best.map(function (i) { return rows[i][1].replace(/\s*\(.*$/, '').replace(/\s*[–-]\s*see\b.*$/, ''); }) };
+    return { show: show, hit: hit, n: show.length - best.length + 1, filtered: true, rest: comps.slice(bestK),
+      crumbs: best.map(function (i) { return rows[i][1].replace(/\s*\(.*$/, '').replace(/\s*[–-]\s*see\b.*$/, ''); }) };
   }
   function goBar(sel) {
-    return '<div class="gobar"><span>ไปตาม see: <b>' + sel.crumbs.map(esc).join(' › ') + '</b></span><button type="button" class="chip" data-act="goclear">แสดงทั้งอักษร</button></div>';
+    return '<div class="gobar"><span>ไปตาม see: <b>' + sel.crumbs.map(esc).join(' › ') + '</b>' +
+      (sel.rest && sel.rest.length ? '<br><small>ไม่พบคำย่อย “' + esc(sel.rest.join(', ')) + '” ใต้คำนี้ในดัชนี ให้ไล่ดูจากรายการด้านล่าง</small>' : '') +
+      '</span><button type="button" class="chip" data-act="goclear">แสดงทั้งอักษร</button></div>';
   }
   // where a reference leads: "Table of drugs…" → drugs table; "Neoplasm, <site>, <behaviour>" outside the
   // neoplasm table → that table at the site; otherwise the index section that is open now
@@ -453,7 +458,9 @@
     var re = /\bsee(?: also)? ([A-Z][^()–]*?)(?=\s*(?:\)|–|$))/g, out = '', last = 0, m;
     while ((m = re.exec(label))) {
       var a = m.index + m[0].length - m[1].length;
-      out += hl(label.slice(last, a), toks) + '<a href="#" class="seeref" data-act="seeref" data-f="' + esc(m[1]) + '">' + hl(m[1], toks) + '</a>';
+      out += hl(label.slice(last, a), toks) + m[1].split(/\s+and\s+(?=[A-Z])/).map(function (t) {
+        return '<a href="#" class="seeref" data-act="seeref" data-f="' + esc(t) + '">' + hl(t, toks) + '</a>';
+      }).join(' and ');
       last = a + m[1].length;
     }
     return out + hl(label.slice(last), toks);
