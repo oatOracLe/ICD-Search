@@ -8,7 +8,7 @@
   var NOTE_ORDER = ['see', 'inclusion', 'includes', 'excludes', 'code_first', 'use_additional', 'code_also', 'omit', 'note'];
   var NOTE_LABEL = { see: 'การแบ่งย่อย', inclusion: 'คำที่รวมอยู่ในรหัสนี้', includes: 'รวม (Includes)', excludes: 'ไม่รวม (Excludes)', code_first: 'ให้รหัสโรคพื้นฐานก่อน (Code first)', use_additional: 'ใช้รหัสเพิ่ม (Use additional code)', code_also: 'ลงรหัสเพิ่ม (Code also)', omit: 'ไม่ต้องลงรหัส (Omit code)', note: 'หมายเหตุ' };
   var MAX_RESULTS = 200;
-  var MAX_INDEX_ROWS = 600;
+  var MAX_ROWS = 500;
 
   var S = { sys: 'icd10', view: 'search', q: 'เบาหวาน', sel: { icd10: 'E11.9', icd9: null }, imode: 'alpha', sec: { icd10: 'I', icd9: 'I' }, letter: {}, idxF: '', openCh: {}, openBl: {}, pane: 'list', ready: false, gq: '', gsec: '' };
   // where every data file lives (relative to index.html)
@@ -301,10 +301,12 @@
     return raw.then(function (rows0) {
       IDXRAW[k] = rows0;
       var rows = applyIdxItems(clone(rows0), sys, sec, L, OV.effective());
-      var groups = [];
-      rows.forEach(function (e) { if (e[0] === 0 || !groups.length) groups.push([e]); else groups[groups.length - 1].push(e); });
-      groups.forEach(function (g) { g.low = g.map(function (e) { return (e[1] + ' ' + (e[2] || '')).toLowerCase(); }).join(' '); g.letter = L; });
-      IDXL[k] = groups; return groups;
+      var stack = [];
+      rows.forEach(function (e) {
+        stack = stack.slice(0, e[0]); stack[e[0]] = e[1] + (e[2] && e[2].indexOf('TABLE:') !== 0 ? ' ' + e[2] : '');
+        e.low = stack.join(' ').toLowerCase(); e.letter = L;
+      });
+      IDXL[k] = rows; return rows;
     });
   }
   var idxPending = false;
@@ -338,35 +340,58 @@
       }
       return '<p class="hint">' + (f ? 'กำลังโหลดดัชนีทั้งหมดเพื่อกรอง…' : 'กำลังโหลดดัชนีอักษร ' + esc(L) + '…') + '</p>';
     }
-    var groups = [];
-    want.forEach(function (x) { groups = groups.concat(IDXL[idxKey(sys, sec, x)]); });
-    var shown = f ? groups.filter(function (g) { return g.low.indexOf(f) !== -1; }) : groups;
-    if (!shown.length) return '<div class="empty"><b>ไม่พบคำในดัชนีที่ตรงกับ “' + esc(S.idxF) + '”</b><p>ลองพิมพ์คำนำภาษาอังกฤษ เช่น fever หรือ appendectomy</p></div>';
-    var d = DB[sys], toks = f ? [f] : [], rows = 0, cut = false, lastL = '';
-    var h = '<div class="list-head"><h2>' + esc(m.sections[sec]) + (f ? '' : ' · อักษร ' + esc(L)) + '</h2><span>' + shown.length.toLocaleString('th-TH') + ' คำนำ</span></div><div class="box">';
-    for (var i = 0; i < shown.length; i++) {
-      var g = shown[i];
-      if (rows > MAX_INDEX_ROWS) { cut = true; break; }
-      if (f && g.letter !== lastL) { h += '<div class="ix-head">' + esc(g.letter) + '</div>'; lastL = g.letter; }
-      for (var j = 0; j < g.length; j++) {
-        var e = g[j]; rows++;
-        var lvl = e[0], pad = 18 + Math.min(lvl, 6) * 22;
-        var label = (lvl ? new Array(lvl + 1).join('– ') : '') + e[1];
-        var cls = 'ix-row' + (lvl === 0 ? ' lead' : '');
-        if (e[2] && e[2].indexOf('TABLE:') === 0) {
-          h += '<button type="button" class="' + cls + '" style="padding-left: ' + pad + 'px" data-act="opentable" data-t="' + esc(e[2].slice(6)) + '"><span>' + hl(label, toks) + '</span><span class="code">ตาราง</span></button>';
-          continue;
-        }
-        var c1 = stripMark(e[2]), ok = c1 && d.byCode[c1];
-        var codes = (e[2] ? esc(e[2]) : '') + (e[3] ? ' ' + esc(e[3]) : '');
-        var tm = (e[4] ? '<span class="tmk" title="รหัสดัดแปลงของไทย">#</span>' : '') + (e.ov ? '<span class="tag tag-ov" title="เพิ่มโดยผู้ดูแลระบบ">เพิ่ม</span> ' : '');
-        if (ok) h += '<button type="button" class="' + cls + '" style="padding-left: ' + pad + 'px" data-act="sel" data-sys="' + sys + '" data-code="' + esc(c1) + '" aria-current="' + (S.sel[sys] === c1) + '"><span>' + tm + hl(label, toks) + '</span><span class="code">' + codes + '</span></button>';
-        else h += '<div class="' + cls + '" style="padding-left: ' + pad + 'px"><span>' + tm + hl(label, toks) + '</span>' + (codes ? '<span class="code na">' + codes + '</span>' : '') + '</div>';
+    var rows = [];
+    want.forEach(function (x) { rows = rows.concat(IDXL[idxKey(sys, sec, x)]); });
+    var toks = fToks(f), sel = treeSelect(rows, toks, function () { return true; });
+    if (!sel.show.length) return '<div class="empty"><b>ไม่พบคำในดัชนีที่ตรงกับ “' + esc(S.idxF) + '”</b><p>ลองพิมพ์คำภาษาอังกฤษ เช่น fever หรือ appendectomy พิมพ์หลายคำได้ เช่น fever typhoid</p></div>';
+    var d = DB[sys], lastL = '', cut = sel.show.length > MAX_ROWS;
+    var h = '<div class="list-head"><h2>' + esc(m.sections[sec]) + (f ? '' : ' · อักษร ' + esc(L)) + '</h2><span>' + countLabel(sel) + '</span></div><div class="box">';
+    sel.show.slice(0, MAX_ROWS).forEach(function (i) {
+      var e = rows[i];
+      if (f && e.letter !== lastL) { h += '<div class="ix-head">' + esc(e.letter) + '</div>'; lastL = e.letter; }
+      var lvl = e[0], pad = 18 + Math.min(lvl, 6) * 22;
+      var label = (lvl ? new Array(lvl + 1).join('– ') : '') + e[1];
+      var cls = 'ix-row' + (lvl === 0 ? ' lead' : '') + (sel.hit[i] ? ' hit' : '');
+      if (e[2] && e[2].indexOf('TABLE:') === 0) {
+        h += '<button type="button" class="' + cls + '" style="padding-left: ' + pad + 'px" data-act="opentable" data-t="' + esc(e[2].slice(6)) + '"><span>' + hl(label, toks) + '</span><span class="code">ตาราง</span></button>';
+        return;
       }
-    }
+      var c1 = stripMark(e[2]), ok = c1 && d.byCode[c1];
+      var codes = (e[2] ? esc(e[2]) : '') + (e[3] ? ' ' + esc(e[3]) : '');
+      var tm = (e[4] ? '<span class="tmk" title="รหัสดัดแปลงของไทย">#</span>' : '') + (e.ov ? '<span class="tag tag-ov" title="เพิ่มโดยผู้ดูแลระบบ">เพิ่ม</span> ' : '');
+      if (ok) h += '<button type="button" class="' + cls + '" style="padding-left: ' + pad + 'px" data-act="sel" data-sys="' + sys + '" data-code="' + esc(c1) + '" aria-current="' + (S.sel[sys] === c1) + '"><span>' + tm + hl(label, toks) + '</span><span class="code">' + codes + '</span></button>';
+      else h += '<div class="' + cls + '" style="padding-left: ' + pad + 'px"><span>' + tm + seeLinks(label, toks) + '</span>' + (codes ? '<span class="code na">' + codes + '</span>' : '') + '</div>';
+    });
     h += '</div>';
-    if (cut) h += '<p class="more">แสดงบางส่วน พิมพ์คำในช่องกรองให้เจาะจงขึ้น</p>';
+    if (cut) h += '<p class="more">แสดง ' + MAX_ROWS + ' บรรทัดแรก พิมพ์คำในช่องกรองให้เจาะจงขึ้น</p>';
     return h;
+  }
+
+  // ---------- shared by the alphabetical index and the index tables ----------
+  // filter words: every word must appear in the entry or one of its parent terms
+  function fToks(f) { return String(f || '').toLowerCase().split(/[\s,()]+/).filter(Boolean); }
+  function tokHit(low, toks) { for (var i = 0; i < toks.length; i++) if (low.indexOf(toks[i]) === -1) return false; return true; }
+  // rows: [level, text, ...] with .low = text of the row and its parents. Returns the rows to show
+  // (matches plus their parent terms, or the rows passing `browse` when there is no filter) and which rows matched.
+  function treeSelect(rows, toks, browse) {
+    var show = [], hit = {}, seen = {}, anc = [], n = 0;
+    rows.forEach(function (r, i) {
+      anc = anc.slice(0, r[0]); anc[r[0]] = i;
+      var on = toks.length ? tokHit(r.low, toks) : browse(r);
+      if (!on) return;
+      if (toks.length) { n++; var own = String(r[1]).toLowerCase(); if (toks.some(function (t) { return own.indexOf(t) !== -1; })) hit[i] = true; }
+      anc.slice(0, r[0]).forEach(function (j) { if (j !== undefined && !seen[j]) { seen[j] = 1; show.push(j); } });
+      if (!seen[i]) { seen[i] = 1; show.push(i); }
+    });
+    show.sort(function (a, b) { return a - b; });
+    return { show: show, hit: hit, n: n, filtered: toks.length > 0 };
+  }
+  function countLabel(sel) { return sel.filtered ? 'ตรง ' + sel.n.toLocaleString('th-TH') + ' รายการ' : sel.show.length.toLocaleString('th-TH') + ' รายการ'; }
+  // "– see Allergy, drug" / "(see also Dermatitis)" become links that filter the current index or table
+  function seeLinks(label, toks) {
+    var m = /^(.*?\bsee(?: also)? )([A-Z][^()]*?)(\)?)$/.exec(label);
+    if (!m) return hl(label, toks);
+    return hl(m[1], toks) + '<a href="#" class="seeref" data-act="seeref" data-f="' + esc(m[2]) + '">' + hl(m[2], toks) + '</a>' + esc(m[3]);
   }
 
   // ---------- ICD-O morphology of neoplasms ----------
@@ -487,14 +512,10 @@
     $('letters').innerHTML = lettersOn ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(function (ch) {
       return '<button type="button" data-act="letter" data-l="' + ch + '" aria-pressed="' + (!f && L === ch) + '"' + (avail[ch] ? '' : ' disabled') + '>' + ch + '</button>';
     }).join('') : '';
-    // which rows to show: matches plus their ancestors, or one letter
-    var show = [], anc = [];
-    rows.forEach(function (r, i) {
-      anc = anc.slice(0, r[0]); anc[r[0]] = i;
-      var on = f ? r.low.indexOf(f) !== -1 : (!lettersOn || r.letter === L || (name === 'neoplasm' && r[0] === 0));
-      if (on) { anc.slice(0, r[0]).forEach(function (j) { if (j !== undefined && show.indexOf(j) === -1) show.push(j); }); show.push(i); }
-    });
-    show.sort(function (a, b) { return a - b; });
+    // which rows to show: matches plus their parent terms, or one letter (same rules as the alphabetical index)
+    var toks = fToks(f);
+    var sel = treeSelect(rows, toks, function (r) { return !lettersOn || r.letter === L || (name === 'neoplasm' && r[0] === 0); });
+    var show = sel.show;
     var intro = '';
     if (name === 'drugs') intro = '<div class="tbl-intro"><p><b>พิษจากยาหรือสารเคมี:</b> ลงรหัสพิษ (T36–T65) เป็นการวินิจฉัย คู่กับรหัสสาเหตุภายนอกตามเจตนา คือ อุบัติเหตุ (X40–X49) ทำร้ายตนเอง (X60–X69) หรือไม่ทราบเจตนา (Y10–Y19) และลงรหัสอาการที่เกิดขึ้นเพิ่ม</p><p><b>ผลไม่พึงประสงค์จากยาที่ใช้ถูกต้องตามขนาด:</b> ลงรหัสอาการหรือภาวะที่เกิด เช่น ผื่น คู่กับรหัสในคอลัมน์สุดท้าย (Y40–Y59) ไม่ใช้รหัส T</p><p>รหัส X40–X49 และ X60–X69 ต้องเติมหลักสถานที่เกิดเหตุ (.-)</p></div>';
     if (name === 'neoplasm') intro = '<div class="tbl-intro"><p>เลือกคอลัมน์ตามพฤติกรรมของเนื้องอกที่ระบุในผลชิ้นเนื้อหรือบันทึกแพทย์ ถ้าไม่ระบุ ให้ดูชนิดทางพยาธิวิทยาในดัชนีก่อนว่าให้ใช้คอลัมน์ใด</p><details><summary>หมายเหตุของตาราง (' + T.notes.length + ')</summary>' + T.notes.map(function (n) { return '<p>' + esc(n) + '</p>'; }).join('') + '</details></div>';
@@ -504,15 +525,14 @@
       intro = '<div class="tbl-intro"><p>' + esc(T.note) + ' เลือกชนิดของการแท้งก่อน แล้วรหัสในตารางจะเติมให้ครบ</p></div>' +
         '<div class="chips" style="margin-bottom: 12px"><span>ชนิดการแท้ง:</span>' + T.types.map(function (t) { return '<button type="button" class="chip" data-act="abtype" data-c="' + t.c + '" aria-pressed="' + (t.c === abType) + '">' + esc(t.c + ' ' + t.th) + '</button>'; }).join('') + '</div>';
     }
-    if (!show.length) return intro + '<div class="empty"><b>ไม่พบรายการที่ตรงกับ “' + esc(S.idxF) + '”</b><p>ลองพิมพ์ชื่อสามัญทางยาหรือชื่อตำแหน่งภาษาอังกฤษ</p></div>';
-    var ncol = T.cols.length, cut = show.length > 500;
-    var h = intro + '<div class="list-head"><h2>' + esc(T.title) + (f ? '' : lettersOn ? ' · อักษร ' + esc(L) : '') + '</h2><span>' + show.length.toLocaleString('th-TH') + ' แถว</span></div>';
+    if (!show.length) return intro + '<div class="empty"><b>ไม่พบรายการที่ตรงกับ “' + esc(S.idxF) + '”</b><p>ลองพิมพ์ชื่อสามัญทางยาหรือชื่อตำแหน่งภาษาอังกฤษ พิมพ์หลายคำได้ เช่น lung lower lobe</p></div>';
+    var ncol = T.cols.length, cut = show.length > MAX_ROWS;
+    var h = intro + '<div class="list-head"><h2>' + esc(T.title) + (f ? '' : lettersOn ? ' · อักษร ' + esc(L) : '') + '</h2><span>' + countLabel(sel) + '</span></div>';
     h += '<div class="tbl-wrap"><table class="itbl"><thead><tr><th scope="col">' + (name === 'drugs' ? 'สาร' : name === 'neoplasm' ? 'ตำแหน่ง' : name === 'transport' ? 'ผู้บาดเจ็บ / คู่กรณี →' : 'ภาวะแทรกซ้อน') + '</th>' +
       T.cols.map(function (c) { return '<th scope="col">' + esc(c.th) + '<small>' + esc(c.en) + (c.range ? ' · ' + esc(c.range) : '') + '</small></th>'; }).join('') + '</tr></thead><tbody>';
-    show.slice(0, 500).forEach(function (i) {
+    show.slice(0, MAX_ROWS).forEach(function (i) {
       var r = rows[i];
-      var hit = f && r.low.indexOf(f) !== -1 && r[1].toLowerCase().indexOf(f) !== -1;
-      h += '<tr class="' + (r[0] === 0 ? 'lead' : '') + (hit ? ' hit' : '') + '"><td class="term" style="padding-left: ' + (10 + r[0] * 18) + 'px">' + (r[2 + ncol] ? '<span class="tmk" title="ดัดแปลงสำหรับไทย">#</span>' : '') + (r.ov ? '<span class="tag tag-ov">เพิ่ม</span> ' : '') + (r[0] ? '– ' : '') + hl(r[1], f ? [f] : []) + '</td>';
+      h += '<tr class="' + (r[0] === 0 ? 'lead' : '') + (sel.hit[i] ? ' hit' : '') + '"><td class="term" style="padding-left: ' + (10 + r[0] * 18) + 'px">' + (r[2 + ncol] ? '<span class="tmk" title="ดัดแปลงสำหรับไทย">#</span>' : '') + (r.ov ? '<span class="tag tag-ov">เพิ่ม</span> ' : '') + (r[0] ? '– ' : '') + seeLinks(r[1], toks) + '</td>';
       for (var k = 0; k < ncol; k++) {
         var v = r[2 + k], code;
         if (name === 'abortion') code = v ? (k === 2 ? 'O08' : abType) + v : '';
@@ -523,7 +543,7 @@
       if (r[3 + ncol]) h += '<tr class="rnote"><td colspan="' + (ncol + 1) + '">' + esc(r[3 + ncol]) + '</td></tr>';
     });
     h += '</tbody></table></div>';
-    if (cut) h += '<p class="more">แสดง 500 แถวแรก พิมพ์คำในช่องกรองให้เจาะจงขึ้น</p>';
+    if (cut) h += '<p class="more">แสดง ' + MAX_ROWS + ' บรรทัดแรก พิมพ์คำในช่องกรองให้เจาะจงขึ้น</p>';
     return h;
   }
   // where a code appears in the tables (shown on the code's detail card)
@@ -806,7 +826,7 @@
     $('layout').hidden = v === 'guide' || v === 'admin';
     $('guide').hidden = v !== 'guide';
     $('layout').classList.toggle('show-detail', S.pane === 'detail');
-    $('layout').classList.toggle('wide', v === 'index' && S.imode === 'alpha' && S.sys === 'icd10' && String(S.sec.icd10).indexOf('T:') === 0);
+    $('layout').classList.toggle('tblmode', v === 'index' && S.imode === 'alpha' && S.sys === 'icd10' && String(S.sec.icd10).indexOf('T:') === 0);
     $('qLabel').textContent = SYS[S.sys].label;
     $('q').placeholder = SYS[S.sys].ph;
     if ($('q').value !== S.q) $('q').value = S.q;
@@ -886,10 +906,13 @@
       S.abbrPick = S.abbrPick || {};
       if (ai === '') delete S.abbrPick[ak]; else S.abbrPick[ak] = +ai;
       renderList();
+    } else if (act === 'seeref') {
+      ev.preventDefault();
+      S.idxF = b.getAttribute('data-f'); $('idxf').value = S.idxF; renderList(); window.scrollTo(0, 0);
     } else if (act === 'abtype') {
       S.abType = b.getAttribute('data-c'); renderList();
     } else if (act === 'isec') {
-      S.sec[S.sys] = b.getAttribute('data-s'); renderList();
+      S.sec[S.sys] = b.getAttribute('data-s'); renderAll();
     } else if (act === 'imode') {
       S.imode = b.getAttribute('data-m');
       if (S.imode === 'tree') { var d = DB[S.sys], x = S.sel[S.sys] && d.byCode[S.sel[S.sys]]; if (x && d.blockMap[x.b]) { S.openCh[S.sys + d.blockMap[x.b].ch] = true; S.openBl[S.sys + x.b] = true; } }
