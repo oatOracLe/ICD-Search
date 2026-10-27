@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ค้นรหัส ICD</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#search" data-act="view" data-view="search">
+      <span class="brand-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4H5v16h3"/><path d="M16 4h3v16h-3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span>
+      <span><b>ค้นรหัส ICD</b><small>ICD-10 WHO 2016 การวินิจฉัย · ICD-9-CM หัตถการ</small></span>
+    </a>
+    <nav class="nav" aria-label="เมนูหลัก">
+      <button type="button" data-act="view" data-view="search">ค้นหา</button>
+      <button type="button" data-act="view" data-view="index">ดัชนี</button>
+      <button type="button" data-act="view" data-view="guide">แนวทาง</button>
+      <button type="button" data-act="view" data-view="favorites">รายการโปรด<span class="count" id="favCount"></span></button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap banner" id="banner" hidden><p id="bannerText"></p></div>
+
+<main>
+  <div class="wrap tools" id="tools">
+    <div class="seg" id="sysSeg" role="group" aria-label="ระบบรหัส">
+      <button type="button" data-act="sys" data-sys="icd10" aria-pressed="true">ICD-10 <span>· การวินิจฉัยโรค</span></button>
+      <button type="button" data-act="sys" data-sys="icd9" aria-pressed="false">ICD-9-CM <span>· หัตถการ</span></button>
+    </div>
+
+    <div id="tbSearch">
+      <div class="searchbox">
+        <label for="q" id="qLabel">ค้นหาโรคหรือรหัสวินิจฉัย</label>
+        <div class="field">
+          <svg class="lead" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="พิมพ์รหัส ชื่อภาษาไทยหรืออังกฤษ">
+          <button type="button" class="clear" id="qClear" aria-label="ล้างคำค้น" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        </div>
+      </div>
+      <div class="chips" id="chips" style="margin-top: 12px"></div>
+      <p class="hint" style="margin: 10px 0 0" id="qHint">ค้นได้ทั้งรหัสแบบมีหรือไม่มีจุด (E11.9 หรือ E119) ชื่อโรค คำในดัชนี และคำย่อ (DM, HT, C/S, ORIF) · กด <kbd>/</kbd> เพื่อไปที่ช่องค้นหา · ใช้ลูกศรขึ้นลงเลือกผลลัพธ์</p>
+    </div>
+
+    <div id="tbIndex" hidden>
+      <div class="idx-head">
+        <div>
+          <h1 id="idxTitle">ดัชนีโรค ICD-10</h1>
+          <p>ไล่หาจากคำนำ (lead term) ภาษาอังกฤษ แล้วตามคำขยายลงไปจนได้รหัส หรือเปิดดูตามหมวดของบัญชีจำแนก ตรวจรหัสที่ได้ซ้ำกับรายละเอียดก่อนลงรหัสทุกครั้ง</p>
+        </div>
+        <div class="seg" role="group" aria-label="รูปแบบดัชนี" id="modeSeg">
+          <button type="button" data-act="imode" data-m="alpha" aria-pressed="true">ตามตัวอักษร</button>
+          <button type="button" data-act="imode" data-m="tree" aria-pressed="false">ตามหมวด</button>
+        </div>
+      </div>
+      <div class="chips" id="secChips" style="margin-top: 14px"></div>
+      <div class="idx-ctrl" id="alphaCtrl" style="margin-top: 12px">
+        <div class="field">
+          <label for="idxf" class="sr">กรองคำในดัชนี</label>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          <input id="idxf" type="search" autocomplete="off" spellcheck="false" placeholder="กรองคำทั้งดัชนี เช่น diabetes">
+        </div>
+        <div class="letters" id="letters" role="group" aria-label="เลือกตัวอักษร"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="layout" id="layout">
+      <section class="pane list-pane" id="list" aria-live="polite"><p class="hint">กำลังโหลดข้อมูลรหัส…</p></section>
+      <aside class="pane detail-pane" id="detail" aria-label="รายละเอียดรหัส"></aside>
+    </div>
+  </div>
+
+  <section class="wrap guide-page" id="guide" hidden>
+    <h1>แนวทางการให้รหัส</h1>
+    <p>สรุปหลักการสำคัญสำหรับการให้รหัสโรค (ICD-10) และรหัสหัตถการ (ICD-9-CM) พร้อมเกณฑ์ตรวจสอบเวชระเบียนของ สปสช. ปี 2562 ใช้ประกอบการทำงานคู่กับคู่มือฉบับเต็ม</p>
+    <div id="unitNotes" hidden></div>
+    <div class="gcards">
+      <article class="gcard" id="g-steps">
+        <h2>ขั้นตอนการให้รหัส</h2>
+        <ol>
+          <li><strong>อ่านเวชระเบียนให้ครบ</strong> ทั้งสรุปการจำหน่าย บันทึกแพทย์ ผลตรวจ และบันทึกการผ่าตัด</li>
+          <li><strong>หาคำนำ (lead term)</strong> ในดัชนีตามตัวอักษร โดยใช้คำที่บอกภาวะ ไม่ใช่ตำแหน่งอวัยวะ</li>
+          <li><strong>ตามคำขยาย</strong> ลงไปจนได้รหัสที่ตรงกับเวชระเบียนที่สุด</li>
+          <li><strong>ตรวจซ้ำในบัญชีจำแนก (Tabular list)</strong> อ่าน Includes, Excludes และหมายเหตุของบท กลุ่ม และรหัส</li>
+          <li><strong>ให้รหัสครบทุกหลัก</strong> และทำตามคำสั่ง เช่น Use additional code หรือ Code also</li>
+        </ol>
+        <p class="gwarn">ห้ามให้รหัสจากดัชนีโดยไม่ตรวจซ้ำในบัญชีจำแนก</p>
+      </article>
+      <article class="gcard" id="g-types">
+        <h2>ประเภทการวินิจฉัย</h2>
+        <dl>
+          <dt>1</dt><dd><strong>โรคหลัก (Principal diagnosis)</strong> ภาวะที่วินิจฉัยได้เมื่อสิ้นสุดการรักษาว่าเป็นเหตุหลักที่ผู้ป่วยต้องได้รับการรักษาหรือตรวจ</dd>
+          <dt>2</dt><dd><strong>โรคร่วม (Comorbidity)</strong> มีอยู่ก่อนหรือพร้อมกับโรคหลัก</dd>
+          <dt>3</dt><dd><strong>โรคแทรก (Complication)</strong> เกิดขึ้นภายหลังระหว่างการรักษา</dd>
+          <dt>4</dt><dd><strong>โรคอื่น (Other)</strong> ภาวะอื่นที่ไม่เข้า 3 ประเภทแรก</dd>
+          <dt>5</dt><dd><strong>สาเหตุภายนอก (External cause)</strong> รหัส V01–Y98 ใช้คู่กับรหัสการบาดเจ็บ</dd>
+        </dl>
+        <p class="gnote">ถ้ามีหลายภาวะที่อาจเป็นโรคหลัก ให้เลือกภาวะที่ใช้ทรัพยากรในการรักษามากที่สุด</p>
+      </article>
+      <article class="gcard" id="g-symbols">
+        <h2>สัญลักษณ์และป้ายในเว็บนี้</h2>
+        <p class="gnote">เว็บนี้ใช้ ICD-10 ขององค์การอนามัยโลก (WHO) ฉบับ 2016 เป็นหลัก ชื่อภาษาไทยมาจาก ICD-10-TM 2009</p>
+        <dl>
+          <dt>ไม่มีใน WHO</dt><dd>รหัสที่มีใน ICD-10-TM 2009 แต่ WHO ฉบับ 2016 ยกเลิกหรือย้ายไปรหัสอื่น หน้ารายละเอียดจะบอกรหัสที่ใช้แทน</dd>
+          <dt>TM</dt><dd>รหัสที่ประเทศไทยเพิ่มเอง (ในเล่มพิมพ์ด้วย #) ไม่มีใน ICD-10 ของ WHO</dd>
+          <dt>@</dt><dd>รหัสที่ ICD-10-TM ให้งดใช้ ห้ามใช้ลงรหัส</dd>
+          <dt>† / *</dt><dd>รหัสสาเหตุ (†) ต้องใช้คู่กับรหัสอาการแสดง (*) โดยเรียงรหัส † ก่อน</dd>
+          <dt>.-</dt><dd>รหัสนี้มีหลักที่ 4 ต้องเลือกหลักที่ 4 ให้ครบ</dd>
+          <dt>NOS</dt><dd>ไม่ได้ระบุรายละเอียด (not otherwise specified)</dd>
+          <dt>NEC</dt><dd>ไม่ได้จำแนกไว้ที่อื่น (not elsewhere classified)</dd>
+          <dt>( )</dt><dd>คำขยายที่มีหรือไม่มีก็ไม่เปลี่ยนรหัส</dd>
+          <dt>[ ]</dt><dd>คำพ้อง คำอธิบายเพิ่ม หรือคำย่อ</dd>
+          <dt>Excludes</dt><dd>ภาวะที่ต้องไปใช้รหัสอื่นตามที่ระบุ</dd>
+          <dt>Use additional code</dt><dd>ใช้รหัสเพิ่มเพื่อให้ข้อมูลครบ เช่น เชื้อก่อโรค</dd>
+        </dl>
+      </article>
+      <article class="gcard" id="g-icd10">
+        <span class="pill t10">ICD-10</span>
+        <h2>กฎสำคัญในการให้รหัสโรค</h2>
+        <ul>
+          <li><strong>ใช้รหัสให้ละเอียดที่สุด</strong> รหัสที่ยังมีหลักถัดไปเป็นรหัสที่ยังใช้ไม่ได้ ต้องลงถึงหลักสุดท้าย รวมถึงหลักที่ 5 ของ TM</li>
+          <li><strong>รหัสอาการ (บท R)</strong> ใช้เมื่อยังไม่มีการวินิจฉัยที่แน่ชัด ไม่ใช้เมื่ออาการนั้นเป็นส่วนหนึ่งของโรคที่วินิจฉัยได้แล้ว</li>
+          <li><strong>บท XV (O00–O99) มาก่อนบทอื่น</strong> ภาวะที่เกิดขณะตั้งครรภ์ คลอด หรือหลังคลอด ให้ใช้รหัสบท O เป็นหลัก</li>
+          <li><strong>การบาดเจ็บ</strong> ลงรหัส S00–T98 คู่กับสาเหตุภายนอก V01–Y98 และระบุสถานที่เกิดเหตุสำหรับ W00–Y34</li>
+          <li><strong>ระบบ † / *</strong> ลงรหัสทั้งคู่ เช่น E11.2† กับ N08.3*</li>
+        </ul>
+      </article>
+      <article class="gcard" id="g-icd9">
+        <span class="pill t9">ICD-9-CM</span>
+        <h2>กฎสำคัญในการให้รหัสหัตถการ</h2>
+        <ul>
+          <li><strong>หัตถการหลัก</strong> คือหัตถการที่ทำเพื่อรักษาโรคหลัก หรือหัตถการที่ซับซ้อนที่สุดเมื่อมีหลายรายการ</li>
+          <li><strong>OR procedure</strong> (กรอบสีทึบในเล่ม) และ <strong>Non-OR ที่มีผลต่อ ThaiDRG</strong> (กรอบเส้น) มีผลต่อการจัดกลุ่ม DRG ต้องลงให้ครบ</li>
+          <li><strong>แยกวิธีผ่าตัด</strong> แบบเปิดกับผ่านกล้องเป็นรหัสต่างกัน เช่น 47.09 กับ 47.01</li>
+          <li><strong>ทำตาม Code also / Omit code</strong> ลงรหัสหัตถการที่ทำร่วมกัน และไม่ลงรหัสส่วนที่เป็นขั้นตอนของหัตถการหลัก</li>
+        </ul>
+      </article>
+    </div>
+
+    <section class="nhso-wrap" aria-labelledby="nhsoTitle">
+      <h2 id="nhsoTitle">เกณฑ์ตรวจสอบเวชระเบียน สปสช. 2562</h2>
+      <p>หลักฐานที่ต้องมีในเวชระเบียนเพื่อสนับสนุนการสรุปและให้รหัส แยกตามกลุ่มโรคและหัตถการ จากคู่มือแนวทางปฏิบัติในการตรวจสอบเอกสารหลักฐานการเรียกเก็บค่าใช้จ่ายเพื่อบริการสาธารณสุข ปี 2562</p>
+      <div class="nhso-tools">
+        <div class="field">
+          <label for="gq" class="sr">ค้นหาหัวข้อ</label>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="gq" type="search" autocomplete="off" placeholder="ค้นหัวข้อหรือรหัส เช่น sepsis, E11, 74.1">
+        </div>
+        <span class="hint" id="nhsoCount"></span>
+      </div>
+      <div class="chips" id="nhsoSecs"></div>
+      <div id="nhsoList" style="margin-top: 14px"><p class="hint">กำลังโหลด…</p></div>
+    </section>
+    <p class="gref">อ้างอิง: ICD-10-TM 2009 Tabular List of Diseases และ WHO ICD-10 Volume 2, ICD-9-CM FY15, คู่มือตรวจสอบเวชระเบียน สปสช. ปี 2562 และ ICD-10-TM Standard Coding Guidelines ตามที่คู่มือ สปสช. อ้างถึง</p>
+  </section>
+  <section class="wrap admin-page" id="adminView" hidden aria-label="หลังบ้านผู้พัฒนา"></section>
+</main>
+
+<footer class="wrap footer" id="footer"></footer>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+// ICD Code Search — database schema
+// วางไฟล์นี้ใน https://dbdiagram.io (Import → DBML หรือวางในช่อง editor)
+// ออกแบบสำหรับ PostgreSQL: ใช้ pg_trgm สำหรับค้นหาข้อความไทย/อังกฤษแบบบางส่วน
+
+Project icd_search {
+  database_type: 'PostgreSQL'
+  Note: 'ระบบค้นหารหัส ICD-10-TM (การวินิจฉัย) และ ICD-9-CM (หัตถการ) พร้อมดัชนีตามตัวอักษรและแนวทางการให้รหัส'
+}
+
+// ---------- Enums ----------
+
+Enum code_kind {
+  diagnosis  [note: 'ICD-10 / ICD-10-TM']
+  procedure  [note: 'ICD-9-CM Volume 3']
+}
+
+Enum dagger_asterisk {
+  none
+  dagger     [note: '† รหัสโรคพื้นฐาน']
+  asterisk   [note: '* รหัสอาการแสดงที่อวัยวะ']
+}
+
+Enum code_status {
+  active
+  deprecated
+}
+
+Enum note_type {
+  includes
+  inclusion_term
+  excludes
+  use_additional_code
+  code_first
+  code_also      [note: 'ICD-9-CM']
+  omit_code      [note: 'ICD-9-CM']
+  note
+}
+
+Enum sex_limit {
+  any
+  male_only
+  female_only
+}
+
+Enum synonym_lang {
+  th
+  en
+  abbr           [note: 'คำย่อ เช่น DM, HTN, C-section']
+}
+
+Enum map_type {
+  related        [note: 'รหัสที่มักใช้คู่กัน เช่น K37 ↔ 47.0x']
+  equivalent
+  replaced_by    [note: 'รหัสเดิม → รหัสใหม่ เมื่อเปลี่ยนฉบับ']
+}
+
+Enum user_role {
+  coder
+  auditor
+  admin
+}
+
+Enum import_status {
+  uploaded
+  validating
+  failed
+  validated
+  published
+}
+
+// ---------- บัญชีจำแนก ----------
+
+Table code_systems {
+  id          smallserial [pk]
+  code        varchar(16) [unique, not null, note: 'ICD10TM, ICD9CM']
+  name        varchar(120) [not null]
+  kind        code_kind [not null]
+}
+
+Table code_versions {
+  id              serial [pk]
+  system_id       smallint [not null, ref: > code_systems.id]
+  label           varchar(40) [not null, note: 'เช่น 2016, 2023']
+  effective_from  date
+  effective_to    date
+  is_current      boolean [not null, default: false]
+  source          text [note: 'แหล่งที่มาของไฟล์ฉบับนี้']
+  imported_at     timestamptz [default: `now()`]
+
+  indexes {
+    (system_id, label) [unique]
+    (system_id, is_current)
+  }
+  Note: 'มีได้หนึ่งฉบับที่ is_current = true ต่อระบบ (บังคับด้วย partial unique index)'
+}
+
+Table chapters {
+  id          serial [pk]
+  version_id  int [not null, ref: > code_versions.id]
+  chapter_no  varchar(8) [not null, note: 'IV, XV หรือ 9, 13']
+  code_range  varchar(16) [not null, note: 'E00–E90, 42–54']
+  title_en    text [not null]
+  title_th    text
+  sort_order  int [not null]
+
+  indexes {
+    (version_id, chapter_no) [unique]
+  }
+}
+
+Table blocks {
+  id          serial [pk]
+  chapter_id  int [not null, ref: > chapters.id]
+  code_range  varchar(16) [not null, note: 'E10–E14, 47']
+  title_en    text [not null]
+  title_th    text
+  sort_order  int [not null]
+}
+
+Table codes {
+  id               bigserial [pk]
+  version_id       int [not null, ref: > code_versions.id]
+  block_id         int [not null, ref: > blocks.id]
+  parent_id        bigint [ref: > codes.id, note: 'E11.9 → E11']
+  code             varchar(10) [not null, note: 'E11.9, 47.09']
+  code_nodot       varchar(10) [not null, note: 'E119 — ใช้ค้นหาแบบไม่มีจุด']
+  title_en         text [not null]
+  title_th         text
+  is_leaf          boolean [not null, note: 'true = รหัสสมบูรณ์ ใช้ลงรหัสได้']
+  dagger_asterisk  dagger_asterisk [not null, default: 'none']
+  sex_limit        sex_limit [not null, default: 'any']
+  age_min_days     int
+  age_max_days     int
+  status           code_status [not null, default: 'active']
+
+  indexes {
+    (version_id, code) [unique]
+    (version_id, code_nodot)
+    parent_id
+    block_id
+  }
+  Note: 'สร้าง GIN index (pg_trgm) บน title_en, title_th เพื่อค้นหาบางส่วน'
+}
+
+Table code_notes {
+  id          bigserial [pk]
+  code_id     bigint [not null, ref: > codes.id, note: 'แนบได้ทั้งระดับรหัส หรือรหัสแม่ที่ใช้แทนกลุ่ม']
+  note_type   note_type [not null]
+  text_en     text [not null]
+  text_th     text
+  ref_range   varchar(32) [note: 'รหัสที่อ้างถึง เช่น E12.-, 47.11–47.19']
+  sort_order  int [not null, default: 0]
+
+  indexes {
+    (code_id, note_type)
+  }
+}
+
+// ---------- ข้อมูลช่วยค้นหา ----------
+
+Table index_terms {
+  id          bigserial [pk]
+  version_id  int [not null, ref: > code_versions.id]
+  parent_id   bigint [ref: > index_terms.id, note: 'คำขยายชี้ไปที่คำนำหรือคำขยายระดับบน']
+  level       smallint [not null, note: '0 = คำนำ (lead term), 1+ = คำขยาย']
+  term        text [not null, note: 'Diabetes, diabetic (mellitus)']
+  code_id     bigint [ref: > codes.id, note: 'null = หัวข้อที่ไม่มีรหัสของตัวเอง']
+  see_ref     text [note: 'see ... / see also ...']
+  sort_key    text [not null, note: 'ใช้เรียงตามตัวอักษร']
+
+  indexes {
+    (version_id, sort_key)
+    parent_id
+    code_id
+  }
+}
+
+Table synonyms {
+  id       bigserial [pk]
+  code_id  bigint [not null, ref: > codes.id]
+  term     text [not null, note: 'เบาหวาน, DM, ผ่าคลอด']
+  lang     synonym_lang [not null]
+
+  indexes {
+    (code_id, term) [unique]
+  }
+}
+
+Table code_mappings {
+  id              bigserial [pk]
+  source_code_id  bigint [not null, ref: > codes.id]
+  target_code_id  bigint [not null, ref: > codes.id]
+  map_type        map_type [not null]
+
+  indexes {
+    (source_code_id, target_code_id, map_type) [unique]
+  }
+}
+
+// ---------- แนวทางการให้รหัส ----------
+
+Table guidelines {
+  id          serial [pk]
+  system_id   smallint [ref: > code_systems.id, note: 'null = ใช้ได้ทั้งสองระบบ']
+  slug        varchar(40) [unique, not null, note: 'dagger, preg, code-also-iol']
+  section     varchar(60) [not null, note: 'ขั้นตอน, ประเภทการวินิจฉัย, สัญลักษณ์, กฎเฉพาะ']
+  title       text [not null]
+  body_md     text [not null]
+  source_ref  text [note: 'อ้างอิงคู่มือและหน้า']
+  updated_at  timestamptz [default: `now()`]
+}
+
+Table code_guidelines {
+  code_id       bigint [not null, ref: > codes.id]
+  guideline_id  int [not null, ref: > guidelines.id]
+  sort_order    int [not null, default: 0]
+
+  indexes {
+    (code_id, guideline_id) [pk]
+  }
+}
+
+// ---------- ผู้ใช้ ----------
+
+Table users {
+  id          bigserial [pk]
+  name        varchar(120) [not null]
+  email       varchar(200) [unique, not null]
+  role        user_role [not null, default: 'coder']
+  created_at  timestamptz [default: `now()`]
+}
+
+Table favorites {
+  user_id     bigint [not null, ref: > users.id]
+  code_id     bigint [not null, ref: > codes.id]
+  created_at  timestamptz [default: `now()`]
+
+  indexes {
+    (user_id, code_id) [pk]
+  }
+}
+
+Table search_logs {
+  id                bigserial [pk]
+  user_id           bigint [ref: > users.id]
+  system_id         smallint [not null, ref: > code_systems.id]
+  mode              varchar(10) [not null, note: 'search | index']
+  query             text
+  result_count      int
+  selected_code_id  bigint [ref: > codes.id]
+  created_at        timestamptz [not null, default: `now()`]
+
+  indexes {
+    (user_id, created_at)
+  }
+}
+
+// ---------- นำเข้าฉบับใหม่ ----------
+
+Table import_jobs {
+  id           bigserial [pk]
+  system_id    smallint [not null, ref: > code_systems.id]
+  version_id   int [ref: > code_versions.id, note: 'สร้างเมื่อผ่านการตรวจ']
+  file_name    text [not null]
+  status       import_status [not null, default: 'uploaded']
+  error_count  int [not null, default: 0]
+  report       jsonb [note: 'รหัสซ้ำ ลำดับชั้นขาด ดัชนีชี้รหัสที่ไม่มี']
+  created_by   bigint [not null, ref: > users.id]
+  created_at   timestamptz [default: `now()`]
+  published_at timestamptz
+}

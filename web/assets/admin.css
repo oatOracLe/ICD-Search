@@ -1,0 +1,44 @@
+/* Developer backend (index.html#admin) — uses the colour tokens from app.css */
+.admin-page { padding-top: 20px; padding-bottom: 40px; }
+.ahead { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.ahead h1 { font-size: 24px; margin: 0 0 4px; }
+.amode { margin: 0; color: var(--ink-2); font-size: 14px; }
+.astat { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink-2); }
+.astat b { font-size: 20px; color: var(--ink); }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--surface-2); border: 1px solid var(--line); margin-right: 6px; }
+.pill-online { background: var(--ok-bg); color: var(--ok-fg); border-color: transparent; }
+.pill-local { background: var(--info-bg); color: var(--info-fg); border-color: transparent; }
+.awarn { margin: 12px 0 0; padding: 10px 12px; border-radius: 10px; background: var(--warn-bg); color: var(--warn-fg); font-size: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.ahint { color: var(--muted); font-size: 13px; margin: 10px 0; }
+.atabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); margin: 14px 0 16px; }
+.atabs button { border: 0; background: none; padding: 10px 14px; font: inherit; font-size: 14px; color: var(--ink-2); border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; }
+.atabs button[aria-selected="true"] { color: var(--acc); border-bottom-color: var(--acc); font-weight: 600; }
+.atabs .cnt { font-size: 11px; background: var(--surface-2); border-radius: 999px; padding: 1px 7px; margin-left: 4px; }
+.acols { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 899px) { .acols { grid-template-columns: 1fr; } }
+.aform, .alist { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.aform h2 { font-size: 18px; margin: 0 0 12px; }
+.alist h3, .aform h3 { font-size: 15px; margin: 16px 0 8px; }
+.alist h3 { margin-top: 0; }
+.af { display: block; margin: 0 0 12px; }
+.af > span { display: block; font-size: 13px; font-weight: 600; color: var(--ink-2); margin-bottom: 4px; }
+.af small { display: block; font-size: 12px; color: var(--muted); margin-top: 3px; }
+.af input, .af select, .af textarea, .araw { width: 100%; box-sizing: border-box; font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--bg); color: var(--ink); }
+.af input + .btn { margin-top: 6px; }
+.araw { font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+.agrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0 12px; }
+.agrid.cols { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px 2px; margin: 0 0 12px; }
+legend { font-size: 13px; font-weight: 600; color: var(--ink-2); padding: 0 4px; }
+.acheck { display: flex; gap: 8px; align-items: center; font-size: 14px; margin: 0 0 12px; }
+.aact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.ainfo { font-size: 13px; padding: 8px 10px; border-radius: 8px; background: var(--surface-2); margin: 0 0 12px; }
+.ainfo.new { background: var(--info-bg); color: var(--info-fg); }
+.btn.danger { color: var(--bad-fg); border-color: var(--bad-fg); }
+.alist ul { list-style: none; margin: 0; padding: 0; }
+.alist li { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.alist li:first-child { border-top: 0; }
+.alist li small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.alist .abtns { display: flex; gap: 6px; flex: none; align-items: flex-start; }
+.alist .abtns .btn { min-height: 30px; padding: 2px 10px; font-size: 13px; }
+.alist .code { font-family: 'IBM Plex Mono', monospace; color: var(--acc); }

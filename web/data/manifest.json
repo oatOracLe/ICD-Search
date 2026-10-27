@@ -1,0 +1,22 @@
+{
+  "about": "ไฟล์ข้อมูลของเว็บค้นรหัส ICD แยกตามระบบ ข้อมูลในโฟลเดอร์ icd10/ icd9/ shared/ สร้างจากเอกสารต้นฉบับด้วยสคริปต์ใน scripts/ ห้ามแก้มือ ข้อมูลที่เพิ่มหรือแก้ไขให้ทำผ่านหลังบ้าน (index.html#admin) ซึ่งเก็บไว้ใน overlay.json หรือฐานข้อมูลออนไลน์",
+  "layers": [
+    {"name": "base", "editable": false, "description": "ข้อมูลหลักที่ถอดจากเล่ม"},
+    {"name": "overlay.json", "editable": true, "description": "รายการที่ผู้พัฒนาเพิ่ม/แก้ไขในเครื่อง (หลังบ้านโหมดในเครื่อง)"},
+    {"name": "db:overlay", "editable": true, "description": "รายการที่เพิ่ม/แก้ไขบนเว็บออนไลน์ (หลังบ้านโหมดออนไลน์) ทับรายการที่ id ซ้ำใน overlay.json"}
+  ],
+  "files": {
+    "icd10/codes.json": {"what": "รหัส ICD-10 ทั้งหมด พร้อมชื่อไทย/อังกฤษ หมายเหตุ บท กลุ่ม", "source": "WHO ICD-10 2016 Vol.1 (S0052) + ชื่อไทยจาก ICD-10-TM 2009", "script": "scripts/who_icd10/build_merged.py"},
+    "icd10/keywords.json": {"what": "คำค้นของแต่ละรหัสจากดัชนี", "source": "WHO ICD-10 2016 Vol.3 (Index.pdf)", "script": "scripts/who_icd10/build_who_index.py"},
+    "icd10/index/": {"what": "ดัชนีตามตัวอักษร แยกไฟล์ตามหมวด (I = โรค, II = สาเหตุภายนอก) และอักษรตัวแรก", "source": "WHO ICD-10 2016 Vol.3", "script": "scripts/who_icd10/build_who_index.py"},
+    "icd10/tables.json": {"what": "ตารางยาและสารเคมี ตารางเนื้องอก ตารางการแท้ง ตารางอุบัติเหตุการขนส่งทางบก", "source": "WHO ICD-10 2016 Vol.3 (การแท้งจาก TM 2009)", "script": "scripts/who_icd10/build_who_index.py"},
+    "icd10/morph.json": {"what": "รหัสสัณฐานวิทยาเนื้องอก ICD-O", "source": "ICD-10-TM 2009 หน้า 922-929 + ตารางพฤติกรรมจาก S0052", "script": "scripts/who_icd10/parse_morph.py"},
+    "icd9/codes.json": {"what": "รหัสหัตถการ ICD-9-CM พร้อมเครื่องหมาย OR / ThaiDRG", "source": "ICD-9-CM FY15 (S0034, OCR)", "script": "scripts/tm_icd9_nhso/build_icd9.py"},
+    "icd9/keywords.json": {"what": "คำค้นจากดัชนีหัตถการ", "source": "S0034", "script": "scripts/tm_icd9_nhso/parse_index9.py"},
+    "icd9/index/": {"what": "ดัชนีหัตถการตามตัวอักษร", "source": "S0034", "script": "scripts/tm_icd9_nhso/parse_index9.py"},
+    "shared/abbr.json": {"what": "พจนานุกรมคำย่อทางการแพทย์และตารางสะกดคำอเมริกัน/อังกฤษ", "source": "เขียนขึ้นสำหรับโปรเจกต์", "script": "scripts/tm_icd9_nhso/abbr.py"},
+    "shared/guidelines.json": {"what": "แนวทางการให้รหัสแบบย่อที่ผูกกับกลุ่มรหัส", "source": "สรุปจาก WHO Vol.2 และคู่มือ สปสช.", "script": "(แก้ด้วยมือ)"},
+    "shared/nhso2562.json": {"what": "เกณฑ์ตรวจสอบเวชระเบียน สปสช. 2562", "source": "คู่มือ สปสช. 2562", "script": "scripts/tm_icd9_nhso/nhso_topics.py"},
+    "overlay.json": {"what": "ข้อมูลที่ผู้พัฒนาเพิ่ม/แก้ไข", "source": "หลังบ้าน (index.html#admin)", "script": "-"}
+  }
+}
