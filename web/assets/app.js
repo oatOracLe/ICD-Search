@@ -362,7 +362,9 @@
       var c1 = stripMark(e[2]), ok = c1 && d.byCode[c1];
       var codes = (e[2] ? esc(e[2]) : '') + (e[3] ? ' ' + esc(e[3]) : '');
       var tm = (e[4] ? '<span class="tmk" title="รหัสดัดแปลงของไทย">#</span>' : '') + (e.ov ? '<span class="tag tag-ov" title="เพิ่มโดยผู้ดูแลระบบ">เพิ่ม</span> ' : '');
-      if (ok) h += '<div role="button" tabindex="0" class="' + cls + '" style="padding-left: ' + pad + 'px" data-act="sel" data-sys="' + sys + '" data-code="' + esc(c1) + '" aria-current="' + (S.sel[sys] === c1) + '"><span>' + tm + seeLinks(label, toks) + '</span><span class="code">' + codes + '</span></div>';
+      var lab = seeLinks(label, toks);
+      if (ok && lab.indexOf('data-act="seeref"') !== -1) h += '<div class="' + cls + ' ix-split" style="padding-left: ' + pad + 'px" aria-current="' + (S.sel[sys] === c1) + '"><span>' + tm + lab + '</span><button type="button" class="code ix-code" data-act="sel" data-sys="' + sys + '" data-code="' + esc(c1) + '" aria-label="' + esc(codes.replace(/<[^>]*>/g, '') + ' ' + label) + '">' + codes + '</button></div>';
+      else if (ok) h += '<button type="button" class="' + cls + '" style="padding-left: ' + pad + 'px" data-act="sel" data-sys="' + sys + '" data-code="' + esc(c1) + '" aria-current="' + (S.sel[sys] === c1) + '"><span>' + tm + hl(label, toks) + '</span><span class="code">' + codes + '</span></button>';
       else h += '<div class="' + cls + '" style="padding-left: ' + pad + 'px"><span>' + tm + seeLinks(label, toks) + '</span>' + (codes ? '<span class="code na">' + codes + '</span>' : '') + '</div>';
     });
     h += '</div>';
@@ -671,6 +673,24 @@
     if (S.view === 'search') el.innerHTML = renderSearchList();
     else if (S.view === 'index') el.innerHTML = S.imode === 'alpha' ? renderAlpha() : renderTree();
     else if (S.view === 'favorites') el.innerHTML = renderFavorites();
+    announce();
+    centerPressed();
+  }
+  // one short status for screen readers, e.g. "ผลการค้นหา พบ 81 รหัส" (the list itself is not a live region)
+  var lastMsg = '';
+  function announce() {
+    var hd = $('list').querySelector('.list-head'), msg = '';
+    if (hd) msg = Array.prototype.map.call(hd.children, function (c) { return c.textContent.trim(); }).join(' ');
+    else { var em = $('list').querySelector('.empty b'); if (em) msg = em.textContent; }
+    if (msg && msg !== lastMsg) { lastMsg = msg; $('srStatus').textContent = msg; }
+  }
+  // keep the chosen section chip and letter visible in their scrolling rows (mobile)
+  function centerPressed() {
+    ['secChips', 'letters'].forEach(function (id) {
+      var box = $(id), on = box && box.querySelector('[aria-pressed="true"]');
+      if (!on || box.scrollWidth <= box.clientWidth) return;
+      box.scrollLeft = on.offsetLeft - box.offsetLeft - (box.clientWidth - on.offsetWidth) / 2;
+    });
   }
 
   function isFav(sys, c) { return favs.some(function (e) { return e.sys === sys && e.c === c; }); }
@@ -772,7 +792,7 @@
     if (x.drg === 'drg') h += '<span class="badge b-drg">Non-OR · มีผลต่อ ThaiDRG</span>';
     h += '</div>';
     h += '<div class="big" id="bigCode">' + esc(x.c) + esc(x.da || '') + '</div>';
-    h += '<h1 class="dtitle">' + esc(x.th || x.en) + '</h1>' + (x.th ? '<p class="dsub" lang="en">' + esc(x.en) + '</p>' : '');
+    h += '<h2 class="dtitle">' + esc(x.th || x.en) + '</h2>' + (x.th ? '<p class="dsub" lang="en">' + esc(x.en) + '</p>' : '');
     var fav = isFav(sys, x.c);
     h += '<div class="actions">' +
       '<button type="button" class="btn primary" data-act="copy" data-text="' + esc(x.c) + '">' + ICON.copy + 'คัดลอกรหัส</button>' +
@@ -892,6 +912,8 @@
     Array.prototype.forEach.call(document.querySelectorAll('#sysSeg button'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-sys') === S.sys)); });
     Array.prototype.forEach.call(document.querySelectorAll('#modeSeg button'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === S.imode)); });
     $('tools').hidden = v === 'guide' || v === 'favorites' || v === 'admin';
+    $('viewTitle').hidden = v !== 'search' && v !== 'favorites';
+    $('viewTitle').textContent = v === 'favorites' ? 'รายการโปรด' : 'ค้นหารหัส ' + SYS[S.sys].name;
     $('adminView').hidden = v !== 'admin';
     if (v === 'admin') openAdmin();
     $('tbSearch').hidden = v !== 'search';
@@ -953,6 +975,7 @@
 
   document.addEventListener('click', function (ev) {
     var b = ev.target.closest('[data-act]');
+    if (!b) { var row = ev.target.closest('.ix-split'); b = row && row.querySelector('.ix-code'); }
     if (!b) return;
     var act = b.getAttribute('data-act');
     if (act === 'view') {
@@ -1026,7 +1049,7 @@
     qT = setTimeout(function () { S.q = v; S.abbrPick = {}; S.pane = 'list'; renderChrome(); renderList(); }, 140);
   });
   $('q').addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowDown') { var f = document.querySelector('#list .res, #list .ix-row'); if (f) { e.preventDefault(); f.focus(); } }
+    if (e.key === 'ArrowDown') { var f = document.querySelector('#list .res, #list button.ix-row, #list .ix-code'); if (f) { e.preventDefault(); f.focus(); } }
     if (e.key === 'Enter') { clearTimeout(qT); S.q = e.target.value; renderList(); var first = document.querySelector('#list .res'); if (first) first.click(); }
   });
   $('qClear').addEventListener('click', function () { S.q = ''; $('q').value = ''; renderChrome(); renderList(); $('q').focus(); });
@@ -1035,9 +1058,8 @@
   var gT;
   $('gq').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(gT); gT = setTimeout(function () { S.gq = v; renderGuide(); }, 160); });
   $('list').addEventListener('keydown', function (e) {
-    if ((e.key === 'Enter' || e.key === ' ') && e.target.getAttribute('role') === 'button') { e.preventDefault(); e.target.click(); return; }
     if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
-    var items = Array.prototype.slice.call(document.querySelectorAll('#list button.res, #list button.ix-row, #list .ix-row[role="button"], #list button.tr-code'));
+    var items = Array.prototype.slice.call(document.querySelectorAll('#list button.res, #list button.ix-row, #list .ix-code, #list button.tr-code'));
     var i = items.indexOf(document.activeElement);
     if (i === -1) return;
     e.preventDefault();

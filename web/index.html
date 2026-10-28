@@ -28,6 +28,7 @@
 <div class="wrap banner" id="banner" hidden><p id="bannerText"></p></div>
 
 <main>
+  <h1 class="sr" id="viewTitle">ค้นหารหัส ICD-10</h1>
   <div class="wrap tools" id="tools">
     <div class="seg" id="sysSeg" role="group" aria-label="ระบบรหัส">
       <button type="button" data-act="sys" data-sys="icd10" aria-pressed="true">ICD-10 <span>· การวินิจฉัยโรค</span></button>
@@ -72,9 +73,10 @@
 
   <div class="wrap">
     <div class="layout" id="layout">
-      <section class="pane list-pane" id="list" aria-live="polite"><p class="hint">กำลังโหลดข้อมูลรหัส…</p></section>
+      <section class="pane list-pane" id="list" aria-label="รายการ"><p class="hint">กำลังโหลดข้อมูลรหัส…</p></section>
       <aside class="pane detail-pane" id="detail" aria-label="รายละเอียดรหัส"></aside>
     </div>
+    <p class="sr" id="srStatus" role="status" aria-live="polite" aria-atomic="true"></p>
   </div>
 
   <section class="wrap guide-page" id="guide" hidden>
