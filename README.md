@@ -92,6 +92,7 @@ scripts/who_icd10/           สร้างข้อมูล ICD-10 จาก 
 scripts/tm_icd9_nhso/        ถอดข้อมูล ICD-10-TM 2009, ICD-9-CM (OCR), ดัชนีหัตถการ, คู่มือ สปสช., คำย่อ
 scripts/scg/                 ถอดแนวทางมาตรฐานการให้รหัสโรค 2026 จาก PDF
 scripts/guide/               จัดรูปแบบหน้าแนวทาง (guide.json) และสรุปการให้รหัส (summ.py)
+scripts/feedback/            สคริปต์ Google Apps Script สร้างฟอร์มเสนอเพิ่ม/แก้ไขรหัสและคำย่อ
 docs/                        คู่มือหลังบ้าน แหล่งข้อมูล การเผยแพร่ และ ER diagram
 start-web.bat                เปิดเว็บในเครื่อง (Windows)
 ```
@@ -114,6 +115,8 @@ start-web.bat                เปิดเว็บในเครื่อง
 **ICD-9-CM:**
 - `parse_icd9.py` สร้างรายการรหัส
 - `parse_index9.py` สร้างดัชนีหัตถการจากผล OCR ทั้งจัดระดับคำย่อยใหม่และทำ see / see also ให้อยู่รูปเดียวกัน
+
+**ช่องเสนอเพิ่ม/แก้ไข:** ปุ่ม "เสนอแก้ไขรหัสนี้" (หน้ารายละเอียด) "เสนอเพิ่มคำย่อ" (เมื่อค้นไม่เจอ) และลิงก์ท้ายหน้า ส่งเข้า Google Form ตามที่ตั้งใน `web/data/shared/feedback.json` คำตอบเก็บใน Google Sheet ของผู้ดูแล สร้างฟอร์มใหม่ได้ด้วย `scripts/feedback/create-form.gs`
 
 **หน้าแนวทาง:** แก้สรุปการให้รหัสใน `scripts/guide/summ.py` แล้วรัน `python scripts/guide/build_guide.py` (อ่าน `web/data/shared/scg2026.json`, `nhso2562.json` เขียน `guide.json`)
 

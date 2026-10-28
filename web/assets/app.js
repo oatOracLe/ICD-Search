@@ -250,7 +250,7 @@
       var chips = '<button type="button" class="chip" data-act="abbr" data-k="' + esc(a.key) + '" data-i="" aria-pressed="' + (a.pick == null) + '">ทุกความหมาย</button>' +
         a.ms.map(function (m, i) { return '<button type="button" class="chip" data-act="abbr" data-k="' + esc(a.key) + '" data-i="' + i + '" aria-pressed="' + (a.pick === i) + '">' + esc(m.en) + ' · ' + esc(m.th) + '</button>'; }).join('');
       return '<p><b class="abbr-k">' + k + '</b> คำย่อนี้มี ' + a.ms.length + ' ความหมาย เลือกเพื่อกรองผล</p><div class="abbr-chips">' + chips + '</div>';
-    }).join('') + '</div>';
+    }).join('') + (fbReady() ? '<p class="abbr-fb">ความหมายไม่ตรงหรือขาดไป? ' + fbBtn('เสนอแก้คำย่อ', { k: 'abbredit', abbr: abbrs[0].key.toUpperCase() }, 'link') + '</p>' : '') + '</div>';
   }
   // ICD-O morphology terms matching the search (ICD-10 only)
   function morphBox(q) {
@@ -281,7 +281,8 @@
       var other = S.sys === 'icd10' ? 'icd9' : 'icd10';
       var on = search(DB[other], S.q).total;
       return h + '<div class="empty"><b>ไม่พบรหัสที่ตรงกับ “' + esc(S.q) + '”</b><p>' + (S.sys === 'icd9' ? 'ชื่อหัตถการใน ICD-9-CM เป็นภาษาอังกฤษ ลองพิมพ์คำภาษาอังกฤษหรือรหัสบางส่วน' : 'ลองใช้คำที่สั้นลง พิมพ์รหัสบางส่วน (เช่น E11) หรือเปิดดัชนีเพื่อไล่หาจากคำนำ') + '</p>' +
-        (on ? '<button type="button" class="btn" data-act="sys" data-sys="' + other + '">พบ ' + on + ' รหัสใน ' + SYS[other].name + '</button>' : '') + '</div>';
+        (on ? '<button type="button" class="btn" data-act="sys" data-sys="' + other + '">พบ ' + on + ' รหัสใน ' + SYS[other].name + '</button>' : '') +
+        (fbReady() ? '<p class="fb-inline">ไม่มีในเว็บ? ' + (/^[A-Za-z][A-Za-z0-9\/&.+-]{0,7}$/.test(S.q.trim()) ? fbBtn('เสนอเพิ่มคำย่อ “' + S.q.trim() + '”', { k: 'abbr', abbr: S.q.trim() }, 'link') : fbBtn('เสนอเพิ่มรหัสหรือคำค้นนี้', { k: 'code', q: S.q.trim() }, 'link')) + '</p>' : '') + '</div>';
     }
     h += '<ul class="results" id="results">' + r.list.map(function (x) { return resRow(x, S.sys, r.toks); }).join('') + '</ul>';
     if (r.total > r.list.length) h += '<p class="more">แสดง ' + r.list.length + ' รายการแรก พิมพ์คำเพิ่มเพื่อให้แคบลง</p>';
@@ -839,7 +840,8 @@
     h += '<div class="actions">' +
       '<button type="button" class="btn primary" data-act="copy" data-text="' + esc(x.c) + '">' + ICON.copy + 'คัดลอกรหัส</button>' +
       '<button type="button" class="btn" data-act="copy" data-text="' + esc(x.c + ' ' + x.en) + '">คัดลอกรหัส + ชื่อ</button>' +
-      '<button type="button" class="btn icon" data-act="fav" aria-pressed="' + fav + '" aria-label="' + (fav ? 'เอาออกจากรายการโปรด' : 'เพิ่มในรายการโปรด') + '" title="' + (fav ? 'เอาออกจากรายการโปรด' : 'เพิ่มในรายการโปรด') + '">' + ICON.star + '</button></div>';
+      '<button type="button" class="btn icon" data-act="fav" aria-pressed="' + fav + '" aria-label="' + (fav ? 'เอาออกจากรายการโปรด' : 'เพิ่มในรายการโปรด') + '" title="' + (fav ? 'เอาออกจากรายการโปรด' : 'เพิ่มในรายการโปรด') + '">' + ICON.star + '</button>' +
+      fbBtn('เสนอแก้ไขรหัสนี้', { k: 'edit', sys: sys, code: x.c }) + '</div>';
     if (x.who_del) {
       h += '<div class="whobox"><b>รหัสนี้อยู่ใน ICD-10-TM 2009 แต่ไม่มีใน ICD-10 WHO ฉบับ 2016</b>' +
         (x.rep && x.rep.length ? '<p>ใช้รหัสนี้แทน: ' + x.rep.map(function (c) { var y = d.byCode[c]; return '<button type="button" class="cref" data-act="sel" data-sys="' + sys + '" data-code="' + esc(c) + '">' + esc(c) + '</button>' + (y ? ' ' + esc(y.th || y.en) : ''); }).join(' · ') + '</p>'
@@ -1244,6 +1246,76 @@
 
   function renderAll() { renderChrome(); renderList(); renderDetail(); if (S.view === 'guide') renderGuide(); }
 
+
+  // ---------- suggestions: a form in the page that posts to the project's Google Form (data/shared/feedback.json) ----------
+  PATH.feedback = 'data/shared/feedback.json';
+  var FB = null;   // { form, entries: {type, sys, code, abbr, meaning, ref, note, who, from}, types: [], systems: [] }
+  var FB_TYPE = { abbr: 0, code: 1, edit: 2, abbredit: 3, other: 4 };
+  function fbReady() { return !!(FB && FB.form && FB.entries && FB.entries.meaning); }
+  function fbBtn(label, o, cls) {
+    if (!fbReady()) return '';
+    return '<button type="button" class="' + (cls || 'btn') + '" data-act="fbopen" data-k="' + esc(o.k || 'other') + '" data-sys="' + esc(o.sys || S.sys) + '" data-code="' + esc(o.code || '') + '" data-abbr="' + esc(o.abbr || '') + '" data-q="' + esc(o.q || '') + '">' + esc(label) + '</button>';
+  }
+  function fbRadios(id, name, list, pick) {
+    $(id).innerHTML = list.map(function (v, i) {
+      return '<label><input type="radio" name="' + name + '" value="' + esc(v) + '"' + (i === pick ? ' checked' : '') + '><span>' + esc(v) + '</span></label>';
+    }).join('');
+  }
+  function fbValues() {
+    var pick = function (n) { var r = document.querySelector('#fbForm input[name="' + n + '"]:checked'); return r ? r.value : ''; };
+    return { type: pick('fbType'), sys: pick('fbSysR'), code: $('fbCode').value.trim(), abbr: $('fbAbbr').value.trim(), meaning: $('fbMeaning').value.trim(),
+      ref: $('fbRef').value.trim(), note: $('fbNote').value.trim(), who: $('fbWho').value.trim(), from: location.href };
+  }
+  function fbParams(v) {
+    var p = new URLSearchParams();
+    Object.keys(FB.entries).forEach(function (k) { if (v[k]) p.append(FB.entries[k], v[k]); });
+    return p;
+  }
+  function fbLink(v) { return FB.form.replace(/\?.*$/, '') + '?usp=pp_url&' + fbParams(v).toString(); }
+  function fbSync() { $('fbOpen').href = fbLink(fbValues()); }
+  function fbOpen(b) {
+    var d = $('fbDlg'), k = b.getAttribute('data-k'), sys = b.getAttribute('data-sys') || S.sys;
+    fbRadios('fbTypes', 'fbType', FB.types, FB_TYPE[k] != null ? FB_TYPE[k] : 4);
+    fbRadios('fbSys', 'fbSysR', FB.systems, sys === 'icd9' ? 1 : 0);
+    var code = b.getAttribute('data-code'), abbr = b.getAttribute('data-abbr'), q = b.getAttribute('data-q');
+    $('fbCode').value = code; $('fbAbbr').value = abbr; $('fbMeaning').value = q; $('fbRef').value = ''; $('fbNote').value = '';
+    $('fbWho').value = lsGet('icd.fbWho', '');
+    $('fbErr').hidden = true; $('fbForm').hidden = false; $('fbDone').hidden = true; $('fbSend').disabled = false;
+    fbSync();
+    if (d.showModal) d.showModal(); else d.setAttribute('open', '');
+    var first = k === 'abbr' && !abbr ? $('fbAbbr') : k === 'code' && !code ? $('fbCode') : $('fbMeaning');
+    try { first.focus(); } catch (e) {}
+  }
+  function fbClose() { var d = $('fbDlg'); if (d.close) d.close(); else d.removeAttribute('open'); }
+  function fbInit() {
+    $('fbForm').addEventListener('input', fbSync);
+    $('fbForm').addEventListener('change', fbSync);
+    $('fbDlg').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-fb]');
+      if (!b) return;
+      if (b.getAttribute('data-fb') === 'close') fbClose();
+      else { $('fbForm').hidden = false; $('fbDone').hidden = true; $('fbMeaning').value = ''; $('fbCode').value = ''; $('fbAbbr').value = ''; $('fbNote').value = ''; $('fbRef').value = ''; $('fbMeaning').focus(); }
+    });
+    $('fbForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = fbValues(), err = '';
+      if (!v.type) err = 'เลือกประเภทข้อเสนอ';
+      else if (!v.sys) err = 'เลือกระบบรหัส';
+      else if (!v.meaning) err = 'กรอกความหมาย / ชื่อที่เสนอ';
+      else if (/คำย่อ/.test(v.type) && !v.abbr) err = 'กรอกคำย่อที่เสนอ';
+      if (err) { $('fbErr').textContent = err; $('fbErr').hidden = false; (v.meaning ? (v.abbr ? $('fbCode') : $('fbAbbr')) : $('fbMeaning')).focus(); return; }
+      $('fbErr').hidden = true; $('fbSend').disabled = true; $('fbSend').textContent = 'กำลังส่ง…';
+      lsSet('icd.fbWho', v.who);
+      // Google Forms gives no readable reply to other sites (no-cors), so a finished request counts as sent
+      fetch(FB.form.replace(/\/viewform.*$/, '/formResponse'), { method: 'POST', mode: 'no-cors', body: fbParams(v) }).then(function () {
+        $('fbForm').hidden = true; $('fbDone').hidden = false; $('fbDone').querySelector('.btn').focus();
+      }).catch(function () {
+        $('fbErr').innerHTML = 'ส่งไม่สำเร็จ อาจเพราะไม่ได้ต่ออินเทอร์เน็ต <a class="link" target="_blank" rel="noopener" href="' + esc(fbLink(v)) + '">เปิดใน Google Forms</a> แล้วกดส่งจากที่นั่นได้';
+        $('fbErr').hidden = false;
+      }).then(function () { $('fbSend').disabled = false; $('fbSend').textContent = 'ส่งข้อเสนอ'; });
+    });
+  }
+
   // ---------- routing ----------
   function codeHash(sys, c) { return 'c-' + sys + '-' + c.replace(/\./g, '-'); }
   function setHash(name) { try { history.replaceState(null, '', '#' + name); } catch (e) {} }
@@ -1351,6 +1423,8 @@
       hist = []; lsSet('icd.hist', hist); renderList();
     } else if (act === 'back') {
       S.pane = 'list'; renderChrome(); window.scrollTo(0, 0);
+    } else if (act === 'fbopen') {
+      ev.preventDefault(); if (fbReady()) fbOpen(b);
     } else if (act === 'scgopen') {
       ev.preventDefault();
       var sn = b.getAttribute('data-n');
@@ -1671,6 +1745,7 @@
     $('footer').innerHTML = '<p>' + esc(DB.icd10.label) + ' ' + esc(DB.icd10.version) + ' · ' + DB.icd10.codes.length.toLocaleString('th-TH') + ' รหัส — ' + esc(DB.icd10.source || '') + '</p>' +
       '<p>' + esc(DB.icd9.label) + ' ' + esc(DB.icd9.version) + ' · ' + DB.icd9.codes.length.toLocaleString('th-TH') + ' รหัส — ' + esc(DB.icd9.source || '') + '</p>' +
       (o ? '<p>มีข้อมูลที่ผู้ดูแลเพิ่มหรือแก้ไข ' + o.toLocaleString('th-TH') + ' รายการ</p>' : '') +
+      (fbReady() ? '<p>พบรหัสหรือคำย่อที่ควรเพิ่มหรือแก้? ' + fbBtn('เสนอเพิ่มหรือแก้ไข', { k: 'other' }, 'link') + '</p>' : '') +
       '<p>ใช้ประกอบการทำงาน ตรวจซ้ำกับบัญชีจำแนกฉบับที่หน่วยงานใช้ทุกครั้ง' +
       (OV.canEdit ? ' · <a href="#admin" data-act="view" data-view="admin">หลังบ้านผู้พัฒนา</a>' : '') + '</p>';
   }
@@ -1694,6 +1769,7 @@
     load(PATH.scg).then(function (g) { SCG = g; GSRC = null; renderDetail(); if (S.view === 'guide') renderGuide(); }).catch(function () { SCG = { items: [] }; });
     NHSO_P = load(PATH.nhso).then(function (n) { NHSO = n; GSRC = null; renderDetail(); if (S.view === 'guide') renderGuide(); }).catch(function () { NHSO = { topics: [], sections: [] }; renderDetail(); });
     connectBackend();
+    load(PATH.feedback).then(function (f) { FB = f; if (fbReady()) { fbInit(); footer(); renderList(); renderDetail(); } }).catch(function () {});
   }).catch(function (err) {
     $('list').innerHTML = '<div class="empty"><b>โหลดข้อมูลรหัสไม่สำเร็จ</b><p>ลองรีเฟรชหน้านี้ ถ้ายังไม่ได้ ให้แจ้งผู้ดูแลระบบว่าไฟล์ข้อมูลอาจหายไป (' + esc(err.message) + ')</p></div>';
   });

@@ -526,3 +526,32 @@ details > summary { cursor: pointer; font-size: 14px; font-weight: 500; color: v
 .gr-list .gi-b { display: none; }
 .gr-list .gi-t { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 #ghq::-webkit-search-cancel-button { -webkit-appearance: none; display: none; }
+
+/* ---------- suggestion form (Google Forms) ---------- */
+.fb-dlg { width: min(620px, 100vw - 16px); max-height: calc(100dvh - 16px); padding: 0; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink); }
+.fb-dlg::backdrop { background: rgb(0 0 0 / .5); }
+.fb-dlg form, .fb-done { padding: 18px 20px 20px; }
+.fb-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.fb-head h2, .fb-done h2 { margin: 0; font-size: 19px; font-weight: 600; }
+.fb-intro, .fb-done p { margin: 6px 0 14px; color: var(--muted); font-size: 14px; }
+.fb-seg { margin: 0 0 12px; padding: 0; border: 0; }
+.fb-seg legend { padding: 0; margin-bottom: 6px; font-size: 14px; font-weight: 600; }
+.fb-seg > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.fb-seg label { position: relative; }
+.fb-seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.fb-seg span { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface); font-size: 14px; }
+.fb-seg input:checked + span { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
+.fb-seg input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+.fb-row { display: flex; flex-wrap: wrap; gap: 0 12px; }
+.fb-row .fb-f { flex: 1 1 200px; }
+.fb-f { display: block; margin-bottom: 12px; }
+.fb-f span { display: block; margin-bottom: 4px; font-size: 14px; font-weight: 600; }
+.fb-f input, .fb-f textarea { width: 100%; min-height: 44px; padding: 9px 12px; border: 1.5px solid var(--line-strong); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; font-size: 15px; }
+.fb-f textarea { resize: vertical; }
+.fb-f input:focus, .fb-f textarea:focus { outline: none; border-color: var(--acc); box-shadow: 0 0 0 3px var(--acc-tint); }
+.fb-err { margin: 0 0 10px; padding: 10px 12px; border-radius: 10px; background: var(--bad-bg); color: var(--bad-fg); font-size: 14px; }
+.fb-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 6px; }
+.fb-actions .link { font-size: 14px; }
+.fb-inline { margin-top: 10px; }
+.abbr-fb { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+.abbr-fb .link, .fb-inline .link, .footer .link { font-size: inherit; }

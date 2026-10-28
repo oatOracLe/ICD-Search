@@ -1,0 +1,7 @@
+{
+ "about": "ช่องเสนอเพิ่ม/แก้ไขรหัสและคำย่อ ส่งเข้า Google Form ของผู้ดูแล คำตอบเก็บใน Google Sheet ของผู้ดูแล (สร้างด้วย create-form.gs) ลบไฟล์นี้หรือเว้น form ว่างเพื่อซ่อนปุ่ม",
+ "form": "https://docs.google.com/forms/d/e/1FAIpQLSd3AAAO1COOMmt4fNEM10nf-PeW-G8NKsPSFKzARzMYHeF4Fw/viewform",
+ "entries": {"type": "entry.1013245099", "sys": "entry.1189021992", "code": "entry.742597994", "abbr": "entry.1455144218", "meaning": "entry.1797523465", "ref": "entry.302744351", "note": "entry.1514374883", "who": "entry.584138952", "from": "entry.2010975064"},
+ "types": ["คำย่อใหม่", "รหัสใหม่", "แก้ชื่อหรือคำแปลของรหัส", "แก้คำย่อที่มีอยู่", "อื่น ๆ"],
+ "systems": ["ICD-10", "ICD-9-CM"]
+}

@@ -173,6 +173,29 @@
 </main>
 
 <footer class="wrap footer" id="footer"></footer>
+<dialog class="fb-dlg" id="fbDlg" aria-labelledby="fbTitle">
+  <form id="fbForm" method="dialog" novalidate>
+    <div class="fb-head"><h2 id="fbTitle">เสนอเพิ่มหรือแก้ไขรหัสและคำย่อ</h2><button type="button" class="btn icon" data-fb="close" aria-label="ปิด">✕</button></div>
+    <p class="fb-intro">ข้อเสนอจะส่งถึงผู้ดูแลเว็บ ผู้ดูแลตรวจกับบัญชีจำแนกก่อนเพิ่มในเว็บ ช่องที่มี * ต้องกรอก</p>
+    <fieldset class="fb-seg"><legend>ประเภทข้อเสนอ *</legend><div id="fbTypes"></div></fieldset>
+    <fieldset class="fb-seg"><legend>ระบบรหัส *</legend><div id="fbSys"></div></fieldset>
+    <div class="fb-row">
+      <label class="fb-f"><span>รหัส</span><input id="fbCode" autocomplete="off" placeholder="เช่น E11.9, 47.09"></label>
+      <label class="fb-f"><span>คำย่อ</span><input id="fbAbbr" autocomplete="off" placeholder="เช่น DM, CKD"></label>
+    </div>
+    <label class="fb-f"><span>ความหมาย / ชื่อที่เสนอ *</span><textarea id="fbMeaning" rows="3" placeholder="คำเต็มของคำย่อ ชื่อรหัส หรือสิ่งที่ควรแก้"></textarea></label>
+    <label class="fb-f"><span>แหล่งอ้างอิง</span><input id="fbRef" autocomplete="off" placeholder="เช่น ICD-10-TM 2009 หน้า 120"></label>
+    <label class="fb-f"><span>หมายเหตุเพิ่มเติม</span><textarea id="fbNote" rows="2"></textarea></label>
+    <label class="fb-f"><span>ชื่อผู้เสนอ / หน่วยงาน (ไม่บังคับ)</span><input id="fbWho" autocomplete="organization"></label>
+    <p class="fb-err" id="fbErr" role="alert" hidden></p>
+    <div class="fb-actions"><button type="submit" class="btn primary" id="fbSend">ส่งข้อเสนอ</button><a class="link" id="fbOpen" target="_blank" rel="noopener">เปิดฟอร์มใน Google Forms แทน</a></div>
+  </form>
+  <div class="fb-done" id="fbDone" hidden>
+    <h2>ส่งข้อเสนอแล้ว ขอบคุณครับ</h2>
+    <p>ผู้ดูแลจะตรวจกับบัญชีจำแนกก่อนเพิ่มในเว็บ ถ้าไม่แน่ใจว่าส่งถึง กด “เปิดใน Google Forms” แล้วส่งอีกครั้งได้</p>
+    <div class="fb-actions"><button type="button" class="btn primary" data-fb="close">ปิด</button><button type="button" class="btn" data-fb="again">เสนอเพิ่มอีก</button></div>
+  </div>
+</dialog>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
 <script src="assets/app.js"></script>
