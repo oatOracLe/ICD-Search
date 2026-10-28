@@ -1734,7 +1734,7 @@
     // add-on modules: push functions into extras.detail (x, sys) -> html, extras.guide () -> void, extras.hash (hash) -> handled?
     extras: EXTRAS, renderAll: function () { renderAll(); }, renderDetail: function () { renderDetail(); },
     // guide add-ons: extras.gsrc.push(fn returning a source); these helpers draw text the same way the built-in sources do
-    guide: { segHtml: function (l, sys) { return segHtml(l, sys); }, codeBtn: function (sys, c, l) { return codeBtn(sys, c, l); }, open: function (id) { gOpen(id); },
+    guide: { segHtml: function (l, sys) { return segHtml(l, sys); }, blocksHtml: function (b, sys) { return blocksHtml(b, sys || 'icd10'); }, legendHtml: function () { return legendHtml(); }, codeBtn: function (sys, c, l) { return codeBtn(sys, c, l); }, open: function (id) { gOpen(id); },
       refresh: function () { GSRC = null; if (S.view === 'guide') renderGuide(); }, state: GS, scg: function () { return SCG; } }
   };
 
