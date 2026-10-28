@@ -5,8 +5,6 @@
 
 เว็บ (GitHub Pages, อ่านอย่างเดียว): https://oatoracle.github.io/ICD-Search/
 
-เวอร์ชันบน claude.ai (มีหลังบ้านออนไลน์): https://claude.ai/artifact/CZg1bWePmJkguh8v419fhS (หลังบ้าน: ต่อท้ายลิงก์ด้วย `#admin`)
-
 ## เปิดใช้ในเครื่อง
 หน้าเว็บโหลดข้อมูลจากโฟลเดอร์ `web/data` จึงต้องเปิดผ่านเว็บเซิร์ฟเวอร์ ดับเบิลคลิกไฟล์ HTML ตรง ๆ จะโหลดข้อมูลไม่ได้
 
