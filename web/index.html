@@ -79,11 +79,31 @@
     <p class="sr" id="srStatus" role="status" aria-live="polite" aria-atomic="true"></p>
   </div>
 
-  <section class="wrap guide-page" id="guide" hidden>
-    <h1>แนวทางการให้รหัส</h1>
-    <p>สรุปหลักการสำคัญสำหรับการให้รหัสโรค (ICD-10) และรหัสหัตถการ (ICD-9-CM) แนวทางมาตรฐานการให้รหัสโรค ฉบับปรับปรุง (2026) และเกณฑ์ตรวจสอบเวชระเบียนของ สปสช. ปี 2562 ใช้ประกอบการทำงานคู่กับคู่มือฉบับเต็ม</p>
-    <div id="unitNotes" hidden></div>
-    <div class="gcards">
+  <section class="guide-page" id="guide" hidden>
+    <div id="gHub">
+      <div class="gh-hero">
+        <div class="wrap">
+          <h1 id="ghTitle">แนวทางการให้รหัส</h1>
+          <p>รวมหลักการพื้นฐาน แนวทางมาตรฐานการให้รหัสโรค และเกณฑ์ตรวจสอบเวชระเบียน ค้นที่เดียวได้ทุกแหล่ง ใช้ประกอบการทำงานคู่กับคู่มือฉบับเต็ม</p>
+          <div class="gh-search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <label for="ghq" class="sr">ค้นทุกแนวทาง</label>
+            <input id="ghq" type="search" autocomplete="off" enterkeyhint="search" placeholder="ค้นทุกแนวทาง: ชื่อโรค หัวข้อ หรือรหัส เช่น sepsis, A41.9, N18">
+            <button type="button" class="gh-x" id="ghqClear" aria-label="ล้างคำค้น" hidden>✕</button>
+          </div>
+          <div class="gh-filters" id="ghFilters" role="group" aria-label="แหล่งแนวทาง"></div>
+        </div>
+      </div>
+      <div class="wrap gh-wrap">
+        <nav class="gh-toc" id="ghToc" aria-label="สารบัญแนวทาง"></nav>
+        <div class="gh-main">
+          <div id="unitNotes" hidden></div>
+          <div id="ghMain"><p class="hint">กำลังโหลด…</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap gr" id="gRead" hidden></div>
+    <div id="gBasics" hidden>
       <article class="gcard" id="g-steps">
         <h2>ขั้นตอนการให้รหัส</h2>
         <ol>
@@ -145,36 +165,9 @@
         </ul>
       </article>
     </div>
-
-    <section class="scg-wrap" id="scg" aria-labelledby="scgTitle">
-      <h2 id="scgTitle">แนวทางมาตรฐานการให้รหัสโรค ฉบับปรับปรุง (2026)</h2>
-      <p>Standard Coding Guidelines ของกองยุทธศาสตร์และแผนงาน สำนักงานปลัดกระทรวงสาธารณสุข ฉบับนี้ปรับปรุงจากฉบับ 2017 เฉพาะหัวข้อที่แก้ไข ไม่ใช่คู่มือฉบับเต็ม รหัสที่เขียนแบบ BB01, CA22 คือรหัส ICD-11 ที่เอกสารอ้างถึง ไม่ใช่รหัส ICD-10</p>
-      <div class="nhso-tools">
-        <div class="field">
-          <label for="sq" class="sr">ค้นหาหัวข้อแนวทางมาตรฐาน</label>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <input id="sq" type="search" autocomplete="off" placeholder="ค้นหัวข้อหรือรหัส เช่น sepsis, N18, anemia">
-        </div>
-        <span class="hint" id="scgCount"></span>
-      </div>
-      <div id="scgList" style="margin-top: 14px"><p class="hint">กำลังโหลด…</p></div>
-    </section>
-
-    <section class="nhso-wrap" aria-labelledby="nhsoTitle">
-      <h2 id="nhsoTitle">เกณฑ์ตรวจสอบเวชระเบียน สปสช. 2562</h2>
-      <p>หลักฐานที่ต้องมีในเวชระเบียนเพื่อสนับสนุนการสรุปและให้รหัส แยกตามกลุ่มโรคและหัตถการ จากคู่มือแนวทางปฏิบัติในการตรวจสอบเอกสารหลักฐานการเรียกเก็บค่าใช้จ่ายเพื่อบริการสาธารณสุข ปี 2562</p>
-      <div class="nhso-tools">
-        <div class="field">
-          <label for="gq" class="sr">ค้นหาหัวข้อ</label>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <input id="gq" type="search" autocomplete="off" placeholder="ค้นหัวข้อหรือรหัส เช่น sepsis, E11, 74.1">
-        </div>
-        <span class="hint" id="nhsoCount"></span>
-      </div>
-      <div class="chips" id="nhsoSecs"></div>
-      <div id="nhsoList" style="margin-top: 14px"><p class="hint">กำลังโหลด…</p></div>
-    </section>
+    <div class="wrap">
     <p class="gref">อ้างอิง: ICD-10-TM 2009 Tabular List of Diseases และ WHO ICD-10 Volume 2, ICD-9-CM FY15, คู่มือตรวจสอบเวชระเบียน สปสช. ปี 2562 และ ICD-10-TM Standard Coding Guidelines ตามที่คู่มือ สปสช. อ้างถึง</p>
+    </div>
   </section>
   <section class="wrap admin-page" id="adminView" hidden aria-label="หลังบ้านผู้พัฒนา"></section>
 </main>

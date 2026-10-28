@@ -20,6 +20,7 @@
   };
   var DB = {}, G = {}, NHSO = null, SCG = null, IDXM = {}, IDXL = {}, IDXRAW = {};
   var BASE = {};          // data exactly as built from the source books (never edited at run time)
+  var EXTRAS = { detail: [], guide: [], hash: [], gsrc: [] };  // optional add-on modules register here (see ICDAPP.extras)
   var NOTES = [];         // unit notes from the overlay
 
   function lsGet(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
@@ -686,7 +687,7 @@
   }
   // keep the chosen section chip and letter visible in their scrolling rows (mobile)
   function centerPressed() {
-    ['secChips', 'letters'].forEach(function (id) {
+    ['secChips', 'letters', 'ghFilters'].forEach(function (id) {
       var box = $(id), on = box && box.querySelector('[aria-pressed="true"]');
       if (!on || box.scrollWidth <= box.clientWidth) return;
       box.scrollLeft = on.offsetLeft - box.offsetLeft - (box.clientWidth - on.offsetWidth) / 2;
@@ -805,24 +806,6 @@
       '<span class="meta">แนวทางมาตรฐาน 2026 หน้า ' + it.page + (codes ? ' · <b>' + esc(codes) + '</b>' : '') + '</span></summary><div class="body scg-body">' + scgBody(it) +
       (inDetail ? '<p><button type="button" class="link" data-act="scgopen" data-n="' + esc(it.n) + '">เปิดในหน้าแนวทาง</button></p>' : '') + '</div></details>';
   }
-  function renderScg() {
-    if (!SCG) { $('scgList').innerHTML = '<p class="hint">กำลังโหลด…</p>'; return; }
-    var q = (S.sq || '').toLowerCase().trim();
-    var list = SCG.items.filter(function (it) {
-      if (!q) return true;
-      if (!it.low) it.low = ('ข้อ ' + it.n + ' ' + it.title + ' ' + it.codes.join(' ') + ' ' + it.blocks.map(function (b) { return b.t || b.h || (b.tbl || b.grid || []).map(function (r) { return r.join(' '); }).join(' '); }).join(' ')).toLowerCase();
-      return it.low.indexOf(q) !== -1;
-    });
-    $('scgCount').textContent = list.length + ' หัวข้อ';
-    // re-rendering (e.g. when other data finishes loading) keeps the items that are open
-    var opened = {};
-    Array.prototype.forEach.call($('scgList').querySelectorAll('details[open]'), function (d) { opened[d.id] = 1; });
-    $('scgList').innerHTML = list.length ? list.map(function (it) { return scgItem(it, S.scgOpen === it.n || opened['scg-' + it.n], false); }).join('')
-      : '<div class="empty"><b>ไม่พบหัวข้อที่ตรงกับ “' + esc(S.sq) + '”</b><p>ลองค้นด้วยชื่อโรคภาษาอังกฤษหรือรหัส</p></div>';
-    // scroll to the requested item; repeat until the rest of the guide page (สปสช. list) has loaded and the layout is final
-    if (S.scgOpen && S.scgScroll !== S.scgOpen) { var el = document.getElementById('scg-' + S.scgOpen); if (el) { if (NHSO) S.scgScroll = S.scgOpen; setTimeout(function () { el.scrollIntoView({ block: 'start' }); }, 0); } }
-  }
-
   function nhsoItem(t, open) {
     return '<details class="nhso"' + (open ? ' open' : '') + '><summary>' + esc(t.title) + '<span class="meta">' + esc(t.sec) + ' · คู่มือ สปสช. 2562 หน้า ' + t.page + (t.codes.length ? ' · <b>' + esc(t.codes.join(', ')) + '</b>' : '') + '</span></summary><div class="body">' + linkify(t.text, t.sys) + '</div></details>';
   }
@@ -921,6 +904,7 @@
       loadMorph().then(function () { renderDetail(); }).catch(function () {});
     }
 
+    EXTRAS.detail.forEach(function (f) { try { h += f(x, sys) || ''; } catch (e) {} });
     var sg = scgFor(x, sys);
     if (sg.length) h += '<section class="sec"><div class="sec-head"><h3>แนวทางมาตรฐานการให้รหัสโรค 2026 (' + sg.length + ')</h3><button type="button" class="link" data-act="scgopen" data-n="">ดูทั้งหมด</button></div>' + sg.map(function (it) { return scgItem(it, sg.length === 1, true); }).join('') + '</section>';
     var topics = nhsoFor(x, sys);
@@ -950,21 +934,285 @@
       return '<div class="unote"><b>' + esc(n.title || 'หมายเหตุ') + '</b><p>' + linkify(n.body || '', sys).replace(/\n/g, '<br>') + '</p><span class="meta">' + (n.sys === 'icd9' ? 'ICD-9-CM' : n.sys === 'all' ? 'ทุกระบบ' : 'ICD-10') + ' · ใช้กับ ' + esc((n.codes || []).join(', ') || '—') + '</span></div>';
     }).join('');
   }
+  // ---------- guide page: one hub for every source (search, filters, groups) and a reader for one topic ----------
+  // Sources are objects { id, label, name, desc, items, groups, read(item) }. Built-in: basics (cards in #gBasics), SCG 2026, NHSO 2562.
+  // Add-on modules add more with ICDAPP.extras.gsrc.push(function () { return source or null; }).
+  PATH.gdata = 'data/shared/guide.json';
+  var GD = null, gdP = null, NHSO_P = null, GSRC = null;
+  var GS = { src: 'all', q: '', sel: null, tab: 0, raw: false, peek: null, sumHide: false, hubY: 0 };
+  function loadGuide() {
+    if (!gdP) gdP = Promise.all([load(PATH.gdata), NHSO_P || Promise.resolve()]).then(function (r) { GD = r[0]; GSRC = null; return GD; });
+    return gdP;
+  }
+  var GICON = {
+    book: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/></svg>',
+    check: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="m9 12 2 2 4-4"/></svg>',
+    layers: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg>',
+    scan: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2"/><path d="M8 9h8M8 12h8M8 15h5"/></svg>',
+    sum: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>'
+  };
+
+  // ----- formatted text (built by scripts/guide/build_guide.py) -----
+  var SEGC = { pd: 'tg pd', sd: 'tg sd', cx: 'tg cx', nm: 'nm' };
+  function codeBtn(sys, code, label) {
+    var d = DB[sys];
+    if (!code || !d || !d.byCode[code]) return '<span class="gcd0">' + esc(label || code) + '</span>';
+    return '<button type="button" class="gcd" data-act="gpeek" data-sys="' + sys + '" data-code="' + esc(code) + '" title="' + esc(d.byCode[code].th || d.byCode[code].en || '') + '">' + esc(label || code) + '</button>';
+  }
+  function segHtml(list, sys) {
+    return (list || []).map(function (g) {
+      if (g.k === 'cd') return codeBtn(sys || 'icd10', g.key, g.s);
+      return SEGC[g.k] ? '<span class="' + SEGC[g.k] + '">' + esc(g.s) + '</span>' : esc(g.s);
+    }).join('');
+  }
+  function gridHtml(head, rows, cell) {
+    return '<div class="gtbl-wrap"><table class="gtbl"><thead><tr>' + head.map(function (c) { return '<th scope="col">' + cell(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      rows.map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + cell(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+  }
+  function blocksHtml(blocks, sys, cell) {
+    return blocks.map(function (b) {
+      if (b.k === 'h') return '<h3 class="gsub">' + esc(b.s) + '</h3>';
+      if (b.k === 'p') return '<p class="gp">' + segHtml(b.segs, sys) + '</p>';
+      if (b.k === 'ol') return '<ol class="gol' + (b.plain ? ' plain' : '') + '">' + b.items.map(function (x) { return '<li><span class="gm">' + esc(x.m) + '</span><span class="gli">' + segHtml(x.segs, sys) + '</span></li>'; }).join('') + '</ol>';
+      if (b.k === 'grid') return gridHtml(b.head, b.rows, cell || function (c) { return linkify(c, sys); });
+      return '';
+    }).join('');
+  }
+  function legendHtml() {
+    return '<span class="glegend" aria-hidden="true"><span class="tg pd">วินิจฉัยหลัก</span><span class="tg sd">วินิจฉัยร่วม</span><span class="nm">ตัวเลขเกณฑ์</span><span class="gcd0">A41.9</span> กดรหัสเพื่อดูชื่อ</span>';
+  }
+
+  // ----- sources -----
+  function cat3(c) { return String(c).slice(0, 3); }
+  function overlap(a, b) { var s = {}; a.forEach(function (c) { s[cat3(c)] = 1; }); return b.some(function (c) { return s[cat3(c)]; }); }
+  function srcBasics() {
+    var K = { 'g-steps': ['ขั้นตอน', 'อ่านเวชระเบียน → หาคำนำ → ตามคำขยาย → ตรวจในบัญชีจำแนก → ให้รหัสครบหลัก'], 'g-types': ['ประเภท', 'โรคหลัก โรคร่วม โรคแทรก โรคอื่น สาเหตุภายนอก'],
+      'g-symbols': ['สัญลักษณ์', 'ความหมายของป้ายและเครื่องหมายในเว็บและในเล่ม'], 'g-icd10': ['ICD-10', 'รหัสละเอียดสุด บท R บท XV การบาดเจ็บ ระบบ †/*'], 'g-icd9': ['ICD-9-CM', 'หัตถการหลัก OR / Non-OR วิธีผ่าตัด Code also'] };
+    var items = Array.prototype.slice.call(document.querySelectorAll('#gBasics .gcard')).map(function (a) {
+      var k = K[a.id] || ['', ''];
+      return { id: 'gb-' + a.id.slice(2), src: 'basics', no: k[0], title: a.querySelector('h2').textContent, sum: k[1], codes: [], badges: [], el: a, low: a.textContent.toLowerCase() };
+    });
+    return { id: 'basics', label: 'หลักการพื้นฐาน', name: 'หลักการพื้นฐาน', desc: 'ขั้นตอน ประเภทการวินิจฉัย สัญลักษณ์ กฎสำคัญ', icon: 'layers', cls: 'bs', unit: 'เรื่อง', tiles: true,
+      note: 'อ่านครั้งเดียว ใช้ได้ทุกเคส', items: items, groups: [{ id: 'all', name: 'หลักการพื้นฐาน', items: items }],
+      read: function (x) {
+        var c = x.el.cloneNode(true); var h = c.querySelector('h2'); if (h) h.parentNode.removeChild(h); var pl = c.querySelector('.pill'); if (pl) pl.parentNode.removeChild(pl);
+        return { crumb: 'หลักการพื้นฐาน', title: x.title, meta: esc(x.no), tabs: ['เนื้อหา'], body: function () { return '<div class="gcard gflat">' + c.innerHTML + '</div>'; } };
+      } };
+  }
+  function srcScg() {
+    var gname = {};
+    GD.groups.forEach(function (g) { gname[g.id] = g.name; });
+    var items = GD.scg.map(function (it) {
+      return { id: 'scg-' + it.n, src: 'scg', no: 'ข้อ ' + it.n, title: it.title, codes: it.codes, g: it.g, it: it,
+        badges: (it.sum ? [{ t: 'มีสรุป', c: 'sum' }] : []).concat(it.exs.length ? [{ t: 'ตัวอย่าง ' + it.exs.length, c: 'ok' }] : []).concat(it.icd11.length ? [{ t: 'อ้าง ICD-11', c: '' }] : []),
+        low: ('ข้อ ' + it.n + ' ' + it.full + ' ' + it.codes.join(' ') + ' ' + it.secs.map(function (s) { return s.raw.join(' '); }).join(' ')).toLowerCase() };
+    });
+    return { id: 'scg', label: 'แนวทางมาตรฐาน 2026', name: 'แนวทางมาตรฐานการให้รหัสโรค ฉบับปรับปรุง (2026)', desc: 'กองยุทธศาสตร์และแผนงาน สป.สธ. · เฉพาะหัวข้อที่ปรับปรุงจากฉบับ 2017', icon: 'book', cls: '', unit: 'หัวข้อ', isNew: true,
+      note: 'จัดตามระบบ · รหัสแบบ BB01, CA22 คือรหัส ICD-11 ที่เอกสารอ้างถึง', items: items,
+      groups: GD.groups.map(function (g) { return { id: g.id, name: g.name, items: items.filter(function (x) { return x.g === g.id; }) }; }).filter(function (g) { return g.items.length; }),
+      read: function (x) {
+        var it = x.it, tabs = it.secs.map(function (s) { return s.title; });
+        if (it.exs.length) tabs.push('ตัวอย่าง (' + it.exs.length + ')');
+        if (!tabs.length) tabs = ['เนื้อหา'];
+        var link = function (c) { return scgLink(c, it); };
+        var rel = NHSO ? NHSO.topics.filter(function (t) { return t.sys === 'icd10' && overlap(it.codes, t.codes); }).slice(0, 6) : [];
+        return { crumb: 'แนวทางมาตรฐาน 2026 › ' + (gname[it.g] || ''), title: 'ข้อ ' + it.n + ' · ' + it.full, meta: 'แนวทางมาตรฐาน 2026 · หน้า ' + it.page,
+          codes: it.codes, sys: 'icd10', icd11: it.icd11, tabs: tabs, canRaw: true, top: it.sum ? sumHtml(it.sum, it.page) : '',
+          body: function (t, raw) {
+            if (it.exs.length && t === tabs.length - 1) return casesHtml(it.exs, raw);
+            var s = it.secs[t]; if (!s) return '';
+            if (!raw) return blocksHtml(s.blocks, 'icd10', link);
+            return s.raw.map(function (p) { return '<p class="gp">' + link(p) + '</p>'; }).join('') + s.blocks.filter(function (b) { return b.k === 'grid'; }).map(function (b) { return gridHtml(b.head, b.rows, link); }).join('');
+          },
+          rel: rel.length ? { title: 'เกณฑ์ สปสช. 2562 ที่เกี่ยวข้อง', items: rel.map(function (t) { return { id: 'nh-' + t.id, title: t.title, sub: 'หน้า ' + t.page }; }) } : null };
+      } };
+  }
+  function srcNhso() {
+    var fm = {};
+    GD.nhso.forEach(function (b) { fm[b.id] = b.blocks; });
+    var items = NHSO.topics.map(function (t) {
+      return { id: 'nh-' + t.id, src: 'nhso', no: 'หน้า ' + t.page, title: t.title, codes: t.codes, g: t.sec, t: t, badges: t.sys === 'icd9' ? [{ t: 'หัตถการ', c: 'px' }] : [],
+        low: (t.title + ' ' + t.codes.join(' ') + ' ' + t.text).toLowerCase() };
+    });
+    var secs = NHSO.sections && NHSO.sections.length ? NHSO.sections : [];
+    return { id: 'nhso', label: 'เกณฑ์ สปสช. 2562', name: 'เกณฑ์ตรวจสอบเวชระเบียน สปสช. 2562', desc: 'หลักฐานที่ต้องมีในเวชระเบียนเพื่อสนับสนุนการสรุปและให้รหัส', icon: 'check', cls: 'nh', unit: 'หัวข้อ', compact: true,
+      note: 'แยกตามกลุ่มโรคและหัตถการ', items: items,
+      groups: secs.map(function (s, i) { return { id: 'n' + i, name: s, items: items.filter(function (x) { return x.g === s; }) }; }).filter(function (g) { return g.items.length; }),
+      read: function (x) {
+        var t = x.t, rel = SCG && t.sys === 'icd10' ? SCG.items.filter(function (it) { return overlap(t.codes, it.codes); }).slice(0, 6) : [];
+        return { crumb: 'เกณฑ์ สปสช. 2562 › ' + t.sec, title: t.title, meta: 'คู่มือ สปสช. 2562 · หน้า ' + t.page, codes: t.codes, sys: t.sys, tabs: ['เกณฑ์ตรวจสอบ'], canRaw: !!fm[t.id],
+          body: function (tab, raw) { return raw || !fm[t.id] ? '<div class="gpre">' + linkify(t.text, t.sys) + '</div>' : blocksHtml(fm[t.id], t.sys); },
+          rel: rel.length ? { title: 'แนวทางมาตรฐาน 2026 ที่เกี่ยวข้อง', items: rel.map(function (it) { return { id: 'scg-' + it.n, title: it.title, sub: 'ข้อ ' + it.n }; }) } : null };
+      } };
+  }
+  function sources() {
+    if (GSRC) return GSRC;
+    if (!GD || !NHSO) return null;
+    var list = [srcBasics(), srcScg(), srcNhso()];
+    EXTRAS.gsrc.forEach(function (f) { try { var s = f(); if (s) list.push(s); } catch (e) {} });
+    list.forEach(function (s) { s.items.forEach(function (x, i) { x.i = i; }); });
+    GSRC = list;
+    return list;
+  }
+  function findItem(id) {
+    var list = sources() || [];
+    for (var i = 0; i < list.length; i++) for (var k = 0; k < list[i].items.length; k++) if (list[i].items[k].id === id) return { s: list[i], x: list[i].items[k] };
+    return null;
+  }
+
+  // ----- pieces -----
+  function sumHtml(sm, page) {
+    var cell = function (c) { return '<td' + (c.fix ? ' class="fixc"' : '') + '>' + segHtml(c.segs, 'icd10') + (c.fix ? ' <span class="fixl">ต่างจากต้นฉบับ</span>' : '') + '</td>'; };
+    return '<section class="gsum" aria-labelledby="gsumT"><div class="gsum-hd"><span class="gsum-ic">' + GICON.sum + '</span><h2 id="gsumT">สรุปการให้รหัส</h2>' +
+      '<span class="gsum-tag">เรียบเรียงจาก' + esc(sm.ref) + ' · รอทีมตรวจทาน ตรวจกับหน้า ' + esc(page) + ' ก่อนใช้</span>' +
+      '<button type="button" class="gsum-tg" data-act="gsum" aria-expanded="' + !GS.sumHide + '">' + (GS.sumHide ? 'แสดงสรุป' : 'ซ่อนสรุป') + '</button></div>' +
+      (GS.sumHide ? '' : sm.tables.map(function (tb) {
+        return '<h3 class="gsum-cap">' + esc(tb.cap) + '</h3><div class="gtbl-wrap"><table class="gtbl gsum-t"><thead><tr>' + tb.cols.map(function (c) { return '<th scope="col">' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+          tb.rows.map(function (r) { return '<tr>' + r.map(cell).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+      }).join('') + (sm.notes.length ? '<ul class="gsum-notes">' + sm.notes.map(function (n) { return '<li>' + segHtml(n, 'icd10') + '</li>'; }).join('') + '</ul>' : '')) + '</section>';
+  }
+  function casesHtml(exs, raw) {
+    return exs.map(function (e) {
+      return '<div class="gcase"><div class="gcase-hd"><b>' + esc(e.title) + '</b> ' + (raw ? esc(e.text) : segHtml(e.segs, 'icd10')) + '</div>' +
+        e.rows.map(function (m) {
+          return '<div class="gmap"><span class="gmap-r' + (/หลัก/.test(m.role) ? ' pd' : '') + '">' + esc(m.role) + '</span><span>' + esc(m.dx) + '</span><span class="gmap-a" aria-hidden="true">→</span><span class="gmap-c">' +
+            (m.code ? codeBtn('icd10', m.code) + ' ' : '') + esc(m.name) + '</span></div>';
+        }).join('') + (e.note ? '<div class="gcase-note"><b>หมายเหตุ</b> ' + (raw ? esc(e.note) : segHtml(e.nsegs, 'icd10')) + '</div>' : '') + '</div>';
+    }).join('');
+  }
+  function itemBtn(x, sel) {
+    var chips = (x.codes || []).slice(0, 3).map(function (c) { return '<span class="gchip">' + esc(c) + '</span>'; }).join('') + ((x.codes || []).length > 3 ? '<span class="gmore">+' + (x.codes.length - 3) + '</span>' : '');
+    return '<button type="button" class="gi' + (sel ? ' sel' : '') + '" data-act="gopen" data-id="' + esc(x.id) + '"' + (sel ? ' aria-current="true"' : '') + '><span class="gi-no">' + esc(x.no) + '</span><span class="gi-t">' + esc(x.title) + '</span>' +
+      '<span class="gi-b">' + (x.badges || []).map(function (b) { return '<span class="gbadge ' + b.c + '">' + esc(b.t) + '</span>'; }).join('') + '</span>' + (chips ? '<span class="gi-c">' + chips + '</span>' : '') + '</button>';
+  }
+  function tileBtn(x) { return '<button type="button" class="gtile" data-act="gopen" data-id="' + esc(x.id) + '"><span class="gtile-k">' + esc(x.no) + '</span><b>' + esc(x.title) + '</b><small>' + esc(x.sum) + '</small></button>'; }
+
+  // ----- hub -----
+  function renderHub() {
+    var list = sources(), q = GS.q.trim().toLowerCase();
+    $('ghqClear').hidden = !GS.q;
+    if (!list) { $('ghMain').innerHTML = '<p class="hint">กำลังโหลดแนวทาง…</p>'; $('ghFilters').innerHTML = ''; $('ghToc').innerHTML = ''; return; }
+    var total = list.reduce(function (n, s) { return n + s.items.length; }, 0);
+    $('ghFilters').innerHTML = [{ id: 'all', label: 'ทั้งหมด', n: total }].concat(list.map(function (s) { return { id: s.id, label: s.label, n: s.items.length }; })).map(function (f) {
+      return '<button type="button" class="gf" data-act="gsrc" data-s="' + f.id + '" aria-pressed="' + (GS.src === f.id) + '">' + esc(f.label) + ' <b>' + f.n + '</b></button>';
+    }).join('');
+    var shown = list.filter(function (s) { return GS.src === 'all' || GS.src === s.id; }), h = '';
+    if (q) {
+      var toks = q.split(/\s+/), n = 0;
+      shown.forEach(function (s) {
+        var hits = s.items.filter(function (x) { return toks.every(function (w) { return x.low.indexOf(w) !== -1; }); });
+        if (!hits.length) return;
+        n += hits.length;
+        h += '<h3 class="gh-hits">' + esc(s.label) + ' · ' + hits.length + '</h3>' + (s.tiles ? '<div class="gtiles">' + hits.map(tileBtn).join('') + '</div>'
+          : '<div class="gitems">' + hits.slice(0, 80).map(function (x) { return itemBtn(x); }).join('') + '</div>' + (hits.length > 80 ? '<p class="hint">แสดง 80 รายการแรก พิมพ์คำค้นเพิ่มเพื่อให้แคบลง</p>' : ''));
+      });
+      h = '<h2 class="gh-sec">ผลการค้นหา “' + esc(GS.q.trim()) + '”<span>' + n + ' รายการ</span></h2>' + (n ? h : '<div class="empty"><b>ไม่พบหัวข้อที่ตรงกับคำค้น</b><p>ลองชื่อโรคภาษาอังกฤษ หรือรหัส เช่น J18, N18</p></div>');
+      $('srStatus').textContent = 'พบ ' + n + ' หัวข้อ';
+      $('ghToc').innerHTML = '';
+      $('ghMain').innerHTML = h;
+      return;
+    }
+    if (GS.src === 'all') {
+      h += '<div class="gsrcs">' + list.map(function (s) {
+        return '<button type="button" class="gsrc ' + s.cls + '" data-act="gsrc" data-s="' + s.id + '"><span class="gsrc-ic">' + (GICON[s.icon] || GICON.book) + '</span><span><b>' + esc(s.name) + '</b><small>' + esc(s.desc) + '</small>' +
+          '<span class="gsrc-n"><strong>' + s.items.length + '</strong> ' + esc(s.unit) + (s.isNew ? ' <span class="gnew">ใหม่</span>' : '') + (s.tag ? ' <span class="gnew in">' + esc(s.tag) + '</span>' : '') + '</span></span></button>';
+      }).join('') + '</div>';
+    }
+    var toc = '';
+    shown.forEach(function (s) {
+      var compact = GS.src === 'all' && s.compact;
+      h += '<h2 class="gh-sec" id="gh-' + s.id + '">' + esc(s.name) + '<span>' + s.items.length + ' ' + esc(s.unit) + (s.note ? ' · ' + esc(s.note) : '') + '</span></h2>';
+      if (s.tiles) { h += '<div class="gtiles">' + s.items.map(tileBtn).join('') + '</div>'; toc += '<h4>' + esc(s.label) + '</h4>' + s.items.map(function (x) { return '<button type="button" data-act="gopen" data-id="' + esc(x.id) + '">' + esc(x.title) + '</button>'; }).join(''); return; }
+      if (compact) {
+        h += '<div class="gsecs">' + s.groups.map(function (g) { return '<button type="button" data-act="gsrc" data-s="' + s.id + '" data-g="' + esc(g.id) + '">' + esc(g.name) + '<span>' + g.items.length + '</span></button>'; }).join('') + '</div>';
+        return;
+      }
+      toc += '<h4>' + esc(s.label) + '</h4>';
+      s.groups.forEach(function (g) {
+        var gid = 'gh-' + s.id + '-' + g.id;
+        toc += '<button type="button" data-act="gjump" data-t="' + esc(gid) + '">' + esc(g.name) + '<span>' + g.items.length + '</span></button>';
+        h += '<section class="ggrp" id="' + esc(gid) + '"><h3>' + esc(g.name) + '<span>' + g.items.length + ' ' + esc(s.unit) + '</span></h3><div class="gitems">' + g.items.map(function (x) { return itemBtn(x); }).join('') + '</div></section>';
+      });
+    });
+    $('ghToc').innerHTML = toc;
+    $('ghMain').innerHTML = h;
+  }
+
+  // ----- reader -----
+  function renderReader(f) {
+    var s = f.s, x = f.x, r = s.read(x), tab = Math.min(GS.tab, r.tabs.length - 1), raw = GS.raw && r.canRaw;
+    var grp = s.groups.filter(function (g) { return g.items.indexOf(x) !== -1; })[0] || s.groups[0];
+    var k = s.items.indexOf(x), prev = s.items[k - 1], next = s.items[k + 1], sys = r.sys || 'icd10';
+    var codes = r.codes || [];
+    var h = '<aside class="gr-list" aria-label="หัวข้อในกลุ่มเดียวกัน"><button type="button" class="gr-back" data-act="gback">' + ICON.back + ' กลับหน้าแนวทาง</button>' +
+      '<h2>' + esc(grp ? grp.name : s.label) + '<span>' + (grp ? grp.items.length : 0) + ' ' + esc(s.unit) + '</span></h2><div class="gitems one">' + (grp ? grp.items.slice(0, 300).map(function (y) { return itemBtn(y, y === x); }).join('') : '') + '</div></aside>';
+    h += '<article class="gr-paper"><div class="gr-crumb"><button type="button" class="link" data-act="gback">แนวทาง</button> › ' + esc(r.crumb) + '</div>' +
+      '<h1 id="grTitle" tabindex="-1">' + esc(r.title) + '</h1><div class="gr-meta"><span>' + r.meta + '</span>' +
+      codes.slice(0, 6).map(function (c) { return '<span class="gchip">' + esc(c) + '</span>'; }).join('') + (codes.length > 6 ? '<span class="gmore">+' + (codes.length - 6) + ' รหัส</span>' : '') +
+      (r.icd11 || []).slice(0, 3).map(function (c) { return '<span class="icd11" title="รหัส ICD-11 ที่เอกสารอ้างถึง ไม่ใช่รหัส ICD-10">ICD-11 ' + esc(c) + '</span>'; }).join('') + '</div>' +
+      (r.top || '') +
+      '<div class="gr-tabs" role="tablist" aria-label="ส่วนของหัวข้อ">' + r.tabs.map(function (t, i) { return '<button type="button" role="tab" id="grTab' + i + '" class="gr-tab" data-act="gtab" data-i="' + i + '" aria-selected="' + (i === tab) + '" aria-controls="grPanel" tabindex="' + (i === tab ? 0 : -1) + '">' + esc(t) + '</button>'; }).join('') + '</div>' +
+      '<div class="gr-cols"><div class="gr-content" id="grPanel" role="tabpanel" aria-labelledby="grTab' + tab + '">' +
+      (r.canRaw ? '<div class="gr-view" role="group" aria-label="รูปแบบการแสดงเนื้อหา"><button type="button" class="gf" data-act="graw" data-v="0" aria-pressed="' + !raw + '">จัดรูปแบบ</button><button type="button" class="gf" data-act="graw" data-v="1" aria-pressed="' + raw + '">ต้นฉบับ</button>' + (raw ? '' : legendHtml()) + '</div>' : '') +
+      r.body(tab, raw) +
+      '<div class="gr-pn">' + (prev ? '<button type="button" class="btn" data-act="gopen" data-id="' + esc(prev.id) + '">‹ ' + esc(prev.no || 'ก่อนหน้า') + '</button>' : '') + (next ? '<button type="button" class="btn" data-act="gopen" data-id="' + esc(next.id) + '">' + esc(next.no || 'ถัดไป') + ' ›</button>' : '') + '</div></div>' +
+      '<aside class="gr-aside">' + peekHtml() +
+      (r.rel ? '<div class="gcard2"><h3>' + esc(r.rel.title) + '</h3>' + r.rel.items.map(function (y) { return '<button type="button" class="glnk" data-act="gopen" data-id="' + esc(y.id) + '">' + esc(y.title) + '<span>' + esc(y.sub) + '</span></button>'; }).join('') + '</div>' : '') +
+      (r.side || '') +
+      (codes.length ? '<div class="gcard2"><h3>รหัสในหัวข้อนี้ (' + codes.length + ')</h3><div class="gcodes">' + codes.map(function (c) { var key = c.split('-')[0].replace('.-', ''); return codeBtn(sys, DB[sys] && DB[sys].byCode[key] ? key : cat3(key), c); }).join('') + '</div></div>' : '') +
+      '</aside></div></article>';
+    $('gRead').innerHTML = h;
+  }
+  function peekHtml() {
+    if (!GS.peek) return '';
+    var d = DB[GS.peek.sys], x = d && d.byCode[GS.peek.c];
+    if (!x) return '';
+    return '<div class="gcard2 gpeek" role="status"><h3>รหัสที่เลือก</h3><div class="gpeek-c">' + esc(x.c) + '</div><p>' + esc(x.th || '') + '</p><p class="en">' + esc(x.en || '') + '</p>' +
+      '<div class="gpeek-a"><button type="button" class="btn primary" data-act="sel" data-sys="' + GS.peek.sys + '" data-code="' + esc(x.c) + '">เปิดหน้ารหัส</button><button type="button" class="btn ghost" data-act="gpeekx">ปิด</button></div></div>';
+  }
+
   function renderGuide() {
     renderUnitNotes();
-    renderScg();
-    if (!NHSO) { $('nhsoList').innerHTML = '<p class="hint">กำลังโหลด…</p>'; return; }
-    var secs = NHSO.sections;
-    $('nhsoSecs').innerHTML = '<button type="button" class="chip" data-act="gsec" data-s="" aria-pressed="' + (!S.gsec) + '">ทั้งหมด</button>' + secs.map(function (s) { return '<button type="button" class="chip" data-act="gsec" data-s="' + esc(s) + '" aria-pressed="' + (S.gsec === s) + '">' + esc(s) + '</button>'; }).join('');
-    var q = S.gq.toLowerCase().trim();
-    var list = NHSO.topics.filter(function (t) {
-      if (S.gsec && t.sec !== S.gsec) return false;
-      if (!q) return true;
-      return (t.title + ' ' + t.codes.join(' ') + ' ' + t.text).toLowerCase().indexOf(q) !== -1;
-    });
-    $('nhsoCount').textContent = list.length + ' หัวข้อ';
-    $('nhsoList').innerHTML = list.length ? list.slice(0, 120).map(function (t) { return nhsoItem(t, false); }).join('') + (list.length > 120 ? '<p class="more">แสดง 120 หัวข้อแรก พิมพ์คำค้นเพื่อให้แคบลง</p>' : '')
-      : '<div class="empty"><b>ไม่พบหัวข้อที่ตรงกับ “' + esc(S.gq) + '”</b><p>ลองค้นด้วยชื่อโรคภาษาอังกฤษหรือรหัส</p></div>';
+    EXTRAS.guide.forEach(function (f) { try { f(); } catch (e) {} });
+    if (!GD) { loadGuide().then(function () { if (S.view === 'guide') renderGuide(); }).catch(function () { $('ghMain').innerHTML = '<div class="empty"><b>โหลดแนวทางไม่สำเร็จ</b><p>ลองรีเฟรชหน้านี้</p></div>'; }); }
+    var f = GS.sel && sources() ? findItem(GS.sel) : null;
+    // an unknown built-in id falls back to the hub; an add-on's id may still be loading
+    if (GS.sel && sources() && !f && /^(scg|nh|gb)-/.test(GS.sel)) GS.sel = null;
+    $('gHub').hidden = !!GS.sel;
+    $('gRead').hidden = !GS.sel;
+    if (GS.sel) { if (f) renderReader(f); else $('gRead').innerHTML = '<p class="hint">กำลังโหลด…</p>'; }
+    else renderHub();
+  }
+  function gOpen(id) {
+    if (!GS.sel) GS.hubY = window.scrollY || 0;
+    GS.sel = id; GS.tab = 0; GS.peek = null; S.view = 'guide';
+    setHash(id); renderAll(); window.scrollTo(0, 0);
+    var t = $('grTitle'); if (t) try { t.focus({ preventScroll: true }); } catch (e) { t.focus(); }
+  }
+  function gBack() {
+    var from = GS.sel;
+    GS.sel = null; GS.peek = null; setHash('guide'); renderGuide();
+    var b = from && document.querySelector('#ghMain [data-id="' + from + '"]');
+    window.scrollTo(0, GS.hubY || 0);
+    if (b) try { b.focus({ preventScroll: true }); } catch (e) {}
+  }
+  function gAct(act, b) {
+    if (act === 'gopen') gOpen(b.getAttribute('data-id'));
+    else if (act === 'gback') gBack();
+    else if (act === 'gsrc') {
+      GS.src = b.getAttribute('data-s'); GS.sel = null; renderGuide();
+      var g = b.getAttribute('data-g'), el = g ? $('gh-' + GS.src + '-' + g) : null;
+      if (el) el.scrollIntoView({ block: 'start' }); else if (b.classList.contains('gsrc')) { var hs = $('gh-' + GS.src); if (hs) hs.scrollIntoView({ block: 'start' }); }
+      centerPressed();
+    } else if (act === 'gjump') { var t = $(b.getAttribute('data-t')); if (t) t.scrollIntoView({ block: 'start' }); }
+    else if (act === 'gtab') { GS.tab = +b.getAttribute('data-i'); renderGuide(); var tb = $('grTab' + GS.tab); if (tb) tb.focus(); }
+    else if (act === 'graw') { GS.raw = b.getAttribute('data-v') === '1'; GS.peek = null; renderGuide(); }
+    else if (act === 'gsum') { GS.sumHide = !GS.sumHide; renderGuide(); }
+    else if (act === 'gpeek') {
+      GS.peek = { sys: b.getAttribute('data-sys'), c: b.getAttribute('data-code') }; renderGuide();
+    } else if (act === 'gpeekx') { GS.peek = null; renderGuide(); }
+    else return false;
+    return true;
   }
 
   function renderChrome() {
@@ -1009,9 +1257,10 @@
       if (DB[m[1]] && DB[m[1]].byCode[c]) { S.sys = m[1]; S.sel[m[1]] = c; S.pane = 'detail'; if (S.view === 'guide' || S.view === 'favorites') S.view = 'search'; }
       return;
     }
-    var sm = /^scg-(\d+(?:-\d+)?)$/.exec(hsh);
-    if (sm) { S.view = 'guide'; S.scgOpen = sm[1]; S.scgScroll = null; return; }
-    if (['search', 'index', 'guide', 'favorites', 'admin'].indexOf(hsh) !== -1) S.view = hsh;
+    for (var xi = 0; xi < EXTRAS.hash.length; xi++) { try { if (EXTRAS.hash[xi](hsh)) return; } catch (e) {} }
+    if (['search', 'index', 'guide', 'favorites', 'admin'].indexOf(hsh) !== -1) { S.view = hsh; if (hsh === 'guide') GS.sel = null; return; }
+    // a guide topic: scg-2, nh-41, gb-steps, or an add-on source's id
+    if (/^[a-z][a-z0-9]*-[A-Za-z0-9-]+$/.test(hsh)) { S.view = 'guide'; if (GS.sel !== hsh) { GS.sel = hsh; GS.tab = 0; GS.peek = null; } }
   }
 
   function select(sys, c) {
@@ -1042,9 +1291,11 @@
     if (!b) { var row = ev.target.closest('.ix-split'); b = row && row.querySelector('.ix-code'); }
     if (!b) return;
     var act = b.getAttribute('data-act');
+    if (gAct(act, b)) { ev.preventDefault(); return; }
     if (act === 'view') {
       ev.preventDefault();
       S.view = b.getAttribute('data-view'); S.pane = 'list';
+      if (S.view === 'guide') GS.sel = null;
       setHash(S.view); renderAll(); window.scrollTo(0, 0);
       if (S.view === 'search') $('q').focus();
     } else if (act === 'sys') {
@@ -1102,11 +1353,9 @@
       S.pane = 'list'; renderChrome(); window.scrollTo(0, 0);
     } else if (act === 'scgopen') {
       ev.preventDefault();
-      S.view = 'guide'; S.scgOpen = b.getAttribute('data-n') || null; S.scgScroll = null; S.sq = ''; $('sq').value = '';
-      setHash(S.scgOpen ? 'scg-' + S.scgOpen : 'guide'); renderAll();
-      if (!S.scgOpen) { var w = $('scg'); if (w) w.scrollIntoView({ block: 'start' }); }
-    } else if (act === 'gsec') {
-      S.gsec = b.getAttribute('data-s'); renderGuide();
+      var sn = b.getAttribute('data-n');
+      if (sn) gOpen('scg-' + sn);
+      else { S.view = 'guide'; GS.sel = null; GS.src = 'scg'; GS.q = ''; $('ghq').value = ''; setHash('guide'); renderAll(); window.scrollTo(0, 0); }
     }
   });
 
@@ -1124,10 +1373,17 @@
   $('qClear').addEventListener('click', function () { S.q = ''; $('q').value = ''; renderChrome(); renderList(); $('q').focus(); });
   var fT;
   $('idxf').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(fT); fT = setTimeout(function () { S.idxF = v; S.go = null; renderList(); }, 200); });
-  var sT;
-  $('sq').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(sT); sT = setTimeout(function () { S.sq = v; renderScg(); }, 160); });
   var gT;
-  $('gq').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(gT); gT = setTimeout(function () { S.gq = v; renderGuide(); }, 160); });
+  $('ghq').addEventListener('input', function (e) { var v = e.target.value; $('ghqClear').hidden = !v; clearTimeout(gT); gT = setTimeout(function () { GS.q = v; renderGuide(); }, 160); });
+  $('ghqClear').addEventListener('click', function () { GS.q = ''; $('ghq').value = ''; renderGuide(); $('ghq').focus(); });
+  // tabs in the guide reader: arrow keys move between them
+  $('gRead').addEventListener('keydown', function (e) {
+    var t = e.target.closest && e.target.closest('[role="tab"]');
+    if (!t || (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'Home' && e.key !== 'End')) return;
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('#gRead [role="tab"]')), i = tabs.indexOf(t);
+    i = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+    e.preventDefault(); tabs[i].click();
+  });
   $('list').addEventListener('keydown', function (e) {
     if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
     var items = Array.prototype.slice.call(document.querySelectorAll('#list button.res, #list button.ix-row, #list .ix-code, #list button.tr-code'));
@@ -1400,7 +1656,12 @@
     abbr: function () { return ABBR; }, notes: function () { return NOTES; },
     esc: esc, toast: toast, select: select, newId: newId, saveItem: saveItem, deleteItem: deleteItem,
     rebuild: scheduleRebuild, persistLocal: persistLocal, patternHit: patternHit, draftKey: DRAFT_KEY,
-    goto: function (view) { S.view = view; setHash(view); renderAll(); }
+    goto: function (view) { S.view = view; setHash(view); renderAll(); },
+    // add-on modules: push functions into extras.detail (x, sys) -> html, extras.guide () -> void, extras.hash (hash) -> handled?
+    extras: EXTRAS, renderAll: function () { renderAll(); }, renderDetail: function () { renderDetail(); },
+    // guide add-ons: extras.gsrc.push(fn returning a source); these helpers draw text the same way the built-in sources do
+    guide: { segHtml: function (l, sys) { return segHtml(l, sys); }, codeBtn: function (sys, c, l) { return codeBtn(sys, c, l); }, open: function (id) { gOpen(id); },
+      refresh: function () { GSRC = null; if (S.view === 'guide') renderGuide(); }, state: GS, scg: function () { return SCG; } }
   };
 
   // ---------- boot ----------
@@ -1430,8 +1691,8 @@
     load(PATH.kw9).then(function (m) { BASE.kw9 = m; addKeywords('icd9', m); if (S.view === 'search' && S.q) renderList(); }).catch(function () {});
     loadTables().then(function () { if (S.view === 'search' && S.q) renderList(); renderDetail(); }).catch(function () {});
     loadMorph().then(function () { if (S.view === 'search' && S.q) renderList(); renderDetail(); }).catch(function () {});
-    load(PATH.scg).then(function (g) { SCG = g; renderDetail(); if (S.view === 'guide') renderGuide(); }).catch(function () { SCG = { items: [] }; });
-    load(PATH.nhso).then(function (n) { NHSO = n; renderDetail(); if (S.view === 'guide') renderGuide(); }).catch(function () { NHSO = { topics: [], sections: [] }; renderDetail(); });
+    load(PATH.scg).then(function (g) { SCG = g; GSRC = null; renderDetail(); if (S.view === 'guide') renderGuide(); }).catch(function () { SCG = { items: [] }; });
+    NHSO_P = load(PATH.nhso).then(function (n) { NHSO = n; GSRC = null; renderDetail(); if (S.view === 'guide') renderGuide(); }).catch(function () { NHSO = { topics: [], sections: [] }; renderDetail(); });
     connectBackend();
   }).catch(function (err) {
     $('list').innerHTML = '<div class="empty"><b>โหลดข้อมูลรหัสไม่สำเร็จ</b><p>ลองรีเฟรชหน้านี้ ถ้ายังไม่ได้ ให้แจ้งผู้ดูแลระบบว่าไฟล์ข้อมูลอาจหายไป (' + esc(err.message) + ')</p></div>';
