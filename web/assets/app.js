@@ -1064,13 +1064,13 @@
 
   // ----- pieces -----
   function sumHtml(sm, page) {
-    var cell = function (c) { return '<td' + (c.fix ? ' class="fixc"' : '') + '>' + segHtml(c.segs, 'icd10') + (c.fix ? ' <span class="fixl">ต่างจากต้นฉบับ</span>' : '') + '</td>'; };
+    var cell = function (c, i, cols) { return '<td data-label="' + esc(cols[i] || '') + '"' + (c.fix ? ' class="fixc"' : '') + '>' + segHtml(c.segs, 'icd10') + (c.fix ? ' <span class="fixl">ต่างจากต้นฉบับ</span>' : '') + '</td>'; };
     return '<section class="gsum" aria-labelledby="gsumT"><div class="gsum-hd"><span class="gsum-ic">' + GICON.sum + '</span><h2 id="gsumT">สรุปการให้รหัส</h2>' +
       '<span class="gsum-tag">เรียบเรียงจาก' + esc(sm.ref) + ' · รอทีมตรวจทาน ตรวจกับหน้า ' + esc(page) + ' ก่อนใช้</span>' +
       '<button type="button" class="gsum-tg" data-act="gsum" aria-expanded="' + !GS.sumHide + '">' + (GS.sumHide ? 'แสดงสรุป' : 'ซ่อนสรุป') + '</button></div>' +
       (GS.sumHide ? '' : sm.tables.map(function (tb) {
         return '<h3 class="gsum-cap">' + esc(tb.cap) + '</h3><div class="gtbl-wrap"><table class="gtbl gsum-t"><thead><tr>' + tb.cols.map(function (c) { return '<th scope="col">' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
-          tb.rows.map(function (r) { return '<tr>' + r.map(cell).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+          tb.rows.map(function (r) { return '<tr>' + r.map(function (c, i) { return cell(c, i, tb.cols); }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
       }).join('') + (sm.notes.length ? '<ul class="gsum-notes">' + sm.notes.map(function (n) { return '<li>' + segHtml(n, 'icd10') + '</li>'; }).join('') + '</ul>' : '')) + '</section>';
   }
   function casesHtml(exs, raw) {
@@ -1124,12 +1124,12 @@
     shown.forEach(function (s) {
       var compact = GS.src === 'all' && s.compact;
       h += '<h2 class="gh-sec" id="gh-' + s.id + '">' + esc(s.name) + '<span>' + s.items.length + ' ' + esc(s.unit) + (s.note ? ' · ' + esc(s.note) : '') + '</span></h2>';
-      if (s.tiles) { h += '<div class="gtiles">' + s.items.map(tileBtn).join('') + '</div>'; toc += '<h4>' + esc(s.label) + '</h4>' + s.items.map(function (x) { return '<button type="button" data-act="gopen" data-id="' + esc(x.id) + '">' + esc(x.title) + '</button>'; }).join(''); return; }
+      if (s.tiles) { h += '<div class="gtiles">' + s.items.map(tileBtn).join('') + '</div>'; toc += '<h2 class="gh-toch">' + esc(s.label) + '</h2>' + s.items.map(function (x) { return '<button type="button" data-act="gopen" data-id="' + esc(x.id) + '">' + esc(x.title) + '</button>'; }).join(''); return; }
       if (compact) {
         h += '<div class="gsecs">' + s.groups.map(function (g) { return '<button type="button" data-act="gsrc" data-s="' + s.id + '" data-g="' + esc(g.id) + '">' + esc(g.name) + '<span>' + g.items.length + '</span></button>'; }).join('') + '</div>';
         return;
       }
-      toc += '<h4>' + esc(s.label) + '</h4>';
+      toc += '<h2 class="gh-toch">' + esc(s.label) + '</h2>';
       s.groups.forEach(function (g) {
         var gid = 'gh-' + s.id + '-' + g.id;
         toc += '<button type="button" data-act="gjump" data-t="' + esc(gid) + '">' + esc(g.name) + '<span>' + g.items.length + '</span></button>';
@@ -1148,21 +1148,21 @@
     var codes = r.codes || [];
     var h = '<aside class="gr-list" aria-label="หัวข้อในกลุ่มเดียวกัน"><button type="button" class="gr-back" data-act="gback">' + ICON.back + ' กลับหน้าแนวทาง</button>' +
       '<h2>' + esc(grp ? grp.name : s.label) + '<span>' + (grp ? grp.items.length : 0) + ' ' + esc(s.unit) + '</span></h2><div class="gitems one">' + (grp ? grp.items.slice(0, 300).map(function (y) { return itemBtn(y, y === x); }).join('') : '') + '</div></aside>';
-    h += '<article class="gr-paper"><div class="gr-crumb"><button type="button" class="link" data-act="gback">แนวทาง</button> › ' + esc(r.crumb) + '</div>' +
+    h += '<article class="gr-paper"><button type="button" class="gr-back gr-mback" data-act="gback">' + ICON.back + ' กลับหน้าแนวทาง</button><div class="gr-crumb"><button type="button" class="link" data-act="gback">แนวทาง</button> › ' + esc(r.crumb) + '</div>' +
       '<h1 id="grTitle" tabindex="-1">' + esc(r.title) + '</h1><div class="gr-meta"><span>' + r.meta + '</span>' +
       codes.slice(0, 6).map(function (c) { return '<span class="gchip">' + esc(c) + '</span>'; }).join('') + (codes.length > 6 ? '<span class="gmore">+' + (codes.length - 6) + ' รหัส</span>' : '') +
       (r.icd11 || []).slice(0, 3).map(function (c) { return '<span class="icd11" title="รหัส ICD-11 ที่เอกสารอ้างถึง ไม่ใช่รหัส ICD-10">ICD-11 ' + esc(c) + '</span>'; }).join('') + '</div>' +
       (r.top || '') +
       '<div class="gr-tabs" role="tablist" aria-label="ส่วนของหัวข้อ">' + r.tabs.map(function (t, i) { return '<button type="button" role="tab" id="grTab' + i + '" class="gr-tab" data-act="gtab" data-i="' + i + '" aria-selected="' + (i === tab) + '" aria-controls="grPanel" tabindex="' + (i === tab ? 0 : -1) + '">' + esc(t) + '</button>'; }).join('') + '</div>' +
-      '<div class="gr-cols"><div class="gr-content" id="grPanel" role="tabpanel" aria-labelledby="grTab' + tab + '">' +
+      '<div class="gr-cols"><div class="gr-content" id="grPanel" role="tabpanel" aria-labelledby="grTab' + tab + '"><h2 class="sr">' + esc(r.tabs[tab]) + '</h2>' +
       (r.canRaw ? '<div class="gr-view" role="group" aria-label="รูปแบบการแสดงเนื้อหา"><button type="button" class="gf" data-act="graw" data-v="0" aria-pressed="' + !raw + '">จัดรูปแบบ</button><button type="button" class="gf" data-act="graw" data-v="1" aria-pressed="' + raw + '">ต้นฉบับ</button>' + (raw ? '' : legendHtml()) + '</div>' : '') +
       r.body(tab, raw) +
       '<div class="gr-pn">' + (prev ? '<button type="button" class="btn" data-act="gopen" data-id="' + esc(prev.id) + '">‹ ' + esc(prev.no || 'ก่อนหน้า') + '</button>' : '') + (next ? '<button type="button" class="btn" data-act="gopen" data-id="' + esc(next.id) + '">' + esc(next.no || 'ถัดไป') + ' ›</button>' : '') + '</div></div>' +
-      '<aside class="gr-aside">' + peekHtml() +
+      '<div class="gr-aside" role="region" aria-label="ข้อมูลประกอบหัวข้อ">' + peekHtml() +
       (r.rel ? '<div class="gcard2"><h3>' + esc(r.rel.title) + '</h3>' + r.rel.items.map(function (y) { return '<button type="button" class="glnk" data-act="gopen" data-id="' + esc(y.id) + '">' + esc(y.title) + '<span>' + esc(y.sub) + '</span></button>'; }).join('') + '</div>' : '') +
       (r.side || '') +
       (codes.length ? '<div class="gcard2"><h3>รหัสในหัวข้อนี้ (' + codes.length + ')</h3><div class="gcodes">' + codes.map(function (c) { var key = c.split('-')[0].replace('.-', ''); return codeBtn(sys, DB[sys] && DB[sys].byCode[key] ? key : cat3(key), c); }).join('') + '</div></div>' : '') +
-      '</aside></div></article>';
+      '</div></div></article>';
     $('gRead').innerHTML = h;
   }
   function peekHtml() {
@@ -1211,7 +1211,7 @@
     else if (act === 'graw') { GS.raw = b.getAttribute('data-v') === '1'; GS.peek = null; renderGuide(); }
     else if (act === 'gsum') { GS.sumHide = !GS.sumHide; renderGuide(); }
     else if (act === 'gpeek') {
-      GS.peek = { sys: b.getAttribute('data-sys'), c: b.getAttribute('data-code') }; renderGuide();
+      GS.peek = { sys: b.getAttribute('data-sys'), c: b.getAttribute('data-code'), y: window.scrollY || 0 }; renderGuide();
     } else if (act === 'gpeekx') { GS.peek = null; renderGuide(); }
     else return false;
     return true;
@@ -1303,13 +1303,22 @@
       else if (!v.sys) err = 'เลือกระบบรหัส';
       else if (!v.meaning) err = 'กรอกความหมาย / ชื่อที่เสนอ';
       else if (/คำย่อ/.test(v.type) && !v.abbr) err = 'กรอกคำย่อที่เสนอ';
-      if (err) { $('fbErr').textContent = err; $('fbErr').hidden = false; (v.meaning ? (v.abbr ? $('fbCode') : $('fbAbbr')) : $('fbMeaning')).focus(); return; }
+      if (err) {
+        var f = !v.type ? document.querySelector('#fbTypes input') : !v.sys ? document.querySelector('#fbSys input') : !v.meaning ? $('fbMeaning') : $('fbAbbr');
+        var host = f.closest('fieldset') || f.closest('label');
+        host.insertAdjacentElement('afterend', $('fbErr'));
+        $('fbErr').textContent = err; $('fbErr').hidden = false;
+        Array.prototype.forEach.call(document.querySelectorAll('#fbForm [aria-invalid]'), function (e) { e.removeAttribute('aria-invalid'); });
+        f.setAttribute('aria-invalid', 'true'); f.setAttribute('aria-describedby', 'fbErr'); f.focus(); return;
+      }
+      Array.prototype.forEach.call(document.querySelectorAll('#fbForm [aria-invalid]'), function (e) { e.removeAttribute('aria-invalid'); });
       $('fbErr').hidden = true; $('fbSend').disabled = true; $('fbSend').textContent = 'กำลังส่ง…';
       lsSet('icd.fbWho', v.who);
       // Google Forms gives no readable reply to other sites (no-cors), so a finished request counts as sent
       fetch(FB.form.replace(/\/viewform.*$/, '/formResponse'), { method: 'POST', mode: 'no-cors', body: fbParams(v) }).then(function () {
         $('fbForm').hidden = true; $('fbDone').hidden = false; $('fbDone').querySelector('.btn').focus();
       }).catch(function () {
+        $('fbSend').parentNode.insertAdjacentElement('beforebegin', $('fbErr'));
         $('fbErr').innerHTML = 'ส่งไม่สำเร็จ อาจเพราะไม่ได้ต่ออินเทอร์เน็ต <a class="link" target="_blank" rel="noopener" href="' + esc(fbLink(v)) + '">เปิดใน Google Forms</a> แล้วกดส่งจากที่นั่นได้';
         $('fbErr').hidden = false;
       }).then(function () { $('fbSend').disabled = false; $('fbSend').textContent = 'ส่งข้อเสนอ'; });
@@ -1449,6 +1458,12 @@
   $('idxf').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(fT); fT = setTimeout(function () { S.idxF = v; S.go = null; renderList(); }, 200); });
   var gT;
   $('ghq').addEventListener('input', function (e) { var v = e.target.value; $('ghqClear').hidden = !v; clearTimeout(gT); gT = setTimeout(function () { GS.q = v; renderGuide(); }, 160); });
+  if (window.matchMedia && window.matchMedia('(max-width: 600px)').matches) $('ghq').placeholder = 'ค้นชื่อโรค หัวข้อ หรือรหัส';
+  // phones: the code card floats over the text, so scrolling away closes it
+  window.addEventListener('scroll', function () {
+    if (!GS.peek || !window.matchMedia('(max-width: 859px)').matches || Math.abs((window.scrollY || 0) - GS.peek.y) < 240) return;
+    GS.peek = null; var pk = document.querySelector('.gpeek'); if (pk) pk.parentNode.removeChild(pk);
+  }, { passive: true });
   $('ghqClear').addEventListener('click', function () { GS.q = ''; $('ghq').value = ''; renderGuide(); $('ghq').focus(); });
   // tabs in the guide reader: arrow keys move between them
   $('gRead').addEventListener('keydown', function (e) {

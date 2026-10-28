@@ -555,3 +555,30 @@ details > summary { cursor: pointer; font-size: 14px; font-weight: 500; color: v
 .fb-inline { margin-top: 10px; }
 .abbr-fb { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
 .abbr-fb .link, .fb-inline .link, .footer .link { font-size: inherit; }
+
+/* ux fixes 2026-10-28 */
+.gh-toch { margin: 12px 0 4px; font-size: 12px; font-weight: 600; letter-spacing: .03em; color: var(--muted); }
+.gr-mback { display: none; }
+.fb-err { margin-top: -4px; }
+@media (max-width: 859px) {
+  .gr-mback { display: inline-flex; margin: 0 0 10px; }
+  .gsrcs { display: none; }
+  .gh-filters { flex-wrap: wrap; overflow: visible; }
+  .gf { min-height: 40px; padding: 0 12px; font-size: 13.5px; }
+}
+@media (max-width: 600px) {
+  .gsum-t, .gsum-t tbody, .gsum-t tr, .gsum-t td { display: block; width: 100%; }
+  .gsum-t thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .gsum-t tr { padding: 8px 12px; border-bottom: 1px solid var(--line); }
+  .gsum-t tr:last-child { border-bottom: 0; }
+  .gsum-t td { padding: 3px 0; border: 0; min-width: 0 !important; }
+  .gsum-t td::before { content: attr(data-label); display: block; font-size: 12px; font-weight: 600; color: var(--muted); }
+  .gsum-t td:first-child { color: var(--ink); font-weight: 500; }
+  .gsum-t td.fixc { padding: 4px 8px; margin: 2px -8px; width: calc(100% + 16px); border-radius: 6px; }
+}
+@media (max-width: 600px) {
+  .gsum-t td:first-child::before { display: none; }
+  .gsum-t td:not(:first-child) { display: flex; gap: 10px; align-items: baseline; }
+  .gsum-t td:not(:first-child)::before { flex: none; width: 76px; }
+  .gsum-t td small { display: inline; margin-left: 4px; }
+}
