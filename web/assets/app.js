@@ -15,10 +15,10 @@
   var PATH = {
     icd10: 'data/icd10/codes.json', kw10: 'data/icd10/keywords.json', tables: 'data/icd10/tables.json', morph: 'data/icd10/morph.json', idx10: 'data/icd10/index/',
     icd9: 'data/icd9/codes.json', kw9: 'data/icd9/keywords.json', idx9: 'data/icd9/index/',
-    abbr: 'data/shared/abbr.json', guide: 'data/shared/guidelines.json', nhso: 'data/shared/nhso2562.json',
+    abbr: 'data/shared/abbr.json', guide: 'data/shared/guidelines.json', nhso: 'data/shared/nhso2562.json', scg: 'data/shared/scg2026.json',
     overlay: 'data/overlay.json'
   };
-  var DB = {}, G = {}, NHSO = null, IDXM = {}, IDXL = {}, IDXRAW = {};
+  var DB = {}, G = {}, NHSO = null, SCG = null, IDXM = {}, IDXL = {}, IDXRAW = {};
   var BASE = {};          // data exactly as built from the source books (never edited at run time)
   var NOTES = [];         // unit notes from the overlay
 
@@ -764,6 +764,65 @@
     if (!NHSO) return [];
     return NHSO.topics.filter(function (t) { return t.sys === sys && t.codes.some(function (p) { return nhsoMatch(p, x, sys); }); });
   }
+  // ---------- แนวทางมาตรฐานการให้รหัสโรค ฉบับปรับปรุง (2026) ----------
+  function scgFor(x, sys) {
+    if (!SCG || sys !== 'icd10') return [];
+    return SCG.items.filter(function (it) { return it.codes.some(function (c) { return x.c === c || x.c.indexOf(c + '.') === 0 || (c.length === 3 && x.c.slice(0, 3) === c); }); });
+  }
+  // codes in the guideline text become links when they exist in ICD-10 (dotless "K810" opens K81.0); ICD-11 codes are tagged, never linked
+  function scgLink(text, it) {
+    var s = esc(text), d = DB.icd10;
+    s = s.replace(/(^|[^A-Za-z0-9.])([A-Z])(\d\d)(?:\.(\d{1,2}|-)|(\d{1,2}))?(?![A-Za-z0-9\/])/g, function (all, pre, l, n, sub, bare) {
+      var cat = l + n, part = sub || bare, c = part && part !== '-' ? cat + '.' + part : cat;
+      if (!d.byCode[c] && part && part !== '-') c = d.byCode[cat + '.' + part.slice(0, 1)] ? cat + '.' + part.slice(0, 1) : cat;
+      if (!d.byCode[c]) return all;
+      return pre + '<button type="button" class="cref" data-act="sel" data-sys="icd10" data-code="' + esc(c) + '">' + all.slice(pre.length) + '</button>';
+    });
+    if (it.icd11 && it.icd11.length) {
+      var rx = new RegExp('(^|[^A-Za-z0-9.])(' + it.icd11.slice().sort(function (a, b) { return b.length - a.length; }).map(function (k) { return k.replace(/\./g, '\\.'); }).join('|') + ')(?![A-Za-z0-9])', 'g');
+      s = s.replace(rx, function (all, pre, k) { return pre + '<span class="icd11" title="รหัส ICD-11 ที่เอกสารอ้างถึง ไม่ใช่รหัส ICD-10">' + k + '</span>'; });
+    }
+    return s;
+  }
+  function scgBody(it) {
+    return it.blocks.map(function (b) {
+      if (b.h) return '<h4>' + esc(b.h) + '</h4>';
+      if (b.t) return '<p>' + scgLink(b.t, it) + '</p>';
+      var rows = b.tbl || b.grid, head = '', body = rows;
+      if (b.tbl) head = '<tr><th scope="col"></th><th scope="col">แพทย์วินิจฉัย</th><th scope="col">Coder ให้รหัส</th></tr>';
+      var w = Math.max.apply(null, rows.map(function (r) { return r.length; }));
+      if (b.grid) { head = '<tr>' + rows[0].map(function (c) { return '<th scope="col">' + scgLink(c, it) + '</th>'; }).join('') + '</tr>'; body = rows.slice(1); }
+      return '<div class="scgt-wrap"><table class="scgt"><thead>' + head + '</thead><tbody>' + body.map(function (r) {
+        if (r.length === 1 && w > 1) return '<tr class="lead"><td colspan="' + w + '">' + scgLink(r[0], it) + '</td></tr>';
+        var cells = r.length < w ? new Array(w - r.length + 1).join('\u0000').split('\u0000').slice(0, w - r.length).concat(r) : r;
+        return '<tr>' + cells.map(function (c) { return '<td>' + scgLink(c, it) + '</td>'; }).join('') + '</tr>';
+      }).join('') + '</tbody></table></div>';
+    }).join('');
+  }
+  function scgItem(it, open, inDetail) {
+    var codes = it.codes.slice(0, 8).join(', ') + (it.codes.length > 8 ? ' …' : '');
+    return '<details class="nhso scg"' + (inDetail ? '' : ' id="scg-' + esc(it.n) + '"') + (open ? ' open' : '') + '><summary>ข้อ ' + esc(it.n) + '. ' + esc(it.title) +
+      '<span class="meta">แนวทางมาตรฐาน 2026 หน้า ' + it.page + (codes ? ' · <b>' + esc(codes) + '</b>' : '') + '</span></summary><div class="body scg-body">' + scgBody(it) +
+      (inDetail ? '<p><button type="button" class="link" data-act="scgopen" data-n="' + esc(it.n) + '">เปิดในหน้าแนวทาง</button></p>' : '') + '</div></details>';
+  }
+  function renderScg() {
+    if (!SCG) { $('scgList').innerHTML = '<p class="hint">กำลังโหลด…</p>'; return; }
+    var q = (S.sq || '').toLowerCase().trim();
+    var list = SCG.items.filter(function (it) {
+      if (!q) return true;
+      if (!it.low) it.low = ('ข้อ ' + it.n + ' ' + it.title + ' ' + it.codes.join(' ') + ' ' + it.blocks.map(function (b) { return b.t || b.h || (b.tbl || b.grid || []).map(function (r) { return r.join(' '); }).join(' '); }).join(' ')).toLowerCase();
+      return it.low.indexOf(q) !== -1;
+    });
+    $('scgCount').textContent = list.length + ' หัวข้อ';
+    // re-rendering (e.g. when other data finishes loading) keeps the items that are open
+    var opened = {};
+    Array.prototype.forEach.call($('scgList').querySelectorAll('details[open]'), function (d) { opened[d.id] = 1; });
+    $('scgList').innerHTML = list.length ? list.map(function (it) { return scgItem(it, S.scgOpen === it.n || opened['scg-' + it.n], false); }).join('')
+      : '<div class="empty"><b>ไม่พบหัวข้อที่ตรงกับ “' + esc(S.sq) + '”</b><p>ลองค้นด้วยชื่อโรคภาษาอังกฤษหรือรหัส</p></div>';
+    // scroll to the requested item; repeat until the rest of the guide page (สปสช. list) has loaded and the layout is final
+    if (S.scgOpen && S.scgScroll !== S.scgOpen) { var el = document.getElementById('scg-' + S.scgOpen); if (el) { if (NHSO) S.scgScroll = S.scgOpen; setTimeout(function () { el.scrollIntoView({ block: 'start' }); }, 0); } }
+  }
+
   function nhsoItem(t, open) {
     return '<details class="nhso"' + (open ? ' open' : '') + '><summary>' + esc(t.title) + '<span class="meta">' + esc(t.sec) + ' · คู่มือ สปสช. 2562 หน้า ' + t.page + (t.codes.length ? ' · <b>' + esc(t.codes.join(', ')) + '</b>' : '') + '</span></summary><div class="body">' + linkify(t.text, t.sys) + '</div></details>';
   }
@@ -862,6 +921,8 @@
       loadMorph().then(function () { renderDetail(); }).catch(function () {});
     }
 
+    var sg = scgFor(x, sys);
+    if (sg.length) h += '<section class="sec"><div class="sec-head"><h3>แนวทางมาตรฐานการให้รหัสโรค 2026 (' + sg.length + ')</h3><button type="button" class="link" data-act="scgopen" data-n="">ดูทั้งหมด</button></div>' + sg.map(function (it) { return scgItem(it, sg.length === 1, true); }).join('') + '</section>';
     var topics = nhsoFor(x, sys);
     if (topics.length) {
       h += '<section class="sec"><div class="sec-head"><h3>เกณฑ์ตรวจสอบเวชระเบียน สปสช. 2562</h3><button type="button" class="link" data-act="view" data-view="guide">ดูทั้งหมด</button></div>' + topics.map(function (t, i) { return nhsoItem(t, i === 0 && topics.length === 1); }).join('') + '</section>';
@@ -891,6 +952,7 @@
   }
   function renderGuide() {
     renderUnitNotes();
+    renderScg();
     if (!NHSO) { $('nhsoList').innerHTML = '<p class="hint">กำลังโหลด…</p>'; return; }
     var secs = NHSO.sections;
     $('nhsoSecs').innerHTML = '<button type="button" class="chip" data-act="gsec" data-s="" aria-pressed="' + (!S.gsec) + '">ทั้งหมด</button>' + secs.map(function (s) { return '<button type="button" class="chip" data-act="gsec" data-s="' + esc(s) + '" aria-pressed="' + (S.gsec === s) + '">' + esc(s) + '</button>'; }).join('');
@@ -947,6 +1009,8 @@
       if (DB[m[1]] && DB[m[1]].byCode[c]) { S.sys = m[1]; S.sel[m[1]] = c; S.pane = 'detail'; if (S.view === 'guide' || S.view === 'favorites') S.view = 'search'; }
       return;
     }
+    var sm = /^scg-(\d+(?:-\d+)?)$/.exec(hsh);
+    if (sm) { S.view = 'guide'; S.scgOpen = sm[1]; S.scgScroll = null; return; }
     if (['search', 'index', 'guide', 'favorites', 'admin'].indexOf(hsh) !== -1) S.view = hsh;
   }
 
@@ -1036,6 +1100,11 @@
       hist = []; lsSet('icd.hist', hist); renderList();
     } else if (act === 'back') {
       S.pane = 'list'; renderChrome(); window.scrollTo(0, 0);
+    } else if (act === 'scgopen') {
+      ev.preventDefault();
+      S.view = 'guide'; S.scgOpen = b.getAttribute('data-n') || null; S.scgScroll = null; S.sq = ''; $('sq').value = '';
+      setHash(S.scgOpen ? 'scg-' + S.scgOpen : 'guide'); renderAll();
+      if (!S.scgOpen) { var w = $('scg'); if (w) w.scrollIntoView({ block: 'start' }); }
     } else if (act === 'gsec') {
       S.gsec = b.getAttribute('data-s'); renderGuide();
     }
@@ -1055,6 +1124,8 @@
   $('qClear').addEventListener('click', function () { S.q = ''; $('q').value = ''; renderChrome(); renderList(); $('q').focus(); });
   var fT;
   $('idxf').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(fT); fT = setTimeout(function () { S.idxF = v; S.go = null; renderList(); }, 200); });
+  var sT;
+  $('sq').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(sT); sT = setTimeout(function () { S.sq = v; renderScg(); }, 160); });
   var gT;
   $('gq').addEventListener('input', function (e) { var v = e.target.value; clearTimeout(gT); gT = setTimeout(function () { S.gq = v; renderGuide(); }, 160); });
   $('list').addEventListener('keydown', function (e) {
@@ -1359,6 +1430,7 @@
     load(PATH.kw9).then(function (m) { BASE.kw9 = m; addKeywords('icd9', m); if (S.view === 'search' && S.q) renderList(); }).catch(function () {});
     loadTables().then(function () { if (S.view === 'search' && S.q) renderList(); renderDetail(); }).catch(function () {});
     loadMorph().then(function () { if (S.view === 'search' && S.q) renderList(); renderDetail(); }).catch(function () {});
+    load(PATH.scg).then(function (g) { SCG = g; renderDetail(); if (S.view === 'guide') renderGuide(); }).catch(function () { SCG = { items: [] }; });
     load(PATH.nhso).then(function (n) { NHSO = n; renderDetail(); if (S.view === 'guide') renderGuide(); }).catch(function () { NHSO = { topics: [], sections: [] }; renderDetail(); });
     connectBackend();
   }).catch(function (err) {

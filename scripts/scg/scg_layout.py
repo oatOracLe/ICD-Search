@@ -1,5 +1,5 @@
 import pymupdf, re, sys, json, collections
-PDF = '/mnt/user-data/attachments/18a529f5-697f-5ebf-92fc-e7c00e92458c/3b3c62d3-Final_SCG-2017_Modify_2026_1.pdf'
+PDF = '<path to Final_SCG-2017_Modify_2026_1.pdf>'  # only used when this file is run directly
 TH = 'ก-ฮ'
 LABEL = re.compile(r'(การวินิจฉัย|Principal|Comorbid|Complication|Other|External|โรค|หัตถการ|Procedure|สัณฐาน|Morpholog|Main|Secondary|Operation|การผ่าตัด|รหัส)')
 def fix_am(t):

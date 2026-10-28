@@ -295,6 +295,18 @@ details > summary { cursor: pointer; font-size: 14px; font-weight: 500; color: v
 .subst { display: flex; flex-wrap: wrap; gap: 6px; }
 .subst button { min-height: 36px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); font-size: 13px; text-align: left; }
 .nhso-wrap { margin-top: 32px; }
+.scg-wrap { margin-top: 32px; }
+.scg-wrap > p, .nhso-wrap > p { max-width: 75ch; }
+.scg .scg-body { white-space: normal; max-width: 80ch; }
+.scg-body p { margin: 0 0 8px; }
+.scg-body h4 { margin: 14px 0 6px; font-size: 14px; font-weight: 600; color: var(--ink); }
+.scgt-wrap { overflow-x: auto; margin: 6px 0 12px; }
+.scgt { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
+.scgt th, .scgt td { padding: 5px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.scgt th { background: var(--surface); font-weight: 600; }
+.scgt tr.lead td { font-weight: 600; background: var(--surface); }
+.scg-body .cref { min-height: 24px; }
+.icd11 { font-family: var(--font-code); font-size: 0.92em; padding: 0 4px; border-radius: 4px; background: var(--line); color: var(--ink-2); }
 .nhso-wrap h2 { margin: 0; font-size: 22px; font-weight: 600; }
 .nhso-wrap > p { margin: 6px 0 14px; max-width: 70ch; color: var(--muted); font-size: 14px; }
 .nhso-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
@@ -348,3 +360,4 @@ details > summary { cursor: pointer; font-size: 14px; font-weight: 500; color: v
 #unitNotes h2 { font-size: 18px; margin: 0 0 8px; }
 .morphbox { overflow-x: auto; }
 .morphbox .itbl { width: 100%; }
+.scg { scroll-margin-top: 92px; }
