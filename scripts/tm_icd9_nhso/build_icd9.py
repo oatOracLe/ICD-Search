@@ -1,5 +1,5 @@
 """Build /home/claude/icd-site/data/icd9/codes.json from icd9_parsed.json."""
-import json, re
+import json, re, sys
 from collections import defaultdict
 
 P = json.load(open('/home/claude/src/icd9_parsed.json', encoding='utf8'))
@@ -48,3 +48,7 @@ out = {'system': 'icd9', 'label': 'ICD-9-CM', 'kind': 'procedure', 'version': 'F
 json.dump(out, open('/home/claude/icd-site/data/icd9/codes.json', 'w', encoding='utf8'), ensure_ascii=False, separators=(',', ':'))
 print('chapters', len(chapters), 'blocks', len(blocks), 'codes', len(codes), 'leaf', sum(c['leaf'] for c in codes),
       'or', sum(1 for c in codes if c.get('drg') == 'or'), 'drg', sum(1 for c in codes if c.get('drg') == 'drg'))
+
+# Thai names (unofficial, made for this website): see icd9_th.py
+import subprocess
+subprocess.run([sys.executable, __file__.replace('build_icd9.py', 'icd9_th.py'), '/home/claude/icd-site/data'], check=True)
