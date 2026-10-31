@@ -44,9 +44,9 @@
    "script": "scripts/who_icd10/parse_morph.py"
   },
   "icd9/codes.json": {
-   "what": "รหัสหัตถการ ICD-9-CM พร้อมเครื่องหมาย OR / ThaiDRG",
-   "source": "ICD-9-CM FY15 (S0034, OCR)",
-   "script": "scripts/tm_icd9_nhso/build_icd9.py"
+   "what": "รหัสหัตถการ ICD-9-CM พร้อมเครื่องหมาย OR / ThaiDRG และชื่อภาษาไทย (แปลสำหรับเว็บนี้ ไม่เป็นทางการ)",
+   "source": "ICD-9-CM FY15 (S0034, OCR); ชื่อไทยจาก scripts/tm_icd9_nhso/icd9_th.tsv",
+   "script": "scripts/tm_icd9_nhso/build_icd9.py + icd9_th.py"
   },
   "icd9/keywords.json": {
    "what": "คำค้นจากดัชนีหัตถการ",
@@ -60,7 +60,7 @@
   },
   "shared/abbr.json": {
    "what": "พจนานุกรมคำย่อทางการแพทย์และตารางสะกดคำอเมริกัน/อังกฤษ",
-   "source": "เขียนขึ้นสำหรับโปรเจกต์",
+   "source": "เขียนขึ้นสำหรับโปรเจกต์ ส่วนหนึ่งคัดจากคลังศัพท์การแพทย์ไทย-อังกฤษ (เฉพาะคำที่ผูกกับรหัสได้)",
    "script": "scripts/tm_icd9_nhso/abbr.py"
   },
   "shared/guidelines.json": {
