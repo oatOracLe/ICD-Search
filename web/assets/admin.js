@@ -102,7 +102,7 @@
   }
   function saveCode(hide) {
     var sys = val('f_sys'), c = val('f_c').toUpperCase();
-    if (sys === 'icd9') c = c.replace(/[^0-9.]/g, '');
+    if (sys === 'icd9') { c = c.replace(/[^0-9.]/g, ''); if (/^\d{3,4}$/.test(c)) c = c.slice(0, 2) + '.' + c.slice(2); }
     var ok = sys === 'icd10' ? /^[A-Z]\d\d(\.\d{1,3})?$/.test(c) : /^\d\d(\.\d{1,2})?$/.test(c);
     if (!ok) { A.toast('รูปแบบรหัสไม่ถูกต้อง'); return; }
     var inBase = A.base()[sys].codes.some(function (b) { return b.c === c; });
@@ -134,14 +134,20 @@
   function saveAbbr() {
     var keys = val('a_keys').split('|').map(function (s) { return s.trim(); }).filter(Boolean);
     if (!keys.length) { A.toast('ใส่คำย่อ'); return; }
-    var sys = val('a_sys'), hide = $('a_hide').checked;
+    var sys = val('a_sys'), hide = $('a_hide').checked, warns = [];
     var it = { id: (edit.abbr && edit.abbr.id) || A.newId('abbr', sys + '-' + keys[0].toLowerCase()), kind: 'abbr', sys: sys, keys: keys.join('|'), op: hide ? 'hide' : 'add' };
     if (!hide) {
       it.en = val('a_en'); it.th = val('a_th'); it.m = lines('a_m'); it.top = list('a_top').map(function (c) { return c.toUpperCase(); });
       if (!it.m.length && !it.top.length) { A.toast('ใส่คำค้นหรือรหัสอย่างน้อยหนึ่งรายการ'); return; }
-      it.top.forEach(function (c) { if (!A.db(sys).byCode[c]) A.toast('คำเตือน: ไม่พบรหัส ' + c); });
+      var d = A.db(sys);
+      it.top.forEach(function (c) { if (!d.byCode[c]) warns.push('ไม่พบรหัส ' + c); });
+      it.m.forEach(function (m) {
+        if (m.charAt(0) !== '@') return;
+        var pat = m.slice(1).trim().toUpperCase();
+        if (!d.codes.some(function (x) { return A.patternHit(pat, x.c); })) warns.push(m + ' ไม่ตรงกับรหัสใดเลย');
+      });
     }
-    save(it);
+    save(it, warns.length ? 'บันทึกแล้ว แต่ตรวจพบ: ' + warns.join(' · ') : '');
   }
 
   // ------------------------------------------------------------------ unit notes
@@ -325,7 +331,7 @@
   function onChange(ev) {
     var t = ev.target;
     if (t.id === 'r_table') { edit.row = { table: t.value }; render(); }
-    if (t.id === 'f_sys') { edit.code = { sys: t.value }; render(); }
+    if (t.id === 'f_sys') { edit.code = { sys: t.value, c: val('f_c'), en: val('f_en'), th: val('f_th'), memo: val('f_memo') }; render(); }
   }
   window.ICDADMIN = {
     mount: function (el) {
