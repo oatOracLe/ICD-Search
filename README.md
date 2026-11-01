@@ -52,6 +52,7 @@ python -m http.server 8000
 
 - **Windows:** ดับเบิลคลิก `start-web.bat` (ต้องมี Python) เบราว์เซอร์จะเปิดให้เอง
 - **หลังบ้าน:** http://localhost:8000/index.html#admin
+- **หลังบ้านออนไลน์ (แก้ข้อมูลได้เมื่อเป็นเจ้าของ/Editor):** https://claude.ai/artifact/CZg1bWePmJkguh8v419fhS แล้วไปที่ `#admin` (ลิงก์นี้ไม่ให้สิทธิ์แก้ไขเอง ต้องล็อกอินด้วยบัญชีที่มีสิทธิ์)
 
 ## เผยแพร่ขึ้นเว็บ
 
