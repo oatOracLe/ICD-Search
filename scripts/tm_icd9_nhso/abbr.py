@@ -517,6 +517,7 @@ D9 = [
     ('WB', 'Whole blood transfusion', 'ให้เลือดครบส่วน', ['@99.03'], ['99.03']),
     ('USWA', 'Ultrasound of whole abdomen', 'อัลตราซาวด์ช่องท้องทั้งหมด', ['@88.76'], ['88.76']),
     ('REDUCE COLOSTOMY|CLOSE COLOSTOMY|CLOSURE COLOSTOMY', 'Closure of colostomy', 'ปิดทวารเทียม', ['@46.52'], ['46.52']),
+    ('OAE', 'Otoacoustic emissions (hearing screening)', 'การตรวจการได้ยินด้วยเสียงสะท้อนจากหูชั้นใน (OAE)', ['@95.43', 'audiological evaluation'], ['95.43']),
 ]
 
 SPELL = [  # American -> British; ICD-10 is British, ICD-9-CM is American
