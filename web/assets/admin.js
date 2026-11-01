@@ -308,7 +308,15 @@
     else if (a === 'clear') { edit[b.getAttribute('data-k')] = null; render(); }
     else if (a === 'edit') { var it = findItem(b.getAttribute('data-id')); if (it) { edit[b.getAttribute('data-k')] = it; render(); root.scrollIntoView({ block: 'start' }); } }
     else if (a === 'del') {
-      if (!window.confirm || window.confirm('ลบรายการนี้? ข้อมูลจะกลับเป็นค่าเดิม')) A.deleteItem(b.getAttribute('data-id')).then(function () { A.toast('ลบแล้ว'); render(); });
+      // two-step confirm inside the page: window.confirm is blocked in the sandboxed published page, which made delete do nothing
+      if (b.getAttribute('data-armed') !== '1') {
+        b.setAttribute('data-armed', '1'); b.textContent = 'กดอีกครั้งเพื่อยืนยันลบ';
+        setTimeout(function () { if (b.isConnected) { b.removeAttribute('data-armed'); b.textContent = 'ลบ'; } }, 4000);
+        return;
+      }
+      b.disabled = true;
+      A.deleteItem(b.getAttribute('data-id')).then(function () { A.toast('ลบแล้ว'); render(); })
+        .catch(function (e) { b.disabled = false; A.toast('ลบไม่สำเร็จ: ' + (e && (e.code || e.message) || '')); });
     }
     else if (a === 'loadcode') {
       var sys = val('f_sys'), c = val('f_c').toUpperCase();
