@@ -39,9 +39,10 @@
 - คำค้นจากดัชนี (data/icd9/keywords.json) บางรหัสมีคำของรายการข้างเคียงปนมา เว็บจัดอันดับผลที่ตรงกับชื่อรหัสก่อน
 
 ## คำย่อทางการแพทย์ (data/shared/abbr.json)
-- สร้างจาก scripts/tm_icd9_nhso/abbr.py เขียนขึ้นเอง ICD-10 532 คำ, ICD-9-CM 361 คำ ตรวจด้วย `python3 abbr.py --check`
+- สร้างจาก scripts/tm_icd9_nhso/abbr.py เขียนขึ้นเอง ICD-10 533 คำ, ICD-9-CM 365 คำ ตรวจด้วย `python3 abbr.py --check`
 - พ.ย. 2569 เพิ่มคำย่อจากคลังศัพท์ (cleaned.xlsx) เฉพาะคำที่ผูกกับรหัสได้ ICD-10 84 คำ, ICD-9-CM 73 คำ (ไม่เพิ่มคำย่อของค่าแล็บ ฮอร์โมน หรือคำที่ไม่มีรหัสตรง) และคำที่ผู้ใช้เสนอผ่านฟอร์ม USWA, NST, Reduce colostomy (STSG มีอยู่แล้ว)
 - 4 พ.ย. 2569 เพิ่มคำย่อจากร่างรวม 7 แหล่ง (ASHA, MedlinePlus, MSF, NHS Wales, รพ.ฟากท่า, รพ.ราชบุรี) 72 คำ/คีย์ใหม่ (ICD-10 62, ICD-9-CM 10) คำที่มีอยู่แล้วไม่เพิ่มซ้ำ รหัสผูกโดย Claude ยังไม่มีทีมแพทย์/coder ตรวจ ข้ามคำที่รายการเดิมละเอียดกว่าร่าง (DHF, PTB, DVT, HNP, PIH, GDM, PKP, ERCP, LC) และคำย่อชื่อยาที่ค้นไม่เจอรหัส (AMT, MFM, MMI/PTU, KCl, ISMN/ISDN) กับ DNR (ไม่มี Z66 ใน WHO 2016)
+- 4 พ.ย. 2569 (รอบสอง) เพิ่ม TAH-BSO, TAS (transabdominal sonography → 88.79/88.78), CCHD สองความหมาย (critical: รายการคัดกรอง pulse oximetry แปลงเป็นรหัส WHO; cyanotic → Q24.9 ตามรายการ รพ.ราชบุรี) และ BSO ความหมายที่สอง bilateral simple orchiectomy → 62.41
 
 ## เกณฑ์ตรวจสอบเวชระเบียน สปสช. 2562 (data/shared/nhso2562.json)
 - 259 หัวข้อใน 17 กลุ่ม ผูกกับรหัสได้ 185 หัวข้อ
