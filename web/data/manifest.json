@@ -45,18 +45,18 @@
   },
   "icd9/codes.json": {
    "what": "รหัสหัตถการ ICD-9-CM พร้อมเครื่องหมาย OR / ThaiDRG และชื่อภาษาไทย (แปลสำหรับเว็บนี้ ไม่เป็นทางการ)",
-   "source": "ICD-9-CM FY15 (S0034, OCR); ชื่อไทยจาก scripts/tm_icd9_nhso/icd9_th.tsv",
-   "script": "scripts/tm_icd9_nhso/build_icd9.py + icd9_th.py"
+   "source": "ICD-9-CM FY15 (S0034, OCR); ชื่อไทยจาก scripts/tm_icd9_nhso/icd9_th.tsv; ตรวจกับ CMS v32 (CMS32_DESC_LONG_SG.txt)",
+   "script": "scripts/tm_icd9_nhso/build_icd9.py + icd9_th.py + icd9_cms_fix.py"
   },
   "icd9/keywords.json": {
    "what": "คำค้นจากดัชนีหัตถการ",
-   "source": "S0034",
-   "script": "scripts/tm_icd9_nhso/parse_index9.py"
+   "source": "CDC/NCHS ICD-9-CM Index to Procedures FY2012 (Pindex12.rtf) + รายการ FY2013–2015",
+   "script": "scripts/tm_icd9_nhso/build_index9_cdc.py"
   },
   "icd9/index/": {
    "what": "ดัชนีหัตถการตามตัวอักษร",
-   "source": "S0034",
-   "script": "scripts/tm_icd9_nhso/parse_index9.py"
+   "source": "CDC/NCHS ICD-9-CM Index to Procedures FY2012 (Pindex12.rtf) + รายการ FY2013–2015",
+   "script": "scripts/tm_icd9_nhso/build_index9_cdc.py"
   },
   "shared/abbr.json": {
    "what": "พจนานุกรมคำย่อทางการแพทย์และตารางสะกดคำอเมริกัน/อังกฤษ",

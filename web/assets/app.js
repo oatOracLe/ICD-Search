@@ -1254,7 +1254,7 @@
   function fbReady() { return !!(FB && FB.form && FB.entries && FB.entries.meaning); }
   function fbBtn(label, o, cls) {
     if (!fbReady()) return '';
-    return '<button type="button" class="' + (cls || 'btn') + '" data-act="fbopen" data-k="' + esc(o.k || 'other') + '" data-sys="' + esc(o.sys || S.sys) + '" data-code="' + esc(o.code || '') + '" data-abbr="' + esc(o.abbr || '') + '" data-q="' + esc(o.q || '') + '">' + esc(label) + '</button>';
+    return '<button type="button" class="' + (cls || 'btn') + '" data-act="fbopen" data-k="' + esc(o.k || 'other') + '" data-sys="' + esc(o.sys || '') + '" data-code="' + esc(o.code || '') + '" data-abbr="' + esc(o.abbr || '') + '" data-q="' + esc(o.q || '') + '">' + esc(label) + '</button>';
   }
   function fbRadios(id, name, list, pick) {
     $(id).innerHTML = list.map(function (v, i) {
@@ -1273,8 +1273,15 @@
   }
   function fbLink(v) { return FB.form.replace(/\?.*$/, '') + '?usp=pp_url&' + fbParams(v).toString(); }
   function fbSync() { $('fbOpen').href = fbLink(fbValues()); }
+  function fbGuessSys(t) {
+    t = String(t || '').trim().toUpperCase();
+    if (/^[A-Z]\d\d(\.?\d{0,3})?$/.test(t)) return 'icd10';
+    if (/^\d\d(\.\d{1,2})?$/.test(t) || /^\d{3,4}$/.test(t)) return 'icd9';
+    return '';
+  }
   function fbOpen(b) {
-    var d = $('fbDlg'), k = b.getAttribute('data-k'), sys = b.getAttribute('data-sys') || S.sys;
+    // the system: the button's own (a code page), else guessed from a typed code, else the system on screen now
+    var d = $('fbDlg'), k = b.getAttribute('data-k'), sys = b.getAttribute('data-sys') || fbGuessSys(b.getAttribute('data-code') || b.getAttribute('data-q')) || S.sys;
     fbRadios('fbTypes', 'fbType', FB.types, FB_TYPE[k] != null ? FB_TYPE[k] : 4);
     fbRadios('fbSys', 'fbSysR', FB.systems, sys === 'icd9' ? 1 : 0);
     var code = b.getAttribute('data-code'), abbr = b.getAttribute('data-abbr'), q = b.getAttribute('data-q');

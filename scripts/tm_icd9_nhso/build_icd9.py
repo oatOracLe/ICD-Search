@@ -52,3 +52,5 @@ print('chapters', len(chapters), 'blocks', len(blocks), 'codes', len(codes), 'le
 # Thai names (unofficial, made for this website): see icd9_th.py
 import subprocess
 subprocess.run([sys.executable, __file__.replace('build_icd9.py', 'icd9_th.py'), '/home/claude/icd-site/data'], check=True)
+# check against the official CMS v32 (FY2015) list: fix OCR titles, add missed codes, drop made-up ones (icd9_cms_fix.py)
+subprocess.run([sys.executable, __file__.replace('build_icd9.py', 'icd9_cms_fix.py'), '/home/claude/icd-site/data'], check=True)

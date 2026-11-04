@@ -18,6 +18,61 @@ os.makedirs(OUT)
 E = [e for e in X['entries'] if not e[1].startswith('Section I') and len(re.findall(r'\b[VWXY]\d\d\b|[A-Z]\d\d\.\d', e[1])) < 4]
 
 
+# "Note:" boxes under a lead term (Cyst, Injury, Burn, Carcinoma, Neoplasm, Nephritis ...) come out of the PDF as a run
+# of level-0 lines, one per printed line. Left alone, each line became a "lead term" of its own and took the lead's
+# whole list of subterms with it (Cyst's subterms ended up under "site."). Join the run into one note under the lead.
+def sort_key(t):
+    return re.sub(r'[^a-z0-9 ]', '', t.lower())
+
+
+def merge_notes(rows):
+    out, i, n = [], 0, 0
+    while i < len(rows):
+        e = rows[i]
+        if e[0] == 0 and re.match(r'Note\b', e[1]) and out:
+            lead = next((r for r in reversed(out) if r[0] == 0), None)
+            parts, j = [e[1]], i + 1
+            while j < len(rows):
+                f = rows[j]
+                if f[0] != 0 or f[2] or f[4] != e[4]:
+                    break
+                t = f[1]
+                if re.match(r'Note\b', t):
+                    parts.append(t)
+                    j += 1
+                    continue
+                starts_lower = not t[:1].isupper()
+                prev_open = not re.search(r'[.:"”]\s*$', parts[-1])
+                next_lead = lead and t[:1].upper() == lead[1][:1].upper() and sort_key(t) >= sort_key(lead[1]) and not prev_open
+                if starts_lower or prev_open or not next_lead:
+                    parts.append(t)
+                    j += 1
+                else:
+                    break
+            text = re.sub(r'\s+', ' ', ' '.join(parts)).replace('- ', '-') if False else re.sub(r'\s+', ' ', ' '.join(parts))
+            out.append([1, text, None, None, e[4], 0])
+            n += 1
+            i = j
+            continue
+        out.append(e)
+        i += 1
+    return out, n
+
+
+E, _notes = merge_notes(E)
+# the Abortion page prints its fourth-character table beside the index; its headings and digit columns came out as
+# stray "lead terms" ("complete orincomplete...", ".5 .0 .0") and as tails on real lines. Drop / trim them.
+_junk = 0
+for e in E:
+    if 'Complication of abortion, current' in e[1]:
+        e[1] = re.sub(r'(\s+\.\d)+$', '', e[1].split(' Complication of abortion, current')[0]).strip()
+        e[1] = re.sub(r'\s+P\d\d\.\d$', '', e[1])
+    e[1] = re.sub(r'(\s+\.\d)+$', '', e[1]) if re.search(r'[a-z]\s+\.\d$', e[1]) else e[1]
+_keep = [e for e in E if not (e[0] == 0 and not e[2] and (e[1][:1].islower() or re.match(r'^[.\d\s]+$', e[1])))]
+_junk, E = len(E) - len(_keep), _keep
+print('notes merged', _notes, 'stray table lines dropped', _junk)
+
+
 def insert_after(pred, row):
     for i, e in enumerate(E):
         if pred(e):

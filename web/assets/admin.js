@@ -235,14 +235,23 @@
     var all = OV.effective();
     return '<div class="aform"><h2>นำเข้าและส่งออก</h2>' +
       '<p>ไฟล์ <code>overlay.json</code> คือชั้นข้อมูลที่เพิ่มทั้งหมด วางไว้ที่ <code>web/data/overlay.json</code> ของโฟลเดอร์โปรเจกต์ แล้วเว็บจะโหลดเอง</p>' +
+      (OV.mode === 'online' ? '<p class="ainfo"><b>ขึ้นเว็บสาธารณะ (GitHub):</b> กดส่งออกด้านล่าง แล้ว <a class="link" target="_blank" rel="noopener" href="' + UPLOAD_URL + '">เปิดหน้าอัปโหลดของ GitHub</a> ลากไฟล์ overlay.json ที่ได้ไปวาง แล้วกด Commit changes ไฟล์รวมทุกรายการแล้ว วางทับของเดิมได้เลย</p>' : '') +
       '<div class="aact"><button type="button" class="btn primary" data-a="export">ส่งออกเป็น overlay.json (' + all.length + ' รายการ)</button>' +
       (OV.mode === 'local' ? '<button type="button" class="btn" data-a="savefile">บันทึกทับไฟล์ overlay.json ในโฟลเดอร์</button>' : '') + '</div>' +
       '<h3>นำเข้า</h3><p>เลือกไฟล์ overlay.json เพื่อรวมรายการเข้ากับข้อมูลปัจจุบัน (รายการที่ id ซ้ำจะถูกแทนที่)' + (OV.mode === 'online' ? ' ระบบจะบันทึกลงฐานข้อมูลออนไลน์' : '') + '</p>' +
       '<input type="file" id="io_file" accept=".json,application/json"> <button type="button" class="btn" data-a="import">นำเข้า</button>' +
       '<h3>ข้อมูลดิบ</h3><textarea class="araw" readonly rows="10">' + esc(JSON.stringify({ version: 1, items: all }, null, 2)) + '</textarea></div>';
   }
+  // the whole overlay (file + online items) in the exact shape of web/data/overlay.json, ready to replace it:
+  // no account ids (by), sorted by id so a commit shows only real changes
+  var UPLOAD_URL = 'https://github.com/oatOracLe/ICD-Search/upload/main/web/data';
+  function overlayFile() {
+    var items = OV.effective().map(function (i) { var o = Object.assign({}, i); delete o.by; delete o._src; return o; })
+      .sort(function (a, b) { return a.id < b.id ? -1 : a.id > b.id ? 1 : 0; });
+    return { version: 1, note: 'ข้อมูลที่ผู้พัฒนาเพิ่ม/แก้ไข — แก้ผ่านหน้า #admin ไม่ต้องแก้มือ', items: items };
+  }
   function exportJson() {
-    var data = JSON.stringify({ version: 1, note: 'ข้อมูลที่ผู้พัฒนาเพิ่ม/แก้ไข — แก้ผ่านหน้า #admin', exported: new Date().toISOString(), items: OV.effective() }, null, 2);
+    var data = JSON.stringify(overlayFile(), null, 1);
     var c = window.claude;
     var fallback = function () {
       var a = document.createElement('a');
