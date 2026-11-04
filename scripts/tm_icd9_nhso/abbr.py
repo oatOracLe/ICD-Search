@@ -22,7 +22,7 @@ D10 = [
     ('HHS|HONK|HHNK', 'Hyperosmolar hyperglycaemic state', 'น้ำตาลในเลือดสูงร่วมกับภาวะออสโมลาร์สูง', ['hyperosmolar', '@E11.0', '@E14.0'], ['E11.0']),
     ('DLP|HLP|HL', 'Dyslipidaemia / hyperlipidaemia', 'ไขมันในเลือดผิดปกติ', ['@E78'], ['E78.5', 'E78.0']),
     ('DFU|DM FOOT|DIABETIC FOOT|DM FOOT ULCER', 'Diabetic foot ulcer', 'แผลเบาหวานที่เท้า', ['@E10.5', '@E11.5', '@E14.5', 'diabetic foot'], ['E11.5']),
-    ('DR', 'Diabetic retinopathy', 'เบาหวานขึ้นจอตา', ['diabetic retinopathy', '@H36.0'], ['H36.0', 'E11.3']),
+    ('DR', 'Diabetic retinopathy', 'เบาหวานขึ้นจอตา', ['diabetic retinopathy', '@H36.0', '@E10.3'], ['H36.0', 'E11.3']),
     ('DN', 'Diabetic nephropathy', 'โรคไตจากเบาหวาน', ['diabetic nephropathy', '@N08.3'], ['E11.2', 'N08.3']),
     ('HYPOK|HYPO K', 'Hypokalaemia', 'โพแทสเซียมในเลือดต่ำ', ['@E87.6'], ['E87.6']),
     ('HYPERK', 'Hyperkalaemia', 'โพแทสเซียมในเลือดสูง', ['@E87.5'], ['E87.5']),
@@ -325,7 +325,7 @@ D10 = [
     ('OCPD', 'Obsessive-compulsive personality disorder', 'บุคลิกภาพผิดปกติแบบย้ำคิดย้ำทำ', ['@F60.5'], ['F60.5']),
     ('PID', 'Pelvic inflammatory disease', 'อุ้งเชิงกรานอักเสบ', ['@N70-N73'], ['N73.9', 'N70.9']),
     ('PPHN', 'Persistent pulmonary hypertension of newborn', 'ความดันหลอดเลือดปอดสูงต่อเนื่องในทารกแรกเกิด', ['@P29.3'], ['P29.3']),
-    ('PCP|PJP', 'Pneumocystis pneumonia', 'ปอดอักเสบจากเชื้อนิวโมซิสติส', ['@B59'], ['B59']),
+    ('PCP|PJP', 'Pneumocystis pneumonia', 'ปอดอักเสบจากเชื้อนิวโมซิสติส', ['@B59', '@B20.6'], ['B59']),
     ('PKD', 'Polycystic kidney disease', 'โรคถุงน้ำในไตหลายใบ', ['@Q61.1', '@Q61.2', '@Q61.3'], ['Q61.3', 'Q61.2']),
     ('PMS', 'Premenstrual syndrome', 'กลุ่มอาการก่อนมีประจำเดือน', ['@N94.3'], ['N94.3']),
     ('PS', 'Pulmonary (valve) stenosis', 'ลิ้นหัวใจพัลโมนารีตีบ', ['@Q22.1', '@I37.0'], ['Q22.1', 'I37.0']),
@@ -346,11 +346,71 @@ D10 = [
     ('CCF|C-C FISTULA', 'Carotid-cavernous fistula', 'ทางเชื่อมผิดปกติระหว่างหลอดเลือดแดงคาโรติดกับโพรงคาเวอร์นัส', ['@I67.1', '@S09.0'], ['I67.1', 'S09.0']),
     ('CSR', 'Cheyne-Stokes respiration', 'การหายใจแบบเชย์น-สโตกส์', ['@R06.3'], ['R06.3']),
     ('IUCD', 'Contraceptive management', 'การคุมกำเนิด', ['contracepti', '@Z30'], ['Z30.0', 'Z30.4']),
+    # ---- เพิ่มจากร่างรวม 7 แหล่ง (claude/abbr-handoff.md, 2026-11) รหัสผูกโดย Claude รอทีมแพทย์/coder ตรวจ ----
+    ('HMD', 'Respiratory distress syndrome of newborn / Hyaline membrane disease', 'ภาวะหายใจลำบากของทารกแรกเกิด', ['@P22.0'], ['P22.0']),
+    ('APL', 'Acute promyelocytic leukemia', 'มะเร็งเม็ดเลือดขาวโปรไมอีโลไซติกเฉียบพลัน', ['@C92.4'], ['C92.4']),
+    ('DLBCL', 'Diffuse large B-cell lymphoma', 'มะเร็งต่อมน้ำเหลืองชนิดบีเซลล์ขนาดใหญ่', ['@C83.3'], ['C83.3']),
+    ('MDS', 'Myelodysplastic syndrome', 'กลุ่มอาการเม็ดเลือดผิดปกติ (MDS)', ['@D46'], ['D46']),
+    ('HUS', 'Hemolytic uremic syndrome', 'กลุ่มอาการเม็ดเลือดแดงแตกและยูรีเมีย', ['@D59.3'], ['D59.3']),
+    ('PNH', 'Paroxysmal nocturnal hemoglobinuria', 'ฮีโมโกลบินในปัสสาวะเป็นพักๆ ตอนกลางคืน', ['@D59.5'], ['D59.5']),
+    ('HSP', 'Henoch-Schönlein purpura', 'ผื่นเลือดออกเฮนอค-เชินไลน์', ['@D69.0'], ['D69.0']),
+    ('DLD', 'Dyslipidemia / Hyperlipidemia', 'ไขมันในเลือดผิดปกติ/สูง', ['@E78'], ['E78']),
+    ('PCOS', 'Polycystic ovary syndrome', 'กลุ่มอาการรังไข่มีถุงน้ำหลายใบ', ['@E28.2'], ['E28.2']),
+    ('HZO', 'Herpes zoster ophthalmicus', 'งูสวัดที่ตา', ['@B02.3'], ['B02.3']),
+    ('VD', 'Sexually transmitted disease / Venereal disease', 'โรคติดต่อทางเพศสัมพันธ์', ['@A64'], ['A64']),
+    ('WC', 'Whooping cough (pertussis)', 'ไอกรน', ['@A37'], ['A37']),
+    ('HW', 'Hookworm disease', 'โรคพยาธิปากขอ', ['@B76'], ['B76']),
+    ('NF', 'Necrotizing fasciitis', 'พังผืดและเนื้อเยื่อใต้ผิวหนังเน่าตาย', ['@M72.6'], ['M72.6']),
+    ('DT', 'Delirium tremens', 'ภาวะเพ้อสั่นจากถอนแอลกอฮอล์', ['@F10.4'], ['F10.4']),
+    ('DCM', 'Dilated cardiomyopathy', 'กล้ามเนื้อหัวใจขยายตัว', ['@I42.0'], ['I42.0']),
+    ('HCM|HOCM', 'Hypertrophic (obstructive) cardiomyopathy', 'กล้ามเนื้อหัวใจหนาตัว', ['@I42.1', '@I42.2'], ['I42.1', 'I42.2']),
+    ('PAC', 'Premature atrial contraction', 'หัวใจห้องบนเต้นก่อนจังหวะ', ['@I49.1'], ['I49.1']),
+    ('PVC', 'Premature ventricular contraction', 'หัวใจห้องล่างเต้นก่อนจังหวะ', ['@I49.3'], ['I49.3']),
+    ('LBBB', 'Left bundle branch block', 'การนำไฟฟ้าหัวใจบล็อกมัดซ้าย', ['@I44.7'], ['I44.7']),
+    ('RBBB', 'Right bundle branch block', 'การนำไฟฟ้าหัวใจบล็อกมัดขวา', ['@I45.1'], ['I45.1']),
+    ('WPW', 'Wolff-Parkinson-White syndrome', 'กลุ่มอาการวูล์ฟ-พาร์กินสัน-ไวท์', ['@I45.6'], ['I45.6']),
+    ('CRA|CPA', 'Cardiorespiratory / Cardiopulmonary arrest', 'หัวใจและการหายใจหยุด', ['@I46'], ['I46']),
+    ('TAO', 'Thromboangiitis obliterans (Buerger)', 'หลอดเลือดอักเสบอุดตัน (บูร์เกอร์)', ['@I73.1'], ['I73.1']),
+    ('VV', 'Varicose veins', 'เส้นเลือดขอด', ['@I83'], ['I83']),
+    ('GIH', 'Upper/Gastrointestinal bleeding', 'เลือดออกในทางเดินอาหาร', ['@K92.0', '@K92.1', '@K92.2'], ['K92.0', 'K92.1', 'K92.2']),
+    ('NUD', 'Non-ulcer dyspepsia', 'อาหารไม่ย่อยชนิดไม่มีแผล', ['@K30'], ['K30']),
+    ('DJD', 'Degenerative joint disease', 'ข้อเสื่อม', ['@M15-M19'], []),
+    ('CRAO', 'Central retinal artery occlusion', 'หลอดเลือดแดงจอประสาทตาส่วนกลางอุดตัน', ['@H34.1'], ['H34.1']),
+    ('CRVO|BRVO', 'Central/Branch retinal vein occlusion', 'หลอดเลือดดำจอประสาทตาอุดตัน', ['@H34.8'], ['H34.8']),
+    ('RD', 'Retinal detachment', 'จอประสาทตาลอก', ['@H33'], ['H33']),
+    ('COM|CSOM', 'Chronic (suppurative) otitis media', 'หูชั้นกลางอักเสบเรื้อรัง', ['@H66.1', '@H66.2', '@H66.3'], ['H66.1', 'H66.2', 'H66.3']),
+    ('ASD', 'Autism spectrum disorder', 'ออทิสติกสเปกตรัม', ['@F84.0'], []),  # เพิ่มความหมายที่ไม่มีในรายการเดิม
+    ('CDH', 'Congenital dislocation of hip', 'ข้อสะโพกเคลื่อนแต่กำเนิด', ['@Q65'], ['Q65']),
+    ('PET', 'Pre-eclampsia', 'ครรภ์เป็นพิษ', ['@O14'], ['O14']),
+    ('HDP', 'Hypertensive disorders in pregnancy', 'ความดันโลหิตสูงในสตรีตั้งครรภ์', ['@O10-O16'], []),
+    ('GTD', 'Gestational trophoblastic disease', 'โรคเนื้อเยื่อรกผิดปกติ (ครรภ์ไข่ปลาอุก)', ['@O01'], ['O01']),
+    ('BPD', 'Bronchopulmonary dysplasia', 'ปอดเรื้อรังในทารกคลอดก่อนกำหนด', ['@P27.1'], ['P27.1']),  # BPD ยังหมายถึง biparietal diameter ได้
+    ('FTT', 'Failure to thrive', 'เจริญเติบโตช้า', ['@R62.8'], ['R62.8']),
+    ('SIDS', 'Sudden infant death syndrome', 'ทารกเสียชีวิตเฉียบพลันไม่ทราบสาเหตุ', ['@R95'], ['R95']),
+    ('RTI', 'Road traffic injury / Motor vehicle accident', 'อุบัติเหตุจราจร', ['@V01-V89'], []),
+    ('MI', 'Mitral insufficiency', 'ลิ้นหัวใจไมทรัลรั่ว', ['@I34.0'], []),  # เพิ่มความหมายที่ไม่มีในรายการเดิม
+    ('CA', 'Cardiac arrest', 'หัวใจหยุดเต้น', ['@I46'], []),  # เพิ่มความหมายที่ไม่มีในรายการเดิม
+    ('CP', 'Cleft palate', 'เพดานโหว่', ['@Q35'], []),  # เพิ่มความหมายที่ไม่มีในรายการเดิม
+    ('NTG', 'Normal-tension glaucoma / Nitroglycerin', 'ต้อหินความดันตาปกติ / ไนโตรกลีเซอรีน', ['@H40.1', 'nitroglycerin'], []),  # หลายความหมาย
+    ('OPP|DTA', 'Persistent occipitoposterior position / Deep transverse arrest', 'ศีรษะทารกหมุนไม่ครบ (ท่าท้ายทอยหลังค้าง)', ['@O64.0'], ['O64.0']),  # แหล่งเดิมให้ LOP = O32.4 ซึ่งไม่ตรง ICD-10 จึงไม่เพิ่ม LOP
+    ('N/D', 'Normal (spontaneous) vaginal delivery', 'คลอดปกติทางช่องคลอด', ['@O80'], ['O80']),  # NVD ใน ASHA = nausea, vomiting, diarrhea
+    ('AHP', 'Antepartum hemorrhage', 'เลือดออกก่อนคลอด', ['@O46'], ['O46']),
+    ('ROM', 'Rupture of membranes', 'ถุงน้ำคร่ำแตก', ['@O42'], ['O42']),  # ROM ยังหมายถึง range of motion
+    ('BOH', 'Bad obstetric history', 'ประวัติการตั้งครรภ์/คลอดที่ไม่ดี', ['@Z35.2', '@Z87.5'], ['Z35.2', 'Z87.5']),
+    ('ASA', 'Aspirin (acetylsalicylic acid)', 'แอสไพริน', ['aspirin'], []),  # ผูกด้วยคำค้นชื่อยา ใช้ตารางยาเลือกรหัสพิษ/ผลไม่พึงประสงค์ | alt ที่ไม่พบรหัส: acetylsalicylic
+    ('MO', 'Morphine', 'มอร์ฟีน', ['morphine'], []),  # ผูกด้วยคำค้นชื่อยา
+    ('Hx|H/O', 'History of (personal or family)', 'ประวัติ (ส่วนตัวหรือครอบครัว) ของโรค', ['@Z80-Z87'], []),  # ต้องเลือกรหัสตามโรคที่เคยเป็น
+    ('FH', 'Family history', 'ประวัติครอบครัว', ['@Z80-Z84'], []),
+    ('PMH', 'Past medical history', 'ประวัติการเจ็บป่วยในอดีต', ['@Z86-Z87'], []),
+    ('S/P', 'Status post (postprocedural state)', 'สถานะหลังการผ่าตัด/หัตถการ', ['@Z98'], ['Z98']),
+    ('OMI|Old MI', 'Old myocardial infarction', 'กล้ามเนื้อหัวใจตายเก่า', ['@I25.2'], ['I25.2']),
+    ('FB', 'Foreign body', 'สิ่งแปลกปลอม', ['@T15-T19'], []),  # เลือกรหัสตามตำแหน่ง
+    ('GSW', 'Gunshot wound', 'บาดแผลถูกยิง', ['@W32-W34', '@X93-X95'], []),  # สาเหตุภายนอก เลือกตามเจตนา
 ]
 
 D9 = [
     ('CABG', 'Coronary artery bypass graft', 'ผ่าตัดทำทางเบี่ยงหลอดเลือดหัวใจ', ['@36.1'], ['36.10', '36.12', '36.13']),
-    ('PCI|PTCA|POBA', 'Percutaneous coronary intervention', 'ขยายหลอดเลือดหัวใจผ่านสายสวน', ['@00.66', 'coronary angioplasty'], ['00.66']),
+    ('PCI|PTCA|POBA', 'Percutaneous coronary intervention', 'ขยายหลอดเลือดหัวใจผ่านสายสวน', ['@00.66', 'coronary angioplasty', '@36.0'], ['00.66']),
     ('STENT|DES|BMS', 'Coronary stent insertion', 'ใส่ขดลวดค้ำยันหลอดเลือดหัวใจ', ['@36.06', '@36.07', '@00.40-00.48'], ['36.07', '36.06']),
     ('CAG', 'Coronary angiography', 'ฉีดสีดูหลอดเลือดหัวใจ', ['coronary arteriography', '@88.55', '@88.56', '@88.57'], ['88.56', '88.57', '88.55']),
     ('CATH|LHC|RHC', 'Cardiac catheterization', 'สวนหัวใจ', ['cardiac catheterization', '@37.21', '@37.22', '@37.23'], ['37.22', '37.23']),
@@ -404,7 +464,7 @@ D9 = [
     ('PCNL|PCNL STONE', 'Percutaneous nephrolithotomy', 'ผ่าตัดนิ่วในไตผ่านผิวหนัง', ['@55.04', '@55.03'], ['55.04']),
     ('PCN', 'Percutaneous nephrostomy', 'เจาะไตระบายปัสสาวะผ่านผิวหนัง', ['@55.03'], ['55.03']),
     ('URS|URSL|URETEROSCOPY', 'Ureteroscopy', 'ส่องกล้องท่อไต', ['@56.31', '@56.0'], ['56.31', '56.0']),
-    ('ESWL', 'Extracorporeal shockwave lithotripsy', 'สลายนิ่วด้วยคลื่นกระแทก', ['@98.51'], ['98.51']),
+    ('ESWL', 'Extracorporeal shockwave lithotripsy', 'สลายนิ่วด้วยคลื่นกระแทก', ['@98.51', '@98.52', '@98.59'], ['98.51']),
     ('DJ|DJ STENT|URETERAL STENT', 'Ureteral stent (catheter)', 'ใส่สายระบายท่อไต', ['@59.8'], ['59.8']),
     ('FOLEY|RETAINED CATH|CATH URINE', 'Indwelling urinary catheter', 'ใส่สายสวนปัสสาวะ', ['@57.94'], ['57.94']),
     ('EVD|VENTRICULOSTOMY', 'External ventricular drain', 'ใส่สายระบายน้ำในโพรงสมอง', ['@02.21', '@02.2'], ['02.21']),
@@ -518,6 +578,14 @@ D9 = [
     ('USWA', 'Ultrasound of whole abdomen', 'อัลตราซาวด์ช่องท้องทั้งหมด', ['@88.76'], ['88.76']),
     ('REDUCE COLOSTOMY|CLOSE COLOSTOMY|CLOSURE COLOSTOMY', 'Closure of colostomy', 'ปิดทวารเทียม', ['@46.52'], ['46.52']),
     ('OAE', 'Otoacoustic emissions (hearing screening)', 'การตรวจการได้ยินด้วยเสียงสะท้อนจากหูชั้นใน (OAE)', ['@95.43', 'audiological evaluation'], ['95.43']),
+    # ---- เพิ่มจากร่างรวม 7 แหล่ง (claude/abbr-handoff.md, 2026-11) รหัสผูกโดย Claude รอทีมแพทย์/coder ตรวจ ----
+    ('TUR-P', 'Transurethral resection of prostate', 'ผ่าตัดต่อมลูกหมากทางท่อปัสสาวะ', ['@60.2'], ['60.2']),
+    ('TUR-B|TUR-BT', 'Transurethral resection of bladder tumor', 'ผ่าตัดก้อนกระเพาะปัสสาวะทางท่อปัสสาวะ', ['@57.49'], ['57.49']),
+    ('AVR|MVR|TVR', 'Heart valve replacement (aortic/mitral/tricuspid)', 'ผ่าตัดเปลี่ยนลิ้นหัวใจ', ['@35.2'], ['35.2']),
+    ('STAH', 'Subtotal abdominal hysterectomy', 'ผ่าตัดมดลูกออกบางส่วนทางหน้าท้อง', ['@68.3'], ['68.3']),
+    ('ARM', 'Artificial rupture of membranes', 'เจาะถุงน้ำคร่ำ', ['@73.0'], ['73.0']),
+    ('MR', 'Menstrual regulation', 'ดูดประจำเดือน/ยุติการตั้งครรภ์ระยะแรก', ['@69.6'], ['69.6']),
+    ('DHS', 'Dynamic hip screw', 'ยึดตรึงกระดูกสะโพกด้วยสกรูไดนามิก', ['@79.35'], ['79.35']),
 ]
 
 SPELL = [  # American -> British; ICD-10 is British, ICD-9-CM is American
