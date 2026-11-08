@@ -60,6 +60,7 @@ def find_header(text, n, title, start=0):
     return start + m.start() if m else None
 
 
+SEC = re.compile(r'(?m)^[ \t]*\(?[ \t]*ก[าำ]รสรุป[แĒ]ละให้รหัส')   # title line of a section or part of the book
 out = []
 for i, t in enumerate(topics):
     if t['page'] is None:
@@ -75,11 +76,17 @@ for i, t in enumerate(topics):
     b = None
     if nxt and nxt['sec'] == t['sec']:
         b = find_header(text, nxt['n'], nxt['title'], a + 5)
+    # the last topic of a section ends where the next section (or part) title starts; this also catches the
+    # section the TOC parse misses. Some section-start pages decode า as ำ or แ as Ē.
+    m = SEC.search(text, a + 5, b or a + 6000)
+    if m:
+        b = m.start()
     body = text[a:b] if b else text[a:a + 6000]
-    # drop running headers / footers
-    body = re.sub(r'(?m)^.*Guideline for Medical Document Audit 2019.*$', '', body)
-    body = re.sub(r'(?m)^\s*แนวทางปฏิบัติในการตรวจสอบเอกสารหลักฐาน.*$', '', body)
-    body = re.sub(r'(?m)^\s*ของคณะกรรมการตรวจสอบเวชระเบียน.*$', '', body)
+    # drop running headers / footers: the footer (also its garbled form "Guideline fo edi l Do ument Audit 2019")
+    # with the page number on the line below it, and the Thai page header
+    body = re.sub(r'(?m)^.*Guideline fo.*Audit[ \t]*2019.*(?:\n\s*\d{1,3}[ \t]*$)?', '', body)
+    body = re.sub(r'(?m)^\s*[แĒ]นวท[าำ]งปฏิบัติในก[าำ]รตรวจสอบเอกส[าำ]รหลักฐ[าำ]น.*$', '', body)
+    body = re.sub(r'(?m)^\s*ของคณะกรรมก[าำ]รตรวจสอบเวชระเบียน.*$', '', body)
     body = re.sub(r'(?m)^\s*\(การสรุปและให้รหัส.*$', '', body)
     body = re.sub(r'[ \t ]+', ' ', body)
     body = re.sub(r'\n\s*\n+', '\n', body).strip()
