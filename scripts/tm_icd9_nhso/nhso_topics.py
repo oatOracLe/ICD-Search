@@ -11,17 +11,27 @@ from nhso_decode import decode
 
 SRC = '/mnt/user-data/uploads/Newspaper_documents_claiming_expenses_for_testing_services_in_2019.pdf'
 toc = subprocess.run(['pdftotext', '-f', '4', '-l', '17', '-layout', SRC, '-'], capture_output=True, text=True).stdout
-toc = toc.replace('ำา', 'ำ').replace('�', '')
+toc = toc.replace('ำา', 'ำ').replace('�า', 'ำ').replace('�', '')  # sara am split into an undecodable nikhahit + sara aa (บ�าบัด → บำบัด)
 
 # ---- table of contents
+TOC_SEC = re.compile(r'^\((การสรุปและให้รหัส.*?)\)\s*\.{3,}\s*(\d+)$')
 sections, topics = [], []
 sec = None
 pending = None
+carry = ''
 for raw in toc.split('\n'):
     line = raw.strip()
     if not line:
         continue
-    ms = re.match(r'^\((การสรุปและให้รหัส.*?)\)\s*\.{3,}\s*(\d+)$', line)
+    if carry:   # rest of a section title that wrapped onto this line
+        if TOC_SEC.match(carry + line):
+            line = carry + line
+        carry = ''
+    elif '(การสรุปและให้รหัส' in line and ')' not in line.split('(การสรุปและให้รหัส', 1)[1]:
+        # section title that starts after the page heading and wraps (หัตถการทางศัลยกรรมทั่วไป)
+        carry = line[line.index('(การสรุปและให้รหัส'):]
+        continue
+    ms = TOC_SEC.match(line)
     if ms:
         title = re.sub(r'\s+', ' ', ms.group(1)).replace('การสรุปและให้รหัส', '').strip()
         sec = {'name': title, 'proc': 'หัตถการ' in title, 'page': int(ms.group(2))}
