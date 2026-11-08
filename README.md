@@ -36,7 +36,7 @@
 | ดัชนีหัตถการ ICD-9-CM | 19,521 บรรทัด (ไฟล์ทางการของ CDC) |
 | ตารางยาและสารเคมี / ตารางเนื้องอก | 5,422 / 1,647 แถว |
 | รหัสสัณฐานวิทยา ICD-O | 816 |
-| คำย่อ | ICD-10 607 คำ, ICD-9-CM 378 คำ |
+| คำย่อและคำค้นไทย | ICD-10 616 คำ, ICD-9-CM 397 คำ |
 | เกณฑ์ สปสช. 2562 | 259 หัวข้อ |
 | แนวทางมาตรฐานการให้รหัสโรค 2026 | 52 หัวข้อ (ข้อ 1–53) |
 
@@ -85,6 +85,7 @@ python -m http.server 8000
 web/                         เว็บ (ส่วนที่ขึ้น GitHub Pages)
   index.html                 โครงหน้า
   assets/app.js, app.css     ค้นหา ดัชนี ตาราง รายละเอียด และการรวมชั้นข้อมูล
+  assets/fonts/              ฟอนต์ IBM Plex Sans Thai / Mono (OFL) เก็บในเว็บเอง ไม่เรียก Google Fonts
   assets/admin.js, admin.css หลังบ้าน (โหลดเฉพาะหน้า #admin)
   data/manifest.json         รายการไฟล์ข้อมูล แหล่งที่มา และสคริปต์ที่สร้าง
   data/icd10/                codes, keywords, tables, morph (ICD-O), index/
@@ -125,7 +126,7 @@ start-web.bat                เปิดเว็บในเครื่อง
 
 **หน้าแนวทาง:** แก้สรุปการให้รหัสใน `scripts/guide/summ.py` แล้วรัน `python scripts/guide/build_guide.py` (อ่าน `web/data/shared/scg2026.json`, `nhso2562.json` เขียน `guide.json`)
 
-**คำย่อ:** แก้ `scripts/tm_icd9_nhso/abbr.py` แล้วรัน `python abbr.py --check` หรือเพิ่มผ่านหลังบ้านโดยไม่ต้องแก้สคริปต์
+**คำย่อและคำค้นไทย:** แก้ `scripts/tm_icd9_nhso/abbr.py` แล้วรัน `python abbr.py --check` หรือเพิ่มผ่านหลังบ้านโดยไม่ต้องแก้สคริปต์ คีย์ที่เป็นคำไทย (เช่น ไข้เลือดออก, ผ่าคลอด) ใช้ผูกคำที่ coder พิมพ์บ่อยกับรหัสที่ควรขึ้นก่อน ส่วนคำที่สะกดได้สองแบบใส่เป็นคู่ใน `SPELL` (เช่น ธาลัส/ทาลัส)
 
 รายละเอียดแหล่งข้อมูลและสิ่งที่แก้ไขดูใน [`docs/data-sources.md`](docs/data-sources.md)
 
