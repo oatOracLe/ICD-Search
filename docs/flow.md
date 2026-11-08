@@ -218,10 +218,11 @@ flowchart LR
 ```mermaid
 flowchart TD
   change["แก้เสร็จ<br>ผลจากสคริปต์อยู่ใน web/data"]:::work --> test["เปิดในเครื่องลองค้น<br>python -m http.server ใน web/"]:::work
-  test --> guard{"ตรวจก่อน push<br>ไม่มีไฟล์ที่ห้ามเผยแพร่"}:::work
-  guard -- "ผ่าน" --> push["commit + push เข้า main"]:::work
+  test --> guard{"python3 scripts/check_data.py<br>ข้อมูลถูกต้อง และไม่มีไฟล์ที่ห้ามเผยแพร่"}:::work
+  guard -- "ผ่าน" --> push["commit + push เข้า main<br>(hook pre-push ตรวจไฟล์ต้องห้ามซ้ำ)"]:::work
   guard -- "ไม่ผ่าน" --> change
-  push --> act["GitHub Actions<br>(.github/workflows/pages.yml)<br>ทำงานเมื่อ web/ เปลี่ยน"]:::work
+  push --> act["GitHub Actions<br>ตรวจข้อมูลอีกรอบ แล้วจึง deploy<br>(.github/workflows/pages.yml)"]:::work
+  act -- "ตรวจไม่ผ่าน: เว็บไม่เปลี่ยน" --> change
   act --> pages["GitHub Pages อัปเดต<br>ราว 1 นาที"]:::data
   push --> art["อัปเดต artifact หลังบ้านออนไลน์<br>ให้ตรงกับ web/"]:::work
 
@@ -230,6 +231,7 @@ flowchart TD
   classDef data fill:#dcfce7,stroke:#16a34a,color:#14532d
 ```
 
-- ถ้าแก้แค่ `scripts/` หรือ `docs/` เว็บจะไม่ deploy ใหม่ เพราะหน้าเว็บไม่เปลี่ยน
+- ถ้าแก้แค่ `scripts/` หรือ `docs/` เว็บจะไม่ deploy ใหม่ เพราะหน้าเว็บไม่เปลี่ยน แต่ `check.yml` ยังตรวจข้อมูลทุกครั้งที่ push
+- เปิด hook ตรวจก่อน push ครั้งเดียวต่อเครื่อง: `git config core.hooksPath scripts/hooks`
 - **ห้ามขึ้น GitHub:** ไฟล์ PDF ต้นฉบับ และเอกสารที่ใช้ภายในโรงพยาบาลเท่านั้น
 - วิธีเผยแพร่แบบอื่น (Netlify, Cloudflare Pages) ดูใน [`deploy.md`](deploy.md)

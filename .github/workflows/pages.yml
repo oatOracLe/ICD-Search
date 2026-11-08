@@ -12,7 +12,17 @@ concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
+  # Broken data or internal material is never published: deploy waits for this job.
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check data and guard against internal material
+        run: python3 scripts/check_data.py
   deploy:
+    needs: check
     runs-on: ubuntu-latest
     environment:
       name: github-pages

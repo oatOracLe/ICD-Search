@@ -1,0 +1,25 @@
+#!/bin/sh
+# pre-push: blocks the push when tracked files include internal material (PDFs, SCG 2017
+# scans, OneOCR/WinOCR files, or text with the hospital-only watermark).
+# It runs check j only:  python3 scripts/check_data.py --guard-only
+# The full data check runs in CI (.github/workflows/check.yml).
+#
+# Turn it on once per clone:   git config core.hooksPath scripts/hooks
+# Bypass once (not advised):   git push --no-verify
+
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+# Use the first interpreter that really is Python 3.10+. On Windows "python3" can be the
+# Microsoft Store stub, which exists but does not run.
+for py in python3 python "py -3"; do
+  if $py -c 'import sys; sys.exit(sys.version_info < (3, 10))' >/dev/null 2>&1; then
+    if $py scripts/check_data.py --guard-only; then
+      exit 0
+    fi
+    echo "pre-push: push blocked by scripts/check_data.py --guard-only (see above)." >&2
+    exit 1
+  fi
+done
+echo "pre-push: Python 3.10+ not found (tried python3, python, py -3), so the guard cannot run; push blocked." >&2
+echo "pre-push: install Python 3.10+, or bypass once with: git push --no-verify" >&2
+exit 1

@@ -60,6 +60,11 @@ python -m http.server 8000
 
 ทุกครั้งที่ push การเปลี่ยนแปลงในโฟลเดอร์ `web/` เข้า branch `main` จะมี GitHub Actions (`.github/workflows/pages.yml`) นำโฟลเดอร์ `web/` ขึ้น GitHub Pages ให้เอง ใช้เวลาประมาณ 1 นาที
 
+ก่อนขึ้นเว็บ Actions จะรัน `scripts/check_data.py` ก่อนเสมอ ถ้าข้อมูลเสีย (รหัสที่อ้างถึงไม่มีจริง, JSON อ่านไม่ได้, ข้อความไทยเพี้ยนที่เคยพบ) หรือมีไฟล์ที่ห้ามเผยแพร่ (PDF ต้นฉบับ, เนื้อหาฉบับภายใน SCG 2017, ไฟล์ OneOCR) เว็บจะไม่ถูกอัปเดต `.github/workflows/check.yml` ก็รันการตรวจเดียวกันทุกครั้งที่ push
+
+- ตรวจเองก่อน commit: `python3 scripts/check_data.py` (ผิดพลาดจะออก exit code 1 พร้อมรายการ)
+- เปิด hook ที่บล็อกการ push ไฟล์ต้องห้าม ครั้งเดียวต่อเครื่อง: `git config core.hooksPath scripts/hooks`
+
 ถ้าเพิ่งสร้าง repository ใหม่ ให้ตั้งค่าครั้งแรกที่ **Settings → Pages → Source: GitHub Actions**
 
 วิธีเผยแพร่แบบอื่น (Netlify, Cloudflare Pages) ดูใน [`docs/deploy.md`](docs/deploy.md)

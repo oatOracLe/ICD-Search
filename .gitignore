@@ -1,3 +1,19 @@
 __pycache__/
 *.pyc
+node_modules/
 *.zip
+
+# Internal material: never commit. scripts/check_data.py (check j, also run by
+# scripts/hooks/pre-push and CI) blocks these names even when they are force-added.
+# Source PDFs (books and manuals the data is built from)
+*.pdf
+# Hospital-only SCG 2017 guideline scans and anything made from them
+*scg2017*
+# Working folders for internal sources and their OCR output
+internal-src/
+internal-work/
+# OneOCR / WinOCR engines (DLL and model files)
+oneocr/
+winocr/
+*.dll
+*.onemodel
