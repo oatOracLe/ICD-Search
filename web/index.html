@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>ค้นรหัส ICD</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/app.css">
 </head>
 <body>
@@ -173,10 +172,11 @@
 </main>
 
 <footer class="wrap footer" id="footer"></footer>
-<dialog class="fb-dlg" id="fbDlg" aria-labelledby="fbTitle">
+<dialog class="fb-dlg" id="fbDlg" aria-labelledby="fbTitle" aria-describedby="fbPriv">
   <form id="fbForm" method="dialog" novalidate>
     <div class="fb-head"><h2 id="fbTitle">เสนอเพิ่มหรือแก้ไขรหัสและคำย่อ</h2><button type="button" class="btn icon" data-fb="close" aria-label="ปิด">✕</button></div>
     <p class="fb-intro">ข้อเสนอจะส่งถึงผู้ดูแลเว็บ ผู้ดูแลตรวจกับบัญชีจำแนกก่อนเพิ่มในเว็บ ช่องที่มี * ต้องกรอก</p>
+    <p class="fb-priv" id="fbPriv"><strong>ห้ามใส่ชื่อ เลขประจำตัวประชาชน หรือ HN ของ<span style="white-space: nowrap">ผู้ป่วย</span></strong> ข้อความทุกช่องจะเก็บไว้ใน Google Sheet ของผู้ดูแล</p>
     <fieldset class="fb-seg"><legend>ประเภทข้อเสนอ *</legend><div id="fbTypes"></div></fieldset>
     <fieldset class="fb-seg"><legend>ระบบรหัส *</legend><div id="fbSys"></div></fieldset>
     <div class="fb-row">

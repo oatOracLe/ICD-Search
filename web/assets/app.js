@@ -242,14 +242,16 @@
       (opts.sysColor ? '<span class="en">' + SYS[sys].name + '</span>' : '') + '</span>' + codeTags(x, sys) + '</button></li>';
   }
 
+  // a Latin key is an abbreviation (DM, C/S); a Thai key (ไข้เลือดออก) is a search term that also finds its English meaning
   function abbrBox(abbrs) {
     if (!abbrs || !abbrs.length) return '';
     return '<div class="abbr" role="note">' + abbrs.map(function (a) {
-      var k = esc(a.key.toUpperCase());
-      if (a.ms.length === 1) return '<p><b class="abbr-k">' + k + '</b> คำย่อของ ' + esc(a.ms[0].en) + ' <span class="abbr-th">' + esc(a.ms[0].th) + '</span></p>';
+      var k = esc(a.key.toUpperCase()), term = /[฀-๿]/.test(a.key);
+      if (a.ms.length === 1) return '<p><b class="abbr-k">' + k + '</b> ' + (term ? 'ค้นรวมกับ ' : 'คำย่อของ ') + esc(a.ms[0].en) +
+        (a.ms[0].th && a.ms[0].th !== a.key ? ' <span class="abbr-th">' + esc(a.ms[0].th) + '</span>' : '') + '</p>';
       var chips = '<button type="button" class="chip" data-act="abbr" data-k="' + esc(a.key) + '" data-i="" aria-pressed="' + (a.pick == null) + '">ทุกความหมาย</button>' +
         a.ms.map(function (m, i) { return '<button type="button" class="chip" data-act="abbr" data-k="' + esc(a.key) + '" data-i="' + i + '" aria-pressed="' + (a.pick === i) + '">' + esc(m.en) + ' · ' + esc(m.th) + '</button>'; }).join('');
-      return '<p><b class="abbr-k">' + k + '</b> คำย่อนี้มี ' + a.ms.length + ' ความหมาย เลือกเพื่อกรองผล</p><div class="abbr-chips">' + chips + '</div>';
+      return '<p><b class="abbr-k">' + k + '</b> ' + (term ? 'คำนี้มี ' : 'คำย่อนี้มี ') + a.ms.length + ' ความหมาย เลือกเพื่อกรองผล</p><div class="abbr-chips">' + chips + '</div>';
     }).join('') + (fbReady() ? '<p class="abbr-fb">ความหมายไม่ตรงหรือขาดไป? ' + fbBtn('เสนอแก้คำย่อ', { k: 'abbredit', abbr: abbrs[0].key.toUpperCase() }, 'link') + '</p>' : '') + '</div>';
   }
   // ICD-O morphology terms matching the search (ICD-10 only)
@@ -280,7 +282,7 @@
     if (!r.total) {
       var other = S.sys === 'icd10' ? 'icd9' : 'icd10';
       var on = search(DB[other], S.q).total;
-      return h + '<div class="empty"><b>ไม่พบรหัสที่ตรงกับ “' + esc(S.q) + '”</b><p>' + (S.sys === 'icd9' ? 'ชื่อหัตถการใน ICD-9-CM เป็นภาษาอังกฤษ ลองพิมพ์คำภาษาอังกฤษหรือรหัสบางส่วน' : 'ลองใช้คำที่สั้นลง พิมพ์รหัสบางส่วน (เช่น E11) หรือเปิดดัชนีเพื่อไล่หาจากคำนำ') + '</p>' +
+      return h + '<div class="empty"><b>ไม่พบรหัสที่ตรงกับ “' + esc(S.q) + '”</b><p>' + (S.sys === 'icd9' ? 'ลองใช้คำที่สั้นลง ใช้คำภาษาอังกฤษ หรือพิมพ์รหัสบางส่วน (เช่น 47.0)' : 'ลองใช้คำที่สั้นลง พิมพ์รหัสบางส่วน (เช่น E11) หรือเปิดดัชนีเพื่อไล่หาจากคำนำ') + '</p>' +
         (on ? '<button type="button" class="btn" data-act="sys" data-sys="' + other + '">พบ ' + on + ' รหัสใน ' + SYS[other].name + '</button>' : '') +
         (fbReady() ? '<p class="fb-inline">ไม่มีในเว็บ? ' + (/^[A-Za-z][A-Za-z0-9\/&.+-]{0,7}$/.test(S.q.trim()) ? fbBtn('เสนอเพิ่มคำย่อ “' + S.q.trim() + '”', { k: 'abbr', abbr: S.q.trim() }, 'link') : fbBtn('เสนอเพิ่มรหัสหรือคำค้นนี้', { k: 'code', q: S.q.trim() }, 'link')) + '</p>' : '') + '</div>';
     }
