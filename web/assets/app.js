@@ -752,13 +752,14 @@
     var c = x.c;
     if (sys === 'icd9') {
       var m9 = /^(\d\d\.\d{1,2})-(\d\d\.\d{1,2})$/.exec(pat);
-      if (m9) return c.localeCompare(m9[1], 'en', { numeric: true }) >= 0 && c.localeCompare(m9[2], 'en', { numeric: true }) <= 0;
+      // compare as code text cut to each end's length: 31.1-31.29 holds 31.1, 31.2, 31.21 … 31.29 but not 31.3
+      if (m9) return c.slice(0, m9[1].length) >= m9[1] && c.slice(0, m9[2].length) <= m9[2];
       return c === pat || (pat.length === 4 && c.indexOf(pat) === 0);
     }
     var m = /^([A-Z]\d\d)-([A-Z]\d\d)(?:\.(\d))?$/.exec(pat);
     if (m) {
       var c3 = c.slice(0, 3);
-      if (!(c3[0] === m[1][0] && c3 >= m[1] && c3 <= m[2])) return false;
+      if (!(c3 >= m[1] && c3 <= m[2])) return false;   // a range may cross letters (C00-D48)
       return m[3] ? c.charAt(4) === m[3] : true;
     }
     if (pat.length === 3) return c.slice(0, 3) === pat;
