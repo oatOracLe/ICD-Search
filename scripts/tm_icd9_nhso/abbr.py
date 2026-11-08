@@ -217,8 +217,8 @@ D10 = [
     ('SNHL', 'Sensorineural hearing loss', 'ประสาทหูเสื่อม', ['sensorineural', '@H90.3', '@H90.4', '@H90.5'], ['H90.5']),
     # ---- pregnancy / newborn
     ('ANC', 'Antenatal care (supervision of pregnancy)', 'ฝากครรภ์', ['@Z34', '@Z35'], ['Z34.9', 'Z34.0']),
-    ('NL|NSD|NVD|SVD|SPONTANEOUS DELIVERY', 'Normal spontaneous delivery', 'คลอดปกติ', ['@O80'], ['O80.0', 'O80.9']),
-    ('C/S|CS|LSCS|LTCS|CESAREAN|CAESAREAN', 'Caesarean section delivery', 'ผ่าตัดคลอด', ['caesarean', '@O82'], ['O82.0', 'O82.1', 'O82.9']),
+    ('NL|NSD|NVD|SVD|SPONTANEOUS DELIVERY|คลอดปกติ', 'Normal spontaneous delivery', 'คลอดปกติ', ['@O80'], ['O80.0', 'O80.9']),  # + คำไทย คลอดปกติ (8 พ.ย. 2569) ชื่อไทย TM ของ O80 คือ "การคลอดเอง" จึงหาไม่เจอ
+    ('C/S|CS|LSCS|LTCS|CESAREAN|CAESAREAN|ผ่าคลอด|ผ่าตัดคลอด', 'Caesarean section delivery', 'ผ่าตัดคลอด', ['caesarean', '@O82'], ['O82.0', 'O82.1', 'O82.9']),  # + คำไทย ผ่าคลอด (8 พ.ย. 2569) ชื่อไทย TM ของ O82 คือ "...โดยการผ่าท้อง"
     ('V/E|VE|F/E|FE', 'Vacuum / forceps delivery', 'คลอดโดยใช้เครื่องสุญญากาศหรือคีม', ['@O81'], ['O81.4', 'O81.0']),
     ('PPH', 'Postpartum haemorrhage', 'ตกเลือดหลังคลอด', ['@O72'], ['O72.1', 'O72.0']),
     ('APH', 'Antepartum haemorrhage', 'เลือดออกก่อนคลอด', ['antepartum haemorrhage', '@O46'], ['O46.9']),
@@ -273,7 +273,7 @@ D10 = [
     ('PALLIATIVE|PC', 'Palliative care', 'การดูแลแบบประคับประคอง', ['palliative', '@Z51.5'], ['Z51.5']),
     ('CHEMO|CMT', 'Chemotherapy session', 'ให้ยาเคมีบำบัด', ['chemotherapy', '@Z51.1'], ['Z51.1']),
     ('RT|RADIOTHERAPY', 'Radiotherapy session', 'ฉายรังสีรักษา', ['radiotherapy', '@Z51.0'], ['Z51.0']),
-    ('HD|DIALYSIS', 'Dialysis care', 'ฟอกไต', ['dialysis', '@Z49'], ['Z49.1', 'Z99.2']),
+    ('HD|DIALYSIS|ฟอกไต', 'Dialysis care', 'ฟอกไต', ['dialysis', '@Z49'], ['Z49.1', 'Z99.2']),
     # ---- added from the medical-terms glossary (cleaned.xlsx, 2026-11): abbreviations that map to codes
     ('AUB', 'Abnormal uterine bleeding', 'เลือดออกผิดปกติจากโพรงมดลูก', ['@N93', '@N92'], ['N93.9', 'N93.8']),
     ('DUB', 'Dysfunctional uterine bleeding', 'เลือดออกผิดปกติจากมดลูกเหตุฮอร์โมน', ['@N93.8'], ['N93.8']),
@@ -490,6 +490,11 @@ D10 = [
     ('VHD', 'Valvular heart disease', 'โรคลิ้นหัวใจ', ['@I05-I09', '@I34-I38'], []),  # รพ.ฟากท่า
     ('VIA', 'Visual inspection with acetic acid (cervical screening)', 'การตรวจคัดกรองมะเร็งปากมดลูกด้วยน้ำส้มสายชู', ['@Z12.4'], ['Z12.4']),  # รพ.ฟากท่า
     ('FLU', 'Influenza', 'ไข้หวัดใหญ่', ['@J09-J11'], ['J11.1']),  # รพ.ฟากท่า
+    # ---- เพิ่ม 8 พ.ย. 2569: ข้อเสนอจากชีตผู้ใช้ (อนุมัติแล้ว) และคำไทยที่ coder พิมพ์แต่เว็บยังหาไม่เจอ ----
+    ('HFREF', 'Heart failure with reduced ejection fraction', 'หัวใจล้มเหลวชนิดค่าการบีบตัว (EF) ลดลง', ['@I50'], ['I50.9', 'I50.1', 'I50.0']),  # ชีตผู้ใช้; WHO ICD-10 ไม่มีรหัสแยกตาม EF ยังไม่มี coder ตรวจ
+    ('HFPEF', 'Heart failure with preserved ejection fraction', 'หัวใจล้มเหลวชนิดค่าการบีบตัว (EF) ปกติ', ['@I50'], ['I50.9', 'I50.1', 'I50.0']),  # ชีตผู้ใช้; WHO ICD-10 ไม่มีรหัสแยกตาม EF ยังไม่มี coder ตรวจ
+    ('ไข้เลือดออก', 'Dengue / dengue haemorrhagic fever', 'ไข้เลือดออก / ไข้เด็งกี', ['@A97', '@A91'], ['A97.1', 'A97.2', 'A97.0', 'A97.9']),  # คำไทย; ชื่อไทย TM ของ A97 คือ "ไข้เด็งกี" เดิมจึงขึ้น A48.4 ก่อน ลำดับตาม DHF/AHF ยังไม่มี coder ตรวจ
+    ('ปอดอักเสบ|ปอดบวม', 'Pneumonia', 'ปอดอักเสบ / ปอดบวม', ['ปอดบวม', 'ปอดอักเสบ', '@J12-J18'], ['J18.9', 'J18.0', 'J15.9', 'J12.9']),  # คำไทย; TM ใช้คำว่า "ปอดบวม" เดิมจึงขึ้น B25.0 ก่อน ยังไม่มี coder ตรวจ
 ]
 
 D9 = [
@@ -503,7 +508,7 @@ D9 = [
     ('ICD|ICD DRAIN|CHEST DRAIN|ICD INSERTION', 'Intercostal chest drainage', 'ใส่ท่อระบายทรวงอก', ['intercostal catheter', '@34.04'], ['34.04']),
     ('CPR', 'Cardiopulmonary resuscitation', 'ช่วยฟื้นคืนชีพ', ['@99.60', '@99.63'], ['99.60']),
     ('DC SHOCK|CARDIOVERSION|DEFIB', 'Electrical cardioversion / countershock', 'กระตุกหัวใจด้วยไฟฟ้า', ['countershock', 'cardioversion', '@99.61', '@99.62'], ['99.62', '99.61']),
-    ('ETT|ET|ET TUBE|INTUBATION|INTUBATE', 'Endotracheal intubation', 'ใส่ท่อช่วยหายใจ', ['endotracheal tube', '@96.04'], ['96.04']),
+    ('ETT|ET|ET TUBE|INTUBATION|INTUBATE|ใส่ท่อช่วยหายใจ', 'Endotracheal intubation', 'ใส่ท่อช่วยหายใจ', ['endotracheal tube', '@96.04'], ['96.04']),  # + คำไทย (8 พ.ย. 2569) เดิม 96.04 ขึ้นอันดับ 4 หลัง 96.01-96.03
     ('MV|VENT|RESPIRATOR', 'Invasive mechanical ventilation', 'ใช้เครื่องช่วยหายใจ', ['invasive mechanical ventilation', '@96.7'], ['96.71', '96.72']),
     ('NIV|NIPPV|BIPAP|CPAP|HFNC', 'Non-invasive ventilation', 'เครื่องช่วยหายใจแบบไม่ใส่ท่อ', ['non-invasive', '@93.90', '@93.96'], ['93.90']),
     ('TT|TRACH|TRACHEOSTOMY', 'Tracheostomy', 'เจาะคอ', ['tracheostomy', '@31.1', '@31.2'], ['31.1', '31.29']),
@@ -526,10 +531,10 @@ D9 = [
     ('USO|RSO|LSO', 'Unilateral salpingo-oophorectomy', 'ตัดรังไข่และท่อนำไข่ข้างเดียว', ['@65.4'], ['65.49', '65.41']),
     ('D&C|D/C|DC|D AND C', 'Dilation and curettage', 'ขูดมดลูก', ['dilation and curettage', '@69.0'], ['69.09', '69.02']),
     ('MVA|VACUUM ASPIRATION', 'Manual vacuum aspiration', 'ดูดโพรงมดลูก', ['aspiration curettage', '@69.5'], ['69.52', '69.51', '69.59']),
-    ('C/S|CS|LSCS|LTCS|CESAREAN|CAESAREAN', 'Cesarean section', 'ผ่าตัดคลอด', ['cesarean', '@74'], ['74.1', '74.0', '74.99']),
+    ('C/S|CS|LSCS|LTCS|CESAREAN|CAESAREAN|ผ่าคลอด|ผ่าตัดคลอด', 'Cesarean section', 'ผ่าตัดคลอด', ['cesarean', '@74'], ['74.1', '74.0', '74.99']),  # + คำไทย ผ่าคลอด (8 พ.ย. 2569) ชื่อไทย TM ใช้ "ผ่าตัดคลอด"
     ('TR|TL|TUBAL|TUBAL RESECTION|TUBAL LIGATION|STERILIZATION', 'Tubal sterilization', 'ทำหมันหญิง', ['@66.2', '@66.3'], ['66.32', '66.39', '66.29']),
     ('VASECTOMY|MALE STERILIZATION', 'Vasectomy', 'ทำหมันชาย', ['vasectomy', '@63.73'], ['63.73']),
-    ('NL|NSD|NVD|SVD|NORMAL LABOR', 'Assisted spontaneous delivery', 'คลอดปกติ', ['@73.59', '@73.6'], ['73.59', '73.6']),
+    ('NL|NSD|NVD|SVD|NORMAL LABOR|คลอดปกติ', 'Assisted spontaneous delivery', 'คลอดปกติ', ['@73.59', '@73.6'], ['73.59', '73.6']),  # + คำไทย คลอดปกติ (8 พ.ย. 2569) เดิมไม่พบรหัส
     ('EPISIOTOMY|EPIS', 'Episiotomy', 'ตัดฝีเย็บ', ['episiotomy', '@73.6'], ['73.6']),
     ('V/E|VE|VACUUM', 'Vacuum extraction', 'คลอดด้วยเครื่องดูดสุญญากาศ', ['vacuum extraction', '@72.7'], ['72.79', '72.71']),
     ('F/E|FE|FORCEPS', 'Forceps delivery', 'คลอดด้วยคีม', ['forceps', '@72.0-72.4'], ['72.0', '72.1']),
@@ -557,7 +562,7 @@ D9 = [
     ('PHACO', 'Phacoemulsification', 'สลายต้อกระจกด้วยคลื่นเสียงความถี่สูง', ['@13.41'], ['13.41']),
     ('IOL', 'Intraocular lens insertion', 'ใส่เลนส์แก้วตาเทียม', ['@13.7'], ['13.71', '13.72']),
     ('ECCE|ICCE|MSICS', 'Extracapsular cataract extraction', 'ผ่าตัดต้อกระจกแบบนอกถุงเลนส์', ['@13.5', '@13.1'], ['13.59', '13.19']),
-    ('HD', 'Hemodialysis', 'ฟอกเลือดด้วยเครื่องไตเทียม', ['@39.95'], ['39.95']),
+    ('HD|ฟอกเลือด|ฟอกไต', 'Hemodialysis', 'ฟอกเลือดด้วยเครื่องไตเทียม', ['@39.95'], ['39.95']),  # + คำไทย ฟอกเลือด (8 พ.ย. 2569) เดิม 39.95 ขึ้นอันดับ 5
     ('PD|CAPD|APD', 'Peritoneal dialysis', 'ล้างไตทางช่องท้อง', ['@54.98'], ['54.98']),
     ('TK|TENCKHOFF|CAPD CATHETER', 'Peritoneal dialysis catheter insertion', 'ใส่สายล้างไตทางช่องท้อง', ['@54.93'], ['54.93']),
     ('AVF|AVG', 'Arteriovenous fistula for dialysis', 'ผ่าตัดทำเส้นฟอกไต', ['@39.27', '@39.93'], ['39.27']),
@@ -686,6 +691,13 @@ D9 = [
     ('AROM', 'Artificial rupture of membranes', 'การเจาะถุงน้ำคร่ำ', ['@73.0'], ['73.09']),  # รพ.ฟากท่า
     ('XRT', 'Radiotherapy', 'รังสีรักษา', ['@92.2'], ['92.29']),  # MedlinePlus
     ('SSE', 'Soap suds enema', 'การสวนอุจจาระด้วยน้ำสบู่', ['@96.39'], ['96.39']),  # รพ.ฟากท่า
+    # ---- เพิ่ม 8 พ.ย. 2569: ข้อเสนอจากชีตผู้ใช้ (อนุมัติแล้ว) ----
+    ('USG OB|U/S OB|US OB|ULTRASOUND OB', 'Obstetric ultrasound (diagnostic ultrasound of gravid uterus)', 'อัลตราซาวด์ทางสูติกรรม (มดลูกขณะตั้งครรภ์)', ['@88.78'], ['88.78']),  # ชีตผู้ใช้; รูปคำย่อตามรายการ US|U/S|USG|ULTRASOUND
+    ('UAC', 'Umbilical artery catheterization', 'ใส่สายสวนหลอดเลือดแดงสะดือ', ['@38.91'], ['38.91']),  # ชีตผู้ใช้; ดัชนี ICD-9-CM ไม่มี umbilical artery แยก ใช้ Catheterization, artery 38.91
+    ('UVC', 'Umbilical vein catheterization', 'ใส่สายสวนหลอดเลือดดำสะดือ', ['@38.92'], ['38.92']),  # ชีตผู้ใช้
+    ('SLS', 'Short leg splint (application of splint)', 'ใส่เฝือกอ่อนใต้เข่า', ['@93.54'], ['93.54']),  # ชีตผู้ใช้
+    ('IOP|ความดันตา|วัดความดันตา', 'Tonometry (intraocular pressure measurement)', 'วัดความดันลูกตา', ['@89.11'], ['89.11']),  # ชีตผู้ใช้; ชื่อไทย TM คือ "การวัดความดันลูกตา" คำว่า ความดันตา จึงหาไม่เจอ
+    ('PAP SMEAR|PAP|แปปสเมียร์', 'Papanicolaou (Pap) smear, female genital tract', 'ตรวจแปปสเมียร์ (เซลล์ปากมดลูก)', ['@91.46', 'papanicolaou smear'], ['91.46']),  # ชีตผู้ใช้; รหัส 9x.x6 ทุกตัวมีคำนี้ เดิม 90.06 จึงขึ้นก่อน
 ]
 
 SPELL = [  # American -> British; ICD-10 is British, ICD-9-CM is American
@@ -704,6 +716,8 @@ SPELL = [  # American -> British; ICD-10 is British, ICD-9-CM is American
     ('center', 'centre'), ('fiber', 'fibre'), ('sulfate', 'sulphate'), ('sulfur', 'sulphur'), ('aluminum', 'aluminium'),
     ('maneuver', 'manoeuvre'), ('ameba', 'amoeba'), ('amebi', 'amoebi'), ('feces', 'faeces'), ('fecal', 'faecal'),
     ('hemodialysis', 'haemodialysis'), ('hemo', 'haemo'), ('hema', 'haema'),
+    # Thai spelling pairs are allowed too (substring, applied both ways like the rest); TM spells thalassaemia ทาลัสซีเมีย (8 พ.ย. 2569)
+    ('ธาลัส', 'ทาลัส'),
 ]
 SPELL = [p for p in SPELL if p[0] != p[1]]
 
