@@ -38,6 +38,18 @@ SYSTEMS = ('icd10', 'icd9')
 LABEL = {'icd10': 'ICD-10', 'icd9': 'ICD-9-CM'}
 SHOW = 5  # problems listed per check; the rest are only counted
 
+# ICD-10-TM 2009 codes removed from the site (no WHO 2016 equivalent number). Guidelines may still quote them;
+# the site shows such a quote as plain text, so a reference to one of these is a warning, not an error.
+def _removed_tm():
+    try:
+        with open(os.path.join(ROOT, 'docs', 'removed-tm-only.tsv'), encoding='utf8') as f:
+            return {line.split('\t', 1)[0] for line in f.read().splitlines()[1:] if line}
+    except OSError:
+        return set()
+
+
+REMOVED_TM = _removed_tm()
+
 # ------------------------------------------------------------------ guard (j)
 # Tracked paths that must never be committed. Matched against the whole path, so folders count too.
 FORBIDDEN_NAME = re.compile(
@@ -438,7 +450,10 @@ def check_guide(c, d):
             n += 1
             key = o.get('key')
             if not (isinstance(key, str) and any(key in db for db in dbs)):
-                c.err(f'guide.json {path}: {key!r} not in ICD-10 or ICD-9-CM (text {o.get("s")!r})')
+                if key in REMOVED_TM:
+                    c.warn(f'guide.json {path}: {key!r} is an ICD-10-TM 2009 code removed from the site (shown as text)')
+                else:
+                    c.err(f'guide.json {path}: {key!r} not in ICD-10 or ICD-9-CM (text {o.get("s")!r})')
     c.info = f'{n} code references'
 
 
@@ -461,7 +476,10 @@ def check_nhso(c, d):
         for p in t.get('codes') or []:
             n += 1
             if not (isinstance(p, str) and nhso_hits(db, p, s)):
-                c.err(f'nhso2562.json topic {t.get("id")} ({LABEL[s]}): {p!r} matches no code')
+                if s == 'icd10' and p in REMOVED_TM:
+                    c.warn(f'nhso2562.json topic {t.get("id")}: {p!r} is an ICD-10-TM 2009 code removed from the site')
+                else:
+                    c.err(f'nhso2562.json topic {t.get("id")} ({LABEL[s]}): {p!r} matches no code')
     c.info = f'{len(topics)} topics, {n} patterns'
 
 

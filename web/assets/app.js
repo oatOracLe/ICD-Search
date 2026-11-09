@@ -286,7 +286,11 @@
     if (!r.total) {
       var other = S.sys === 'icd10' ? 'icd9' : 'icd10';
       var on = search(DB[other], S.q).total;
+      // a full ICD-10 code that is not on the site (e.g. an ICD-10-TM 2009 extension such as H36.00): point to its nearest parent
+      var mc = S.sys === 'icd10' && /^([A-Za-z]\d\d)\.?(\d{1,2})$/.exec(S.q.trim()), near = '';
+      if (mc) { var cq = mc[1].toUpperCase() + '.' + mc[2]; while (cq.length > 3 && !d.byCode[cq]) cq = cq.slice(0, -1).replace(/\.$/, ''); if (d.byCode[cq]) near = cq; }
       return h + '<div class="empty"><b>ไม่พบรหัสที่ตรงกับ “' + esc(S.q) + '”</b><p>' + (S.sys === 'icd9' ? 'ลองใช้คำที่สั้นลง ใช้คำภาษาอังกฤษ หรือพิมพ์รหัสบางส่วน (เช่น 47.0)' : 'ลองใช้คำที่สั้นลง พิมพ์รหัสบางส่วน (เช่น E11) หรือเปิดดัชนีเพื่อไล่หาจากคำนำ') + '</p>' +
+        (near ? '<p>เว็บนี้ใช้ ICD-10 WHO 2016 รหัสนี้ไม่มีใน WHO (อาจเป็นรหัสของ ICD-10-TM) รหัสใกล้เคียงคือ <button type="button" class="cref" data-act="sel" data-sys="icd10" data-code="' + esc(near) + '">' + esc(near) + '</button> ' + esc(d.byCode[near].th || d.byCode[near].en) + '</p>' : '') +
         (on ? '<button type="button" class="btn" data-act="sys" data-sys="' + other + '">พบ ' + on + ' รหัสใน ' + SYS[other].name + '</button>' : '') +
         (fbReady() ? '<p class="fb-inline">ไม่มีในเว็บ? ' + (/^[A-Za-z][A-Za-z0-9\/&.+-]{0,7}$/.test(S.q.trim()) ? fbBtn('เสนอเพิ่มคำย่อ “' + S.q.trim() + '”', { k: 'abbr', abbr: S.q.trim() }, 'link') : fbBtn('เสนอเพิ่มรหัสหรือคำค้นนี้', { k: 'code', q: S.q.trim() }, 'link')) + '</p>' : '') + '</div>';
     }
@@ -1349,6 +1353,8 @@
     if (m) {
       var c = m[2].replace('-', '.');
       if (DB[m[1]] && !DB[m[1]].byCode[c]) c = m[2];
+      // a link to a code no longer on the site (e.g. an ICD-10-TM 2009 extension) opens its nearest parent
+      if (DB[m[1]] && !DB[m[1]].byCode[c]) { var c0 = m[2].replace('-', '.'); c = DB[m[1]].byCode[c0.slice(0, -1).replace(/\.$/, '')] ? c0.slice(0, -1).replace(/\.$/, '') : c0.slice(0, 3); }
       if (DB[m[1]] && DB[m[1]].byCode[c]) { S.sys = m[1]; S.sel[m[1]] = c; S.pane = 'detail'; if (S.view === 'guide' || S.view === 'favorites') S.view = 'search'; }
       return;
     }

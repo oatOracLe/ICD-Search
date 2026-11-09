@@ -1,0 +1,1422 @@
+code	type	replace_with	en	th
+A90	not in WHO 2016	A97.0 A97.9	Dengue fever [classical dengue]	ไข้เด็งกี [เด็งกีแบบคลาสสิก]
+A91	not in WHO 2016	A97.1 A97.2	Dengue haemorrhagic fever	ไข้เลือดออกเด็งกี
+A91.0	not in WHO 2016	A97.1 A97.2	Dengue haemorrhagic fever with shock	ไข้เลือดออกเด็งกีที่มีภาวะช็อก
+A91.1	not in WHO 2016	A97.1 A97.2	Dengue haemorrhagic fever without shock	ไข้เลือดออกเด็งกีที่ไม่มีภาวะช็อก
+A91.9	not in WHO 2016	A97.1 A97.2	Dengue haemorrhagic fever, unspecified	ไข้เลือดออกเด็งกี ไม่ระบุรายละเอียด
+B18.10	TM extension		Chronic viral hepatitis B without delta-agent	ตับอักเสบ บี แบบเรื้อรัง ไม่มีเดลตา-เอเจนต์
+B18.19	TM extension		Chronic viral hepatitis B, unspecified delta-agent status	ตับอักเสบ บี แบบเรื้อรัง ไม่ระบุสถานภาพของเดลตา- เอเจนต์
+B23.3	TM extension		HIV disease resulting in pruritic papular eruption	โรคเอชไอวีทำให้เกิดผื่นนูนและคัน
+B35.7	TM extension		Tinea faciei	กลากที่หน้า
+B37.00	TM extension		Acute pseudomembranous candidal stomatitis	ปากอักเสบเฉียบพลันชนิดแผ่นเยื่อเทียมจากเชื้อราแคนดิดา
+B37.01	TM extension		Acute erythematous (atrophic) candidal stomatitis	ปากอักเสบเฉียบพลันชนิดแดง (ฝ่อ) จากเชื้อราแคนดิดา
+B37.02	TM extension		Chronic hyperplastic candidal stomatitis	ปากอักเสบเรื้อรังชนิดเจริญเกินจากเชื้อราแคนดิดา
+B37.03	TM extension		Chronic erythematous (atrophic) candidal stomatitis	ปากอักเสบเรื้อรังชนิดแดง (ฝ่อ) จากเชื้อราแคนดิดา
+B37.04	TM extension		Mucocutaneous candidiasis	โรคติดเชื้อราแคนดิดาที่เยื่อเมือกและผิวหนัง
+B37.05	TM extension		Oral candidal granuloma	โรคติดเชื้อราแคนดิดาชนิดแกรนูโลมาที่ช่องปาก
+B37.06	TM extension		Angular cheilitis	มุมปากอักเสบ
+B37.08	TM extension		Other specified candidal stomatitis	ปากอักเสบจากเชื้อราแคนดิดาแบบอื่นที่ระบุรายละเอียด
+B37.09	TM extension		Candidal stomatitis, unspecified	ปากอักเสบจากเชื้อราแคนดิดา ไม่ระบุรายละเอียด
+B69.2	TM extension		Cysticercosis of skin	โรคจากไข่พยาธิตัวตืดที่ผิวหนัง
+B78.8	TM extension		Other strongyloidiasis	โรคพยาธิสตรองจีลอยด์แบบอื่น
+B83.10	TM extension		Gnathostomiasis of central nervous system	โรคพยาธิตัวจี๊ดที่ระบบประสาทส่วนกลาง
+B83.11	TM extension		Gnathostomiasis of eye	โรคพยาธิตัวจี๊ดที่ตา
+B83.12	TM extension		Gnathostomiasis of skin	โรคพยาธิตัวจี๊ดที่ผิวหนัง
+B83.18	TM extension		Gnathostomiasis of other sites	โรคพยาธิตัวจี๊ดที่ตำแหน่งอื่น
+B83.19	TM extension		Gnathostomiasis, unspecified	โรคพยาธิตัวจี๊ด ไม่ระบุรายละเอียด
+B86.0	TM extension		Scabies due to Sarcoptes scabiei	โรคหิดจาก ซาร์ค็อปเตส สเคบิไอ
+B86.8	TM extension		Other scabies	โรคหิดชนิดอื่น
+B86.9	TM extension		Scabies, unspecified	โรคหิด ไม่ระบุรายละเอียด
+B96.80	TM extension		Helicobacter pylori as the cause of diseases classified to other chapters	เฮลิโคแบ็กเตอร์ ไพโลไร เป็นสาเหตุของโรคที่จำแนกไว้ในบทอื่น
+B96.89	TM extension		Other specified bacterial agents as the cause of diseases classified to other chapters	แบคทีเรียชนิดอื่นที่ระบุรายละเอียดเป็นสาเหตุของโรคที่จำแนกไว้ในบทอื่น
+C02.10	TM extension		Tip of tongue	เนื้องอกร้ายของปลายลิ้น
+C02.11	TM extension		Lateral border of tongue	เนื้องอกร้ายของขอบด้านข้างของลิ้น
+C02.19	TM extension		Border of tongue, unspecified	เนื้องอกร้ายขอบลิ้น ไม่ระบุรายละเอียด
+C06.10	TM extension		Upper labial sulcus	เนื้องอกร้ายของร่องเหงือกด้านริมฝีปากข้างบน
+C06.11	TM extension		Upper buccal sulcus	เนื้องอกร้ายของร่องเหงือกด้านแก้มข้างบน
+C06.12	TM extension		Lower labial sulcus	เนื้องอกร้ายของร่องเหงือกด้านริมฝีปากข้างล่าง
+C06.13	TM extension		Lower buccal sulcus	เนื้องอกร้ายของร่องเหงือกด้านแก้มข้างล่าง
+C06.14	TM extension		Upper sulcus, unspecified	เนื้องอกร้ายของร่องเหงือกข้างบน ไม่ระบุรายละเอียด
+C06.15	TM extension		Lower sulcus, unspecified	เนื้องอกร้ายของร่องเหงือกข้างล่าง ไม่ระบุรายละเอียด
+C06.19	TM extension		Vestibule of mouth, unspecified	เนื้องอกร้ายของช่องปากส่วนหน้า ไม่ระบุรายละเอียด
+C06.20	TM extension		Maxillary tuberosity	เนื้องอกร้ายของปุ่มขากรรไกรบน
+C06.21	TM extension		Mandibular retromolar area	เนื้องอกร้ายบริเวณขากรรไกรท้ายฟันกรามล่าง
+C06.29	TM extension		Retromolar area, unspecified	เนื้องอกร้ายบริเวณท้ายฟันกราม ไม่ระบุตำแหน่ง
+C14.1	not in WHO 2016	C13.9	Laryngopharynx	เนื้องอกร้ายของคอหอยหลังกล่องเสียง
+C41.00	TM extension		Maxilla, sarcoma	ซาร์โคมา ขากรรไกรบน
+C41.01	TM extension		Maxilla, malignant odontogenic tumour	เนื้องอกร้ายของเนื้อเยื่อที่สร้างฟัน ขากรรไกรบน
+C41.02	TM extension		Maxilla, malignant intraosseous salivary gland tumour	เนื้องอกร้ายของต่อมน้ำลายในกระดูก ขากรรไกรบน
+C41.08	TM extension		Other bone of skull and face	เนื้องอกร้ายของกระดูกอื่นของกะโหลกและหน้า
+C41.09	TM extension		Bone of skull and face, unspecified	เนื้องอกร้ายของกระดูกของกะโหลกและหน้าไม่ระบุตำแหน่ง
+C41.10	TM extension		Sarcoma	ซาร์โคมา
+C41.11	TM extension		Malignant odontogenic tumour	เนื้องอกร้ายของเนื้อเยื่อที่สร้างฟัน
+C41.19	TM extension		Mandible, unspecified	เนื้องอกร้ายของขากรรไกรล่าง ไม่ระบุรายละเอียด
+C83.2	not in WHO 2016		Mixed small and large cell (diffuse)	มะเร็งต่อมน้ำเหลืองชนิดมิกซ์ สมอลล์ แอนด์ลาร์จ เซลล์ (ดิฟฟิวส์)
+C83.4	not in WHO 2016		Immunoblastic (diffuse)	มะเร็งต่อมน้ำเหลืองชนิดอิมมูโนบลาสติก (ดิฟฟิวส์)
+C83.6	not in WHO 2016		Undifferentiated (diffuse)	มะเร็งต่อมน้ำเหลืองชนิดแยกชนิดไม่ได้ (ดิฟฟิวส์)
+C83.80	TM extension		Mantle cell lymphoma	มะเร็งต่อมน้ำเหลืองชนิดแมนเติล เซลล์
+C83.81	TM extension		Lymphoma of mucosa-associated lymphoid tissue	มะเร็งของเนื้อเยื่อระบบน้ำเหลืองที่เกี่ยวพันกับเยื่อบุ
+C83.88	TM extension		Other types of diffuse non-Hodgkin’s lymphoma	มะเร็งต่อมน้ำเหลืองชนิดดิฟฟิวส์อื่นที่ไม่ใช่ฮอด์จกิน
+C84.2	not in WHO 2016		T-zone lymphoma	มะเร็งต่อมน้ำเหลืองชนิดที-โซน
+C84.3	not in WHO 2016		Lymphoepithelioid lymphoma	มะเร็งต่อมน้ำเหลืองชนิดลิมโฟอีพิทีลอยด์
+C84.40	TM extension		Anaplastic large cell lymphoma	มะเร็งต่อมน้ำเหลืองชนิดอนาพลาสติก ลาร์จ เซลล์
+C84.41	TM extension		Angiocentric lymphoma	มะเร็งต่อมน้ำเหลืองชนิดแองจีโอเซ็นตริก
+C84.42	TM extension		Angioimmunoblastic lymphoma	มะเร็งต่อมน้ำเหลืองชนิดแองจีโออิมมูโนบลาสติก
+C84.43	TM extension		Hepatosplenic T-cell lymphoma	มะเร็งต่อมน้ำเหลืองชนิดเฮปปาโตสปลีนิก ที-เซลล์
+C84.48	TM extension		Other peripheral T-cell lymphoma	มะเร็งต่อมน้ำเหลืองชนิดที-เซลล์รอบนอกอื่น
+C84.49	TM extension		Peripheral T-cell lymphoma, unspecified	มะเร็งต่อมน้ำเหลืองชนิดที-เซลล์รอบนอกไม่ระบุรายละเอียด
+C85.0	not in WHO 2016		Lymphosarcoma	ลิมโฟซาร์โคมา
+C88.1	not in WHO 2016		Alpha heavy chain disease	โรคแอลฟา เฮฟวี เชน
+C91.2	not in WHO 2016		Subacute lymphocytic leukaemia	มะเร็งเม็ดเลือดขาวกึ่งเฉียบพลันชนิดลิมโฟไซติก
+C93.2	not in WHO 2016		Subacute monocytic leukaemia	มะเร็งเม็ดเลือดขาวกึ่งเฉียบพลันชนิดโมโนไซติก
+C94.1	not in WHO 2016	D45	Chronic erythraemia	อีริทรีเมียเรื้อรัง
+C94.5	not in WHO 2016	C94.4	Acute myelofibrosis	ไมอิโลไฟโบรซิสเฉียบพลัน
+C95.2	not in WHO 2016		Subacute leukaemia of unspecified cell type	มะเร็งเม็ดเลือดขาวกึ่งเฉียบพลันที่ไม่ระบุชนิดเซลล์
+C96.1	not in WHO 2016	C96.8	Malignant histiocytosis	ฮีสทิโอไซโตซิสชนิดร้าย
+C96.3	not in WHO 2016		True histiocytic lymphoma	มะเร็งต่อมน้ำเหลืองชนิดฮีสทิโอไซติกแท้
+D03.30	TM extension		Skin of lip	เมลาโนมา ณ จุดเริ่มของผิวหนังของริมฝีปาก
+D03.38	TM extension		Other facial skin	เมลาโนมา ณ จุดเริ่มผิวหนังส่วนอื่นของหน้า
+D03.39	TM extension		Facial skin, unspecified	เมลาโนมา ณ จุดเริ่มผิวหนังของหน้าไม่ระบุรายละเอียด
+D10.00	TM extension		Upper lip, vermilion border	เนื้องอกไม่ร้ายของริมฝีปากบน ขอบริมฝีปาก
+D10.01	TM extension		Upper lip, labial mucosa	เนื้องอกไม่ร้ายของริมฝีปากบน เยื่อบุริมฝีปาก
+D10.02	TM extension		Upper lip, vermilion border with mucosa	เนื้องอกไม่ร้ายของริมฝีปากบน ขอบริมฝีปากและเยื่อบุ
+D10.03	TM extension		Lower lip, vermilion border	เนื้องอกไม่ร้ายของริมฝีปากล่าง ขอบริมฝีปาก
+D10.04	TM extension		Lower lip, labial mucosa	เนื้องอกไม่ร้ายของริมฝีปากล่าง เยื่อบุริมฝีปาก
+D10.05	TM extension		Lower lip, vermilion border with mucosa	เนื้องอกไม่ร้ายของริมฝีปากล่าง ขอบริมฝีปากและเยื่อบุ
+D10.06	TM extension		Both lips, vermilion border	เนื้องอกไม่ร้ายของริมฝีปากบนและล่าง ขอบริมฝีปาก
+D10.07	TM extension		Both lips, labial mucosa	เนื้องอกไม่ร้ายของริมฝีปากบนและล่าง เยื่อบุริมฝีปาก
+D10.08	TM extension		Both lips, vermilion border with mucosa	เนื้องอกไม่ร้ายของริมฝีปากบนและล่าง ขอบริมฝีปากและเยื่อบุ
+D10.09	TM extension		Lip, unspecified	เนื้องอกไม่ร้ายของริมฝีปาก ไม่ระบุรายละเอียด
+D10.10	TM extension		Base of tongue (posterior to terminal sulcus)	เนื้องอกไม่ร้ายของโคนลิ้น (ด้านหลังต่อร่องเหงือก)
+D10.11	TM extension		Dorsal surface of tongue	เนื้องอกไม่ร้ายของผิวด้านหลังของลิ้น
+D10.12	TM extension		Border and tip of tongue	เนื้องอกไม่ร้ายของขอบและปลายลิ้น
+D10.13	TM extension		Ventral surface of tongue	เนื้องอกไม่ร้ายของผิวด้านท้องของลิ้น
+D10.14	TM extension		Lingual tonsil	เนื้องอกไม่ร้ายของทอนซิลใต้ลิ้น
+D10.19	TM extension		Tongue, unspecified	เนื้องอกไม่ร้ายของลิ้น ไม่ระบุรายละเอียด
+D10.30	TM extension		Buccal mucosa	เนื้องอกไม่ร้ายของเยื่อเมือกด้านแก้ม
+D10.31	TM extension		Buccal mucosal commissure	เนื้องอกไม่ร้ายของรอยเชื่อมเยื่อเมือกด้านแก้ม
+D10.32	TM extension		Buccal sulcus	เนื้องอกไม่ร้ายของร่องเหงือกด้านแก้ม
+D10.33	TM extension		Gingiva and edentulous alveolar ridge	เนื้องอกไม่ร้ายของเหงือกและสันขากรรไกร
+D10.34	TM extension		Hard palate	เนื้องอกไม่ร้ายของเพดานแข็ง
+D10.35	TM extension		Soft palate	เนื้องอกไม่ร้ายของเพดานอ่อน
+D10.36	TM extension		Uvula	เนื้องอกไม่ร้ายของลิ้นไก่
+D10.37	TM extension		Retromolar area	เนื้องอกไม่ร้ายบริเวณท้ายฟันกราม
+D10.38	TM extension		Tuberosity	เนื้องอกไม่ร้ายของปุ่มขากรรไกร
+D10.39	TM extension		Mouth, unspecified	เนื้องอกไม่ร้ายของปาก ไม่ระบุรายละเอียด
+D16.40	TM extension		Maxilla, bone and cartilage	เนื้องอกไม่ร้ายของขากรรไกรบน กระดูกและกระดูกอ่อน
+D16.41	TM extension		Maxilla, odontogenic tissue	เนื้องอกไม่ร้ายของขากรรไกรบน เนื้อเยื่อที่สร้างฟัน
+D16.48	TM extension		Other bones of skull and face	เนื้องอกไม่ร้ายของกระดูกอื่นของกะโหลกและหน้า
+D16.49	TM extension		Maxilla, unspecified	เนื้องอกไม่ร้ายของขากรรไกรบน ไม่ระบุรายละเอียด
+D16.50	TM extension		Mandible, bone and cartilage	เนื้องอกไม่ร้ายของขากรรไกรล่าง กระดูกและกระดูกอ่อน
+D16.51	TM extension		Mandible, odontogenic tissue	เนื้องอกไม่ร้ายของขากรรไกรล่าง เนื้อเยื่อที่สร้างฟัน
+D16.59	TM extension		Mandible, unspecified	เนื้องอกไม่ร้ายของขากรรไกรล่าง ไม่ระบุรายละเอียด
+D18.00	TM extension		Skin and subcutaneous tissue	เนื้องอกไม่ร้ายของหลอดเลือดผิวหนังและเนื้อเยื่อใต้ผิวหนัง
+D18.01	TM extension		Intracranial structure	เนื้องอกไม่ร้ายของหลอดเลือดโครงสร้างในกะโหลกศีรษะ
+D18.02	TM extension		Liver	เนื้องอกไม่ร้ายของหลอดเลือดตับ
+D18.03	TM extension		Intestine	เนื้องอกไม่ร้ายของหลอดเลือดลำไส้
+D18.04	TM extension		Ear, nose, mouth and throat	เนื้องอกไม่ร้ายของหลอดเลือดหู จมูก ปาก และคอด้านใน
+D18.05	TM extension		Multiple sites	เนื้องอกไม่ร้ายของหลอดเลือดหลายตำแหน่ง
+D18.08	TM extension		Other specified sites	เนื้องอกไม่ร้ายของหลอดเลือดตำแหน่งอื่นที่ระบุรายละเอียด
+D18.09	TM extension		Haemangioma, unspecified	เนื้องอกไม่ร้ายของหลอดเลือด ไม่ระบุรายละเอียด
+D25.7	TM extension		Leiomyoma of uterus, multiple sites	เนื้องอกไม่ร้ายของกล้ามเนื้อมดลูกหลายตำแหน่ง
+D46.3	not in WHO 2016	C92.0	Refractory anaemia with excess of blasts with transformation	โรคโลหิตจางชนิดดื้อที่มีบลาสเซลล์มากเกินและมีการเปลี่ยนรูปร่าง
+D59.40	TM extension		Chemical	สารเคมี
+D59.41	TM extension		Infectious	การติดเชื้อ
+D59.42	TM extension		Microangiopathic	ไมโครแองจีโอพาติก
+D59.43	TM extension		Physical	ทางกายภาพ
+D59.48	TM extension		Other nonautoimmune haemolytic anaemias	โลหิตจางจากเม็ดเลือดแดงแตกชนิดไม่เกิดจากภูมิต้านตนเองแบบอื่น
+D63.1	TM extension		Anaemia due to liver, renal and endocrine disorders	โลหิตจางจากความผิดปกติของตับ ไต และต่อมไร้ท่อ
+D75.2	not in WHO 2016	D47.3	Essential thrombocytosis	เกล็ดเลือดมากแบบเกิดขึ้นเอง
+D76.0	not in WHO 2016	C96.5 C96.6	Langerhans’ cell histiocytosis, not elsewhere classified	แล็งเกอร์ฮานส์ เซลล์ ฮีสติโอไซโตซิสมิได้จำแนกไว้ที่ใด
+E03.6	TM extension		Hypothyroidism from Hashimoto’s thyroiditis	ภาวะต่อมไทรอยด์ทำงานน้อยจากต่อมไทรอยด์อักเสบฮาชิโมโต
+E06.6	TM extension		Transient painless thyroiditis, sporadic	ต่อมไทรอยด์อักเสบชั่วคราวแบบไม่ปวดชนิดสปอเรดิก
+E07.2	TM extension		Thyroid hormone resistant syndrome	กลุ่มอาการดื้อต่อไทรอยด์ฮอร์โมน
+E07.3	TM extension		Euthyroid hyperthyroxinaemia	ภาวะระดับไทร็อกซินในเลือดสูงแต่การทำหน้าที่ของต่อมไทรอยด์ปกติ
+E74.30	TM extension		Glucose malabsorption	การดูดซึมกลูโคสผิดปกติ
+E74.38	TM extension		Other disorders of intestinal carbohydrate metabolism	ความผิดปกติอื่นของเมตะบอลิซึมของคาร์โบไฮเดรตที่ลำไส้
+F44.80	TM extension		Ganser’s syndrome	กลุ่มอาการแกนเซอร์
+F44.81	TM extension		Multiple personality	บุคลิกภาพหลายแบบ
+F44.82	TM extension		Transient dissociative [conversion] disorders occurring in childhood and adolescence	โรคดิสโซสิเอทีฟ [คอนเวอร์ชัน] แบบชั่วคราวในวัยเด็กและวัยรุ่น
+F44.88	TM extension		Other specified dissociative [conversion] disorders	โรคดิสโซสิเอทีฟ [คอนเวอร์ชัน] แบบอื่นที่ระบุรายละเอียด
+F45.30	TM extension		Heart and cardiovascular system	ระบบหัวใจและหลอดเลือด
+F45.31	TM extension		Upper gastrointestinal tract	ทางเดินอาหารส่วนบน
+F45.32	TM extension		Lower gastrointestinal tract	ทางเดินอาหารส่วนล่าง
+F45.33	TM extension		Respiratory system	ระบบหายใจ
+F45.34	TM extension		Genitourinary system	ระบบสืบพันธุ์และทางเดินปัสสาวะ
+F45.38	TM extension		Other organs and systems	อวัยวะและระบบอื่น
+F45.39	TM extension		Unspecified organ or system	อวัยวะหรือระบบที่ไม่ระบุรายละเอียด
+F45.80	TM extension		Dysphagia (psychogenic), including “globus hystericus”	กลืนลำบาก (สาเหตุจากจิตใจ) รวม“โกลบัส ฮิสตีริคัส ”
+F45.81	TM extension		Torticollis (psychogenic)	คอบิด (สาเหตุจากจิตใจ)
+F45.82	TM extension		Teeth-grinding [bruxism]	กัดฟัน [นอนกัดฟัน]
+F45.88	TM extension		Other somatoform disorders	โรคโซมาโตฟอร์มแบบอื่น
+F55.0	TM extension		Antidepressants	ยาแก้ซึมเศร้า
+F55.1	TM extension		Laxatives	ยาระบาย
+F55.2	TM extension		Analgesics	ยาแก้ปวด
+F55.3	TM extension		Antacids	ยาลดกรด
+F55.4	TM extension		Vitamins	วิตามิน
+F55.5	TM extension		Steroids or hormones	สเตียรอยด์หรือฮอร์โมน
+F55.6	TM extension		Specific herbal or folk remedies	สมุนไพรหรือยาพื้นบ้าน
+F55.7	TM extension		Multiple substances	ยาหลายชนิด
+F55.8	TM extension		Other non-dependence-producing substances	สารไม่เสพติดอื่น
+F55.9	TM extension		Unspecified non-dependence-producing substance	สารไม่เสพติด ไม่ระบุรายละเอียด
+F60.30	TM extension		Impulsive type	ชนิดหุนหันพลันแล่น
+F60.31	TM extension		Borderline type	ชนิดก้ำกึ่ง
+F60.38	TM extension		Other emotionally unstable personality disorders	ความผิดปกติทางบุคลิกภาพแบบอารมณ์ไม่คงที่ชนิดอื่น
+F60.39	TM extension		Emotionally unstable personality disorder, unspecified	ความผิดปกติทางบุคลิกภาพแบบอารมณ์ไม่คงที่, ไม่ระบุรายละเอียด
+G04.3	TM extension		Viral transverse myelitis, unspecified	โรคไขสันหลังอักเสบตามขวางจากไวรัสไม่ระบุรายละเอียด
+G90.3	not in WHO 2016	G23.2 G23.3	Multi-system degeneration	การเสื่อมหลายระบบ
+H33.9	not in WHO 2016	H33.5	Other retinal detachments	จอตาลอกแบบอื่น
+H36.00	TM extension		Nonproliferative diabetic retinopathy [NPDR]	โรคที่จอตาจากโรคเบาหวานชนิดไม่งอกขยาย
+H36.01	TM extension		Nonproliferative diabetic retinopathy [NPDR] with maculopathy	โรคที่จอตาจากโรคเบาหวานชนิดไม่งอกขยาย
+H36.02	TM extension		Proliferative diabetic retinopathy [PDR]	โรคที่จอตาจากโรคเบาหวานชนิดงอกขยาย [พีดีอาร์]
+H36.09	TM extension		Diabetic retinopathy, unspecified	โรคที่จอตาจากโรคเบาหวาน ไม่ระบุรายละเอียด
+H54.7	not in WHO 2016	H54.9	Unspecified visual loss	การสูญเสียการเห็นที่ไม่ระบุรายละเอียด
+H61.4	TM extension		Haematoma or seroma of external ear	ก้อนเลือดขังและก้อนน้ำเหลืองขังที่หูชั้นนอก
+I05.3	not in WHO 2016	I05.8	Other mitral valve diseases	โรคอื่นของลิ้นหัวใจไมทรัล
+I49.00	TM extension		Ventricular fibrillation and flutter with structural heart diseases	เว็นทริคูลาร์ ฟิบริลเลชัน และฟลัตเทอร์ที่มีโรคหัวใจทางโครงสร้าง
+I49.01	TM extension		Ventricular fibrillation and flutter without structural heart diseases (idiopathic)	เว็นทริคูลาร์ ฟิบริลเลชัน และฟลัตเทอร์ที่ไม่มีโรคหัวใจทางโครงสร้าง (ไม่ทราบสาเหตุ) [กลุ่มอาการบรูกาดา]
+I49.08	TM extension		Other ventricular fibrillation and flutter	เว็นทริคูลาร์ ฟิบริลเลชัน และฟลัตเทอร์อื่น
+I49.09	TM extension		Ventricular fibrillation and flutter, unspecified	เว็นทริคูลาร์ ฟิบริลเลชัน และฟลัตเทอร์ไม่ระบุรายละเอียดดีโพลาไรเซชันก่อนกำหนดของหัวใจห้องบน
+I70.20	TM extension		Atherosclerosis of arteries of upper extremities	หลอดเลือดแดงของแขนแข็ง
+I70.21	TM extension		Atherosclerosis of arteries of lower extremities	หลอดเลือดแดงของขาแข็ง
+I70.22	TM extension		Atherosclerosis of arteries of both extremities	หลอดเลือดแดงของทั้งแขนและขาแข็ง
+I70.29	TM extension		Atherosclerosis of arteries of extremities, unspecified	หลอดเลือดแดงของแขนขาแข็ง ไม่ระบุรายละเอียด
+I70.3	TM extension		Atherosclerosis of carotid arteries	หลอดเลือดแดงคาโรติดแข็งหลอดเลือดแดงที่อื่นแข็ง
+I84	not in WHO 2016	K64	Haemorrhoids	ริดสีดวงทวาร
+I84.0	not in WHO 2016	K64.5 K64.8	Internal thrombosed haemorrhoids	ริดสีดวงทวารภายในชนิดมีลิ่มเลือด
+I84.1	not in WHO 2016	K64.8	Internal haemorrhoids with other complications	ริดสีดวงทวารภายในที่มีภาวะแทรกซ้อนอื่น
+I84.2	not in WHO 2016	K64.9	Internal haemorrhoids without complication	ริดสีดวงทวารภายในที่ไม่มีภาวะแทรกซ้อน
+I84.3	not in WHO 2016	K64.5	External thrombosed haemorrhoids	ริดสีดวงทวารภายนอกชนิดมีลิ่มเลือด
+I84.4	not in WHO 2016	K64.8	External haemorrhoids with other complications	ริดสีดวงทวารภายนอกที่มีภาวะแทรกซ้อนอื่น
+I84.5	not in WHO 2016	K64.9	External haemorrhoids without complication	ริดสีดวงทวารภายนอกที่ไม่มีภาวะแทรกซ้อน
+I84.6	not in WHO 2016	K64.4	Residual haemorrhoidal skin tags	ติ่งผิวหนังที่เหลืออยู่บริเวณริดสีดวงทวาร
+I84.7	not in WHO 2016	K64.5	Unspecified thrombosed haemorrhoids	ริดสีดวงทวารชนิดมีลิ่มเลือดที่ไม่ระบุรายละเอียด
+I84.8	not in WHO 2016	K64.8	Unspecified haemorrhoids with other complications	ริดสีดวงทวารไม่ระบุรายละเอียดที่มีภาวะแทรกซ้อนอื่น
+I84.9	not in WHO 2016	K64.9	Unspecified haemorrhoids without complication	ริดสีดวงทวารไม่ระบุรายละเอียดที่ไม่มีภาวะแทรกซ้อน
+I95.3	TM extension		Neural-mediated hypotension	ความดันโลหิตต่้าจากระบบประสาท
+J03.1	not in WHO 2016	J03.8	Acute tonsillitis due to other specified organisms	ทอนซิลอักเสบเฉียบพลันจากเชื้ออื่นที่ระบุ
+J15.81	TM extension		Pneumonia due to Rhodococcus equi	ปอดบวมที่เกิดจาก โรโดค็อกคัส อีไคว
+J15.88	TM extension		Other bacterial pneumonia	ปอดบวมที่เกิดจากแบคทีเรียชนิดอื่น
+J44.2	TM extension		Wheezing associated respiratory illness	เสียงหวีดร่วมกับการเจ็บป่วยของระบบหายใจ
+J45.2	TM extension		Bronchial hypersensitiveness	ภาวะหลอดลมไวเกิน
+J68.5	TM extension		Occupational asthma	โรคหืดจากการประกอบอาชีพ
+J95.6	TM extension		Postprocedural chylothorax	โพรงเยื่อหุ้มปอดมีน้ำคล้ายน้ำนมหลังทำหัตถการ
+K00.00	TM extension		Partial anodontia [hypodontia] [oligodontia]	ภาวะไร้ฟันบางส่วน [ฟันน้อย]
+K00.01	TM extension		Total anodontia	ภาวะไร้ฟันทั งหมด
+K00.09	TM extension		Anodontia, unspecified	ภาวะไร้ฟัน ไม่ระบุรายละเอียด
+K00.10	TM extension		Incisor and canine regions	บริเวณฟันตัดและฟันเขี ยว
+K00.11	TM extension		Premolar region	บริเวณฟันกรามน้อย
+K00.12	TM extension		Molar region	บริเวณฟันกราม
+K00.19	TM extension		Supernumerary teeth, unspecified	ฟันเกิน ไม่ระบุรายละเอียด
+K00.20	TM extension		Macrodontia	ฟันใหญ่
+K00.21	TM extension		Microdontia	ฟันเล็ก
+K00.22	TM extension		Concrescence	ฟันแฝดติด
+K00.23	TM extension		Fusion and gemination	ฟันเชื่อมติดกันและการเกิดฟันแฝด
+K00.24	TM extension		Dens evaginatus [occlusal tuberculum]	เดนส์ อีวาจินาตัส [อ็อกคลูซัล ทูเบอร์คูลัม]
+K00.25	TM extension		Dens invaginatus [dens in dente] [dilated odontoma] and incisor anomalies	เดนส์ อินวาจินาตัส [ฟันในฟัน] [โอด็อนโทมาที่ขยายตัว] และวิกลภาพของฟันตัด
+K00.26	TM extension		Premolarization	ฟันที่เปลี่ยนรูปเป็นฟันกรามน้อย
+K00.27	TM extension		Abnormal tubercula and enamel pearls	ปุ่มฟันผิดปกติและไข่มุกเคลือบฟัน [อีนาเมโลมา]
+K00.28	TM extension		Taurodontism	ภาวะโพรงในตัวฟันยืดขยายสู่ปลายราก
+K00.29	TM extension		Other and unspecified abnormalities of size and form of teeth	ความผิดปกติอื่นและที่ไม่ระบุรายละเอียดของขนาดและรูปร่างฟัน
+K00.30	TM extension		Endemic (fluoride) mottling of enamel	ฟันตกกระประจำถิ่น [ภาวะฟันมีฟลูออไรด์มากเกิน]
+K00.31	TM extension		Non-endemic mottling of enamel	ฟันตกกระไม่ประจำถิ่น [สภาพทึบแสงผิดปกติของเคลือบฟันไม่สัมพันธ์กับฟลูออไรด์]
+K00.39	TM extension		Mottled teeth, unspecified	ฟันตกกระ, ไม่ระบุรายละเอียด
+K00.40	TM extension		Enamel hypoplasia	การเจริญพร่องของเคลือบฟัน
+K00.41	TM extension		Prenatal enamel hypoplasia	การเจริญพร่องของเคลือบฟันก่อนเกิด
+K00.42	TM extension		Neonatal enamel hypoplasia	การเจริญพร่องของเคลือบฟันในทารกแรกเกิด
+K00.43	TM extension		Aplasia and hypoplasia of cementum	การไม่เจริญและเจริญพร่องของเคลือบรากฟัน
+K00.44	TM extension		Dilaceration	รากฟันหงิกงอ
+K00.45	TM extension		Odontodysplasia [regional odontodysplasia]	โอด็อนโตดิสเปลเซีย [โอด็อนโตดิสเปลเซียเฉพาะบริเวณ]
+K00.46	TM extension		Turner’s teeth	ฟันเทอร์เนอร์
+K00.48	TM extension		Other specified disturbances in tooth formation	การรบกวนอื่นที่ระบุรายละเอียดของการสร้างฟัน
+K00.49	TM extension		Disturbances in tooth formation, unspecified	การรบกวนการสร้างฟัน ไม่ระบุรายละเอียด
+K00.50	TM extension		Amelogenesis imperfecta	การสร้างเคลือบฟันไม่สมบูรณ์
+K00.51	TM extension		Dentinogenesis imperfecta	การสร้างเนื้อฟันไม่สมบูรณ์
+K00.52	TM extension		Odontogenesis imperfecta	การสร้างฟันไม่สมบูรณ์
+K00.58	TM extension		Other hereditary disturbances in tooth structure	การรบกวนอื่นของการสร้างฟันที่เป็นกรรมพันธุ์
+K00.59	TM extension		Hereditary disturbances in tooth structure, unspecified	การรบกวนการสร้างฟันที่เป็นกรรมพันธุ์ไม่ระบุรายละเอียด
+K00.60	TM extension		Natal teeth	ฟันงอกก่อนเกิด
+K00.61	TM extension		Neonatal teeth	ฟันงอกแรกเกิด
+K00.62	TM extension		Premature eruption [dentia praecox]	ฟันงอกก่อนกำหนด [เด็นเทีย พรีค็อกซ์]
+K00.63	TM extension		Retained [persistent] primary [deciduous] teeth	ฟันน้ำนมตกค้าง [ฟันน้ำนมไม่ยอมหลุด]
+K00.64	TM extension		Late eruption	ฟันงอกช้า
+K00.65	TM extension		Premature shedding of primary [deciduous] teeth	ฟันน้ำนมหลุดก่อนกำหนด
+K00.68	TM extension		Other specified disturbances in tooth eruption	การรบกวนอื่นที่ระบุรายละเอียดของการงอกของฟัน
+K00.69	TM extension		Disturbances in tooth eruption, unspecified	การรบกวนการงอกของฟัน ไม่ระบุรายละเอียด
+K00.80	TM extension		Colour changes during tooth formation due to blood type incompatibility	การเปลี่ยนแปลงของสีระหว่างการสร้างฟันที่เกิดจากหมู่เลือดเข้ากันไม่ได้
+K00.81	TM extension		Colour changes during tooth formation due to malformation of biliary system	การเปลี่ยนแปลงของสีระหว่างการสร้างฟันที่เกิดจากรูปผิดปกติของระบบน้ำดี
+K00.82	TM extension		Colour changes during tooth formation due to porphyria	การเปลี่ยนแปลงของสีระหว่างการสร้างฟันที่เกิดจากพอร์ไฟเรีย
+K00.83	TM extension		Colour changes during tooth formation due to tetracyclines	การเปลี่ยนแปลงของสีระหว่างการสร้างฟันที่เกิดจากเตตราไซคลิน
+K00.88	TM extension		Other specified disorders of tooth development	ความผิดปกติแบบอื่นที่ระบุรายละเอียดของพัฒนาการของฟัน
+K01.10	TM extension		Maxillary incisor	ฟันตัดบน
+K01.11	TM extension		Mandibular incisor	ฟันตัดล่าง
+K01.12	TM extension		Maxillary canine	ฟันเขี ยวบน
+K01.13	TM extension		Mandibular canine	ฟันเขี ยวล่าง
+K01.14	TM extension		Maxillary premolar	ฟันกรามน้อยบน
+K01.15	TM extension		Mandibular premolar	ฟันกรามน้อยล่าง
+K01.16	TM extension		Maxillary molar	ฟันกรามบน
+K01.17	TM extension		Mandibular molar	ฟันกรามล่าง
+K01.18	TM extension		Supernumerary tooth	ฟันเกิน
+K01.19	TM extension		Impacted tooth, unspecified	ฟันคุด ไม่ระบุรายละเอียด
+K03.00	TM extension		Occlusal	ด้านบดเคี ยว
+K03.01	TM extension		Approximal	ด้านประชิด
+K03.08	TM extension		Other specified attrition of teeth	ฟันสึกจากการบดเคี ยวแบบอื่นที่ระบุรายละเอียด
+K03.09	TM extension		Attrition of teeth, unspecified	ฟันสึกจากการบดเคี ยว ไม่ระบุรายละเอียด
+K03.10	TM extension		Dentrifice	จากยาสีฟัน
+K03.11	TM extension		Habitual abrasion of teeth	ฟันสึกจากการขัดถูเป็นนิสัย
+K03.12	TM extension		Occupational abrasion of teeth	ฟันสึกจากการขัดถูจากอาชีพ
+K03.13	TM extension		Traditional abrasion of teeth	ฟันสึกจากการขัดถูจากประเพณี
+K03.18	TM extension		Other specified abrasion of teeth	ฟันสึกจากการขัดถูแบบอื่นที่ระบุรายละเอียด
+K03.19	TM extension		Abrasion of teeth, unspecified	ฟันสึกจากการขัดถู ไม่ระบุรายละเอียด
+K03.20	TM extension		Occupational erosion of teeth	ฟันสึกกร่อนจากอาชีพ
+K03.21	TM extension		Erosion of teeth due to persistent regurgitating of vomiting	ฟันสึกกร่อนจากการขย้อนอาเจียนเป็นประจำ
+K03.22	TM extension		Erosion of teeth due to diet	ฟันสึกกร่อนจากอาหาร
+K03.23	TM extension		Erosion of teeth due to drugs and medicaments	ฟันสึกกร่อนจากยาและเครื่องยา
+K03.24	TM extension		Idiopathic erosion of teeth	ฟันสึกกร่อนที่ไม่ทราบสาเหตุ
+K03.28	TM extension		Other specified erosion of teeth	ฟันสึกกร่อนแบบอื่นที่ระบุรายละเอียด
+K03.29	TM extension		Erosion of teeth, unspecified	ฟันสึกกร่อน ไม่ระบุรายละเอียด
+K03.30	TM extension		External resorption of teeth	การละลายของฟันจากภายนอก
+K03.31	TM extension		Internal [internal granuloma] [pink spot] resorption of teeth	การละลายของฟันจากภายใน [แกรนูโลมาภายใน]
+K03.39	TM extension		Pathological resorption of teeth, unspecified	การละลายของฟันที่มีพยาธิสภาพ ไม่ระบุรายละเอียด
+K03.60	TM extension		Pigmented film	คราบฟิล์มของสารสี
+K03.61	TM extension		Deposits on teeth due to tobacco habit	คราบบนฟันจากยาสูบ
+K03.62	TM extension		Deposits on teeth due to betel-chewing habit	คราบบนฟันจากหมาก
+K03.63	TM extension		Other gross soft deposits	คราบสะสมชนิดนิ่มแบบอื่น
+K03.64	TM extension		Supragingival calculus	หินน้ำลายเหนือเหงือก
+K03.65	TM extension		Subgingival calculus	หินน้ำลายใต้เหงือก
+K03.66	TM extension		Dental plaque	คราบจุลินทรีย์ที่ฟัน
+K03.68	TM extension		Other specified deposits on teeth	คราบอื่นที่ระบุรายละเอียดบนฟัน
+K03.69	TM extension		Deposit [accretions] on teeth, unspecified	คราบ [สิ่งสะสม] บนฟัน ไม่ระบุรายละเอียด
+K03.70	TM extension		Posteruptive colour changes of dental hard tissues due to metals and metallic compounds	การเปลี่ยนสีของเนื้อเยื่อแข็งของฟันหลังฟันขึ นจากโลหะและสารประกอบโลหะ
+K03.71	TM extension		Posteruptive colour changes of dental hard tissues due to pulpal bleeding	การเปลี่ยนสีของเนื้อเยื่อแข็งของฟันหลังฟันขึ นจากเลือดออกที่เนื้อเยื่อในฟัน
+K03.72	TM extension		Posteruptive colour changes of dental hard tissues due to chewing habit	การเปลี่ยนสีของเนื้อเยื่อแข็งของฟันหลังฟันขึ นจากนิสัยการเคี ยว
+K03.78	TM extension		Other specified posteruptive colour changes of dental hard tissues	การเปลี่ยนสีของเนื้อเยื่อแข็งของฟันหลังฟันขึ นแบบอื่นที่ระบุรายละเอียด
+K03.79	TM extension		Posteruptive colour changes of hard tissues, unspecified	การเปลี่ยนสีของเนื้อเยื่อแข็งของฟันหลังฟันขึ นไม่ระบุรายละเอียด
+K03.80	TM extension		Sensitive dentine	เนื้อฟันไวต่อความรู้สึก
+K03.81	TM extension		Changes of enamel due to irradiation	การเปลี่ยนแปลงของเคลือบฟันจากการฉายรังสี
+K03.88	TM extension		Other specified diseases of hard tissues of teeth	โรคอื่นที่ระบุรายละเอียดของเนื้อเยื่อแข็งของฟัน
+K04.00	TM extension		Initial pulpitis [hyperraemia]	เนื้อเยื่อในฟันอักเสบระยะเริ่มแรก [ภาวะเลือดคั่ง]
+K04.01	TM extension		Acute pulpitis	เนื้อเยื่อในฟันอักเสบเฉียบพลัน
+K04.02	TM extension		Suppurative pulpitis [pulpal abscess]	เนื้อเยื่อในฟันอักเสบเป็นหนอง [ฝีของเนื้อเยื่อในฟัน]
+K04.03	TM extension		Chronic pulpitis NOS	เนื้อเยื่อในฟันอักเสบเรื้อรัง NOS
+K04.04	TM extension		Chronic pulpitis, ulcerative	เนื้อเยื่อในฟันอักเสบเรื้อรัง แบบมีแผล
+K04.05	TM extension		Chronic pulpitis, hyperplastic [pulpal polyp]	เนื้อเยื่อในฟันอักเสบเรื้อรัง แบบเจริญเกิน
+K04.08	TM extension		Other specified pulpitis	เนื้อเยื่อในฟันอักเสบแบบอื่นที่ระบุรายละเอียด
+K04.09	TM extension		Pulpitis, unspecified	เนื้อเยื่อในฟันอักเสบ ไม่ระบุรายละเอียด
+K04.60	TM extension		Periapical abscess with sinus to maxillary antrum	ฝีรอบปลายรากฟันร่วมกับทางหนองไหลไปยังโพรงอากาศขากรรไกรบน
+K04.61	TM extension		Periapical abscess with sinus to nasal cavity	ฝีรอบปลายรากฟันร่วมกับทางหนองไหลไปยังโพรงจมูก
+K04.62	TM extension		Periapical abscess with sinus to oral cavity	ฝีรอบปลายรากฟันร่วมกับทางหนองไหลไปยังช่องปาก
+K04.63	TM extension		Periapical abscess with sinus to skin	ฝีรอบปลายรากฟันร่วมกับทางหนองไหลไปยังผิวหนัง
+K04.69	TM extension		Periapical abscess with sinus, unspecified	ฝีรอบปลายรากฟันร่วมกับทางหนองไหลไม่ระบุรายละเอียด
+K04.80	TM extension		Apical and lateral radicular cyst	ถุงน้ำปลายหรือข้างรากฟัน
+K04.81	TM extension		Residual radicular cyst	ถุงน้ำรากฟันที่หลงเหลือ
+K04.82	TM extension		Inflammatory paradental radicular cyst	ถุงน้ำข้างรากฟันจากการอักเสบ
+K04.89	TM extension		Radicular cyst, unspecified	ถุงน้ำรากฟัน ไม่ระบุรายละเอียด
+K05.00	TM extension		Acute streptococcal gingivostomatitis	เหงือกและปากอักเสบเฉียบพลันจากเชื้อสเตร็ปโตค็อกคัส
+K05.08	TM extension		Other specified acute gingivitis	เหงือกอักเสบเฉียบพลันแบบอื่นที่ระบุรายละเอียด
+K05.09	TM extension		Acute gingivitis, unspecified	เหงือกอักเสบเฉียบพลัน ไม่ระบุรายละเอียด
+K05.10	TM extension		Simple marginal	ที่ขอบ
+K05.11	TM extension		Hyperplastic	บวมโต
+K05.12	TM extension		Ulcerative	เป็นแผล
+K05.13	TM extension		Desquamative	ลอกหลุด
+K05.18	TM extension		Other specified chronic gingivitis	เหงือกอักเสบเรื้อรังอื่นที่ระบุรายละเอียด
+K05.19	TM extension		Chronic gingivitis, unspecified	เหงือกอักเสบเรื้อรัง ไม่ระบุรายละเอียด
+K05.20	TM extension		Periodontal abscess [parodontal abscess] of gingival origin without sinus	ฝีปริทันต์ที่มีสาเหตุจากเหงือกและไม่มีทางหนองไหล
+K05.21	TM extension		Periodontal abscess [parodontal abscess] of gingival origin with sinus	ฝีปริทันต์ที่มีสาเหตุจากเหงือกและมีทางหนองไหล
+K05.22	TM extension		Acute pericoronitis	ฝาเหงือกอักเสบเฉียบพลัน
+K05.28	TM extension		Other specified acute periodontitis	โรคปริทันต์อักเสบเฉียบพลันอื่นที่ระบุรายละเอียด
+K05.29	TM extension		Acute periodontitis, unspecified	โรคปริทันต์อักเสบเฉียบพลัน ไม่ระบุรายละเอียด
+K05.30	TM extension		Simplex	ซิมเพล็กซ์
+K05.31	TM extension		Complex	คอมเพล็กซ์
+K05.32	TM extension		Chronic pericoronitis	ฝาเหงือกอักเสบเรื้อรัง
+K05.33	TM extension		Thickened follicle	ถุงหุ้มฟันหนาตัว
+K05.38	TM extension		Other specified chronic periodontitis	โรคปริทันต์อักเสบเรื้อรังอื่นที่ระบุรายละเอียด
+K05.39	TM extension		Chronic periodontitis, unspecified	โรคปริทันต์อักเสบเรื้อรัง ไม่ระบุรายละเอียด
+K06.00	TM extension		Localized gingival recession	เหงือกร่นเฉพาะที่
+K06.01	TM extension		Generalized gingival recession	เหงือกร่นทั่วไป
+K06.09	TM extension		Gingival recession, unspecified	เหงือกร่น ไม่ระบุรายละเอียด
+K06.10	TM extension		Gingival fibromatosis	ไฟโบรมาโตซิสของเหงือก
+K06.18	TM extension		Other specified gingival enlargement	เหงือกโตแบบอื่นที่ระบุรายละเอียด
+K06.19	TM extension		Gingival enlargement, unspecified	เหงือกโต ไม่ระบุรายละเอียด
+K06.20	TM extension		Due to traumatic occlusion	จากการสบฟันทำให้บาดเจ็บ
+K06.21	TM extension		Due to toothbrushing	จากการแปรงฟัน
+K06.22	TM extension		Frictional [functional] keratosis	เยื่อเมือกหนาด้านจากการเสียดสี [จากการใช้งาน]
+K06.28	TM extension		Other specified gingival and edentulous ridge lesions associated with trauma	รอยโรคอื่นที่ระบุรายละเอียดของเหงือกและสันกระดูกขากรรไกรไร้ฟันที่พบร่วมกับการบาดเจ็บ
+K06.29	TM extension		Gingival and edentulous ridge lesions associated with trauma, unspecified	รอยโรคของเหงือกและสันกระดูกขากรรไกรไร้ฟันที่พบร่วมกับการบาดเจ็บ ไม่ระบุรายละเอียด
+K06.80	TM extension		Gingival cyst of adult	ถุงน้ำเหงือกของผู้ใหญ่
+K06.81	TM extension		Peripheral giant cell granuloma [giant cell epulis]	ไจแอนต์ เซลล์ แกรนูโลมาที่ขอบ [ติ่งเนื้อไจแอนต์เซลล์]
+K06.82	TM extension		Fibrous epulis	ติ่งเนื้อเส้นใย
+K06.83	TM extension		Pyogenic granuloma	แกรนูโลมาที่ทำให้เกิดหนอง
+K06.84	TM extension		Flabby ridge	สันเหงือกปวกเปียก
+K06.88	TM extension		Other specified disorders of gingival and edentulous alveolar ridge	ความผิดปกติแบบอื่นที่ระบุรายละเอียดของเหงือกและสันกระดูกขากรรไกรไร้ฟัน
+K07.00	TM extension		Maxillary macrognathism [maxillary hyperplasia]	ขากรรไกรบนใหญ่เกิน [ขากรรไกรบนเจริญเกิน]
+K07.01	TM extension		Mandibular macrognathism [mandibular hyperplasia]	ขากรรไกรล่างใหญ่เกิน [ขากรรไกรล่างเจริญเกิน]
+K07.02	TM extension		Macrognathism, both jaws	ขากรรไกรใหญ่เกิน, ทั งบนและล่าง
+K07.03	TM extension		Maxillary micrognathism [maxillary hypoplasia]	ขากรรไกรบนเล็กเกิน [ขากรรไกรบนเจริญพร่อง]
+K07.04	TM extension		Mandibular micrognathism [mandibular hypoplasia]	ขากรรไกรล่างเล็กเกิน [ขากรรไกรล่างเจริญพร่อง]
+K07.05	TM extension		Micrognathism, both jaws	ขากรรไกรเล็กเกิน ทั งบนและล่าง
+K07.08	TM extension		Other specified major anomalies of jaw size	วิกลภาพหลักอื่นที่ระบุรายละเอียดของขนาดขากรรไกร
+K07.09	TM extension		Anomaly of jaw size, unspecified	วิกลภาพของขนาดขากรรไกร ไม่ระบุรายละเอียด
+K07.10	TM extension		Asymmetry of jaw	ขากรรไกรไม่สมมาตร
+K07.11	TM extension		Mandibular prognathism	คางยื่นที่เกิดจากขากรรไกรล่าง
+K07.12	TM extension		Maxillary prognathism	คางยื่นที่เกิดจากขากรรไกรบน
+K07.13	TM extension		Mandibular retrognathism	คางหดสั นเป็นเพราะขากรรไกรล่างหดสั น
+K07.14	TM extension		Maxillary retrognathism	คางหดสั นเป็นเพราะขากรรไกรบนหดสั น
+K07.18	TM extension		Other specified anomalies of jaw-cranial base relationship	วิกลภาพอื่นที่ระบุรายละเอียดของความสัมพันธ์ระหว่างขากรรไกรกับฐานกะโหลกศีรษะ
+K07.19	TM extension		Anomaly of jaw-cranial base relationship, unspecified	วิกลภาพของความสัมพันธ์ระหว่างขากรรไกรกับฐานกะโหลกศีรษะ ไม่ระบุรายละเอียด
+K07.20	TM extension		Disto-occlusion	ดิสโต-อ็อกคลูชัน
+K07.21	TM extension		Mesio-occlusion	มีซิโอ-อ็อกคลูชัน
+K07.22	TM extension		Excessive overjet [horizontal overbite]	การเหลื่อมแนวราบมากกว่าปกติ
+K07.23	TM extension		Excessive overbite [vertical overbite]	การเหลื่อมแนวดิ่งมากกว่าปกติ
+K07.24	TM extension		Openbite	ภาวะสบเปิด
+K07.25	TM extension		Crossbite (anterior) (posterior)	ครอสไบต์ (ด้านหน้า) (ด้านหลัง)
+K07.26	TM extension		Midline deviation	การเบี่ยงเบนของแนวกึ่งกลาง
+K07.27	TM extension		Posterior lingual occlusion of mandibular arch	ส่วนโค้งขากรรไกรล่างด้านหลังสบเข้าทางด้านลิ้น
+K07.28	TM extension		Other specified anomalies of dental arch relationship	วิกลภาพอื่นที่ระบุรายละเอียดของความสัมพันธ์ของส่วนโค้งฟัน
+K07.29	TM extension		Anomaly of dental arch relationship, unspecified	วิกลภาพของความสัมพันธ์ของส่วนโค้งฟันไม่ระบุรายละเอียด
+K07.30	TM extension		Crowding	ฟันซ้อน
+K07.31	TM extension		Displacement	ฟันเคลื่อน
+K07.32	TM extension		Rotation	ฟันหมุน
+K07.33	TM extension		Spacing	ฟันห่าง
+K07.34	TM extension		Transposition	ฟันย้ายข้าง
+K07.35	TM extension		Embeded or impacted teeth in abnormal position	ฟันฝังหรือฟันคุดในตำแหน่งผิดปกติ
+K07.38	TM extension		Other specified anomalies of tooth position	วิกลภาพอื่นที่ระบุรายละเอียดของตำแหน่งฟัน
+K07.39	TM extension		Anomaly of tooth position, unspecified	วิกลภาพของตำแหน่งฟัน ไม่ระบุรายละเอียด
+K07.50	TM extension		Abnormal jaw closure	การหุบปากผิดปกติ
+K07.51	TM extension		Malocclusion due to abnormal swallowing	การสบฟันผิดปกติจากการกลืนผิดปกติ
+K07.54	TM extension		Malocclusion due to mouth breathing	การสบฟันผิดปกติจากการหายใจทางปาก
+K07.55	TM extension		Malocclusion due to tongue, lip or finger habits	การสบฟันผิดปกติจากนิสัยใช้ลิ น ริมฝีปาก หรือนิ ว
+K07.58	TM extension		Other specified dentofacial functional abnormalities	ความผิดปกติอื่นที่ระบุรายละเอียดของการทำงานของขากรรไกรร่วมกับใบหน้า
+K07.59	TM extension		Dentofacial functional abnormality, unspecified	ความผิดปกติของการทำงานของขากรรไกรร่วมกับใบหน้า ไม่ระบุรายละเอียด
+K07.60	TM extension		Temporomandibular joint-pain-dysfunction	กลุ่มอาการปวดและทำงานผิดปกติของข้อต่อขากรรไกร [คอสเต็น]
+K07.61	TM extension		Clicking [snapping] jaws	ข้อต่อขากรรไกรมีเสียงคลิก
+K07.62	TM extension		Recurrent dislocation and subluxation of temporomandibular joint	ข้อต่อขากรรไกรเคลื่อนหรือเลื่อนซ้ำ
+K07.63	TM extension		Pain in temporomandibular joint, not elsewhere classified	ปวดข้อต่อขากรรไกร มิได้จำแนกไว้ที่ใด
+K07.64	TM extension		Stiffness of temporomandibular joint, not elsewhere classified	ข้อต่อขากรรไกรยึดติด มิได้จำแนกไว้ที่ใด
+K07.65	TM extension		Osteophyte of temporomandibular joint	ข้อต่อขากรรไกรมีกระดูกงอก
+K07.68	TM extension		Other specified temporomandibular joint disorders	ความผิดปกติอื่นที่ระบุรายละเอียดของข้อต่อขากรรไกร
+K07.69	TM extension		Temporomandibular joint disorder, unspecified	ความผิดปกติของข้อต่อขากรรไกร ไม่ระบุรายละเอียด
+K08.80	TM extension		Toothache NOS	ปวดฟัน NOS
+K08.81	TM extension		Irregular alveolar process	สันกระดูกเบ้าฟันไม่สม่้าเสมอ
+K08.82	TM extension		Enlargement of alveolar ridge NOS	สันกระดูกขากรรไกรขยายใหญ่ NOS
+K08.88	TM extension		Other specified disorders of teeth and supporting structures	ความผิดปกติอื่นที่ระบุรายละเอียดของฟันและโครงสร้างที่พยุงฟัน
+K09.00	TM extension		Eruption	ถุงน้ำฟันขึ น
+K09.01	TM extension		Gingival	ถุงน้ำเหงือก
+K09.02	TM extension		Keratocyst [primordial]	ถุงน้ำเคอราติน [ถุงน้ำเริ่มเกิด]
+K09.03	TM extension		Follicular [dentigerous]	ถุงน้ำน้อย [ถุงน้ำมีฟัน]
+K09.04	TM extension		Lateral periodontal	ถุงน้ำข้างรากฟัน
+K09.08	TM extension		Other specified developmental odontogenic cysts	ถุงน้ำที่เกี่ยวข้องกับการกำเนิดฟันอื่นที่ระบุรายละเอียด
+K09.09	TM extension		Developmental odontogenic cyst, unspecified	ถุงน้ำที่เกี่ยวข้องกับการกำเนิดฟัน ไม่ระบุรายละเอียด
+K09.10	TM extension		Globulomaxillary	โกลบูโลแม็กซิลลารี
+K09.11	TM extension		Median palatal	แนวกลางเพดานปาก
+K09.12	TM extension		Nasopalatine [incisive canal]	จมูกกับเพดานปาก [คลองเพดานปากหลังฟันตัด]
+K09.13	TM extension		Palatine papilla	ปุ่มเนื้อเพดานปาก
+K09.18	TM extension		Other specified developmental (nonodontogenic) cysts of oral origin	ถุงน้ำที่ไม่เกี่ยวข้องกับการกำเนิดฟันอื่นที่ระบุรายละเอียด
+K09.19	TM extension		Developmental (nonodontogenic) cyst of oral origin, unspecified	ถุงน้ำที่ไม่เกี่ยวข้องกับการกำเนิดฟันไม่ระบุรายละเอียด
+K09.20	TM extension		Aneurysmal bone cyst	ถุงน้ำหลอดเลือดโป่งพองของกระดูก
+K09.21	TM extension		Solitary bone [traumatic] [haemorrhagic] cyst	ถุงน้ำเดี่ยวของกระดูก [จากการบาดเจ็บ] [มีเลือดออก]
+K09.22	TM extension		Epithelial jaw cyst not identifiable as odontogenic or nonodontogenic	ถุงน้ำเยื่อบุผิวขากรรไกรที่ไม่ระบุว่าเป็นถุงน้ำที่เกี่ยวข้องหรือไม่เกี่ยวข้องกับการกำเนิดฟัน
+K09.28	TM extension		Other specified cysts of jaw	ถุงน้ำอื่นที่ระบุรายละเอียดของขากรรไกร
+K09.29	TM extension		Cyst of jaw, unspecified	ถุงน้ำของขากรรไกร ไม่ระบุรายละเอียด
+K09.80	TM extension		Dermoid cyst	ถุงน้ำเดอร์มอยด์
+K09.81	TM extension		Epidermoid cyst	ถุงน้ำหนังกำพร้า
+K09.82	TM extension		Gingival cyst of newborn	ถุงน้ำเหงือกของทารกแรกเกิด
+K09.83	TM extension		Palatal cyst of newborn	ถุงน้ำเพดานปากของทารกแรกเกิด
+K09.84	TM extension		Nasoalveolar [nasolabial] cyst	ถุงน้ำจมูกกับเบ้าฟัน [จมูกกับริมฝีปาก]
+K09.85	TM extension		Lymphoepidermoid cyst	ถุงน้ำลิมโฟอีพิเดอร์มอยด์
+K09.88	TM extension		Other specified cysts of oral region	ถุงน้ำอื่นที่ระบุรายละเอียดบริเวณปาก
+K10.00	TM extension		Torus mandibularis	ปุ่มกระดูกขากรรไกรล่าง
+K10.01	TM extension		Torus palatinus	ปุ่มกระดูกเพดานปาก
+K10.02	TM extension		Latent bone cyst	ถุงน้ำกระดูกระยะสงบ
+K10.08	TM extension		Other specified developmental disorders of jaws	ความผิดปกติอื่นที่ระบุรายละเอียดทางพัฒนาการของขากรรไกร
+K10.09	TM extension		Developmental disorder of jaws, unspecified	ความผิดปกติทางพัฒนาการของขากรรไกรไม่ระบุรายละเอียด
+K10.20	TM extension		Osteitis of jaw	ภาวะขากรรไกรอักเสบ
+K10.21	TM extension		Osteomyelitis of jaw	กระดูกขากรรไกรอักเสบเป็นหนอง
+K10.22	TM extension		Periostitis of jaw	เยื่อหุ้มกระดูกขากรรไกรอักเสบ
+K10.23	TM extension		Chronic periostitis of jaw	เยื่อหุ้มกระดูกขากรรไกรอักเสบเรื้อรัง
+K10.24	TM extension		Neonatal osteomyelitis of maxilla [neonatal maxillitis]	กระดูกขากรรไกรบนของทารกแรกเกิดอักเสบเป็นหนอง
+K10.25	TM extension		Sequestrum	เศษกระดูกผุ
+K10.26	TM extension		Osteoradionecrosis	เนื้อกระดูกตายจากรังสี
+K10.28	TM extension		Other specified inflammatory conditions of jaws	ภาวะอักเสบอื่นที่ระบุรายละเอียดของขากรรไกร
+K10.29	TM extension		Inflammatory condition of jaws, unspecified	ภาวะอักเสบของขากรรไกร ไม่ระบุรายละเอียด
+K10.80	TM extension		Cherubism	เชอรูบิซึม
+K10.81	TM extension		Unilateral condylar hyperplasia of mandible	คอนดายล์ของขากรรไกรล่างเจริญเกินข้างเดียว
+K10.82	TM extension		Unilateral condylar hypoplasia of mandible	คอนดายล์ของขากรรไกรล่างเจริญพร่องข้างเดียว
+K10.83	TM extension		Fibrous dysplasia of jaw	การเจริญผิดปกติของเนื้อเยื่อเส้นใยกระดูกขากรรไกร
+K10.88	TM extension		Other specified diseases of jaws	โรคอื่นที่ระบุรายละเอียดของขากรรไกร
+K11.60	TM extension		Mucous retention cyst	ถุงน้ำเมือกจากการคั่ง
+K11.61	TM extension		Mucous extravasation cyst	ถุงน้ำเมือกจากการรั่วออกนอกหลอดเลือด
+K11.69	TM extension		Mucocele of salivary gland, unspecified	ถุงน้ำเมือกของต่อมน้ำลาย ไม่ระบุรายละเอียด
+K11.70	TM extension		Hyposecretion	การหลั่งน้ำลายน้อยไป
+K11.71	TM extension		Xerostomia	ปากแห้งจากน้ำลายน้อย
+K11.72	TM extension		Hypersecretion [ptyalism]	การหลั่งน้ำลายมากเกิน [น้ำลายสอ]
+K11.78	TM extension		Other specified disturbances of salivary secretion	ความผิดปกติอื่นที่ระบุรายละเอียดของการหลั่งน้ำลาย
+K11.79	TM extension		Disturbance of salivary secretion, unspecified	ความผิดปกติของการหลั่งน้ำลาย ไม่ระบุรายละเอียด
+K11.80	TM extension		Benign lymphoepithelial lesion of salivary gland	รอยโรคลิมโฟอีพิทีเลียลชนิดไม่ร้ายของต่อมน้ำลาย
+K11.81	TM extension		Mikulicz’ disease	โรคมิคูลิกซ์
+K11.82	TM extension		Stenosis [stricture] of salivary duct	ท่อน้ำลายตีบ [คอด]
+K11.83	TM extension		Sialectasia	ท่อน้ำลายโป่ง
+K11.85	TM extension		Necrotizing sialometaplasia	เนโครไทซิง ไซอะโลเมตะเพลเซีย
+K11.88	TM extension		Other specified diseases of salivary glands	โรคอื่นที่ระบุรายละเอียดของต่อมน้ำลาย
+K12.00	TM extension		Recurrent (minor) aphthae	แอ็ฟทา (เล็ก) ที่กลับเป็นซ้ำ
+K12.01	TM extension		Periadenitis mucosa necrotica recurrens	เพอริอะดิไนติส มิวโคซา เนโครติกา รีเคอเร็นส์
+K12.02	TM extension		Stomatitis herpetiformis [herpetiform eruption]	สโตมาไทติส เฮอร์เปติฟอร์มิส [ผื่นเฮอร์เปติฟอร์ม]
+K12.03	TM extension		Bednar’s aphthae	แอ็ฟทาของเบดนาร์
+K12.04	TM extension		Traumatic ulcer	แผลจากการบาดเจ็บ
+K12.08	TM extension		Other specified recurrent oral aphthae	แอ็ฟทาของปากที่กลับเป็นซ้ำแบบอื่นที่ระบุรายละเอียด
+K12.09	TM extension		Recurrent aphthae, unspecified	แอ็ฟทาที่กลับเป็นซ้ำ ไม่ระบุรายละเอียด
+K12.10	TM extension		Stomatitis artifacta	สโตมาไทติส อาร์ติแฟ็กตา
+K12.11	TM extension		Geographic stomatitis	ปากอักเสบลายแผนที่
+K12.12	TM extension		Denture stomatitis	ปากอักเสบจากฟันปลอม
+K12.13	TM extension		Papillary hyperplasia of palate	เพดานปากเจริญเกินแบบปุ่มเนื้อ
+K12.14	TM extension		Contact stomatitis	ปากอักเสบจากการสัมผัส
+K12.18	TM extension		Other specified forms of stomatitis	รูปแบบอื่นที่ระบุรายละเอียดของปากอักเสบ
+K12.19	TM extension		Stomatitis, unspecified	ปากอักเสบ ไม่ระบุรายละเอียด
+K13.00	TM extension		Angular cheilitis	มุมปากอักเสบ
+K13.01	TM extension		Cheilitis glandularis apostematosa	ไคไลติส แกลนดูลาริส อะโพสเตมาโตซา
+K13.02	TM extension		Cheilitis, exfoliative	ริมฝีปากอักเสบ, หลุดลอกเป็นแผ่น
+K13.03	TM extension		Cheilitis NOS	ริมฝีปากอักเสบ NOS
+K13.04	TM extension		Cheilodynia	ไคโลไดเนีย
+K13.08	TM extension		Other specified diseases of lip	โรคอื่นที่ระบุรายละเอียดของริมฝีปาก
+K13.09	TM extension		Disease of lip, unspecified	โรคของริมฝีปาก ไม่ระบุรายละเอียด
+K13.20	TM extension		Leukoplakia, idiopathic	ลิวโคเพลเกีย ไม่ทราบสาเหตุ
+K13.21	TM extension		Leukoplakia, tobacco-associated	ลิวโคเพลเกีย สัมพันธ์กับยาสูบ
+K13.22	TM extension		Erythroplakia	อีริโทรเพลเกีย
+K13.23	TM extension		Leukoedema	ลิวโคอีดิมา
+K13.24	TM extension		Smoker’s palate [leukokeratosis nicotina palati]	เพดานปากของคนสูบบุหรี่ [ลิวโคเคอราโตซิส นิโคตินาพาลาไท] [นิโคตินา พาลาไท]
+K13.28	TM extension		Other specified leukoplakia and disturbances of oral epithelium, including tongue	ลิวโคเพลเกียและความผิดปกติอื่นที่ระบุรายละเอียดของเยื่อบุผิวช่องปาก รวมลิ น
+K13.29	TM extension		Leukoplakia and disturbance of oral epithelium, unspecified	ลิวโคเพลเกียและความผิดปกติของเยื่อบุผิวช่องปากไม่ระบุรายละเอียด
+K13.40	TM extension		Pyogenic granuloma	แกรนูโลมาที่ทำให้เกิดหนอง
+K13.41	TM extension		Eosinophilic granuloma of oral mucosa	อีโอซิโนฟิลิก แกรนูโลมาของเยื่อเมือกของปาก
+K13.42	TM extension		Verrucous xanthoma [histiocytosis Y]	เวอร์รูคัส แซนโทมา [ฮีสติโอไซโตซิส วาย]
+K13.48	TM extension		Other specified granuloma and granuloma-like lesions of oral mucosa	แกรนูโลมาและรอยโรคคล้ายแกรนูโลมาแบบอื่นที่ระบุรายละเอียดของเยื่อเมือกของปาก
+K13.49	TM extension		Granuloma and granuloma-like lesion of oral mucosa, unspecified	แกรนูโลมาและรอยโรคคล้ายแกรนูโลมาของเยื่อเมือกของปาก ไม่ระบุรายละเอียด
+K13.70	TM extension		Excessive melanin pigmentation	สารสีเมลานินมากเกิน
+K13.71	TM extension		Oral fistula	ทางทะลุของปาก
+K13.72	TM extension		Deliberate tattoo	รอยสัก
+K13.73	TM extension		Focal oral mucinosis	เมือกสะสมในปากเฉพาะที่
+K13.78	TM extension		Other specified lesions of oral mucosa	รอยโรคอื่นที่ระบุรายละเอียดของเยื่อเมือกของปาก
+K13.79	TM extension		Lesion of oral mucosa, unspecified	รอยโรคของเยื่อเมือกของปาก ไม่ระบุรายละเอียด
+K14.00	TM extension		Abscess of tongue	ฝีที่ลิ น
+K14.01	TM extension		Traumatic ulceration of tongue	แผลจากการบาดเจ็บของลิ น
+K14.08	TM extension		Other specified glossitis	ลิ นอักเสบอื่นที่ระบุรายละเอียด
+K14.09	TM extension		Glossitis, unspecified	ลิ นอักเสบ ไม่ระบุรายละเอียด
+K14.30	TM extension		Coated tongue	ลิ นเป็นฝ้า
+K14.31	TM extension		Hairy tongue	ลิ นมีขน
+K14.32	TM extension		Hypertrophy of foliate papillae	การโตเกินของปุ่มโฟลิเอตที่ลิ น
+K14.38	TM extension		Other specified hypertrophy of tongue papillae	การโตเกินแบบอื่นที่ระบุรายละเอียดของปุ่มที่ลิ น
+K14.39	TM extension		Hypertrophy of tongue papillae, unspecified	การโตเกินของปุ่มที่ลิ น ไม่ระบุรายละเอียด
+K14.40	TM extension		Atrophy of tongue papillae due to tongue cleaning habit	ปุ่มที่ลิ นฝ่อจากนิสัยทำความสะอาดลิ น
+K14.41	TM extension		Atrophy of tongue papillae due to systemic disorder	ปุ่มที่ลิ นฝ่อจากความผิดปกติทั งร่างกาย
+K14.42	TM extension		Atrophic glossitis NOS	ปุ่มที่ลิ นอักเสบและฝ่อ NOS
+K14.48	TM extension		Other specified atrophy of tongue papillae	ปุ่มที่ลิ นฝ่อแบบอื่นที่ระบุรายละเอียดของปุ่มที่ลิ น
+K14.49	TM extension		Atrophy of tongue papillae, unspecified	ปุ่มที่ลิ นฝ่อ ไม่ระบุรายละเอียด
+K14.60	TM extension		Glossopyrosis [burning tongue]	ลิ นแสบร้อน [ลิ นปวดแสบปวดร้อน]
+K14.61	TM extension		Glossodynia [painful tongue]	กลอสโซไดเนีย [เจ็บลิ น]
+K14.68	TM extension		Other specified glossodynia	กลอสโซไดเนียแบบอื่นที่ระบุรายละเอียด
+K14.69	TM extension		Glossodynia, unspecified	กลอสโซไดเนีย ไม่ระบุรายละเอียด
+K14.80	TM extension		Crenated tongue [lingua indentata]	ลิ นหยัก [ลิงควา อินเด็นตาตา]
+K14.81	TM extension		Hypertrophy of tongue	ลิ นขยายตัวเกิน
+K14.88	TM extension		Other specified diseases of tongue	โรคอื่นที่ระบุรายละเอียดของลิ น
+K35.0	not in WHO 2016	K35.2	Acute appendicitis with generalized peritonitis	ไส้ติ่งอักเสบเฉียบพลันร่วมกับเยื่อบุช่องท้องอักเสบทั่วไป
+K35.1	not in WHO 2016	K35.3	Acute appendicitis with peritoneal abscess	ไส้ติ่งอักเสบเฉียบพลันร่วมกับฝีในช่องท้อง
+K35.9	not in WHO 2016	K35.8	Acute appendicitis, unspecified	ไส้ติ่งอักเสบเฉียบพลัน ไม่ระบุรายละเอียด
+K51.1	not in WHO 2016		Ulcerative (chronic) ileocolitis	ลำไส้เล็กส่วนปลายและลำไส้ใหญ่อักเสบแบบมีแผล (เรื้อรัง)
+K52.20	TM extension		Allergic and dietetic gastroenteritis and colitis due to cow’s milk protein	กระเพาะอาหารกับลำไส้เล็กอักเสบและลำไส้ใหญ่อักเสบจากภูมิแพ้และสารอาหารที่เกิดจากโปรตีนนมวัว
+K52.28	TM extension		Other allergic and dietetic gastroenteritis and colitis	กระเพาะอาหารกับลำไส้เล็กอักเสบและลำไส้ใหญ่อักเสบจากภูมิแพ้และสารอาหารอื่น
+K52.29	TM extension		Allergic and dietetic gastroenteritis and colitis, unspecified	กระเพาะอาหารกับลำไส้เล็กอักเสบและลำไส้ใหญ่อักเสบจากภูมิแพ้และสารอาหาร ไม่ระบุรายละเอียด
+K59.5	TM extension		Anal sphincter relaxation	หูรูดทวารหนักหย่อน
+K65.00	TM extension		Primary peritonitis	เยื่อบุช่องท้องอักเสบปฐมภูมิ
+K65.01	TM extension		Secondary bacterial peritonitis	เยื่อบุช่องท้องอักเสบทุติยภูมิจากแบคทีเรีย
+K83.6	TM extension		Stenosis of sphincter of Oddi	การตีบของหูรูดของอ็อดดี
+K91.20	TM extension		Post massive bowel resection	หลังตัดลำไส้ออกไปมาก
+K91.28	TM extension		Other postsurgical malabsorption	การดูดซึมผิดปกติหลังผ่าตัดอื่น
+K91.29	TM extension		Postsurgical malabsorption, unspecified	การดูดซึมผิดปกติหลังผ่าตัด ไม่ระบุรายละเอียด
+L10.6	TM extension		Paraneoplastic pemphigus	พารานีโอพลาสติก เพ็มฟิกัส
+L24.80	TM extension		Irritant contact dermatitis due to dyes	ผิวหนังอักเสบจากสัมผัสระคายเคืองที่เกิดจากสีย้อม
+L24.81	TM extension		Paederus dermatitis	ผิวหนังอักเสบจากแมลงพีเดอรัส
+L24.88	TM extension		Irritant contact dermatitis due to other agents	ผิวหนังอักเสบจากสัมผัสระคายเคืองที่เกิดจากสารอื่น
+L27.10	TM extension		Fixed drug eruption	ผื่นแบบฟิกซ์ ดรัก
+L27.18	TM extension		Other specified localized skin eruption due to drugs and medicaments	ผื่นที่ผิวหนังเฉพาะที่แบบอื่นที่ระบุรายละเอียดจากยาและตัวยา
+L27.19	TM extension		Localized skin eruption due to drugs and medicaments, unspecified	ผื่นที่ผิวหนังเฉพาะที่จากยาและตัวยาไม่ระบุรายละเอียด
+L41.2	not in WHO 2016	C86.6	Lymphomatoid papulosis	ลิมโฟมาตอยด์ แพพูโลซิส
+L57.6	TM extension		Chronic actinic dermatitis	ผิวหนังอักเสบแอ็กทินิกเรื้อรัง
+L70.80	TM extension		Acne cosmetica	สิวจากเครื่องสำอาง
+L70.81	TM extension		Acne scar	แผลเป็นจากสิว
+L70.82	TM extension		Steroid acne	สิวจากสเตียรอยด์
+L70.83	TM extension		Acne fulminans	สิวชนิดรุนแรง
+L70.88	TM extension		Other acne	สิวชนิดอื่น
+L81.80	TM extension		Nevus fuscocaeruleus [Nevus of Hori]	ปานฟัสโกซีรูเลียส [ปานของโฮริ]
+L81.81	TM extension		Ochronosis pigmented colloid milium	ฝ้าถาวรจากยารักษาฝ้า
+L81.82	TM extension		Cosmetic tattoo	รอยสัก
+L81.83	TM extension		Traumatic tattoo	สีผิวหนังคล้ายรอยสักจากการบาดเจ็บ
+L81.88	TM extension		Other specified disorders of pigmentation	ความผิดปกติอื่นที่ระบุรายละเอียดของสีผิว
+L87.3	TM extension		Acquired perforating disorders	ความผิดปกติของการผ่านทะลุที่เกิดภายหลัง
+L93.3	TM extension		Acute cutaneous lupus erythematosus	ลูปัส อีริทีมาโตซัส ที่ผิวหนังแบบเฉียบพลัน
+L93.4	TM extension		Bullous lupus erythematosus	ลูปัส อีริทีมาโตซัส ชนิดตุ่มน้ำพองใส
+L93.8	TM extension		Other localized cutaneous lupus erythematosus	ลูปัส อีริทีมาโตซัส ที่ผิวหนังเฉพาะที่ชนิดอื่น
+L93.9	TM extension		Localized cutaneous lupus erythematosus, unspecified	ลูปัส อีริทีมาโตซัส ที่ผิวหนังเฉพาะที่ไม่ระบุรายละเอียด
+M72.3	not in WHO 2016		Nodular fasciitis	พังผืดอักเสบเป็นปุ่ม
+M72.5	not in WHO 2016		Fasciitis, not elsewhere classified	พังผืดอักเสบ มิได้จำแนกที่ใด
+M89.80	TM extension		Infantile cortical hyperostoses	การสร้างกระดูกบริเวณเปลือกมากเกินในวัยทารก
+M89.88	TM extension		Other specified disorders of bone	ความผิดปกติแบบอื่นที่ระบุรายละเอียดของกระดูก
+N18.0	not in WHO 2016	N18.5	End-stage renal disease	โรคไตระยะสุดท้าย
+N70.2	TM extension		Tubo-ovarian abscess	ฝีของท่อนำไข่และรังไข่
+N80.7	TM extension		Pelvic endometriosis	เยื่อบุมดลูกเจริญผิดที่ในอุ้งเชิงกราน
+N81.7	TM extension		Cystorectocele	กระเพาะปัสสาวะกับลำไส้ตรงหย่อน
+N84.4	not in WHO 2016	N84.8	Polyp of other parts of female genital tract	ติ่งเนื้อที่ส่วนอื่นของอวัยวะสืบพันธุ์สตรี
+N93.00	TM extension		Contact bleeding	เลือดออกหลังสัมผัส
+N93.01	TM extension		Postcoital bleeding	เลือดออกหลังมีเพศสัมพันธ์
+N97.5	TM extension		Female infertility associated with peritoneal factors	ภาวะมีบุตรยากในสตรีที่สัมพันธ์กับปัจจัยของเยื่อบุช่องท้อง
+O24.40	TM extension		Diabetes mellitus arising in pregnancy, class A1	เบาหวานที่เกิดระหว่างตั้งครรภ์ คลาส เอ 1
+O24.41	TM extension		Diabetes mellitus arising in pregnancy, class A2	เบาหวานที่เกิดระหว่างตั้งครรภ์ คลาส เอ 2
+O24.49	TM extension		Diabetes mellitus arising in pregnancy, NOS	เบาหวานที่เกิดระหว่างตั้งครรภ์ NOS
+O80.2	not in WHO 2016	O80.8	Other single spontaneous delivery	การคลอดเองครรภ์เดี่ยวแบบอื่น
+Q31.4	not in WHO 2016		Congenital laryngeal stridor	หายใจเข้ามีเสียงดังแต่กำเนิดจากกล่องเสียง
+Q35.0	not in WHO 2016	Q35.1	Cleft hard palate, bilateral	เพดานส่วนแข็งโหว่ สองข้าง
+Q35.2	not in WHO 2016	Q35.3	Cleft soft palate, bilateral	เพดานส่วนอ่อนโหว่ สองข้าง
+Q35.4	not in WHO 2016	Q35.5	Cleft hard palate with cleft soft palate, bilateral	เพดานส่วนแข็งและส่วนอ่อนโหว่ สองข้าง
+Q35.6	not in WHO 2016	Q35.5	Cleft palate, medial	เพดานโหว่ ตรงกลาง
+Q35.8	not in WHO 2016	Q35.9	Cleft palate, unspecified, bilateral	เพดานโหว่ ไม่ระบุรายละเอียด สองข้าง
+Q38.30	TM extension		Aglossia	ไม่มีลิ น
+Q38.31	TM extension		Bifid tongue	ลิ นสองแฉก
+Q38.32	TM extension		Adhesion of tongue, congenital	ลิ นยึดติดแต่กำเนิด
+Q38.33	TM extension		Fissure of tongue, congenital	ลิ นมีรอยแยกแต่กำเนิด
+Q38.34	TM extension		Microglossia	ลิ นเล็กผิดปกติ
+Q38.38	TM extension		Other specified congenital malformations of tongue	รูปผิดปกติแต่กำเนิดแบบอื่นของลิ น
+Q38.39	TM extension		Congenital malformation of tongue, unspecified	รูปผิดปกติแต่กำเนิดของลิ น ไม่ระบุรายละเอียด
+Q38.40	TM extension		Absence of salivary gland or duct	ไม่มีต่อมหรือท่อนำลาย
+Q38.41	TM extension		Accessory salivary gland or duct	มีต่อมหรือท่อนำลายเกิน
+Q38.42	TM extension		Atresia of salivary gland or duct	ต่อมหรือท่อนำลายตัน
+Q38.43	TM extension		Congenital fistula of salivary gland	ทางทะลุแต่กำเนิดของต่อมนำลาย
+Q38.48	TM extension		Other specified congenital malformations of salivary glands and ducts	รูปผิดปกติแต่กำเนิดแบบอื่นที่ระบุรายละเอียดของต่อมและท่อนำลาย
+Q38.49	TM extension		Congenital malformation of salivary glands and ducts, unspecified	รูปผิดปกติแต่กำเนิดของต่อมและท่อนำลายไม่ระบุรายละเอียด
+Q38.50	TM extension		Absence of uvula	ไม่มีลิ นไก่
+Q38.51	TM extension		High arched palate	โค้งเพดานปากสูง
+Q38.58	TM extension		Other specified congenital malformations of palate	รูปผิดปกติแต่กำเนิดแบบอื่นที่ระบุรายละเอียดของเพดาน
+Q38.59	TM extension		Congenital malformation of palate, unspecified	รูปผิดปกติแต่กำเนิดของเพดาน ไม่ระบุรายละเอียด
+Q38.60	TM extension		Fordyce condition [Fordyce disease]	ภาวะฟอร์ไดซ์ [โรคฟอร์ไดซ์]
+Q38.61	TM extension		White sponge naevus [leukokeratosis oris]	ปานฟองนำสีขาว [ลิวโคเคอราโตซิส ออริส]
+Q38.68	TM extension		Other specified congenital malformations of mouth	รูปผิดปกติแต่กำเนิดแบบอื่นที่ระบุรายละเอียดของปาก
+Q38.69	TM extension		Congenital malformation of mouth, unspecified	รูปผิดปกติแต่กำเนิดของปาก ไม่ระบุรายละเอียด
+Q40.4	TM extension		Congenital microvillous atrophy	ไมโครวิลลัสฝ่อแต่กำเนิด
+Q41.00	TM extension		Duodenal web	แผ่นขวางดูโอดินัม
+Q41.08	TM extension		Other congenital absence, atresia and stenosis of duodenum	การไม่มี ตัน และตีบแต่กำเนิดแบบอื่นของดูโอดินัม
+Q41.09	TM extension		Congenital absence, atresia and stenosis of duodenum, unspecified	การไม่มี ตัน และตีบแต่กำเนิดของดูโอดินัมไม่ระบุรายละเอียด
+Q44.70	TM extension		Alagille’s syndrome	กลุ่มอาการอะลากิลล์
+Q44.71	TM extension		Progressive familial intrahepatic cholestasis	นำดีคั่งในตับที่เป็นกันในครอบครัวและเป็นมากขึ น
+Q44.78	TM extension		Other congenital malformations of liver	รูปผิดปกติแต่กำเนิดแบบอื่นของตับ
+Q44.79	TM extension		Congenital malformation of liver, unspecified	รูปผิดปกติแต่กำเนิดของตับ ไม่ระบุรายละเอียด
+Q67.40	TM extension		Hemifacial atrophy	หน้าฝ่อข้างเดียว
+Q67.41	TM extension		Hemifacial hypertrophy	หน้าพองหนาข้างเดียว
+Q67.48	TM extension		Other specified congenital deformities of skull, face and jaw	รูปพิการแต่กำเนิดแบบอื่นที่ระบุรายละเอียดของกะโหลก หน้า และขากรรไกร
+Q67.49	TM extension		Congenital deformity of skull, face and jaw, unspecified	รูปพิการแต่กำเนิดของกะโหลก หน้า และขากรรไกรไม่ระบุรายละเอียด
+Q68.80	TM extension		Congenital deformity of clavicle	รูปพิการแต่กำเนิดของกระดูกไหปลาร้า
+Q68.81	TM extension		Congenital deformity of elbow	รูปพิการแต่กำเนิดของข้อศอก
+Q68.82	TM extension		Congenital deformity of forearm	รูปพิการแต่กำเนิดของแขนท่อนปลาย
+Q68.83	TM extension		Congenital deformity of scapula	รูปพิการแต่กำเนิดของกระดูกสะบัก
+Q68.84	TM extension		Congenital dislocation of elbow	ข้อศอกเคลื่อนแต่กำเนิด
+Q68.85	TM extension		Congenital dislocation of shoulder	ข้อไหล่เคลื่อนแต่กำเนิด
+Q68.88	TM extension		Other specified congenital musculoskeletal deformities	รูปพิการแต่กำเนิดแบบอื่นที่ระบุรายละเอียดของกล้ามเนื้อและโครงร่าง
+Q71.30	TM extension		Congenital absence of hand	ไม่มีมือแต่กำเนิด
+Q71.31	TM extension		Congenital absence of finger(s)	ไม่มีนิ วมือแต่กำเนิด
+Q71.32	TM extension		Congenital absence of thumb	ไม่มีนิ วหัวแม่มือแต่กำเนิด
+Q71.33	TM extension		Congenital hypoplastic thumb	การเจริญบกพร่องแต่กำเนิดของนิ วหัวแม่มือ
+Q71.38	TM extension		Other congenital absence of hand and finger(s)	ไม่มีมือและนิ วมือแต่กำเนิดแบบอื่น
+Q72.30	TM extension		Congenital absence of foot	ไม่มีเท้าแต่กำเนิด
+Q72.31	TM extension		Congenital absence of toe(s)	ไม่มีนิ วเท้าแต่กำเนิด
+Q75.00	TM extension		Acrocephaly	หัวหลิม
+Q75.01	TM extension		Imperfect fusion of skull	กระดูกกะโหลกเชื่อมกันไม่สมบูรณ์
+Q75.02	TM extension		Oxycephaly	หัวหลิม
+Q75.03	TM extension		Trigonocephaly	กะโหลกรูปสามเหลี่ยม
+Q75.09	TM extension		Craniosynostosis, unspecified	กะโหลกเป็นสัน ไม่ระบุรายละเอียด
+Q76.20	TM extension		Congenital spondylolishesis	กระดูกสันหลังเคลื่อนแต่กำเนิด
+Q76.21	TM extension		Congenital spondylolysis	กระดูกสันหลังละลายแต่กำเนิด
+Q82.80	TM extension		Benign familial pemphigus [Hailey-Hailey]	ตุ่มนำไม่ร้ายทีผิวหนังชนิดเป็นกรรมพันธุ์
+Q82.81	TM extension		Keratosis follicularis [Darier-White]	รูขุมขนหนาผิดปกติ [ดาริเออร์-ไวท์]
+Q82.82	TM extension		Inherited keratosis palmaris et plantaris	ฝ่ามือฝ่าเท้าหนาชนิดเป็นกรรมพันธุ์
+Q82.83	TM extension		Dyskeratosis congenita	ผิวหนังหนาแต่กำเนิด
+Q82.84	TM extension		Pseudoxanthoma elasticum	สูโดแซนโตมาอีลาสติกัม
+Q82.85	TM extension		Acrokeratosis verruciformis	อะโครเคอราโตซีสเวอรูซิฟอร์มิส
+Q82.88	TM extension		Other specified congenital malformations of skin	รูปผิดปกติแต่กำเนิดแบบอื่นที่ระบุรายละเอียดของผิวหนัง
+Q85.80	TM extension		Peutz-Jeghers syndrome	กลุ่มอาการพิทส์-เจเกอส์
+Q85.81	TM extension		Struge-Weber(-Dimitri) syndrome	กลุ่มอาการสเตอร์จ-เวเบอร์(-ดิมิทรี)
+Q85.88	TM extension		Other phakomatoses, not elsewhere classified	ฟาโคมาโตซิสแบบอื่น มิได้จำแนกไว้ที่ใด
+Q87.00	TM extension		Acrocephalopolysyndactyly [Apert]	หัวหลิมร่วมกับนิ วเกินและติดกัน [เอเพอร์ท]
+Q87.01	TM extension		Goldenhar’s syndrome	กลุ่มอาการโกลเดนฮาร์
+Q87.02	TM extension		Moebius’ syndrome	กลุ่มอาการโมเบียส
+Q87.03	TM extension		Oro-facial-digital syndrome	กลุ่มอาการปาก-หน้า-นิ ว
+Q87.05	TM extension		Robin’s syndrome	กลุ่มอาการโรบิน
+Q87.08	TM extension		Other congenital malformation syndromes predominantly affecting facial appearance	กลุ่มอาการรูปผิดปกติแต่กำเนิดแบบอื่นที่มีผลเด่นต่อลักษณะของใบหน้า
+Q89.20	TM extension		Persistent thyroglossal or thyrolingual duct	ท่อไทโรกลอสสัลหรือท่อไทโรลิงกัวยังคงอยู่
+Q89.21	TM extension		Thyroglossal cyst	ถุงนำไทโรกลอสสัล
+Q89.22	TM extension		Thyroglossal fistula	ทางทะลุไทโรกลอสสัล
+Q89.23	TM extension		Lingual thyroid	ต่อมไทรอยด์ที่โคนลิ น
+Q89.28	TM extension		Congenital malformations of other endocrine glands	รูปผิดปกติแต่กำเนิดของต่อมไร้ท่ออื่น
+R04.3	not in WHO 2016	R04.8	Haemorrhage from other sites in respiratory passages	เลือดออกจากตำแหน่งอื่นในทางเดินหายใจ
+R10.40	TM extension		Idiopathic recurrent abdominal pain of childhood	ปวดท้องซ้ำในวัยเด็กที่ไม่ทราบสาเหตุ
+R10.48	TM extension		Other abdominal pain	ปวดท้องแบบอื่น
+R10.49	TM extension		Unspecified abdominal pain	ปวดท้องที่ไม่ระบุรายละเอียด
+R11.0	TM extension		Cyclic vomiting	อาเจียนเป็นวงรอบ
+R11.9	TM extension		Nausea and vomiting, unspecified	คลื่นไส้และอาเจียน ไม่ระบุรายละเอียด
+R17.0	TM extension		Cholestatic jaundice	ดีซ่านจากน้ำดีคั่งในท่อน้ำดี
+R17.1	TM extension		Obstructive jaundice	ดีซ่านจากท่อน้ำดีอุดตัน
+R17.8	TM extension		Other jaundice	ดีซ่านแบบอื่น
+R17.9	TM extension		Jaundice, unspecified	ดีซ่าน ไม่ระบุรายละเอียด
+R40.9	TM extension		Alteration of consciousness, unspecified	การเปลี่ยนแปลงระดับความรู้สึกตัวไม่ระบุรายละเอียด
+R50.0	not in WHO 2016	R50.8	Fever with chills	ไข้หนาวสั่น
+R50.1	not in WHO 2016	R50.8	Persistent fever	ไข้สูงลอย
+R51.0	TM extension		Headache, unspecified	ปวดศีรษะ ไม่ระบุรายละเอียด
+R51.1	TM extension		Facial pain, unspecified	ปวดหน้า ไม่ระบุรายละเอียด
+R73.1	TM extension		Impaired fasting glucose	ผลการตรวจระดับน้ำตาลในเลือดหลังอดอาหารผิดปกติ
+R87.60	TM extension		Atypical squamous cells [ASC]	สเควมัสเซลล์นอกแบบ [เอเอสซี]
+R87.61	TM extension		Low-grade squamous intraepithelial lesion [LSIL]	รอยโรคระดับต่ำในเซลล์บุผิวแบบสเควมัส
+R87.62	TM extension		High-grade squamous intraepithelial lesion [HSIL]	รอยโรคระดับสูงในเซลล์บุผิวแบบสเควมัส
+R87.63	TM extension		Atypical glandular cells [AGC]	เซลล์ต่อมนอกแบบ [เอจีซี]
+R87.68	TM extension		Other abnormal cytologic findings in specimens from female genital organs	ความผิดปกติทางเซลล์วิทยาอื่นที่พบในสิ่งส่งตรวจจากอวัยวะสืบพันธุ์สตรี
+R87.69	TM extension		Abnormal cytologic finding in specimens from female genital organs, unspecified	ความผิดปกติทางเซลล์วิทยาที่พบในสิ่งส่งตรวจจากอวัยวะสืบพันธุ์สตรี ไม่ระบุรายละเอียด
+R96.2	TM extension		Sudden unexpected death syndrome	กลุ่มอาการตายกระทันหันที่ไม่คาดคิด
+S00.50	TM extension		Superficial injury of internal cheek	การบาดเจ็บที่ชั้นผิวของกระพุ้งแก้ม
+S00.51	TM extension		Superficial injury of other parts of mouth, including tongue	การบาดเจ็บที่ชั้นผิวของส่วนอื่นของปาก รวมลิ้น
+S00.52	TM extension		Superficial injury of lip	การบาดเจ็บที่ชั้นผิวของริมฝีปาก
+S00.59	TM extension		Superficial injury of lip and oral cavity, unspecified	การบาดเจ็บที่ชั้นผิวของริมฝีปากและช่องปากไม่ระบุรายละเอียด
+S01.40	TM extension		Open wound of cheek	แผลเปิดที่แก้ม
+S01.41	TM extension		Open wound of temporomandibular area	แผลเปิดที่บริเวณข้อต่อขากรรไกร
+S01.47	TM extension		Open wound of cheek with open wound of temporomandibular area	แผลเปิดที่แก้มร่วมกับแผลเปิดที่บริเวณข้อต่อขากรรไกร
+S01.50	TM extension		Open wound of oral cavity	แผลเปิดที่ช่องปาก
+S01.51	TM extension		Open wound of lip	แผลเปิดที่ริมฝีปาก
+S01.57	TM extension		Open wound of oral cavity with open wound of lip	แผลเปิดที่ช่องปากร่วมกับแผลเปิดที่ริมฝีปาก
+S02.00	TM extension		Closed fracture of vault of skull	กระดูกยอดโค้งของกะโหลกศีรษะร้าวแบบปิด
+S02.01	TM extension		Open fracture of vault of skull	กระดูกยอดโค้งของกะโหลกศีรษะร้าวแบบเปิด
+S02.10	TM extension		Closed fracture of base of skull	กระดูกฐานกะโหลกศีรษะร้าวแบบปิด
+S02.11	TM extension		Open fracture of base of skull	กระดูกฐานกะโหลกศีรษะร้าวแบบเปิด
+S02.20	TM extension		Closed fracture of nasal bones	กระดูกจมูกหักแบบปิด
+S02.21	TM extension		Open fracture of nasal bones	กระดูกจมูกหักแบบเปิด
+S02.30	TM extension		Closed fracture of orbital floor	กระดูกพื้นเบ้าตาหักแบบปิด
+S02.31	TM extension		Open fracture of orbital floor	กระดูกพื้นเบ้าตาหักแบบเปิด
+S02.400	TM extension		Closed fracture of maxillary alveolar process	กระดูกขากรรไกรบนส่วนฐานฟันหักแบบปิด
+S02.401	TM extension		Closed fracture of malar bone [zygoma]	กระดูกแก้ม [ไซโกมา] หักแบบปิด
+S02.402	TM extension		Closed fracture of maxillary bones	กระดูกขากรรไกรบนหักแบบปิด
+S02.407	TM extension		Multiple closed fractures of malar and maxillary bones	กระดูกแก้มและขากรรไกรบนหักแบบปิดหลายตำแหน่ง
+S02.410	TM extension		Open fracture of maxillary alveolar process	กระดูกขากรรไกรบนส่วนฐานฟันหักแบบเปิด
+S02.411	TM extension		Open fracture of malar bone [zygoma]	กระดูกแก้ม [ไซโกมา] หักแบบเปิด
+S02.412	TM extension		Open fracture of maxillary bones	กระดูกขากรรไกรบนหักแบบเปิด
+S02.417	TM extension		Multiple open fractures of malar and maxillary bones	กระดูกแก้มและขากรรไกรบนหักแบบเปิดหลายตำแหน่ง
+S02.500	TM extension		Closed fracture of enamel of tooth only	เคลือบฟันหักแบบปิด
+S02.501	TM extension		Closed fracture of crown of tooth without pulpal involvement	ตัวฟันหักแบบปิดแต่ไม่เข้าโพรงฟัน
+S02.502	TM extension		Closed fracture of crown of tooth with pulpal involvement	ตัวฟันหักแบบปิดและเข้าโพรงฟัน
+S02.503	TM extension		Closed fracture of root of tooth	รากฟันหักแบบปิด
+S02.504	TM extension		Closed fracture of crown with fracture of root of tooth	ตัวฟันหักแบบปิดร่วมกับรากฟันหัก
+S02.507	TM extension		Mutiple closed fractures of teeth	ฟันหักแบบปิดหลายตำแหน่ง
+S02.509	TM extension		Closed fracture of tooth, unspecified	ฟันหักแบบปิด ไม่ระบุรายละเอียด
+S02.510	TM extension		Open fracture of enamel of tooth only	เคลือบฟันหักแบบเปิด
+S02.511	TM extension		Open fracture of crown of tooth without pulpal involvement	ตัวฟันหักแบบเปิดแต่ไม่เข้าโพรงฟัน
+S02.512	TM extension		Open fracture of crown of tooth with pulpal involvement	ตัวฟันหักแบบเปิดและเข้าโพรงฟัน
+S02.513	TM extension		Open fracture of root of tooth	รากฟันหักแบบเปิด
+S02.514	TM extension		Open fracture of crown with fracture of root of tooth	ตัวฟันหักแบบเปิดร่วมกับรากฟันหัก
+S02.517	TM extension		Multiple open fractures of teeth	ฟันหักแบบเปิดหลายตำแหน่ง
+S02.519	TM extension		Open fracture of tooth, unspecified	ฟันหักแบบเปิด ไม่ระบุรายละเอียด
+S02.600	TM extension		Closed fracture of alveolar process	กระดูกขากรรไกรล่างส่วนฐานฟันหักแบบปิด
+S02.601	TM extension		Closed fracture of body of mandible	กระดูกขากรรไกรล่างส่วนกลางหักแบบปิด
+S02.602	TM extension		Closed fracture of condyle	กระดูกขากรรไกรล่างส่วนคอนไดล์หักแบบปิด
+S02.603	TM extension		Closed fracture of coronoid process	กระดูกขากรรไกรล่างส่วนโคโรนอยด์หักแบบปิด
+S02.604	TM extension		Closed fracture of ramus	กระดูกขากรรไกรล่างส่วนรามัสหักแบบปิด
+S02.605	TM extension		Closed fracture of symphysis	กระดูกขากรรไกรล่างส่วนซิมไฟซิสหักแบบปิด
+S02.606	TM extension		Closed fracture of angle	กระดูกขากรรไกรล่างส่วนมุมหักแบบปิด
+S02.607	TM extension		Multiple closed fractures of mandible	กระดูกขากรรไกรล่างหักแบบปิดหลายตำแหน่ง
+S02.609	TM extension		Closed fracture of mandible, part unspecified	กระดูกขากรรไกรล่างหักแบบปิด ไม่ระบุส่วน
+S02.610	TM extension		Open fracture of alveolar process	กระดูกขากรรไกรล่างส่วนฐานฟันหักแบบเปิด
+S02.611	TM extension		Open fracture of body of mandible	กระดูกขากรรไกรล่างส่วนกลางหักแบบเปิด
+S02.612	TM extension		Open fracture of condyle	กระดูกขากรรไกรล่างส่วนคอนไดล์หักแบบเปิด
+S02.613	TM extension		Open fracture of coronoid process	กระดูกขากรรไกรล่างส่วนโคโรนอยด์หักแบบเปิด
+S02.614	TM extension		Open fracture of ramus	กระดูกขากรรไกรล่างส่วนรามัสหักแบบเปิด
+S02.615	TM extension		Open fracture of symphysis	กระดูกขากรรไกรล่างส่วนซิมไฟซิสหักแบบเปิด
+S02.616	TM extension		Open fracture of angle	กระดูกขากรรไกรล่างส่วนมุมหักแบบเปิด
+S02.617	TM extension		Multiple open fractures of mandible	กระดูกขากรรไกรล่างหักแบบเปิดหลายตำแหน่ง
+S02.619	TM extension		Open fracture of mandible, part unspecified	กระดูกขากรรไกรล่างหักแบบเปิด ไม่ระบุส่วน
+S02.70	TM extension		Multiple closed fractures of skull and facial bones	กะโหลกศีรษะและกระดูกหน้าหักแบบปิดหลายตำแหน่ง
+S02.71	TM extension		Multiple open fractures of skull and facial bones	กะโหลกศีรษะและกระดูกหน้าหักแบบเปิดหลายตำแหน่ง
+S02.80	TM extension		Closed fracture of other skull and facial bones	ส่วนอื่นของกะโหลกศีรษะและกระดูกหน้าหักแบบปิด
+S02.81	TM extension		Open fracture of other skull and facial bones	ส่วนอื่นของกะโหลกศีรษะและกระดูกหน้าหักแบบเปิด
+S02.90	TM extension		Closed fracture of skull and facial bones, part unspecified	กะโหลกศีรษะและกระดูกหน้าหักแบบปิด ไม่ระบุส่วน
+S02.91	TM extension		Open fracture of skull and facial bones, part unspecified	กะโหลกศีรษะและกระดูกหน้าหักแบบเปิด ไม่ระบุส่วน
+S03.20	TM extension		Luxation of tooth	ฟันโยก
+S03.21	TM extension		Intrusion or extrusion of tooth	ฟันเอนเข้าหรือเอนออก
+S03.22	TM extension		Avulsion of tooth [exarticulation]	ฟันหลุด [ไม่เข้าข้อ]
+S03.29	TM extension		Dislocation of tooth, unspecified	ฟันเคลื่อน ไม่ระบุรายละเอียด
+S04.80	TM extension		Injury of olfactory nerve	การบาดเจ็บของเส้นประสาทออลแฟกทอรี
+S04.81	TM extension		Injury of glossopharyngeal nerve	การบาดเจ็บของเส้นประสาทกลอสโซฟาริงเจียล
+S04.82	TM extension		Injury of vagus nerve	การบาดเจ็บของเส้นประสาทวากัส
+S04.83	TM extension		Injury of hypoglossal nerve	การบาดเจ็บของเส้นประสาทไฮโปกลอสซัล
+S06.00	TM extension		Concussion without open intracranial wound	การกระแทกกระเทือนโดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.01	TM extension		Concussion with open intracranial wound	การกระแทกกระเทือนร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S06.10	TM extension		Traumatic cerebral oedema without open intracranial wound	สมองบวมจากการบาดเจ็บโดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.11	TM extension		Traumatic cerebral oedema with open intracranial wound	สมองบวมจากการบาดเจ็บร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S06.20	TM extension		Diffuse brain injury without open intracranial wound	การบาดเจ็บของสมองแบบกระจายทั่วไปโดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.21	TM extension		Diffuse brain injury with open intracranial wound	การบาดเจ็บของสมองแบบกระจายทั่วไปร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S06.30	TM extension		Focal brain injury without open intracranial wound	การบาดเจ็บที่สมองเฉพาะที่โดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.31	TM extension		Focal brain injury with open intracranial wound	การบาดเจ็บที่สมองเฉพาะที่ร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S06.40	TM extension		Epidural haemorrhage without open intracranial wound	เลือดออกเหนือเยื่อหุ้มสมองชั้นนอกโดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.41	TM extension		Epidural haemorrhage with open intracranial wound	เลือดออกเหนือเยื่อหุ้มสมองชั้นนอกร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S06.50	TM extension		Traumatic subdural haemorrhage without open intracranial wound	เลือดออกใต้เยื่อหุ้มสมองชั้นนอกจากการบาดเจ็บโดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.51	TM extension		Traumatic subdural haemorrhage with open intracranial wound	เลือดออกใต้เยื่อหุ้มสมองชั้นนอกจากการบาดเจ็บร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S06.60	TM extension		Traumatic subarachnoid haemorrhage without open intracranial wound	เลือดออกใต้เยื่อหุ้มสมองชั้นกลางจากการบาดเจ็บโดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.61	TM extension		Traumatic subarachnoid haemorrhage with open intracranial wound	เลือดออกใต้เยื่อหุ้มสมองชั้นกลางจากการบาดเจ็บร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S06.70	TM extension		Intracranial injury with prolonged coma without open intracranial wound	การบาดเจ็บในกะโหลกศีรษะร่วมกับโคม่าเป็นเวลานานโดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.71	TM extension		Intracranial injury with prolonged coma with open intracranial wound	การบาดเจ็บในกะโหลกศีรษะร่วมกับโคม่าเป็นเวลานานร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S06.80	TM extension		Other intracranial injuries without open intracranial wound	การบาดเจ็บอื่นในกะโหลกศีรษะโดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.81	TM extension		Other intracranial injuries with open intracranial wound	การบาดเจ็บอื่นในกะโหลกศีรษะร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S06.90	TM extension		Unspecified intracranial injury without open intracranial wound	การบาดเจ็บที่ไม่ระบุรายละเอียดในกะโหลกศีรษะโดยไม่มีแผลเปิดในกะโหลกศีรษะ
+S06.91	TM extension		Unspecified intracranial injury with open intracranial wound	การบาดเจ็บที่ไม่ระบุรายละเอียดในกะโหลกศีรษะร่วมกับมีแผลเปิดในกะโหลกศีรษะ
+S12.00	TM extension		Closed fracture of first cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 1 หักแบบปิด
+S12.01	TM extension		Open fracture of first cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 1 หักแบบเปิด
+S12.10	TM extension		Closed fracture of second cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 2 หักแบบปิด
+S12.11	TM extension		Open fracture of second cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 2 หักแบบเปิด
+S12.200	TM extension		Closed fracture of 3rd cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 3 หักแบบปิด
+S12.201	TM extension		Closed fracture of 4th cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 4 หักแบบปิด
+S12.202	TM extension		Closed fracture of 5th cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 5 หักแบบปิด
+S12.203	TM extension		Closed fracture of 6th cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 6 หักแบบปิด
+S12.204	TM extension		Closed fracture of 7th cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 7 หักแบบปิด
+S12.208	TM extension		Closed fracture of other cervical vertebra	กระดูกสันหลังส่วนคอท่อนอื่นหักแบบปิด
+S12.210	TM extension		Open fracture of 3rd cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 3 หักแบบเปิด
+S12.211	TM extension		Open fracture of 4th cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 4 หักแบบเปิด
+S12.212	TM extension		Open fracture of 5th cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 5 หักแบบเปิด
+S12.213	TM extension		Open fracture of 6th cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 6 หักแบบเปิด
+S12.214	TM extension		Open fracture of 7th cervical vertebra	กระดูกสันหลังส่วนคอท่อนที่ 7 หักแบบเปิด
+S12.218	TM extension		Open fracture of other cervical vertebra	กระดูกสันหลังส่วนคอท่อนอื่นหักแบบเปิด
+S12.70	TM extension		Multiple closed fractures of cervical spine	กระดูกสันหลังส่วนคอหักแบบปิดหลายตำแหน่ง
+S12.71	TM extension		Multiple open fractures of cervical spine	กระดูกสันหลังส่วนคอหักแบบเปิดหลายตำแหน่ง
+S12.80	TM extension		Closed fracture of other parts of neck	กระดูกส่วนอื่นของคอหักแบบปิด
+S12.81	TM extension		Open fracture of other parts of neck	กระดูกส่วนอื่นของคอหักแบบเปิด
+S12.90	TM extension		Closed fracture of neck, part unspecified	กระดูกคอหักแบบปิด ไม่ระบุส่วน
+S12.91	TM extension		Open fracture of neck, part unspecified	กระดูกคอหักแบบเปิด ไม่ระบุส่วน
+S13.10	TM extension		Dislocation of C1/C2 vertebra	การเคลื่อนของกระดูกสันหลัง ซี1/ซี2
+S13.11	TM extension		Dislocation of C2/C3 vertebra	การเคลื่อนของกระดูกสันหลัง ซี2/ซี3
+S13.12	TM extension		Dislocation of C3/C4 vertebra	การเคลื่อนของกระดูกสันหลัง ซี3/ซี4
+S13.13	TM extension		Dislocation of C4/C5 vertebra	การเคลื่อนของกระดูกสันหลัง ซี4/ซี5
+S13.14	TM extension		Dislocation of C5/C6 vertebra	การเคลื่อนของกระดูกสันหลัง ซี5/ซี6
+S13.15	TM extension		Dislocation of C6/C7 vertebra	การเคลื่อนของกระดูกสันหลัง ซี6/ซี7
+S13.16	TM extension		Dislocation of C7/T1 vertebra	การเคลื่อนของกระดูกสันหลัง ซี7/ที1
+S13.18	TM extension		Dislocation of other cervical vertebra	การเคลื่อนของกระดูกสันหลังส่วนคออื่น
+S13.19	TM extension		Dislocation of cervical vertebra, part unspecified	การเคลื่อนของกระดูกสันหลังส่วนคอ ไม่ระบุส่วน
+S19.0	not in WHO 2016	S19.7	Multiple injuries of neck	การบาดเจ็บหลายตำแหน่งของคอ
+S22.000	TM extension		Closed fracture of thoracic vertebra, compression type	กระดูกสันหลังส่วนอกหักแบบปิด ชนิดอัด
+S22.001	TM extension		Closed fracture of thoracic vertebra, burst type	กระดูกสันหลังส่วนอกหักแบบปิด ชนิดแตกออก
+S22.002	TM extension		Closed fracture of thoracic vertebra, seat-belt type	กระดูกสันหลังส่วนอกหักแบบปิด ชนิดสายรัดที่นั่ง
+S22.003	TM extension		Closed fracture of thoracic vertebra, flexion- rotation type	กระดูกสันหลังส่วนอกหักแบบปิด ชนิดงอ-หมุน
+S22.004	TM extension		Closed fracture of thoracic vertebra, shear type	กระดูกสันหลังส่วนอกหักแบบปิด ชนิดตัดออก
+S22.005	TM extension		Closed fracture of thoracic vertebra, flexion- distraction type	กระดูกสันหลังส่วนอกหักแบบปิด ชนิดงอ-ไม่แยกกัน
+S22.009	TM extension		Closed fracture of thoracic vertebra, mechanism unspecified	กระดูกสันหลังส่วนอกหักแบบปิด ไม่ระบุกลไก
+S22.010	TM extension		Open fracture of thoracic vertebra, compression type	กระดูกสันหลังส่วนอกหักแบบเปิด ชนิดอัด
+S22.011	TM extension		Open fracture of thoracic vertebra, burst type	กระดูกสันหลังส่วนอกหักแบบเปิด ชนิดแตกออก
+S22.012	TM extension		Open fracture of thoracic vertebra, seat-belt type	กระดูกสันหลังส่วนอกหักแบบเปิด ชนิดสายรัดที่นั่ง
+S22.013	TM extension		Open fracture of thoracic vertebra, flexion-rotation type	กระดูกสันหลังส่วนอกหักแบบเปิด ชนิดงอ-หมุน
+S22.014	TM extension		Open fracture of thoracic vertebra, shear type	กระดูกสันหลังส่วนอกหักแบบเปิด ชนิดตัดออก
+S22.015	TM extension		Open fracture of thoracic vertebra, flexion- distraction type	กระดูกสันหลังส่วนอกหักแบบเปิด ชนิดงอ-ไม่แยกกัน
+S22.019	TM extension		Open fracture of thoracic vertebra, mechanism unspecified	กระดูกสันหลังส่วนอกหักแบบเปิด ไม่ระบุกลไก
+S22.100	TM extension		Multiple closed fractures of thoracic spine, T1-T6 level	กระดูกสันหลังส่วนอกหักแบบปิดหลายตำแหน่งระดับ ที1-ที6
+S22.101	TM extension		Multiple closed fractures of thoracic spine, T7-T12 level	กระดูกสันหลังส่วนอกหักแบบปิดหลายตำแหน่งระดับ ที7-ที12
+S22.102	TM extension		Multiple closed fractures of thoracic and lumbar spine [T and L spine]	กระดูกสันหลังส่วนอกและส่วนเอวหักแบบปิดหลายตำแหน่ง [กระดูกสันหลัง ที และ แอล]
+S22.108	TM extension		Multiple closed fractures of thoracic spine, other specified	กระดูกสันหลังส่วนอกหักแบบปิดหลายตำแหน่งระบุรายละเอียดอย่างอื่น
+S22.109	TM extension		Multiple closed fractures of thoracic spine, unspecified	กระดูกสันหลังส่วนอกหักแบบปิดหลายตำแหน่งไม่ระบุรายละเอียด
+S22.110	TM extension		Multiple open fractures of thoracic spine, T1-T6 level	กระดูกสันหลังส่วนอกหักแบบเปิดหลายตำแหน่งระดับ ที1-ที6
+S22.111	TM extension		Multiple open fractures of thoracic spine, T7-T12 level	กระดูกสันหลังส่วนอกหักแบบเปิดหลายตำแหน่งระดับ ที7-ที12
+S22.112	TM extension		Multiple open fractures of thoracic and lumbar spine [T and L spine]	กระดูกสันหลังส่วนอกและส่วนเอวหักแบบเปิดหลายตำแหน่ง [กระดูกสันหลัง ที และ แอล]
+S22.118	TM extension		Multiple open fractures of thoracic spine, other specified	กระดูกสันหลังส่วนอกหักแบบเปิดหลายตำแหน่งระบุรายละเอียดอย่างอื่น
+S22.119	TM extension		Multiple open fractures of thoracic spine, unspecified	กระดูกสันหลังส่วนอกหักแบบเปิดหลายตำแหน่งไม่ระบุรายละเอียด
+S22.20	TM extension		Closed fracture of sternum	กระดูกหน้าอกหักแบบปิด
+S22.21	TM extension		Open fracture of sternum	กระดูกหน้าอกหักแบบเปิด
+S22.30	TM extension		Closed fracture of rib	กระดูกซี่โครงหักแบบปิด
+S22.31	TM extension		Open fracture of rib	กระดูกซี่โครงหักแบบเปิด
+S22.40	TM extension		Multiple closed fractures of ribs	กระดูกซี่โครงหักแบบปิดหลายตำแหน่ง
+S22.41	TM extension		Multiple open fractures of ribs	กระดูกซี่โครงหักแบบเปิดหลายตำแหน่ง
+S22.50	TM extension		Closed flail chest	อกยุบแบบปิด
+S22.51	TM extension		Open flail chest	อกยุบแบบเปิด
+S22.80	TM extension		Closed fracture of other parts of bony thorax	กระดูกทรวงอกส่วนอื่นหักแบบปิด
+S22.81	TM extension		Open fracture of other parts of bony thorax	กระดูกทรวงอกส่วนอื่นหักแบบเปิด
+S22.90	TM extension		Closed fracture of bony thorax, part unspecified	กระดูกทรวงอกหักแบบปิด ไม่ระบุส่วน
+S22.91	TM extension		Open fracture of bony thorax, part unspecified	กระดูกทรวงอกหักแบบเปิด ไม่ระบุส่วน
+S27.00	TM extension		Traumatic pneumothorax without open wound into thoracic cavity	โพรงเยื่อหุ้มปอดมีอากาศเพราะบาดเจ็บโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.01	TM extension		Traumatic pneumothorax with open wound into thoracic cavity	โพรงเยื่อหุ้มปอดมีอากาศเพราะบาดเจ็บร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S27.10	TM extension		Traumatic haemothorax without open wound into thoracic cavity	โพรงเยื่อหุ้มปอดมีเลือดเพราะบาดเจ็บโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.11	TM extension		Traumatic haemothorax with open wound into thoracic cavity	โพรงเยื่อหุ้มปอดมีเลือดเพราะบาดเจ็บร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S27.20	TM extension		Traumatic haemopneumothorax without open wound into thoracic cavity	โพรงเยื่อหุ้มปอดมีเลือดและอากาศเพราะบาดเจ็บโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.21	TM extension		Traumatic haemopneumothorax with open wound into thoracic cavity	โพรงเยื่อหุ้มปอดมีเลือดและอากาศเพราะบาดเจ็บร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S27.30	TM extension		Other injuries of lung without open wound into thoracic cavity	การบาดเจ็บแบบอื่นที่ปอดโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.31	TM extension		Other injuries of lung with open wound into thoracic cavity	การบาดเจ็บแบบอื่นที่ปอดร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S27.40	TM extension		Injury of bronchus without open wound into thoracic cavity	การบาดเจ็บที่หลอดลมโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.41	TM extension		Injury of bronchus with open wound into thoracic cavity	การบาดเจ็บที่หลอดลมร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S27.50	TM extension		Injury of thoracic trachea without open wound into thoracic cavity	การบาดเจ็บที่ท่อลมส่วนอกโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.51	TM extension		Injury of thoracic trachea with open wound into thoracic cavity	การบาดเจ็บที่ท่อลมส่วนอกร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S27.60	TM extension		Injury of pleura without open wound into thoracic cavity	การบาดเจ็บที่เยื่อหุ้มปอดโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.61	TM extension		Injury of pleura with open wound into thoracic cavity	การบาดเจ็บที่เยื่อหุ้มปอดร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S27.70	TM extension		Multiple injuries of intrathoracic organs without open wound into thoracic cavity	การบาดเจ็บหลายตำแหน่งของอวัยวะในช่องอกโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.71	TM extension		Multiple injuries of intrathoracic organs with open wound into thoracic cavity	การบาดเจ็บหลายตำแหน่งของอวัยวะในช่องอกร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S27.80	TM extension		Injury of other specified intrathoracic organs without open wound into thoracic cavity	การบาดเจ็บที่อวัยวะอื่นที่ระบุรายละเอียดในช่องอกโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.81	TM extension		Injury of other specified intrathoracic organs with open wound into thoracic cavity	การบาดเจ็บที่อวัยวะอื่นที่ระบุรายละเอียดในช่องอกร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S27.90	TM extension		Injury of unspecified intrathoracic organ without open wound into thoracic cavity	การบาดเจ็บที่อวัยวะที่ไม่ระบุรายละเอียดในช่องอกโดยไม่มีแผลเปิดเข้าสู่ช่องอก
+S27.91	TM extension		Injury of unspecified intrathoracic organ with open wound into thoracic cavity	การบาดเจ็บที่อวัยวะที่ไม่ระบุรายละเอียดในช่องอกร่วมกับมีแผลเปิดเข้าสู่ช่องอก
+S32.000	TM extension		Closed fracture of lumbar vertebra, compression type	กระดูกสันหลังส่วนเอวหักแบบปิด ชนิดอัด
+S32.001	TM extension		Closed fracture of lumbar vertebra, burst type	กระดูกสันหลังส่วนเอวหักแบบปิด ชนิดแตกออก
+S32.002	TM extension		Closed fracture of lumbar vertebra, seat-belt type	กระดูกสันหลังส่วนเอวหักแบบปิด ชนิดสายรัดที่นั่ง
+S32.003	TM extension		Closed fracture of lumbar vertebra, flexion- rotation type	กระดูกสันหลังส่วนเอวหักแบบปิด ชนิดงอ-หมุน
+S32.004	TM extension		Closed fracture of lumbar vertebra, shear type	กระดูกสันหลังส่วนเอวหักแบบปิด ชนิดตัดออก
+S32.005	TM extension		Closed fracture of lumbar vertebra, flexion- distraction type	กระดูกสันหลังส่วนเอวหักแบบปิด ชนิดงอ-ไม่แยกกัน
+S32.009	TM extension		Closed fracture of lumbar vertebra, mechanism unspecified	กระดูกสันหลังส่วนเอวหักแบบปิด ไม่ระบุกลไก
+S32.010	TM extension		Open fracture of lumbar vertebra, compression type	กระดูกสันหลังส่วนเอวหักแบบเปิด ชนิดอัด
+S32.011	TM extension		Open fracture of lumbar vertebra, burst type	กระดูกสันหลังส่วนเอวหักแบบเปิด ชนิดแตกออก
+S32.012	TM extension		Open fracture of lumbar vertebra, seat-belt type	กระดูกสันหลังส่วนเอวหักแบบเปิด ชนิดสายรัดที่นั่ง
+S32.013	TM extension		Open fracture of lumbar vertebra, flexion-rotation type	กระดูกสันหลังส่วนเอวหักแบบเปิด ชนิดงอ-หมุน
+S32.014	TM extension		Open fracture of lumbar vertebra, shear type	กระดูกสันหลังส่วนเอวหักแบบเปิด ชนิดตัดออก
+S32.015	TM extension		Open fracture of lumbar vertebra, flexion- distraction type	กระดูกสันหลังส่วนเอวหักแบบเปิด ชนิดงอ-ไม่แยกกัน
+S32.019	TM extension		Open fracture of lumbar vertebra, mechanism unspecified	กระดูกสันหลังส่วนเอวหักแบบเปิด ไม่ระบุกลไก
+S32.10	TM extension		Closed fracture of sacrum	กระดูกใต้กระเบนเหน็บหักแบบปิด
+S32.11	TM extension		Open fracture of sacrum	กระดูกใต้กระเบนเหน็บหักแบบเปิด
+S32.20	TM extension		Closed fracture of coccyx	กระดูกก้นกบหักแบบปิด
+S32.21	TM extension		Open fracture of coccyx	กระดูกก้นกบหักแบบเปิด
+S32.30	TM extension		Closed fracture of ilium	กระดูกปีกสะโพกหักแบบปิด
+S32.31	TM extension		Open fracture of ilium	กระดูกปีกสะโพกหักแบบเปิด
+S32.40	TM extension		Closed fracture of acetabulum	เบ้าหัวกระดูกต้นขาหักแบบปิด
+S32.41	TM extension		Open fracture of acetabulum	เบ้าหัวกระดูกต้นขาหักแบบเปิด
+S32.50	TM extension		Closed fracture of pubis	กระดูกหัวหน่าวหักแบบปิด
+S32.51	TM extension		Open fracture of pubis	กระดูกหัวหน่าวหักแบบเปิด
+S32.6	not in WHO 2016	S32.8	Fracture of pelvis	กระดูกเชิงกรานหัก
+S32.600	TM extension		Closed fracture of pelvis, stable type	กระดูกเชิงกรานหักแบบปิด ชนิดเสถียร
+S32.601	TM extension		Closed fracture of pelvis, rotary unstable type	กระดูกเชิงกรานหักแบบปิด ชนิดหมุนได้และไม่เสถียร
+S32.602	TM extension		Closed fracture of pelvis, vertical shear type	กระดูกเชิงกรานหักแบบปิด ชนิดตัดตามแนวดิ่ง
+S32.608	TM extension		Closed fracture of pelvis, other types	กระดูกเชิงกรานหักแบบปิด ชนิดอื่น
+S32.609	TM extension		Closed fracture of pelvis, unspecified type	กระดูกเชิงกรานหักแบบปิด ไม่ระบุชนิด
+S32.610	TM extension		Open fracture of pelvis, stable type	กระดูกเชิงกรานหักแบบเปิด ชนิดเสถียร
+S32.611	TM extension		Open fracture of pelvis, rotary unstable type	กระดูกเชิงกรานหักแบบเปิด ชนิดหมุนได้และไม่เสถียร
+S32.612	TM extension		Open fracture of pelvis, vertical shear type	กระดูกเชิงกรานหักแบบเปิด ชนิดตัดตามแนวดิ่ง
+S32.618	TM extension		Open fracture of pelvis, other types	กระดูกเชิงกรานหักแบบเปิด ชนิดอื่น
+S32.619	TM extension		Open fracture of pelvis, unspecified type	กระดูกเชิงกรานหักแบบเปิด ไม่ระบุชนิด
+S32.70	TM extension		Multiple closed fractures of lumbar spine and pelvis	กระดูกสันหลังส่วนเอวและกระดูกเชิงกรานหักแบบปิดหลายตำแหน่ง
+S32.71	TM extension		Multiple open fractures of lumbar spine and pelvis	กระดูกสันหลังส่วนเอวและกระดูกเชิงกรานหักแบบเปิดหลายตำแหน่ง
+S32.80	TM extension		Closed fracture of other and unspecified parts of lumbar spine and pelvis	กระดูกสันหลังส่วนเอวและกระดูกเชิงกรานส่วนอื่นและที่ไม่ระบุรายละเอียดหักแบบปิด
+S32.81	TM extension		Open fracture of other and unspecified parts of lumbar spine and pelvis	กระดูกสันหลังส่วนเอวและกระดูกเชิงกรานส่วนอื่นและที่ไม่ระบุรายละเอียดหักแบบเปิด
+S36.00	TM extension		Injury of spleen without open wound into cavity	การบาดเจ็บที่ม้ามโดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.01	TM extension		Injury of spleen with open wound into cavity	การบาดเจ็บที่ม้ามร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S36.10	TM extension		Injury of liver or gallbladder without open wound into cavity	การบาดเจ็บที่ตับหรือถุงน้ำดีโดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.11	TM extension		Injury of liver or gallbladder with open wound into cavity	การบาดเจ็บที่ตับหรือถุงน้ำดีร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S36.20	TM extension		Injury of pancreas without open wound into cavity	การบาดเจ็บที่ตับอ่อนโดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.21	TM extension		Injury of pancreas with open wound into cavity	การบาดเจ็บที่ตับอ่อนร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S36.30	TM extension		Injury of stomach without open wound into cavity	การบาดเจ็บที่กระเพาะอาหารโดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.31	TM extension		Injury of stomach with open wound into cavity	การบาดเจ็บที่กระเพาะอาหารร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S36.40	TM extension		Injury of small intestine without open wound into cavity	การบาดเจ็บที่ลำไส้เล็กโดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.41	TM extension		Injury of small intestine with open wound into cavity	การบาดเจ็บที่ลำไส้เล็กร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S36.50	TM extension		Injury of colon without open wound into cavity	การบาดเจ็บที่ลำไส้ใหญ่โดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.51	TM extension		Injury of colon with open wound into cavity	การบาดเจ็บที่ลำไส้ใหญ่ร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S36.60	TM extension		Injury of rectum without open wound into cavity	การบาดเจ็บที่ลำไส้ตรงโดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.61	TM extension		Injury of rectum with open wound into cavity	การบาดเจ็บที่ลำไส้ตรงร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S36.70	TM extension		Injury of multiple intra-abdominal organs without open wound into cavity	การบาดเจ็บหลายตำแหน่งของอวัยวะในช่องท้องโดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.71	TM extension		Injury of multiple intra-abdominal organs with open wound into cavity	การบาดเจ็บหลายตำแหน่งของอวัยวะในช่องท้องร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S36.80	TM extension		Injury of other intra-abdominal organs without open wound into cavity	การบาดเจ็บที่อวัยวะอื่นในช่องท้องโดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.81	TM extension		Injury of other intra-abdominal organs with open wound into cavity	การบาดเจ็บที่อวัยวะอื่นในช่องท้องร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S36.90	TM extension		Injury of unspecified intra-abdominal organ without open wound into cavity	การบาดเจ็บที่อวัยวะที่ไม่ระบุรายละเอียดในช่องท้องโดยไม่มีแผลเปิดเข้าสู่ช่องท้อง
+S36.91	TM extension		Injury of multiple intra-abdominal organs with open wound into cavity	การบาดเจ็บที่อวัยวะที่ไม่ระบุรายละเอียดในช่องท้องร่วมกับมีแผลเปิดเข้าสู่ช่องท้อง
+S37.00	TM extension		Injury of kidney without open wound into cavity	การบาดเจ็บที่ไตโดยไม่มีแผลเปิด
+S37.01	TM extension		Injury of kidney with open wound into cavity	การบาดเจ็บที่ไตร่วมกับมีแผลเปิด
+S37.10	TM extension		Injury of ureter without open wound into cavity	การบาดเจ็บที่ท่อไตโดยไม่มีแผลเปิด
+S37.11	TM extension		Injury of ureter with open wound into cavity	การบาดเจ็บที่ท่อไตร่วมกับมีแผลเปิด
+S37.20	TM extension		Injury of bladder without open wound into cavity	การบาดเจ็บที่กระเพาะปัสสาวะโดยไม่มีแผลเปิด
+S37.21	TM extension		Injury of bladder with open wound into cavity	การบาดเจ็บที่กระเพาะปัสสาวะร่วมกับมีแผลเปิด
+S37.30	TM extension		Injury of urethra without open wound into cavity	การบาดเจ็บที่ท่อปัสสาวะโดยไม่มีแผลเปิด
+S37.31	TM extension		njury of urethra with open wound into cavity	การบาดเจ็บที่ท่อปัสสาวะร่วมกับมีแผลเปิด
+S37.40	TM extension		Injury of ovary without open wound into cavity	การบาดเจ็บที่รังไข่โดยไม่มีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.41	TM extension		Injury of ovary with open wound into cavity	การบาดเจ็บที่รังไข่ร่วมกับมีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.50	TM extension		Injury of fallopian tube without open wound into cavity	การบาดเจ็บที่ท่อนำไข่โดยไม่มีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.51	TM extension		Injury of fallopian tube with open wound into cavity	การบาดเจ็บที่ท่อนำไข่ร่วมกับมีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.60	TM extension		Injury of uterus without open wound into cavity	การบาดเจ็บที่มดลูกโดยไม่มีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.61	TM extension		Injury of uterus with open wound into cavity	การบาดเจ็บที่มดลูกร่วมกับมีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.70	TM extension		Injury of multiple pelvic organs without open wound into cavity	การบาดเจ็บหลายตำแหน่งของอวัยวะในอุ้งเชิงกรานโดยไม่มีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.71	TM extension		Injury of multiple pelvic organs with open wound into cavity	การบาดเจ็บหลายตำแหน่งของอวัยวะในอุ้งเชิงกรานร่วมกับมีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.80	TM extension		Injury of other pelvic organs without open wound into cavity	การบาดเจ็บที่อวัยวะอื่นในอุ้งเชิงกรานโดยไม่มีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.81	TM extension		Injury of other pelvic organs with open wound into cavity	การบาดเจ็บที่อวัยวะอื่นในอุ้งเชิงกรานร่วมกับมีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.90	TM extension		Injury of unspecified pelvic organ without open wound into cavity	การบาดเจ็บที่อวัยวะที่ไม่ระบุรายละเอียดในอุ้งเชิงกรานโดยไม่มีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S37.91	TM extension		Injury of unspecified pelvic organ with open wound into cavity	การบาดเจ็บที่อวัยวะที่ไม่ระบุรายละเอียดในอุ้งเชิงกรานร่วมกับมีแผลเปิดเข้าสู่อุ้งเชิงกราน
+S40.1	TM extension		Contusion of arm	การฟกช้ำของต้นแขน
+S40.80	TM extension		Abrasion of shoulder and arm	การถลอกที่ไหล่และต้นแขน
+S40.81	TM extension		Blister of shoulder and arm	ตุ่มพองที่ไหล่และต้นแขน
+S40.82	TM extension		Insect bite of shoulder and arm	แมลงกัดที่ไหล่และต้นแขน
+S40.83	TM extension		Superficial foreign body of shoulder and arm	สิ่งแปลกปลอมที่ชั้นผิวของไหล่และต้นแขน
+S40.88	TM extension		Other superficial injuries of shoulder and arm	การบาดเจ็บอื่นที่ชั้นผิวของไหล่และต้นแขนการบาดเจ็บที่ชั้นผิวของไหล่และต้นแขน
+S42.000	TM extension		Closed fracture of clavicle, sternal end	กระดูกไหปลาร้าหักแบบปิด ปลายด้านกระดูกหน้าอก
+S42.001	TM extension		Closed fracture of clavicle, shaft	กระดูกไหปลาร้าหักแบบปิด บริเวณกลาง
+S42.002	TM extension		Closed fracture of clavicle, acromial end	กระดูกไหปลาร้าหักแบบปิด ปลายด้านกระดูกสะบัก
+S42.007	TM extension		Closed fracture of clavicle, multiple fractures	กระดูกไหปลาร้าหักแบบปิด หลายตำแหน่ง
+S42.009	TM extension		Closed fracture of clavicle, unspecified part	กระดูกไหปลาร้าหักแบบปิด ไม่ระบุส่วน
+S42.010	TM extension		Open fracture of clavicle, sternal end	กระดูกไหปลาร้าหักแบบเปิด ปลายด้านกระดูกหน้าอก
+S42.011	TM extension		Open fracture of clavicle, shaft	กระดูกไหปลาร้าหักแบบเปิด ส่วนกลาง
+S42.012	TM extension		Open fracture of clavicle, acromial end	กระดูกไหปลาร้าหักแบบเปิด ปลายด้านกระดูกสะบัก
+S42.017	TM extension		Open fracture of clavicle, multiple fractures	กระดูกไหปลาร้าหักแบบเปิด หลายตำแหน่ง
+S42.019	TM extension		Open fracture of clavicle, unspecified part	กระดูกไหปลาร้าหักแบบเปิด ไม่ระบุส่วน
+S42.100	TM extension		Closed fracture of scapula, body	กระดูกสะบักหักแบบปิด บริเวณกลาง
+S42.101	TM extension		Closed fracture of scapula, acromion process	กระดูกสะบักหักแบบปิด บริเวณอะโครเมียน โปรเซส
+S42.102	TM extension		Closed fracture of scapula, coracoid	กระดูกสะบักหักแบบปิด บริเวณโคราคอยด์
+S42.103	TM extension		Closed fracture of scapula, glenoid and neck of scapula	กระดูกสะบักหักแบบปิด บริเวณกลีนอยด์และส่วนคอ
+S42.107	TM extension		Closed fracture of scapula, multiple fractures	กระดูกสะบักหักแบบปิด หลายตำแหน่ง
+S42.109	TM extension		Closed fracture of scapula, unspecified part	กระดูกสะบักหักแบบปิด ไม่ระบุส่วน
+S42.110	TM extension		Open fracture of scapula, body	กระดูกสะบักหักแบบเปิด บริเวณกลาง
+S42.111	TM extension		Open fracture of scapula, acromion process	กระดูกสะบักหักแบบเปิด บริเวณอะโครเมียน โปรเซส
+S42.112	TM extension		Open fracture of scapula, coracoid	กระดูกสะบักหักแบบเปิด บริเวณโคราคอยด์
+S42.113	TM extension		Open fracture of scapula, glenoid and neck of scapula	กระดูกสะบักหักแบบเปิด บริเวณกลีนอยด์และส่วนคอ
+S42.117	TM extension		Open fracture of scapula, multiple fractures	กระดูกสะบักหักแบบเปิด หลายตำแหน่ง
+S42.119	TM extension		Open fracture of scapula, unspecified part	กระดูกสะบักหักแบบเปิด ไม่ระบุส่วน
+S42.200	TM extension		Closed fracture of proximal humerus, non- displaced	กระดูกต้นแขนปลายบนหักแบบปิด ไม่เคลื่อน
+S42.201	TM extension		Closed fracture of proximal humerus, 2 parts	กระดูกต้นแขนปลายบนหักแบบปิด 2 ท่อน
+S42.202	TM extension		Closed fracture of proximal humerus, 3 parts	กระดูกต้นแขนปลายบนหักแบบปิด 3 ท่อน
+S42.203	TM extension		Closed fracture of proximal humerus, 4 parts	กระดูกต้นแขนปลายบนหักแบบปิด 4 ท่อน
+S42.204	TM extension		Closed fracture of proximal humerus, with articular involvement	กระดูกต้นแขนปลายบนหักแบบปิด เข้าข้อ
+S42.205	TM extension		Closed fracture of epiphysis of proximal humerus	เอพิไฟซิสของกระดูกต้นแขนปลายบนหักแบบปิด
+S42.208	TM extension		Closed fracture of proximal humerus, others	กระดูกต้นแขนปลายบนหักแบบปิด ลักษณะอื่น
+S42.209	TM extension		Closed fracture of proximal humerus, unspecified	กระดูกต้นแขนปลายบนหักแบบปิด ไม่ระบุรายละเอียด
+S42.210	TM extension		Open fracture of proximal humerus, non-displaced	กระดูกต้นแขนปลายบนหักแบบเปิด ไม่เคลื่อน
+S42.211	TM extension		Open fracture of proximal humerus, 2 parts	กระดูกต้นแขนปลายบนหักแบบเปิด 2 ท่อน
+S42.212	TM extension		Open fracture of proximal humerus, 3 parts	กระดูกต้นแขนปลายบนหักแบบเปิด 3 ท่อน
+S42.213	TM extension		Open fracture of proximal humerus, 4 parts	กระดูกต้นแขนปลายบนหักแบบเปิด 4 ท่อน
+S42.214	TM extension		Open fracture of proximal humerus, with articular involvement	กระดูกต้นแขนปลายบนหักแบบเปิด เข้าข้อ
+S42.215	TM extension		Open fracture of epiphysis of proximal humerus	เอพิไฟซิสของกระดูกต้นแขนปลายบนหักแบบเปิด
+S42.218	TM extension		Open fracture of proximal humerus, others	กระดูกต้นแขนปลายบนหักแบบเปิด ลักษณะอื่น
+S42.219	TM extension		Open fracture of proximal humerus, unspecified	กระดูกต้นแขนปลายบนหักแบบเปิด ไม่ระบุรายละเอียด
+S42.300	TM extension		Closed fracture of shaft of humerus, simple fracture	กระดูกต้นแขนส่วนกลางหักแบบปิด รอยเดียว
+S42.301	TM extension		Closed fracture of shaft of humerus, butterfly fracture	กระดูกต้นแขนส่วนกลางหักแบบปิด รูปผีเสื้อ
+S42.302	TM extension		Closed fracture of shaft of humerus, comminuted fracture	กระดูกต้นแขนส่วนกลางหักแบบปิด แตกย่อย
+S42.307	TM extension		Multiple closed fractures of shaft of humerus	กระดูกต้นแขนส่วนกลางหักแบบปิดหลายตำแหน่ง
+S42.309	TM extension		Closed fracture of shaft of humerus, unspecified	กระดูกต้นแขนส่วนกลางหักแบบปิด ไม่ระบุรายละเอียด
+S42.310	TM extension		Open fracture of shaft of humerus, simple fracture	กระดูกต้นแขนส่วนกลางหักแบบเปิด รอยเดียว
+S42.311	TM extension		Open fracture of shaft of humerus, butterfly fracture	กระดูกต้นแขนส่วนกลางหักแบบเปิด รูปผีเสื้อ
+S42.312	TM extension		Open fracture of shaft of humerus, comminuted fracture	กระดูกต้นแขนส่วนกลางหักแบบเปิด แตกย่อย
+S42.317	TM extension		Multiple open fractures of shaft of humerus	กระดูกต้นแขนส่วนกลางหักแบบเปิดหลายตำแหน่ง
+S42.319	TM extension		Open fracture of shaft of humerus, unspecified	กระดูกต้นแขนส่วนกลางหักแบบเปิดไม่ระบุรายละเอียด
+S42.400	TM extension		Closed fracture of distal humerus, supracondylar	กระดูกต้นแขนส่วนปลายหักแบบปิด เหนือปุ่มกระดูก
+S42.401	TM extension		Closed fracture of distal humerus, lateral condyle	กระดูกต้นแขนส่วนปลายหักแบบปิด ปุ่มกระดูกด้านนอก
+S42.402	TM extension		Closed fracture of distal humerus, medial condyle	กระดูกต้นแขนส่วนปลายหักแบบปิด ปุ่มกระดูกด้านใน
+S42.403	TM extension		Closed fracture of distal humerus, other parts of condyle and epicondyle	กระดูกต้นแขนส่วนปลายหักแบบปิด ส่วนอื่นของปุ่มกระดูกและเหนือปุ่มกระดูก
+S42.404	TM extension		Closed fracture of distal humerus, T-shape intraarticular fracture	กระดูกต้นแขนส่วนปลายหักแบบปิด รูปตัวที หักเข้าข้อ
+S42.405	TM extension		Closed fracture of distal humerus, multifragment intraarticular fracture	กระดูกต้นแขนส่วนปลายหักแบบปิด เป็นหลายส่วนหักเข้าข้อ
+S42.406	TM extension		Closed fracture of physis and apophysis of distal humerus	ไฟซิสและอะโปไฟซิสของกระดูกต้นแขนส่วนปลายหักแบบปิด
+S42.407	TM extension		Multiple closed fractures of distal humerus	กระดูกต้นแขนส่วนปลายหักหลายตำแหน่งแบบปิด
+S42.408	TM extension		Closed fracture of distal humerus, others	กระดูกต้นแขนส่วนปลายหักแบบปิด ลักษณะอื่น
+S42.409	TM extension		Closed fracture of distal humerus, unspecified	กระดูกต้นแขนส่วนปลายหักแบบปิดไม่ระบุรายละเอียด
+S42.410	TM extension		Open fracture of distal humerus, supracondylar	กระดูกต้นแขนส่วนปลายหักแบบเปิด เหนือปุ่มกระดูก
+S42.411	TM extension		Open fracture of distal humerus, lateral condyle	กระดูกต้นแขนส่วนปลายหักแบบเปิด ปุ่มกระดูกด้านนอก
+S42.412	TM extension		Open fracture of distal humerus, medial condyle	กระดูกต้นแขนส่วนปลายหักแบบเปิด ปุ่มกระดูกด้านใน
+S42.413	TM extension		Open fracture of distal humerus, other parts of condyle and epicondyle	กระดูกต้นแขนส่วนปลายหักแบบเปิด ส่วนอื่นของปุ่มกระดูกและเหนือปุ่มกระดูก
+S42.414	TM extension		Open fracture of distal humerus, T-shape intraarticular fracture	กระดูกต้นแขนส่วนปลายหักแบบเปิด รูปตัวทีหักเข้าข้อ
+S42.415	TM extension		Open fracture of distal humerus, multifragment intraarticular fracture	กระดูกต้นแขนส่วนปลายหักแบบเปิด เป็นหลายส่วนหักเข้าข้อ
+S42.416	TM extension		Open fracture of physis and apophysis of distal humerus	ไฟซิสและอะโปไฟซิสของกระดูกต้นแขนส่วนปลายหักแบบเปิด
+S42.417	TM extension		Multiple open fractures of distal humerus	กระดูกต้นแขนส่วนปลายหักหลายตำแหน่งแบบเปิด
+S42.418	TM extension		Open fracture of distal humerus, others	กระดูกต้นแขนส่วนปลายหักแบบเปิด ลักษณะอื่น
+S42.419	TM extension		Open fracture of distal humerus, unspecified	กระดูกต้นแขนส่วนปลายหักแบบเปิดไม่ระบุรายละเอียด
+S42.70	TM extension		Multiple closed fractures of clavicle, scapula and humerus	กระดูกไหปลาร้า กระดูกสะบัก และกระดูกต้นแขนหักหลายตำแหน่งแบบปิด
+S42.71	TM extension		Multiple open fractures of clavicle, scapula and humerus	กระดูกไหปลาร้า กระดูกสะบัก และกระดูกต้นแขนหักหลายตำแหน่งแบบเปิด
+S42.80	TM extension		Closed fracture of other parts of shoulder and arm	กระดูกส่วนอื่นของไหล่และต้นแขนหักแบบปิด
+S42.81	TM extension		Open fracture of other parts of shoulder and arm	กระดูกส่วนอื่นของไหล่และต้นแขนหักแบบเปิด
+S42.90	TM extension		Closed fracture of shoulder girdle, part unspecified	กระดูกโอบไหล่หักแบบปิด ไม่ระบุส่วน
+S42.91	TM extension		Open fracture of shoulder girdle, part unspecified	กระดูกโอบไหล่หักแบบเปิด ไม่ระบุส่วน
+S43.00	TM extension		Dislocation of shoulder joint, anterior	การเคลื่อนของข้อไหล่ ไปด้านหน้า
+S43.01	TM extension		Dislocation of shoulder joint, posterior	การเคลื่อนของข้อไหล่ ไปด้านหลัง
+S43.02	TM extension		Dislocation of shoulder joint, inferior	การเคลื่อนของข้อไหล่ ลงด้านล่าง
+S43.08	TM extension		Dislocation of shoulder joint, others	การเคลื่อนของข้อไหล่ แบบอื่น
+S43.09	TM extension		Dislocation of shoulder joint, unspecified	การเคลื่อนของข้อไหล่ ไม่ระบุรายละเอียด
+S50.80	TM extension		Abrasion of elbow and forearm	การถลอกที่ข้อศอกและแขนท่อนปลาย
+S50.81	TM extension		Blister of elbow and forearm	ตุ่มพองที่ข้อศอกและแขนท่อนปลาย
+S50.82	TM extension		Insect bite of elbow and forearm	แมลงกัดที่ข้อศอกและแขนท่อนปลาย
+S50.83	TM extension		Superficial foreign body of elbow and forearm	สิ่งแปลกปลอมที่ชั้นผิวของข้อศอกและแขนท่อนปลาย
+S50.88	TM extension		Other superficial injuries of elbow and forearm	การบาดเจ็บอื่นที่ชั้นผิวของข้อศอกและแขนท่อนปลาย
+S51.1	TM extension		Open wound of forearm	แผลเปิดที่แขนท่อนปลาย
+S52.000	TM extension		Closed fracture of proximal ulna, olecranon	กระดูกอัลนาร์ส่วนต้นหักแบบปิด โอเลเครนอน
+S52.001	TM extension		Closed fracture of proximal ulna, coronoid process	กระดูกอัลนาร์ส่วนต้นหักแบบปิด โคโรนอยด์ โปรเซส
+S52.002	TM extension		Closed fracture of proximal ulna, with dislocation of radial head	กระดูกอัลนาร์ส่วนต้นหักแบบปิด ร่วมกับการเคลื่อนของหัวกระดูกเรเดียส
+S52.003	TM extension		Closed fracture of epiphysis of proximal ulna	เอพิไฟซิสของกระดูกอัลนาร์ส่วนต้นหักแบบปิด
+S52.007	TM extension		Closed fracture of proximal ulna, multiple fracture	กระดูกอัลนาร์ส่วนต้นหักแบบปิด หลายตำแหน่ง
+S52.008	TM extension		Closed fracture of proximal ulna, others	กระดูกอัลนาร์ส่วนต้นหักแบบปิด ลักษณะอื่น
+S52.009	TM extension		Closed fracture of proximal ulna, unspecified	กระดูกอัลนาร์ส่วนต้นหักแบบปิด ไม่ระบุรายละเอียด
+S52.010	TM extension		Open fracture of proximal ulna, olecranon	กระดูกอัลนาร์ส่วนต้นหักแบบเปิด โอเลเครนอน
+S52.011	TM extension		Open fracture of proximal ulna, coronoid process	กระดูกอัลนาร์ส่วนต้นหักแบบเปิด โคโรนอยด์โปรเซส
+S52.012	TM extension		Open fracture of proximal ulna, with dislocation of radial head	กระดูกอัลนาร์ส่วนต้นหักแบบเปิด ร่วมกับการเคลื่อนของหัวกระดูกเรเดียส
+S52.013	TM extension		Open fracture of epiphysis of proximal ulna	เอพิไฟซิสของกระดูกอัลนาร์ส่วนต้นหักแบบเปิด
+S52.017	TM extension		Open fracture of proximal ulna, multiple fracture	กระดูกอัลนาร์ส่วนต้นหักแบบเปิด หลายตำแหน่ง
+S52.018	TM extension		Open fracture of proximal ulna, others	กระดูกอัลนาร์ส่วนต้นหักแบบเปิด ลักษณะอื่น
+S52.019	TM extension		Open fracture of proximal ulna, unspecified	กระดูกอัลนาร์ส่วนต้นหักแบบเปิด ไม่ระบุรายละเอียด
+S52.100	TM extension		Closed fracture of head of radius	กระดูกเรเดียสหักที่หัวแบบปิด
+S52.101	TM extension		Closed fracture of neck of radius	กระดูกเรเดียสหักที่คอแบบปิด
+S52.102	TM extension		Closed fracture of epiphysis of upper end of radius	เอพิไฟซิสของปลายบนของกระดูกเรเดียสหักแบบปิด
+S52.107	TM extension		Closed fracture of upper end of radius, multiple fractures	กระดูกเรเดียสหักที่ปลายบนแบบปิด หลายตำแหน่ง
+S52.108	TM extension		Closed fracture of upper end of radius, others	กระดูกเรเดียสหักที่ปลายบนแบบปิด ลักษณะอื่น
+S52.109	TM extension		Closed fracture of upper end of radius, unspecified	กระดูกเรเดียสหักที่ปลายบนแบบปิด ไม่ระบุรายละเอียด
+S52.110	TM extension		Open fracture of head of radius	กระดูกเรเดียสหักที่หัวแบบเปิด
+S52.111	TM extension		Open fracture of neck of radius	กระดูกเรเดียสหักที่คอแบบเปิด
+S52.112	TM extension		Open fracture of epiphysis of upper end of radius	เอพิไฟซิสของปลายบนของกระดูกเรเดียสหักแบบเปิด
+S52.117	TM extension		Open fracture of upper end of radius, multiple fractures	กระดูกเรเดียสหักที่ปลายบนแบบเปิด หลายตำแหน่ง
+S52.118	TM extension		Open fracture of upper end of radius, others	กระดูกเรเดียสหักที่ปลายบนแบบเปิด ลักษณะอื่น
+S52.119	TM extension		Open fracture of upper end of radius, unspecified	กระดูกเรเดียสหักที่ปลายบนแบบเปิด ไม่ระบุรายละเอียด
+S52.200	TM extension		Closed fracture of shaft of ulna, simple fracture	กระดูกอัลนาร์หักที่ส่วนกลางแบบปิด รอยเดียว
+S52.201	TM extension		Closed fracture of shaft of ulna, butterfly fracture	กระดูกอัลนาร์หักที่ส่วนกลางแบบปิด รูปผีเสื้อ
+S52.202	TM extension		Closed fracture of shaft of ulna, comminuted fracture	กระดูกอัลนาร์หักที่ส่วนกลางแบบปิด แตกย่อย
+S52.203	TM extension		Closed fracture of shaft of ulna, with dislocation of radial head	กระดูกอัลนาร์หักที่ส่วนกลางแบบปิด ร่วมกับการเคลื่อนของหัวกระดูกเรเดียส
+S52.207	TM extension		Closed fracture of shaft of ulna, bifocal and segmental and multiple fractures	กระดูกอัลนาร์หักที่ส่วนกลางแบบปิด สองจุด และหลายชิ้น และหลายตำแหน่ง
+S52.209	TM extension		Closed fracture of shaft of ulna, unspecified	กระดูกอัลนาร์หักที่ส่วนกลางแบบปิด ไม่ระบุรายละเอียด
+S52.210	TM extension		Open fracture of shaft of ulna, simple fracture	กระดูกอัลนาร์หักที่ส่วนกลางแบบเปิด รอยเดียว
+S52.211	TM extension		Open fracture of shaft of ulna, butterfly fracture	กระดูกอัลนาร์หักที่ส่วนกลางแบบเปิด รูปผีเสื้อ
+S52.212	TM extension		Open fracture of shaft of ulna, comminuted fracture	กระดูกอัลนาร์หักที่ส่วนกลางแบบเปิด แตกย่อย
+S52.213	TM extension		Open fracture of shaft of ulna, with dislocation of radial head	กระดูกอัลนาร์หักที่ส่วนกลางแบบเปิด ร่วมกับการเคลื่อนของหัวกระดูกเรเดียส
+S52.217	TM extension		Open fracture of shaft of ulna, bifocal and segmental and multiple fractures	กระดูกอัลนาร์หักที่ส่วนกลางแบบเปิด สองจุด และหลายชิ้น และหลายตำแหน่ง
+S52.219	TM extension		Open fracture of shaft of ulna, unspecified	กระดูกอัลนาร์หักที่ส่วนกลางแบบเปิด ไม่ระบุรายละเอียด
+S52.300	TM extension		Closed fracture of shaft of radius, simple fracture	กระดูกเรเดียสหักที่ส่วนกลางแบบปิด รอยเดียว
+S52.301	TM extension		Closed fracture of shaft of radius, butterfly fracture	กระดูกเรเดียสหักที่ส่วนกลางแบบปิด รูปผีเสื้อ
+S52.302	TM extension		Closed fracture of shaft of radius, comminuted fracture	กระดูกเรเดียสหักที่ส่วนกลางแบบปิด แตกย่อย
+S52.303	TM extension		Closed fracture of shaft of radius, with dislocation of head of ulna	กระดูกเรเดียสหักที่ส่วนกลางแบบปิด ร่วมกับการเคลื่อนของหัวกระดูกอัลนาร์
+S52.307	TM extension		Closed fracture of shaft of radius, bifocal and segmental and multiple fractures	กระดูกเรเดียสหักที่ส่วนกลางแบบปิด สองจุด และหลายชิ้น และหลายตำแหน่ง
+S52.309	TM extension		Closed fracture of shaft of radius, unspecified	กระดูกเรเดียสหักที่ส่วนกลางแบบปิด ไม่ระบุรายละเอียด
+S52.310	TM extension		Open fracture of shaft of radius, simple fracture	กระดูกเรเดียสหักที่ส่วนกลางแบบเปิด รอยเดียว
+S52.311	TM extension		Open fracture of shaft of radius, butterfly fracture	กระดูกเรเดียสหักที่ส่วนกลางแบบเปิด รูปผีเสื้อ
+S52.312	TM extension		Open fracture of shaft of radius, comminuted fracture	กระดูกเรเดียสหักที่ส่วนกลางแบบเปิด แตกย่อย
+S52.313	TM extension		Open fracture of shaft of radius, with dislocation of head of ulna	กระดูกเรเดียสหักที่ส่วนกลางแบบเปิด ร่วมกับการเคลื่อนของหัวกระดูกอัลนาร์
+S52.317	TM extension		Open fracture of shaft of radius, bifocal and segmental and multiple fractures	กระดูกเรเดียสหักที่ส่วนกลางแบบเปิด สองจุด และหลายชิ้น และหลายตำแหน่ง
+S52.319	TM extension		Open fracture of shaft of radius, unspecified	กระดูกเรเดียสหักที่ส่วนกลางแบบเปิด ไม่ระบุรายละเอียด
+S52.40	TM extension		Closed fracture of shaft of both ulna and radius	กระดูกอัลนาร์และเรเดียสหักที่ส่วนกลางแบบปิดทั้งคู่
+S52.41	TM extension		Open fracture of shaft of both ulna and radius	กระดูกอัลนาร์และเรเดียสหักที่ส่วนกลางแบบเปิดทั้งคู่
+S52.500	TM extension		Closed fracture of distal radius, extraarticular with dorsal angulation	กระดูกเรเดียสส่วนปลายหักแบบปิด นอกข้อ และทำมุมกระดกขึ้นมาทางหลังมือ
+S52.501	TM extension		Closed fracture of distal radius, extraarticular with volar angulation	กระดูกเรเดียสส่วนปลายหักแบบปิด นอกข้อ และทำมุมกระดกลงมาทางท้องแขน
+S52.502	TM extension		Closed fracture of distal radius, partial intraarticular	กระดูกเรเดียสส่วนปลายหักแบบปิด เข้าข้อบางส่วน
+S52.503	TM extension		Closed fracture of distal radius, complete intraarticular	กระดูกเรเดียสส่วนปลายหักแบบปิด เข้าข้อทั้งหมด
+S52.504	TM extension		Closed fracture of epiphysis of distal radius	เอพิไฟซิสของกระดูกเรเดียสส่วนปลายหักแบบปิด
+S52.507	TM extension		Closed fracture of distal radius, multiple fractures	กระดูกเรเดียสส่วนปลายหักแบบปิด หลายตำแหน่ง
+S52.508	TM extension		Closed fracture of distal radius, others	กระดูกเรเดียสส่วนปลายหักแบบปิด ลักษณะอื่น
+S52.509	TM extension		Closed fracture of distal radius, unspecified	กระดูกเรเดียสส่วนปลายหักแบบปิด ไม่ระบุรายละเอียด
+S52.510	TM extension		Open fracture of distal radius, extraarticular with dorsal angulation	กระดูกเรเดียสส่วนปลายหักแบบเปิด นอกข้อ และทำมุมกระดกขึ้นมาทางหลังมือ
+S52.511	TM extension		Open fracture of distal radius, extraarticular with volar angulation	กระดูกเรเดียสส่วนปลายหักแบบเปิด นอกข้อ และทำมุมกระดกลงมาทางท้องแขน
+S52.512	TM extension		Open fracture of distal radius, partial intraarticular	กระดูกเรเดียสส่วนปลายหักแบบเปิด เข้าข้อบางส่วน
+S52.513	TM extension		Open fracture of distal radius, complete intraarticular	กระดูกเรเดียสส่วนปลายหักแบบเปิด เข้าข้อทั้งหมด
+S52.514	TM extension		Open fracture of epiphysis of distal radius	เอพิไฟซิสของกระดูกเรเดียสส่วนปลายหักแบบเปิด
+S52.517	TM extension		Open fracture of distal radius, multiple fractures	กระดูกเรเดียสส่วนปลายหักแบบเปิด หลายตำแหน่ง
+S52.518	TM extension		Open fracture of distal radius, others	กระดูกเรเดียสส่วนปลายหักแบบเปิด ลักษณะอื่น
+S52.519	TM extension		Open fracture of distal radius, unspecified	กระดูกเรเดียสส่วนปลายหักแบบเปิด ไม่ระบุรายละเอียด
+S52.60	TM extension		Closed fracture of lower end of both ulna and radius	กระดูกอัลนาร์และเรเดียสหักที่ปลายล่างแบบปิดทั้งคู่
+S52.61	TM extension		Open fracture of lower end of both ulna and radius	กระดูกอัลนาร์และเรเดียสหักที่ปลายล่างแบบเปิดทั้งคู่
+S52.700	TM extension		Closed fracture of proximal part of both ulna and radius	กระดูกอัลนาร์และเรเดียสหักที่ส่วนต้นแบบปิดทั้งคู่
+S52.708	TM extension		Multiple closed fractures of forearm, others	กระดูกแขนท่อนปลายหักหลายตำแหน่งแบบปิดลักษณะอื่น
+S52.709	TM extension		Multiple closed fractures of forearm, unspecified	กระดูกแขนท่อนปลายหักหลายตำแหน่งแบบปิดไม่ระบุรายละเอียด
+S52.710	TM extension		Open fracture of proximal part of both ulna and radius	กระดูกอัลนาร์และเรเดียสหักที่ส่วนต้นแบบเปิดทั้งคู่
+S52.718	TM extension		Multiple open fractures of forearm, others	กระดูกแขนท่อนปลายหักหลายตำแหน่งแบบเปิดลักษณะอื่น
+S52.719	TM extension		Multiple open fractures of forearm, unspecified	กระดูกแขนท่อนปลายหักหลายตำแหน่งแบบเปิดไม่ระบุรายละเอียด
+S52.80	TM extension		Closed fracture of other parts of forearm	กระดูกแขนท่อนปลายหักแบบปิดที่ส่วนอื่น
+S52.81	TM extension		Open fracture of other parts of forearm	กระดูกแขนท่อนปลายหักแบบเปิดที่ส่วนอื่น
+S52.90	TM extension		Closed fracture of forearm, part unspecified	กระดูกแขนท่อนปลายหักแบบปิด ไม่ระบุส่วน
+S52.91	TM extension		Open fracture of forearm, part unspecified	กระดูกแขนท่อนปลายหักแบบเปิด ไม่ระบุส่วน
+S53.00	TM extension		Dislocation of radial head	การเคลื่อนของหัวกระดูกเรเดียส
+S53.01	TM extension		Subluxation of radial head	การเลื่อนของหัวกระดูกเรเดียส
+S53.02	TM extension		Pulled elbow in children	ข้อศอกเด็กถูกดึง
+S53.10	TM extension		Dislocation of elbow, anterior	การเคลื่อนของข้อศอก ไปด้านหน้า
+S53.11	TM extension		Dislocation of elbow, posterior	การเคลื่อนของข้อศอก ไปด้านหลัง
+S53.12	TM extension		Dislocation of elbow, medial	การเคลื่อนของข้อศอก เข้าด้านใน
+S53.13	TM extension		Dislocation of elbow, lateral	การเคลื่อนของข้อศอก ออกด้านนอก
+S53.14	TM extension		Dislocation of elbow, divergent	การเคลื่อนของข้อศอก เบนออก
+S53.15	TM extension		Dislocation of elbow, with associated fracture	การเคลื่อนของข้อศอก ร่วมกับมีกระดูกหัก
+S53.18	TM extension		Dislocation of elbow, others	การเคลื่อนของข้อศอก ลักษณะอื่น
+S53.19	TM extension		Dislocation of elbow, unspecified	การเคลื่อนของข้อศอก ไม่ระบุรายละเอียด
+S60.80	TM extension		Abrasion of wrist and hand	การถลอกที่ข้อมือและมือ
+S60.81	TM extension		Blister of wrist and hand	ตุ่มพองที่ข้อมือและมือ
+S60.82	TM extension		Insect bite of wrist and hand	แมลงกัดที่ข้อมือและมือ
+S60.83	TM extension		Superficial foreign body of wrist and hand	สิ่งแปลกปลอมที่ชั้นผิวของข้อมือและมือ
+S60.88	TM extension		Other superficial injuries af wrist and hand	การบาดเจ็บอื่นที่ชั้นผิวของข้อมือและมือ
+S62.00	TM extension		Closed fracture of navicular [scaphoid] bone of hand	กระดูกนาวิคูลาร์ [สแคฟฟอยด์] ของมือหักแบบปิด
+S62.01	TM extension		Open fracture of navicular [scaphoid] bone of hand	กระดูกนาวิคูลาร์ [สแคฟฟอยด์] ของมือหักแบบเปิด
+S62.100	TM extension		Closed fracture of lunate [semilunar]	กระดูกลูเนต [เซมิลูนาร์] หักแบบปิด
+S62.101	TM extension		Closed fracture of triquetrum [cuneiform]	กระดูกไตรควิตรัม [คิวนิฟอร์ม] หักแบบปิด
+S62.102	TM extension		Closed fracture of pisiform	กระดูกพิสิฟอร์มหักแบบปิด
+S62.103	TM extension		Closed fracture of trapezium [greater multangular]	กระดูกทราปิเซียม [เกรตเตอร์ มัลแทงกูลาร์] หักแบบปิด
+S62.104	TM extension		Closed fracture of trapezoid [lesser multangular]	กระดูกทราปิซอยด์ [เลซเซอร์ มัลแทงกูลาร์] หักแบบปิด
+S62.105	TM extension		Closed fracture of capitate [os magnum]	กระดูกแคปิเตต [ออส แม็กนัม] หักแบบปิด
+S62.106	TM extension		Closed fracture of hamate [unciform]	กระดูกแฮเมต [อันซิฟอร์ม] หักแบบปิด
+S62.107	TM extension		Closed fracture of other carpal bone(s), multiple fractures	กระดูกข้อมือหักแบบปิด หลายตำแหน่ง
+S62.109	TM extension		Closed fracture of other carpal bone(s), unspecified	กระดูกข้อมือหักแบบปิด ไม่ระบุรายละเอียด
+S62.110	TM extension		Open fracture of lunate [semilunar]	กระดูกลูเนต [เซมิลูนาร์] หักแบบเปิด
+S62.111	TM extension		Open fracture of triquetrum [cuneiform]	กระดูกไตรควิตรัม [คิวนิฟอร์ม] หักแบบเปิด
+S62.112	TM extension		Open fracture of pisiform	กระดูกพิสิฟอร์มหักแบบเปิด
+S62.113	TM extension		Open fracture of trapezium [greater multangular]	กระดูกทราปิเซียม [เกรตเตอร์ มัลแทงกูลาร์] หักแบบเปิด
+S62.114	TM extension		Open fracture of trapezoid [lesser multangular]	กระดูกทราปิซอยด์ [เลซเซอร์ มัลแทงกูลาร์] หักแบบเปิด
+S62.115	TM extension		Open fracture of capitate [os magnum]	กระดูกแคปิเตต [ออสแม็กนัม] หักแบบเปิด
+S62.116	TM extension		Open fracture of hamate [unciform]	กระดูกแฮเมต [อันซิฟอร์ม] หักแบบเปิด
+S62.117	TM extension		Open fracture of other carpal bone(s), multiple fractures	กระดูกข้อมือหักแบบเปิด หลายตำแหน่ง
+S62.119	TM extension		Open fracture of other carpal bone(s), unspecified	กระดูกข้อมือหักแบบเปิด ไม่ระบุรายละเอียด
+S62.20	TM extension		Closed fracture of first metacarpal bone	กระดูกฝ่ามือชิ้นที่หนึ่งหักแบบปิด
+S62.21	TM extension		Open fracture of first metacarpal bone	กระดูกฝ่ามือชิ้นที่หนึ่งหักแบบเปิด
+S62.30	TM extension		Closed fracture of other metacarpal bone	กระดูกฝ่ามือชิ้นอื่นหักแบบปิด
+S62.31	TM extension		Open fracture of other metacarpal bone	กระดูกฝ่ามือชิ้นอื่นหักแบบเปิด
+S62.40	TM extension		Multiple closed fractures of metacarpal bones	กระดูกฝ่ามือหักหลายตำแหน่งแบบปิด
+S62.41	TM extension		Multiple open fractures of metacarpal bones	กระดูกฝ่ามือหักหลายตำแหน่งแบบเปิด
+S62.50	TM extension		Closed fracture of thumb	กระดูกนิ้วหัวแม่มือหักแบบปิด
+S62.51	TM extension		Open fracture of thumb	กระดูกนิ้วหัวแม่มือหักแบบเปิด
+S62.60	TM extension		Closed fracture of other digits of hand	กระดูกนิ้วมืออื่นหักแบบปิด
+S62.61	TM extension		Open fracture of other digits of hand	กระดูกนิ้วมืออื่นหักแบบเปิด
+S62.70	TM extension		Multiple closed fractures of thumb and fingers	กระดูกนิ้วหัวแม่มือและนิ้วมือหักหลายตำแหน่งแบบปิด
+S62.71	TM extension		Multiple open fractures of thumb and fingers	กระดูกนิ้วหัวแม่มือและนิ้วมือหักหลายตำแหน่งแบบเปิด
+S62.80	TM extension		Closed fracture of other and unspecified parts of wrist and hand	กระดูกส่วนอื่นและที่ไม่ระบุรายละเอียดของข้อมือและมือหักแบบปิด
+S62.81	TM extension		Open fracture of other and unspecified parts of wrist and hand	กระดูกส่วนอื่นและที่ไม่ระบุรายละเอียดของข้อมือและมือหักแบบเปิด
+S63.00	TM extension		Dislocation of wrist, distal radioulnar joint	การเคลื่อนของข้อมือ ข้อเรดิโออัลนาร์ส่วนปลาย
+S63.01	TM extension		Dislocation of wrist, distal radiocarpal joint	การเคลื่อนของข้อมือ ข้อเรดิโอคาร์ปาลส่วนปลาย
+S63.02	TM extension		Dislocation of wrist, midcarpal joint	การเคลื่อนของข้อมือ ข้อมิดคาร์ปาล
+S63.03	TM extension		Dislocation of wrist, carpometacarpal joint	การเคลื่อนของข้อมือ ข้อคาร์โปเมตะคาร์ปาล
+S63.08	TM extension		Dislocation of wrist, others	การเคลื่อนของข้อมือ อื่นๆ
+S63.09	TM extension		Dislocation of wrist, unspecified joint	การเคลื่อนของข้อมือ ไม่ระบุข้อ
+S63.10	TM extension		Dislocation of metacarpophalangeal joint [MCP] of thumb and finger	การเคลื่อนของข้อเมตะคาร์โปฟาแลงเจียล [เอ็มซีพี] ของนิ้วหัวแม่มือและนิ้วมือ
+S63.11	TM extension		Dislocation of interphalangeal joint of thumb and finger	การเคลื่อนของข้ออินเตอร์ฟาแลงเจียล [เอ็มซีพี] ของนิ้วหัวแม่มือและนิ้วมือ
+S63.19	TM extension		Dislocation of thumb and finger, unspecified joint	การเคลื่อนของนิ้วหัวแม่มือและนิ้วมือ ไม่ระบุข้อ
+S70.80	TM extension		Abrasion of hip and thigh	การถลอกที่สะโพกและต้นขา
+S70.81	TM extension		Blister of hip and thigh	ตุ่มพองที่สะโพกและต้นขา
+S70.82	TM extension		Insect bite of hip and thigh	แมลงกัดที่สะโพกและต้นขา
+S70.83	TM extension		Superficial foreign body of hip and thigh	สิ่งแปลกปลอมที่ชั้นผิวของสะโพกและต้นขา
+S70.88	TM extension		Other superficial injuries of hip and thigh	การบาดเจ็บอื่นที่ชั้นผิวของสะโพกและต้นขา
+S72.000	TM extension		Closed fracture of neck of femur, undisplaced intracapsular fracture	กระดูกต้นขาส่วนคอหักแบบปิด ไม่เคลื่อน และหักในแคปซูล
+S72.001	TM extension		Closed fracture of neck of femur, displaced intracapsular fracture	กระดูกต้นขาส่วนคอหักแบบปิด เคลื่อน และหักในแคปซูล
+S72.002	TM extension		Closed fracture of neck of femur, impacted intracapsular fracture	กระดูกต้นขาส่วนคอหักแบบปิด อัดแน่น และหักในแคปซูล
+S72.003	TM extension		Closed fracture of neck of femur, midcervical shear fracture	กระดูกต้นขาส่วนคอหักแบบปิด, หักเฉือนกลางคอ
+S72.004	TM extension		Closed fracture of neck of femur, base of neck (cervicotrochanteric)	กระดูกต้นขาส่วนคอหักแบบปิด, ที่ฐานของคอ (เซอร์วิโคโทรแคนเทอริก)
+S72.005	TM extension		Closed fracture of head of femur	กระดูกต้นขาส่วนหัวหักแบบปิด
+S72.006	TM extension		Closed fracture of epiphysis of upper femur	เอพิไฟซิสที่ปลายบนกระดูกต้นขาหักแบบปิด
+S72.007	TM extension		Closed fracture of neck of femur, multiple	กระดูกต้นขาส่วนคอหักแบบปิด, หลายตำแหน่ง
+S72.008	TM extension		Closed fracture of neck of femur, others	กระดูกต้นขาส่วนคอหักแบบปิด, ลักษณะอื่น
+S72.009	TM extension		Closed fracture of neck of femur, unspecified	กระดูกต้นขาส่วนคอหักแบบปิด, ไม่ระบุรายละเอียด
+S72.010	TM extension		Open fracture of neck of femur, undisplaced intracapsular fracture	กระดูกต้นขาส่วนคอหักแบบเปิด ไม่เคลื่อน และหักในแคปซูล
+S72.011	TM extension		Open fracture of neck of femur, displaced intracapsular fracture	กระดูกต้นขาส่วนคอหักแบบเปิด เคลื่อน และหักในแคปซูล
+S72.012	TM extension		Open fracture of neck of femur, impacted intracapsular fracture	กระดูกต้นขาส่วนคอหักแบบเปิด อัดแน่น และหักในแคปซูล
+S72.013	TM extension		Open fracture of neck of femur, midcervical shear fracture	กระดูกต้นขาส่วนคอหักแบบเปิด หักเฉือนกลางคอ
+S72.014	TM extension		Open fracture of neck of femur, base of neck (cervicotrochanteric)	กระดูกต้นขาส่วนคอหักแบบเปิด ที่ฐานของคอ (เซอร์วิโคโทรแคนเทอริก)
+S72.015	TM extension		Open fracture of head of femur	กระดูกต้นขาส่วนหัวหักแบบเปิด
+S72.016	TM extension		Open fracture of epiphysis of upper femur	เอพิไฟซิสที่ปลายบนกระดูกต้นขาหักแบบเปิด
+S72.017	TM extension		Open fracture of neck of femur, multiple	กระดูกต้นขาส่วนคอหักแบบเปิด หลายตำแหน่ง
+S72.018	TM extension		Open fracture of neck of femur, others	กระดูกต้นขาส่วนคอหักแบบเปิด ลักษณะอื่น
+S72.019	TM extension		Open fracture of neck of femur, unspecified	กระดูกต้นขาส่วนคอหักแบบเปิด ไม่ระบุรายละเอียด
+S72.100	TM extension		Closed intertrochanteric fracture of femur, stable type	กระดูกต้นขาหักผ่านปุ่มกระดูกโคนขาแบบปิดชนิดเสถียร
+S72.101	TM extension		Closed intertrochanteric fracture of femur, unstable type	กระดูกต้นขาหักผ่านปุ่มกระดูกโคนขาแบบปิดชนิดไม่เสถียร
+S72.108	TM extension		Closed fracture of trochanteric region of femur, others	กระดูกต้นขาหักบริเวณปุ่มกระดูกโคนขาแบบปิดชนิดอื่น
+S72.109	TM extension		Closed trochanteric fracture of femur, stable type	ปุ่มกระดูกโคนขาของกระดูกต้นขาหักแบบปิดชนิดเสถียร
+S72.110	TM extension		Open intertrochanteric fracture of femur, stable type	กระดูกต้นขาหักผ่านระหว่างปุ่มกระดูกโคนขาแบบเปิดชนิดเสถียร
+S72.111	TM extension		Open intertrochanteric fracture of femur, unstable type	กระดูกต้นขาหักผ่านระหว่างปุ่มกระดูกโคนขาแบบเปิดชนิดไม่เสถียร
+S72.118	TM extension		Open fracture of trochanteric region of femur, others	กระดูกต้นขาหักบริเวณปุ่มกระดูกโคนขาแบบเปิดชนิดอื่น
+S72.119	TM extension		Open trochanteric fracture of femur, stable type	ปุ่มกระดูกโคนขาของกระดูกต้นขาหักแบบเปิดชนิดเสถียร
+S72.20	TM extension		Closed subtrochanteric fracture	กระดูกหักใต้ปุ่มกระดูกโคนขาแบบปิด
+S72.21	TM extension		Open subtrochanteric fracture	กระดูกหักใต้ปุ่มกระดูกโคนขาแบบเปิด
+S72.300	TM extension		Closed fracture of shaft of femur, simple fracture	กระดูกต้นขาส่วนกลางหักแบบปิด รอยเดียว
+S72.301	TM extension		Closed fracture of shaft of femur, butterfly fracture	กระดูกต้นขาส่วนกลางหักแบบปิด รูปผีเสื้อ
+S72.302	TM extension		Closed fracture of shaft of femur, comminuted fracture	กระดูกต้นขาส่วนกลางหักแบบปิด แตกย่อย
+S72.307	TM extension		Closed fracture of shaft of femur, bifocal and segmental and multiple	กระดูกต้นขาส่วนกลางหักแบบปิด สองจุด และหลายชิ้น และหลายตำแหน่ง
+S72.309	TM extension		Closed fracture of shaft of femur, unspecified	กระดูกต้นขาส่วนกลางหักแบบปิด ไม่ระบุรายละเอียด
+S72.310	TM extension		Open fracture of shaft of femur, simple fracture	กระดูกต้นขาส่วนกลางหักแบบเปิด รอยเดียว
+S72.311	TM extension		Open fracture of shaft of femur, butterfly fracture	กระดูกต้นขาส่วนกลางหักแบบเปิด รูปผีเสื้อ
+S72.312	TM extension		Open fracture of shaft of femur, comminuted fracture	กระดูกต้นขาส่วนกลางหักแบบเปิด แตกย่อย
+S72.317	TM extension		Open fracture of shaft of femur, bifocal and segmental and multiple	กระดูกต้นขาส่วนกลางหักแบบเปิด สองจุด และหลายชิ้น และหลายตำแหน่ง
+S72.319	TM extension		Open fracture of shaft of femur, unspecified	กระดูกต้นขาส่วนกลางหักแบบเปิด ไม่ระบุรายละเอียด
+S72.400	TM extension		Closed fracture of distal femur, supracondylar	กระดูกต้นขาส่วนปลายหักแบบปิด เหนือปุ่มกระดูก
+S72.401	TM extension		Closed fracture of distal femur, lateral condyle	กระดูกต้นขาส่วนปลายหักแบบปิด ปุ่มกระดูกด้านนอก
+S72.402	TM extension		Closed fracture of distal femur, medial condyle	กระดูกต้นขาส่วนปลายหักแบบปิด ปุ่มกระดูกด้านใน
+S72.403	TM extension		Closed fracture of distal femur, other parts of condyle and epicondyle	กระดูกต้นขาส่วนปลายหักแบบปิด ส่วนอื่นของปุ่มกระดูกและเหนือปุ่มกระดูก
+S72.404	TM extension		Closed fracture of distal femur, T-shape intraarticular fracture	กระดูกต้นขาส่วนปลายหักแบบปิด รูปตัวที หักเข้าข้อ
+S72.405	TM extension		Closed fracture of distal femur, multifragment intraarticular fracture	กระดูกต้นขาส่วนปลายหักแบบปิด เป็นหลายชิ้นหักเข้าข้อ
+S72.406	TM extension		Closed fracture of distal femur, multiple fractures	กระดูกต้นขาส่วนปลายหักแบบปิด หักหลายตำแหน่ง
+S72.407	TM extension		Closed fracture of distal femoral epiphysis	เอพิไฟซิสของกระดูกต้นขาส่วนปลายหักแบบปิด
+S72.408	TM extension		Closed fracture of distal femur, others	กระดูกต้นขาส่วนปลายหักแบบปิด ลักษณะอื่น
+S72.409	TM extension		Closed fracture of distal femur, unspecified	กระดูกต้นขาส่วนปลายหักแบบปิด ไม่ระบุรายละเอียด
+S72.410	TM extension		Open fracture of distal femur, supracondylar	กระดูกต้นขาส่วนปลายหักแบบเปิด เหนือปุ่มกระดูก
+S72.411	TM extension		Open fracture of distal femur, lateral condyle	กระดูกต้นขาส่วนปลายหักแบบเปิด ปุ่มกระดูกด้านนอก
+S72.412	TM extension		Open fracture of distal femur, medial condyle	กระดูกต้นขาส่วนปลายหักแบบเปิด ปุ่มกระดูกด้านใน
+S72.413	TM extension		Open fracture of distal femur, other parts of condyle and epicondyle	กระดูกต้นขาส่วนปลายหักแบบเปิด ส่วนอื่นของปุ่มกระดูกและเหนือปุ่มกระดูก
+S72.414	TM extension		Open fracture of distal femur, T-shape intraarticular fracture	กระดูกต้นขาส่วนปลายหักแบบเปิด รูปตัวที หักเข้าข้อ
+S72.415	TM extension		Open fracture of distal femur, multifragment intraarticular fracture	กระดูกต้นขาส่วนปลายหักแบบเปิด เป็นหลายชิ้นหักเข้าข้อ
+S72.416	TM extension		Open fracture of distal femur, multiple fractures	กระดูกต้นขาส่วนปลายหักแบบเปิด หักหลายตำแหน่ง
+S72.417	TM extension		Open fracture of distal femoral epiphysis	เอพิไฟซิสของกระดูกต้นขาส่วนปลายหักแบบเปิด
+S72.418	TM extension		Open fracture of distal femur, others	กระดูกต้นขาส่วนปลายหักแบบเปิด ลักษณะอื่น
+S72.419	TM extension		Open racture of distal femur, unspecified	กระดูกต้นขาส่วนปลายหักแบบเปิด ไม่ระบุรายละเอียด
+S72.70	TM extension		Multiple closed fractures of femur	กระดูกต้นขาหักหลายตำแหน่งแบบปิด
+S72.71	TM extension		Multiple open fractures of femur	กระดูกต้นขาหักหลายตำแหน่งแบบเปิด
+S72.80	TM extension		Closed fracture of other parts of femur	กระดูกต้นขาส่วนอื่นหักแบบปิด
+S72.81	TM extension		Open fracture of other parts of femur	กระดูกต้นขาส่วนอื่นหักแบบเปิด
+S72.90	TM extension		Closed fracture of femur, part unspecified	กระดูกต้นขาหักแบบปิด ไม่ระบุส่วน
+S72.91	TM extension		Open fracture of femur, part unspecified	กระดูกต้นขาหักแบบเปิด ไม่ระบุส่วน
+S73.00	TM extension		Dislocation of hip, anterior	การเคลื่อนของข้อสะโพก ด้านหน้า
+S73.01	TM extension		Dislocation of hip, posterior type with or without minor fracture	การเคลื่อนของขิ้สะโพก ด้านหลัง ร่วมกับมีหรือไม่มีกระดูกหักย่อย
+S73.02	TM extension		Dislocation of hip, posterior type with large single fracture	การเคลื่อนของข้อสะโพก ด้านหลัง ร่วมกับมีกระดูกหักเป็นชิ้นใหญ่หนึ่งแห่ง
+S73.03	TM extension		Dislocation of hip, posterior type with comminution of rim	การเคลื่อนของข้อสะโพก ด้านหลัง ร่วมกับมีการแตกเป็นชิ้นย่อยของขอบกระดูก
+S73.04	TM extension		Dislocation of hip, posterior type with fracture of the acetabular	การเคลื่อนของข้อสะโพก ด้านหลัง ร่วมกับเบ้าของกระดูกต้นขาหัก
+S73.05	TM extension		Dislocation of hip, posterior type with fracture of head of femur	การเคลื่อนของข้อสะโพก ด้านหลัง ร่วมกับหัวของกระดูกต้นขาหัก
+S73.08	TM extension		Dislocation of hip, others	การเคลื่อนของข้อสะโพก ลักษณะอื่น
+S73.09	TM extension		Dislocation of hip, unspecified	การเคลื่อนของข้อสะโพก ไม่ระบุรายละเอียด
+S80.80	TM extension		Abrasion of knee and leg	การถลอกที่เข่าและขาท่อนปลาย
+S80.81	TM extension		Blister of knee and leg	ตุ่มพองที่เข่าและขาท่อนปลาย
+S80.82	TM extension		Insect bite of knee and leg	แมลงกัดที่เข่าและขาท่อนปลาย
+S80.83	TM extension		Superficial foreign body of knee and leg	สิ่งแปลกปลอมที่ชั้นผิวของเข่าและขาท่อนปลาย
+S80.88	TM extension		Other superficial injuries of knee and leg	การบาดเจ็บอื่นที่ชั้นผิวของเข่าและขาท่อนปลาย
+S81.1	TM extension		Open wound of leg	แผลเปิดที่ขาท่อนปลาย
+S82.00	TM extension		Closed fracture of patella	กระดูกสะบ้าหักแบบปิด
+S82.01	TM extension		Open fracture of patella	กระดูกสะบ้าหักแบบเปิด
+S82.100	TM extension		Closed fracture of proximal tibia, extraarticular	กระดูกแข้งส่วนต้นหักแบบปิด ไม่เข้าข้อ
+S82.101	TM extension		Closed fracture of proximal tibia, medial condyle	กระดูกแข้งส่วนต้นหักแบบปิด ปุ่มกระดูกด้านใน
+S82.102	TM extension		Closed fracture of proximal tibia, lateral condyle (split)	กระดูกแข้งส่วนต้นหักแบบปิด ปุ่มกระดูกด้านนอก (แยก)
+S82.103	TM extension		Closed fracture of proximal tibia, bicondyle	กระดูกแข้งส่วนต้นหักแบบปิด สองปุ่มกระดูก
+S82.104	TM extension		Closed fracture of proximal tibia, with ligamentous injury	กระดูกแข้งส่วนต้นหักแบบปิด ร่วมกับการบาดเจ็บของเอ็น
+S82.105	TM extension		Closed isolated fracture of tibial spine and intercondylar eminence	สันกระดูกแข้งและอินเตอร์คอนไดลาร์ อิมิเนนซ์ หักแบบปิด
+S82.106	TM extension		Closed fracture of epiphysis of proximal tibia	เอพิไฟซิสของกระดูกแข้งส่วนต้นหักแบบปิด
+S82.107	TM extension		Closed fracture of proximal tibia, multiple fractures	กระดูกแข้งส่วนต้นหักแบบปิด หลายตำแหน่ง
+S82.108	TM extension		Closed fracture of proximal tibia, others	กระดูกแข้งส่วนต้นหักแบบปิด ลักษณะอื่น
+S82.109	TM extension		Closed fracture of proximal tibia, unspecified	กระดูกแข้งส่วนต้นหักแบบปิด ไม่ระบุรายละเอียด
+S82.110	TM extension		Open fracture of proximal tibia, extraarticular	กระดูกแข้งส่วนต้นหักแบบเปิด ไม่เข้าข้อ
+S82.111	TM extension		Open fracture of proximal tibia, medial condyle	กระดูกแข้งส่วนต้นหักแบบเปิด ปุ่มกระดูกด้านใน
+S82.112	TM extension		Open fracture of proximal tibia, lateral condyle (split)	กระดูกแข้งส่วนต้นหักแบบเปิด ปุ่มกระดูกด้านนอก (แยก)
+S82.113	TM extension		Open fracture of proximal tibia, bicondyle	กระดูกแข้งส่วนต้นหักแบบเปิด สองปุ่มกระดูก
+S82.114	TM extension		Open fracture of proximal tibia, with ligamentous injury	กระดูกแข้งส่วนต้นหักแบบเปิด ร่วมกับการบาดเจ็บของเอ็น
+S82.115	TM extension		Open isolated fracture of tibial spine and intercondylar eminence	สันกระดูกแข้งและอินเตอร์คอนไดลาร์ อิมิเนนซ์ หักแบบเปิด
+S82.116	TM extension		Open fracture of epiphysis of proximal tibia	เอพิไฟซิสของกระดูกแข้งส่วนต้นหักแบบเปิด
+S82.117	TM extension		Open fracture of proximal tibia, multiple fractures	กระดูกแข้งส่วนต้นหักแบบเปิด หลายตำแหน่ง
+S82.118	TM extension		Open fracture of proximal tibia, others	กระดูกแข้งส่วนต้นหักแบบเปิด ลักษณะอื่น
+S82.119	TM extension		Open fracture of proximal tibia, unspecified	กระดูกแข้งส่วนต้นหักแบบเปิด ไม่ระบุรายละเอียด
+S82.200	TM extension		Closed fracture of shaft of tibia with intact fibula	กระดูกแข้งส่วนกลางหักแบบปิดโดยกระดูกน่องไม่หัก
+S82.201	TM extension		Closed fracture of shaft of tibia with fracture of fibula at same level	กระดูกแข้งส่วนกลางหักแบบปิดร่วมกับกระดูกน่องหักที่ระดับเดียวกัน
+S82.202	TM extension		Closed fracture of shaft of tibia with fracture of fibula at different level	กระดูกแข้งส่วนกลางหักแบบปิดร่วมกับกระดูกน่องหักที่ต่างระดับ
+S82.207	TM extension		Closed fracture of shaft of tibia, bifocal and segmental and multiple	กระดูกแข้งส่วนกลางหักแบบปิด สองจุด และหลายส่วน และหลายตำแหน่ง
+S82.208	TM extension		Closed fracture of shaft of tibia, others	กระดูกแข้งส่วนกลางหักแบบปิด ลักษณะอื่น
+S82.209	TM extension		Closed fracture of shaft of tibia, unspecified	กระดูกแข้งส่วนกลางหักแบบปิด ไม่ระบุรายละเอียด
+S82.210	TM extension		Open fracture of shaft of tibia with intact fibula	กระดูกแข้งส่วนกลางหักแบบเปิดโดยกระดูกน่องไม่หัก
+S82.211	TM extension		Open fracture of shaft of tibia with fracture of fibula at same level	กระดูกแข้งส่วนกลางหักแบบเปิดร่วมกับกระดูกน่องหักที่ระดับเดียวกัน
+S82.212	TM extension		Open fracture of shaft of tibia with fracture of fibula at different level	กระดูกแข้งส่วนกลางหักแบบเปิดร่วมกับกระดูกน่องหักที่ต่างระดับ
+S82.217	TM extension		Open fracture of shaft of tibia, bifocal and segmental and multiple	กระดูกแข้งส่วนกลางหักแบบเปิด สองจุด และหลายส่วน และหลายตำแหน่ง
+S82.218	TM extension		Open fracture of shaft of tibia, others	กระดูกแข้งส่วนกลางหักแบบเปิด ลักษณะอื่น
+S82.219	TM extension		Open fracture of shaft of tibia, unspecified	กระดูกแข้งส่วนกลางหักแบบเปิด ไม่ระบุรายละเอียด
+S82.300	TM extension		Closed fracture of distal tibia, extraarticular	กระดูกแข้งส่วนปลายหักแบบปิด ไม่เข้าข้อ
+S82.301	TM extension		Closed fracture of distal tibia, nondisplaced intraarticular	กระดูกแข้งส่วนปลายหักแบบปิด ไม่เคลื่อน หักเข้าข้อ
+S82.302	TM extension		Closed fracture of distal tibia, displaced intraarticular	กระดูกแข้งส่วนปลายหักแบบปิด เคลื่อน หักเข้าข้อ
+S82.303	TM extension		Closed fracture of epiphysis of distal tibia	เอพิไฟซิสของกระดูกแข้งส่วนปลายหักแบบปิด
+S82.307	TM extension		Closed fracture of distal tibia, multiple fractures	กระดูกแข้งส่วนปลายหักแบบปิด หลายตำแหน่ง
+S82.308	TM extension		Closed fracture of distal tibia, others	กระดูกแข้งส่วนปลายหักแบบปิด ลักษณะอื่น
+S82.309	TM extension		Closed fracture of distal tibia, unspecified	กระดูกแข้งส่วนปลายหักแบบปิด ไม่ระบุรายละเอียด
+S82.310	TM extension		Open fracture of distal tibia, extraarticular	กระดูกแข้งส่วนปลายหักแบบเปิด ไม่เข้าข้อ
+S82.311	TM extension		Open fracture of distal tibia, nondisplaced intraarticular	กระดูกแข้งส่วนปลายหักแบบเปิด ไม่เคลื่อน หักเข้าข้อ
+S82.312	TM extension		Open fracture of distal tibia, displaced intraarticular	กระดูกแข้งส่วนปลายหักแบบเปิด เคลื่อน หักเข้าข้อ
+S82.313	TM extension		Open fracture of epiphysis of distal tibia	เอพิไฟซิสของกระดูกแข้งส่วนปลายหักแบบเปิด
+S82.317	TM extension		Open fracture of distal tibia, multiple fractures	กระดูกแข้งส่วนปลายหักแบบเปิด หลายตำแหน่ง
+S82.318	TM extension		Open fracture of distal tibia, others	กระดูกแข้งส่วนปลายหักแบบเปิด ลักษณะอื่น
+S82.319	TM extension		Open fracture of distal tibia, unspecified	กระดูกแข้งส่วนปลายหักแบบเปิด ไม่ระบุรายละเอียด
+S82.40	TM extension		Closed fracture of fibula alone	กระดูกน่องหักโดยลำพังแบบปิด
+S82.41	TM extension		Open fracture of fibula alone	กระดูกน่องหักโดยลำพังแบบเปิด
+S82.50	TM extension		Closed fracture of medial malleolus	กระดูกตาตุ่มด้านในหักแบบปิด
+S82.51	TM extension		Open fracture of medial malleolus	กระดูกตาตุ่มด้านในหักแบบเปิด
+S82.60	TM extension		Closed fracture of lateral malleolus	กระดูกตาตุ่มด้านนอกหักแบบปิด
+S82.61	TM extension		Open fracture of lateral malleolus	กระดูกตาตุ่มด้านนอกหักแบบเปิด
+S82.70	TM extension		Multiple closed fractures of leg	กระดูกขาท่อนปลายหักหลายตำแหน่งแบบปิด
+S82.71	TM extension		Multiple open fractures of leg	กระดูกขาท่อนปลายหักหลายตำแหน่งแบบเปิด
+S82.80	TM extension		Closed fractures of other parts of leg	กระดูกขาท่อนปลายส่วนอื่นหักแบบปิด
+S82.81	TM extension		Open fractures of other parts of leg	กระดูกขาท่อนปลายส่วนอื่นหักแบบเปิด
+S82.90	TM extension		Closed fracture of leg, part unspecified	กระดูกขาท่อนปลายหักแบบปิด ไม่ระบุส่วน
+S82.91	TM extension		Open fracture of leg, part unspecified	กระดูกขาท่อนปลายหักแบบปิด ไม่ระบุส่วน
+S83.50	TM extension		Avulsion of anterior cruciate ligament [ACL]	เอ็นไขว้เข่าด้านหน้าถูกดึงขาด [เอซีแอล]
+S83.51	TM extension		Avulsion of posterior cruciate ligament [PCL]	เอ็นไขว้เข่าด้านหลังถูกดึงขาด [พีซีแอล]
+S83.59	TM extension		Sprain and strain involving cruciate ligament of knee, unspecified	การแพลงและเคล็ดของเอ็นไขว้เข่า ไม่ระบุรายละเอียด
+S87.9	TM extension		Crushing injury of unspecified part of knee and leg	การบาดเจ็บแบบบดอัดของส่วนที่ไม่ระบุของเข่าและขาท่อนปลาย
+S90.80	TM extension		Abrasion of ankle and foot	การถลอกที่ข้อเท้าและเท้า
+S90.81	TM extension		Bister of ankle and foot	ตุ่มพองที่ข้อเท้าและเท้า
+S90.82	TM extension		Insect bite of ankle and foot	แมลงกัดที่ข้อเท้าและเท้า
+S90.83	TM extension		Superficial foreign body of ankle and foot	สิ่งแปลกปลอมที่ชั้นผิวของข้อเท้าและเท้า
+S90.88	TM extension		Other superficial injuries of ankle and foot	การบาดเจ็บอื่นที่ชั้นผิวของข้อเท้าและเท้า
+S91.9	TM extension		Open wound of ankle and foot, unspecified	แผลเปิดที่ข้อเท้าและเท้า ไม่ระบุรายละเอียด
+S92.00	TM extension		Closed fracture of calcaneous	กระดูกแคลคาเนียสหักแบบปิด
+S92.01	TM extension		Open fracture of calcaneous	กระดูกแคลคาเนียสหักแบบเปิด
+S92.10	TM extension		Closed fracture of talus	กระดูกทาลัสหักแบบปิด
+S92.11	TM extension		Open fracture of talus	กระดูกทาลัสหักแบบเปิด
+S92.20	TM extension		Closed fracture of other tarsal bone(s)	กระดูกข้อเท้าอื่นหักแบบปิด
+S92.21	TM extension		Open fracture of other tarsal bone(s)	กระดูกข้อเท้าอื่นหักแบบเปิด
+S92.300	TM extension		Closed metatarsal fracture, one metatarsal	กระดูกฝ่าเท้าหักแบบปิด หนึ่งชิ้น
+S92.301	TM extension		Closed metatarsal fracture, two metatarsals	กระดูกฝ่าเท้าหักแบบปิด สองชิ้น
+S92.302	TM extension		Closed metatarsal fracture, three or more metatarsals	กระดูกฝ่าเท้าหักแบบปิด สามชิ้นหรือมากกว่า
+S92.309	TM extension		Closed metatarsal fracture, unspecified number of metatarsals	กระดูกฝ่าเท้าหักแบบปิด ไม่ระบุจำนวนชิ้น
+S92.310	TM extension		Open metatarsal fracture, one metatarsal	กระดูกฝ่าเท้าหักแบบเปิด หนึ่งชิ้น
+S92.311	TM extension		Open metatarsal fracture, two metatarsals	กระดูกฝ่าเท้าหักแบบเปิด สองชิ้น
+S92.312	TM extension		Open metatarsal fracture, three or more metatarsals	กระดูกฝ่าเท้าหักแบบเปิด สามชิ้นหรือมากกว่า
+S92.319	TM extension		Open metatarsal fracture, unspecified number of metatarsals	กระดูกฝ่าเท้าหักแบบเปิด ไม่ระบุจำนวนชิ้น
+S92.40	TM extension		Closed fracture of great toe	กระดูกนิ้วหัวแม่เท้าหักแบบปิด
+S92.41	TM extension		Open fracture of great toe	กระดูกนิ้วหัวแม่เท้าหักแบบเปิด
+S92.50	TM extension		Closed fracture of other toe	กระดูกนิ้วเท้าอื่นหักแบบปิด
+S92.51	TM extension		Open fracture of other toe	กระดูกนิ้วเท้าอื่นหักแบบเปิด
+S92.70	TM extension		Multiple closed fracture of foot	กระดูกเท้าหักหลายตำแหน่งแบบปิด
+S92.71	TM extension		Multiple open fracture of foot	กระดูกเท้าหักหลายตำแหน่งแบบเปิด
+S92.90	TM extension		Closed fracture of foot, unspecified	กระดูกเท้าหักแบบปิด ไม่ระบุรายละเอียด
+S92.91	TM extension		Open fracture of foot, unspecified	กระดูกเท้าหักแบบเปิด ไม่ระบุรายละเอียด
+T02.00	TM extension		Closed fractures involving head with neck	กระดูกหักแบบปิดที่ศีรษะร่วมกับคอ
+T02.01	TM extension		Open fractures involving head with neck	กระดูกหักแบบเปิดที่ศีรษะร่วมกับคอ
+T02.10	TM extension		Closed fractures involving thorax with lower back and pelvis	กระดูกหักแบบปิดที่ทรวงอกร่วมกับหลังส่วนล่างและเชิงกราน
+T02.11	TM extension		Open fractures involving thorax with lower back and pelvis	กระดูกหักแบบเปิดที่ทรวงอกร่วมกับหลังส่วนล่างและเชิงกราน
+T02.20	TM extension		Closed fractures involving multiple regions of one upper limb	กระดูกหักแบบปิดหลายบริเวณของแขนหนึ่งข้าง
+T02.21	TM extension		Open fractures involving multiple regions of one upper limb	กระดูกหักแบบเปิดหลายบริเวณของแขนหนึ่งข้าง
+T02.30	TM extension		Closed fractures involving multiple regions of one lower limb	กระดูกหักแบบปิดหลายบริเวณของขาหนึ่งข้าง
+T02.31	TM extension		Open fractures involving multiple regions of one lower limb	กระดูกหักแบบเปิดหลายบริเวณของขาหนึ่งข้าง
+T02.40	TM extension		Closed fractures involving multiple regions of both upper limbs	กระดูกหักแบบปิดหลายบริเวณของแขนทั้งสองข้าง
+T02.41	TM extension		Open fractures involving multiple regions of both upper limbs	กระดูกหักแบบเปิดหลายบริเวณของแขนทั้งสองข้าง
+T02.50	TM extension		Closed fractures involving multiple regions of both lower limbs	กระดูกหักแบบปิดหลายบริเวณของขาทั้งสองข้าง
+T02.51	TM extension		Open fractures involving multiple regions of both lower limbs	กระดูกหักแบบเปิดหลายบริเวณของขาทั้งสองข้าง
+T02.60	TM extension		Closed fractures involving multiple regions of upper limb(s) and lower limb(s)	กระดูกหักแบบปิดหลายบริเวณของแขนและขา
+T02.61	TM extension		Open fractures involving multiple regions of upper limb(s)and lower limb(s)	กระดูกหักแบบเปิดหลายบริเวณของแขนและขา
+T02.70	TM extension		Closed fractures involving thorax with lower back and pelvis and limb(s)	กระดูกหักแบบปิดที่ทรวงอกร่วมกับหลังส่วนล่างและเชิงกรานและแขนขา
+T02.71	TM extension		Open fractures involving thorax with lower back and pelvis and limb(s)	กระดูกหักแบบเปิดที่ทรวงอกร่วมกับหลังส่วนล่างและเชิงกรานและแขนขา
+T02.80	TM extension		Closed fractures involving other combinations of body regions	กระดูกหักแบบปิดหลายบริเวณอื่นของร่างกาย
+T02.81	TM extension		Open fractures involving other combinations of body regions	กระดูกหักแบบเปิดหลายบริเวณอื่นของร่างกาย
+T02.90	TM extension		Multiple closed fractures, unspecified	กระดูกหักแบบปิดหลายบริเวณ ไม่ระบุรายละเอียด
+T02.91	TM extension		Multiple open fractures, unspecified	กระดูกหักแบบเปิดหลายบริเวณ ไม่ระบุรายละเอียด
+T08.0	TM extension		Closed fracture of spine, level unspecified	กระดูกสันหลังหักแบบปิด ไม่ระบุระดับ
+T08.1	TM extension		Open fracture of spine, unspecified	กระดูกสันหลังหักแบบเปิด ไม่ระบุระดับ
+T10.0	TM extension		Closed fracture of upper limb, level unspecified	กระดูกแขนหักแบบปิด ไม่ระบุระดับ
+T10.1	TM extension		Open fracture of upper limb, level unspecified	กระดูกแขนหักแบบเปิด ไม่ระบุระดับ
+T12.0	TM extension		Closed fracture of lower limb, level unspecified	กระดูกขาหักแบบปิด ไม่ระบุระดับ
+T12.1	TM extension		Open fracture of lower limb, level unspecified	กระดูกขาหักแบบเปิด ไม่ระบุระดับ
+T14.20	TM extension		Closed fracture of unspecified body region	กระดูกหักแบบปิดที่ไม่ระบุบริเวณของร่างกาย
+T14.21	TM extension		Open fracture of unspecified body region	กระดูกหักแบบเปิดที่ไม่ระบุบริเวณของร่างกาย
+T53.8	not in WHO 2016	T53.9	Halogen derivative of aliphatic and aromatic hydrocarbons, unspecified	อนุพันธ์ฮาโลเจนของสารอะลิฟาติกและอะโรมาติกไฮโดรคาร์บอน ไม่ระบุรายละเอียด
+T63.00	TM extension		Haematotoxin	พิษต่อเลือด
+T63.01	TM extension		Neurotoxin	พิษต่อระบบประสาท
+T63.02	TM extension		Muscular toxin	พิษต่อกล้ามเนื้อ
+T63.03	TM extension		Mixed haematomuscular and neurotoxin	พิษต่อเลือดและกล้ามเนื้อและระบบประสาท
+T63.08	TM extension		Other specified snake venom	พิษงูอื่นที่ระบุรายละเอียด
+T63.09	TM extension		Snake venom, unspecified	พิษงู ไม่ระบุรายละเอียด
+T81.50	TM extension		Amalgam tattoo	รอยสักเจือปรอท
+T81.58	TM extension		Other specified foreign body accidentally left in body cavity or operation wound following a procedure	สิ่งแปลกปลอมอื่นที่ระบุรายละเอียดที่ตกค้างโดยอุบัติเหตุในช่องของร่างกายหรือแผลผ่าตัดหลังการทำหัตถการ
+T81.59	TM extension		Unpecified foreign body accidentally left in body cavity or operation wound following a procedure	สิ่งแปลกปลอมไม่ระบุรายละเอียดที่ตกค้างโดยอุบัติเหตุในช่องของร่างกายหรือแผลผ่าตัดหลังการทำหัตถการ
+U80	not in WHO 2016	U82	Agent resistant to penicillin and related antibiotics	เชื้อดื้อยาเพนิซิลลินและยาปฏิชีวนะที่สัมพันธ์กัน
+U80.0	not in WHO 2016	U82.0	Penicillin resistant agent	เชื้อดื้อยาเพนิซิลลิน
+U80.1	not in WHO 2016	U82.1	Methicillin resistant agent	เชื้อดื้อยาเมทิซิลลิน
+U80.8	not in WHO 2016	U82.8	Agent resistant to other penicillin-related antibiotic	เชื้อดื้อยาปฏิชีวนะอื่นที่สัมพันธ์กับเพนิซิลลิน
+U81	not in WHO 2016	U83	Agent resistant to vancomycin and related antibiotics	เชื้อดื้อยาแวนโคไมซินและยาปฏิชีวนะที่สัมพันธ์กัน
+U81.0	not in WHO 2016	U83.0	Vancomycin resistant agent	เชื้อดื้อยาแวนโคไมซิน
+U81.8	not in WHO 2016	U83.1	Agent resistant to other vancomycin-related antibiotic	เชื้อดื้อยาปฏิชีวนะอื่นที่สัมพันธ์กับแวนโคไมซิน
+U88	not in WHO 2016	U83.7	Agent resistant to multiple antibiotics	เชื้อดื้อยาปฏิชีวนะหลายชนิด
+U89	not in WHO 2016	U83	Agent resistant to other and unspecified antibiotics	เชื้อดื้อยาปฏิชีวนะอื่นและที่ไม่ระบุรายละเอียด
+U89.8	not in WHO 2016	U83.8	Agent resistant other single specified antibiotic	เชื้อดื้อยาปฏิชีวนะอื่นที่ระบุรายละเอียดชนิดเดียว
+U89.9	not in WHO 2016	U83.9	Agent resistant to unspecified antibiotic Morphology of neoplasms	เชื้อดื้อยาปฏิชีวนะที่ไม่ระบุรายละเอียด
+Z22.5	not in WHO 2016	B18.1 B18.2	Carrier of viral hepatitis	เป็นพาหะของโรคไวรัสตับอักเสบ
+Z89.20	TM extension		Loss of upper limb, forequarter, postoperative or acquired	การสูญเสียแขน ข้อไหล่รวมกระดูกสะบักและกระดูกไหปลาร้า จากการผ่าตัดหรือเหตุอื่น
+Z89.21	TM extension		Loss of upper limb, shoulder disarticulation, postoperative or acquired	การสูญเสียแขน ระดับข้อไหล่ จากการผ่าตัดหรือเหตุอื่น
+Z89.22	TM extension		Loss of upper limb above elbow [AE], postoperative or acquired	การสูญเสียแขนระดับเหนือศอก [เออี] จากการผ่าตัดหรือเหตุอื่น
+Z89.23	TM extension		Loss of upper limb, elbow disarticulation, postoperative or acquired	การสูญเสียแขน ระดับข้อศอก จากการผ่าตัดหรือเหตุอื่น
+Z89.24	TM extension		Loss of upper limb below elbow [BE], postoperative or acquired	การสูญเสียแขนระดับใต้ศอก [บีอี] จากการผ่าตัดหรือเหตุอื่น
+Z89.29	TM extension		Loss of upper limb above wrist, unspecified, postoperative or acquired	การสูญเสียแขนเหนือข้อมือ ไม่ระบุรายละเอียด จากการผ่าตัดหรือเหตุอื่น
+Z89.41	TM extension		Loss of ankle, ankle disarticulation, postoperative or acquired	การสูญเสียข้อเท้า ข้อเท้าหลุดจากกัน จากการผ่าตัดหรือเหตุอื่น
+Z89.42	TM extension		Loss of tarsal, Syme amputation, postoperative or acquired	การสูญเสียกระดูกข้อเท้า ถูกตัดแบบซิม จากการผ่าตัดหรือเหตุอื่น
+Z89.43	TM extension		Loss of tarsal, Boyd amputation, postoperative or acquired	การสูญเสียกระดูกข้อเท้า ถูกตัดแบบบอยด์ จากการผ่าตัดหรือเหตุอื่น
+Z89.44	TM extension		Loss of tarsal, Pirogoff amputation, postoperative or acquired	การสูญเสียกระดูกข้อเท้า ถูกตัดพีโรกอฟ จากการผ่าตัดหรือเหตุอื่น
+Z89.45	TM extension		Loss of foot, postoperative or acquired	การสูญเสียเท้า จากการผ่าตัดหรือเหตุอื่น
+Z89.46	TM extension		Loss of great toe, postoperative or acquired	การสูญเสียนิ้วหัวแม่เท้า จากการผ่าตัดหรือเหตุอื่น
+Z89.47	TM extension		Loss of other toe(s), postoperative or acquired	การสูญเสียนิ้วเท้านิ้วอื่น จากการผ่าตัดหรือเหตุอื่น
+Z89.51	TM extension		Loss of leg, knee disarticulation, postoperative or acquired	การสูญเสียขา ข้อเข่าหลุดจากกัน จากการผ่าตัดหรือเหตุอื่น
+Z89.52	TM extension		Loss of leg below knee [BK], postoperative or acquired	การสูญเสียขาระดับใต้เข่า [บีเค] จากการผ่าตัดหรือเหตุอื่น
+Z89.61	TM extension		Loss of leg above knee, hemipelvictomy, postoperative or acquired	การสูญเสียเข่า แบบกึ่งเพลวิกโตมี จากการผ่าตัดหรือเหตุอื่น
+Z89.62	TM extension		Loss of leg above knee, hindquarter, postoperative or acquired	การสูญเสียเข่า เสี้ยวหลัง จากการผ่าตัดหรือเหตุอื่น
+Z89.63	TM extension		Loss of leg above knee, hip disarticulation, postoperative or acquired	การสูญเสียขาเหนือระดับเข่า ข้อสะโพกหลุดจากกันจากการผ่าตัดหรือเหตุอื่น
+Z89.64	TM extension		Loss of leg above knee, AK amputation, postoperative or acquired	การสูญเสียขาเหนือระดับเข่า แบบเอเค จากการผ่าตัดหรือเหตุอื่น
+Z96.60	TM extension		Presence of shoulder joint prosthesis	การมีข้อไหล่เทียม
+Z96.61	TM extension		Presence of elbow joint prosthesis	การมีข้อศอกเทียม
+Z96.62	TM extension		Presence of wrist joint prosthesis	การมีข้อมือเทียม
+Z96.63	TM extension		Presence of prosthesis of joint of hand	การมีข้อเทียมอื่นของมือ
+Z96.64	TM extension		Presence of hip joint prosthesis	การมีข้อสะโพกเทียม
+Z96.65	TM extension		Presence of knee joint prosthesis	การมีข้อเข่าเทียม
+Z96.66	TM extension		Presence of ankle joint prosthesis	การมีข้อเท้าเทียม
+Z96.68	TM extension		Presence of other orthopaedic joint prosthesis	การมีข้อเทียมชนิดอื่น
+Z96.69	TM extension		Presence of orthopaedic joint prosthesis, unspecified	การมีข้อเทียม ไม่ระบุรายละเอียด

@@ -3,14 +3,14 @@
 - Every WHO code is present with the WHO English title.
 - Thai titles and bilingual notes come from ICD-10-TM 2009 where the TM code means the same thing;
   otherwise a project translation (th_new.TH, flagged thx) is used.
-- TM codes that are the same concept under another number are moved to the WHO number
-  (the TM number stays as an alias flagged who_del with rep -> WHO code).
-- TM codes the WHO edition no longer has are kept, flagged who_del, with replacement codes.
-- TM extensions (# codes, TM 5th characters, template-generated 4th characters) are kept, flagged tm/gen.
+- TM codes that are the same concept under another number are moved to the WHO number.
+- Codes that exist only in TM 2009 (TM extensions, codes WHO 2016 no longer has) are removed at the end
+  (drop_tm_only.py). 4th characters generated from WHO subdivision lists are kept, flagged gen.
 """
 import json, re, difflib, copy
 from th_new import TH, EN_FIX
 from thfix import fix_all, fix
+from drop_tm_only import drop_tm_only
 
 T = json.load(open('/home/claude/who/icd10_tm_backup.json', encoding='utf8'))
 W = json.load(open('/home/claude/who/who_tab.json', encoding='utf8'))
@@ -279,6 +279,8 @@ out['version'] = 'WHO 2016 (ชื่อไทยจาก TM 2009)'
 out['label'] = 'ICD-10'
 out['source'] = ('ICD-10 WHO ฉบับ 2016 (Volume 1, เอกสาร S0052 รวมรหัสที่ WHO ปรับปรุงภายหลัง) เป็นหลัก '
                  'ชื่อภาษาไทยและหมายเหตุสองภาษาจาก ICD-10-TM 2009 รหัสที่ TM เพิ่มเอง (#) ยังเก็บไว้และติดป้าย TM')
+removed_tm = drop_tm_only(out)          # เก็บเฉพาะรหัส WHO 2016 (ตัดรหัสที่มีเฉพาะใน TM 2009)
+codes = {x['c']: x for x in out['codes']}
 json.dump(out, open('/home/claude/icd-site/data/icd10/codes.json', 'w', encoding='utf8'), ensure_ascii=False, separators=(',', ':'))
 
 n_who = sum(1 for x in codes.values() if x.get('who'))
@@ -286,4 +288,4 @@ print('codes', len(codes), 'WHO', n_who, 'TM ext', sum(1 for x in codes.values()
       'gen', sum(1 for x in codes.values() if x.get('gen')), 'who_del', sum(1 for x in codes.values() if x.get('who_del')),
       'thx', sum(1 for x in codes.values() if x.get('thx')), 'no th', sum(1 for x in codes.values() if not x['th']),
       'no block', [k for k, x in codes.items() if not x['b']][:10], 'added from index', added_ref[:20])
-print('who_del without rep:', sorted(k for k, x in codes.items() if x.get('who_del') and not x['rep']))
+print('removed TM-only codes:', len(removed_tm))

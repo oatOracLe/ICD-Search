@@ -156,7 +156,7 @@ D10 = [
     ('PANCREATITIS|AP', 'Acute pancreatitis', 'ตับอ่อนอักเสบเฉียบพลัน', ['acute pancreatitis', '@K85'], ['K85.9']),
     ('HEMORRHOID|HEMORRHOIDS|PILES', 'Haemorrhoids', 'ริดสีดวงทวาร', ['haemorrhoid', '@K64'], ['K64.9', 'K64.0', 'K64.1']),
     # ---- infection
-    ('DHF', 'Dengue with warning signs / severe dengue', 'ไข้เลือดออกเด็งกี', ['@A97.1', '@A97.2', '@A91'], ['A97.1', 'A97.2']),
+    ('DHF', 'Dengue with warning signs / severe dengue', 'ไข้เลือดออกเด็งกี', ['@A97.1', '@A97.2'], ['A97.1', 'A97.2']),
     ('DF|DENGUE', 'Dengue', 'ไข้เด็งกี', ['@A97', 'dengue'], ['A97.0', 'A97.1', 'A97.2', 'A97.9']),
     ('DSS', 'Dengue shock syndrome', 'ไข้เลือดออกช็อก', ['dengue shock', '@A97.2'], ['A97.2']),
     ('HIV', 'HIV disease', 'โรคติดเชื้อเอชไอวี', ['human immunodeficiency virus', '@B20-B24', '@Z21'], ['B24', 'Z21']),
@@ -421,7 +421,7 @@ D10 = [
     ('AHC', 'Acute haemorrhagic conjunctivitis', 'เยื่อบุตาอักเสบชนิดมีเลือดออกเฉียบพลัน (ตาแดงจากเอนเทอโรไวรัส)', ['@B30.3'], ['B30.3']),  # รพ.ราชบุรี (แหล่งให้ H11.3 ใช้ B30.3)
     ('AHD', 'Arteriosclerotic heart disease', 'โรคหัวใจจากหลอดเลือดแข็ง', ['@I25.1'], ['I25.1']),  # รพ.ราชบุรี ความหมายแรก
     ('AHD', 'Aortic heart disease', 'โรคลิ้นหัวใจเอออร์ติก', ['@I35'], []),  # รพ.ราชบุรี ความหมายที่สอง
-    ('AHF', 'Acute haemorrhagic fever (dengue)', 'ไข้เลือดออก', ['@A97.1', '@A97.2', '@A91'], ['A97.1', 'A97.2']),  # รพ.ราชบุรี ใช้รหัสเดียวกับ DHF
+    ('AHF', 'Acute haemorrhagic fever (dengue)', 'ไข้เลือดออก', ['@A97.1', '@A97.2'], ['A97.1', 'A97.2']),  # รพ.ราชบุรี ใช้รหัสเดียวกับ DHF
     ('AI', 'Aortic insufficiency', 'ลิ้นหัวใจเอออร์ติกรั่ว', ['@I35.1', '@I06.1'], ['I35.1']),  # รพ.ราชบุรี
     ('AMC', 'Arthrogryposis multiplex congenita', 'ข้อติดแข็งหลายข้อแต่กำเนิด', ['@Q74.3'], ['Q74.3']),  # รพ.ราชบุรี
     ('AMM', 'Agnogenic myeloid metaplasia (primary myelofibrosis)', 'ไขกระดูกเป็นพังผืดชนิดปฐมภูมิ', ['@D47.4'], ['D47.4']),  # รพ.ราชบุรี (แหล่งให้ D73.1 ใช้ D47.4)
@@ -493,7 +493,7 @@ D10 = [
     # ---- เพิ่ม 8 พ.ย. 2569: ข้อเสนอจากชีตผู้ใช้ (อนุมัติแล้ว) และคำไทยที่ coder พิมพ์แต่เว็บยังหาไม่เจอ ----
     ('HFREF', 'Heart failure with reduced ejection fraction', 'หัวใจล้มเหลวชนิดค่าการบีบตัว (EF) ลดลง', ['@I50'], ['I50.9', 'I50.1', 'I50.0']),  # ชีตผู้ใช้; WHO ICD-10 ไม่มีรหัสแยกตาม EF ยังไม่มี coder ตรวจ
     ('HFPEF', 'Heart failure with preserved ejection fraction', 'หัวใจล้มเหลวชนิดค่าการบีบตัว (EF) ปกติ', ['@I50'], ['I50.9', 'I50.1', 'I50.0']),  # ชีตผู้ใช้; WHO ICD-10 ไม่มีรหัสแยกตาม EF ยังไม่มี coder ตรวจ
-    ('ไข้เลือดออก', 'Dengue / dengue haemorrhagic fever', 'ไข้เลือดออก / ไข้เด็งกี', ['@A97', '@A91'], ['A97.1', 'A97.2', 'A97.0', 'A97.9']),  # คำไทย; ชื่อไทย TM ของ A97 คือ "ไข้เด็งกี" เดิมจึงขึ้น A48.4 ก่อน ลำดับตาม DHF/AHF ยังไม่มี coder ตรวจ
+    ('ไข้เลือดออก', 'Dengue / dengue haemorrhagic fever', 'ไข้เลือดออก / ไข้เด็งกี', ['@A97'], ['A97.1', 'A97.2', 'A97.0', 'A97.9']),  # คำไทย; ชื่อไทย TM ของ A97 คือ "ไข้เด็งกี" เดิมจึงขึ้น A48.4 ก่อน ลำดับตาม DHF/AHF ยังไม่มี coder ตรวจ
     ('ปอดอักเสบ|ปอดบวม', 'Pneumonia', 'ปอดอักเสบ / ปอดบวม', ['ปอดบวม', 'ปอดอักเสบ', '@J12-J18'], ['J18.9', 'J18.0', 'J15.9', 'J12.9']),  # คำไทย; TM ใช้คำว่า "ปอดบวม" เดิมจึงขึ้น B25.0 ก่อน ยังไม่มี coder ตรวจ
 ]
 
