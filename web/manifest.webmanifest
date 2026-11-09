@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "ค้นรหัส ICD",
+  "short_name": "ค้นรหัส ICD",
+  "description": "ค้นรหัส ICD-10 (WHO 2016) และ ICD-9-CM เป็นภาษาไทย ใช้ได้แม้ไม่มีอินเทอร์เน็ต",
+  "lang": "th",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F4F6F5",
+  "theme_color": "#FFFFFF",
+  "categories": ["medical", "productivity", "reference"],
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

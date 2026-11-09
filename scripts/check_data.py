@@ -579,6 +579,39 @@ class Check:
         self.warnings.append(msg)
 
 
+def check_app(c, d=None):
+    """The installable app (PWA): every file sw.js precaches and every manifest icon must exist,
+    or the service worker fails to install (CORE) or the app has no icon."""
+    web = os.path.join(ROOT, 'web')
+    sw = os.path.join(web, 'sw.js')
+    if not os.path.exists(sw):
+        c.err('web/sw.js missing')
+        return
+    src = open(sw, encoding='utf-8').read()
+    n = 0
+    for name in ('CORE', 'REST'):
+        m = re.search(r'var ' + name + r' = \[(.*?)\];', src, re.S)
+        if not m:
+            c.err(f'sw.js: no {name} list')
+            continue
+        for path in re.findall(r"'([^']+)'", m.group(1)):
+            n += 1
+            if path != './' and not os.path.isfile(os.path.join(web, path)):
+                c.err(f'sw.js {name}: {path} does not exist under web/')
+    try:
+        man = json.load(open(os.path.join(web, 'manifest.webmanifest'), encoding='utf-8'))
+    except (OSError, ValueError) as e:
+        c.err(f'manifest.webmanifest: {e}')
+        return
+    for ic in man.get('icons') or []:
+        n += 1
+        if not os.path.isfile(os.path.join(web, ic.get('src', ''))):
+            c.err(f'manifest.webmanifest: icon {ic.get("src")!r} does not exist')
+    if not any('maskable' in (ic.get('purpose') or '') for ic in man.get('icons') or []):
+        c.warn('manifest.webmanifest: no maskable icon (Android crops the icon)')
+    c.info = f'{n} files listed'
+
+
 DATA_CHECKS = (
     ('a', 'JSON parses', check_json),
     ('b', 'codes', check_codes),
@@ -589,6 +622,7 @@ DATA_CHECKS = (
     ('g', 'nhso2562.json', check_nhso),
     ('h', 'overlay.json', check_overlay),
     ('i', 'Thai text', check_thai),
+    ('k', 'app (PWA)', check_app),
 )
 
 

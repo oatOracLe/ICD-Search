@@ -1446,6 +1446,8 @@
       hist = []; lsSet('icd.hist', hist); renderList();
     } else if (act === 'back') {
       S.pane = 'list'; renderChrome(); window.scrollTo(0, 0);
+    } else if (act === 'pwainstall') {
+      pwaInstall();
     } else if (act === 'fbopen') {
       ev.preventDefault(); if (fbReady()) fbOpen(b);
     } else if (act === 'scgopen') {
@@ -1775,8 +1777,73 @@
       '<p>' + esc(DB.icd9.label) + ' ' + esc(DB.icd9.version) + ' · ' + DB.icd9.codes.length.toLocaleString('th-TH') + ' รหัส — ' + esc(DB.icd9.source || '') + '</p>' +
       (o ? '<p>มีข้อมูลที่ผู้ดูแลเพิ่มหรือแก้ไข ' + o.toLocaleString('th-TH') + ' รายการ</p>' : '') +
       (fbReady() ? '<p>พบรหัสหรือคำย่อที่ควรเพิ่มหรือแก้? ' + fbBtn('เสนอเพิ่มหรือแก้ไข', { k: 'other' }, 'link') + '</p>' : '') +
+      (pwaCanInstall() ? '<p>ใช้แบบออฟไลน์บนมือถือหรือคอม? <button type="button" class="link" data-act="pwainstall">ติดตั้งเป็นแอป</button></p>' : '') +
       '<p>ใช้ประกอบการทำงาน ตรวจซ้ำกับบัญชีจำแนกฉบับที่หน่วยงานใช้ทุกครั้ง' +
       (OV.canEdit ? ' · <a href="#admin" data-act="view" data-view="admin">หลังบ้านผู้พัฒนา</a>' : '') + '</p>';
+  }
+
+  // ---------- app (PWA): offline cache, install, updates (sw.js) ----------
+  var PWA = { prompt: null, bar: null, wantReload: false, updateShown: false };
+  var embedded = (function () { try { return window.self !== window.top; } catch (e) { return true; } })();
+  var swOK = 'serviceWorker' in navigator && !embedded &&
+    (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+  function pwaStandalone() { return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true; }
+  function pwaIOS() { var ua = navigator.userAgent || ''; return /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); }
+  function pwaCanInstall() { return swOK && !pwaStandalone() && (!!PWA.prompt || pwaIOS()); }
+  function pwaHint() { return pwaIOS() ? 'ติดตั้งเป็นแอป: ใน Safari แตะปุ่มแชร์ แล้วเลือก “เพิ่มไปยังหน้าจอโฮม”' : 'ติดตั้งเป็นแอปบนเครื่องนี้ เปิดได้เร็วและใช้ได้แม้ไม่มีอินเทอร์เน็ต'; }
+  // a small bar at the bottom; text + optional action button + close
+  function pwaBar(text, action, onAction, onClose) {
+    if (!PWA.bar) {
+      PWA.bar = document.createElement('div');
+      PWA.bar.className = 'pwa-bar';
+      PWA.bar.setAttribute('role', 'region');
+      PWA.bar.setAttribute('aria-label', 'แอป');
+      document.body.appendChild(PWA.bar);
+    }
+    PWA.bar.innerHTML = '<p aria-live="polite">' + esc(text) + '</p>' +
+      (action ? '<button type="button" class="btn primary" data-pwa="act">' + esc(action) + '</button>' : '') +
+      '<button type="button" class="btn icon" data-pwa="close" aria-label="ปิด">✕</button>';
+    PWA.bar.hidden = false;
+    PWA.bar.onclick = function (e) {
+      var b = e.target.closest('[data-pwa]'); if (!b) return;
+      if (b.getAttribute('data-pwa') === 'act') { if (onAction) onAction(); } else { PWA.bar.hidden = true; if (onClose) onClose(); }
+    };
+  }
+  function pwaDismissed() { return Date.now() - lsGet('icd.pwa.dismissed', 0) < 30 * 864e5; }
+  function pwaInstall() {
+    if (PWA.prompt) {
+      var p = PWA.prompt; PWA.prompt = null;
+      p.prompt();
+      p.userChoice.then(function () { if (PWA.bar) PWA.bar.hidden = true; footer(); }).catch(function () {});
+    } else pwaBar(pwaHint(), null, null, null);
+  }
+  function pwaOfferInstall() {
+    if (!pwaCanInstall() || pwaDismissed() || PWA.updateShown) return;
+    pwaBar(pwaHint(), PWA.prompt ? 'ติดตั้ง' : null, pwaInstall, function () { lsSet('icd.pwa.dismissed', Date.now()); });
+  }
+  function pwaShowUpdate(waiting) {
+    if (PWA.updateShown) return;
+    PWA.updateShown = true;
+    pwaBar('มีข้อมูลรุ่นใหม่ แตะเพื่อโหลดใหม่', 'โหลดใหม่', function () {
+      if (waiting) { PWA.wantReload = true; waiting.postMessage('skip-waiting'); } else location.reload();
+    }, null);
+  }
+  if (swOK) {
+    window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); PWA.prompt = e; if (S.ready) footer(); pwaOfferInstall(); });
+    window.addEventListener('appinstalled', function () { PWA.prompt = null; if (PWA.bar) PWA.bar.hidden = true; if (S.ready) footer(); });
+    navigator.serviceWorker.addEventListener('message', function (e) { if (e.data && e.data.type === 'icd-updated') pwaShowUpdate(null); });
+    navigator.serviceWorker.addEventListener('controllerchange', function () { if (PWA.wantReload) { PWA.wantReload = false; location.reload(); } });
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function (reg) {
+        if (reg.waiting && navigator.serviceWorker.controller) pwaShowUpdate(reg.waiting);
+        reg.addEventListener('updatefound', function () {
+          var w = reg.installing;
+          if (w) w.addEventListener('statechange', function () { if (w.state === 'installed' && navigator.serviceWorker.controller) pwaShowUpdate(w); });
+        });
+        return navigator.serviceWorker.ready;
+      }).then(function (reg) { if (reg && reg.active) reg.active.postMessage('cache-all'); }).catch(function () {});
+      if (pwaIOS()) setTimeout(pwaOfferInstall, 1500);
+    });
   }
   Promise.all([load(PATH.icd10), load(PATH.icd9), load(PATH.guide).catch(function () { return { items: {} }; }),
     load(PATH.abbr).catch(function () { return {}; }), load(PATH.overlay + '?v=' + Date.now()).catch(function () { return { items: [] }; })]).then(function (res) {
