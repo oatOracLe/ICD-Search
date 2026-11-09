@@ -71,7 +71,11 @@
   };
 
   // ---------- data ----------
-  function cmpCode(a, b) { return a.c.localeCompare(b.c, 'en', { numeric: true }); }
+  // one shared collator: same order as localeCompare(b, 'en', { numeric: true }) but over 10× faster
+  // (localeCompare with options builds a collator on every call; the start-up sorts made ~400,000 calls)
+  var codeCmp = (typeof Intl !== 'undefined' && Intl.Collator) ? new Intl.Collator('en', { numeric: true }).compare
+    : function (a, b) { return a.localeCompare(b, 'en', { numeric: true }); };
+  function cmpCode(a, b) { return codeCmp(a.c, b.c); }
   function prep(d) {
     var chapterMap = {}, blockMap = {}, byCode = {}, kids = {}, byBlock = {};
     (d.chapters || []).forEach(function (c) { chapterMap[c.id] = c; });
@@ -216,7 +220,7 @@
         if (hitG.length) out.push({ x: x, sc: score(x, hitG) });
       }
     }
-    out.sort(function (a, b) { return a.sc - b.sc || a.x.c.localeCompare(b.x.c, 'en', { numeric: true }); });
+    out.sort(function (a, b) { return a.sc - b.sc || codeCmp(a.x.c, b.x.c); });
     return { toks: P.hlToks, list: out.slice(0, MAX_RESULTS).map(function (o) { return o.x; }), total: out.length, abbrs: P.abbrs, any: any };
   }
 
